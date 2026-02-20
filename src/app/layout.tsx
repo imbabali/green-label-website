@@ -1,5 +1,7 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { DM_Sans, Raleway, Fraunces } from 'next/font/google'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { SITE_NAME, SITE_URL, COMPANY_INFO } from '@/lib/data/constants'
 
@@ -20,6 +22,12 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#2c632c',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -47,11 +55,20 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — ${COMPANY_INFO.tagline}`,
     description:
       'Uganda\'s leading waste management company. 25+ years of safe, trusted waste collection and disposal services.',
+    images: [
+      {
+        url: `${SITE_URL}/images/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Green Label Services - Safe And Trusted Waste Collection',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: COMPANY_INFO.tagline,
+    images: [`${SITE_URL}/images/og-image.png`],
   },
   robots: {
     index: true,
@@ -77,6 +94,7 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl0HPNiekfRLfg8+p0all20u7gA0hMatt4J6VkZYi3fOn+p8gSwCYfpKf8MDBK0fNO0RsFP+s2sktg=="
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
@@ -85,6 +103,8 @@ export default function RootLayout({
         className={`${dmSans.variable} ${raleway.variable} ${fraunces.variable} font-sans antialiased`}
       >
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

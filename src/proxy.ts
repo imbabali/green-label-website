@@ -27,7 +27,7 @@ function isAuthRoute(pathname: string): boolean {
   return authRoutes.some((route) => pathname.startsWith(route))
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Refresh the session via updateSession
   const response = await updateSession(request)
 
