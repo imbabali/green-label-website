@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
 export default function ContactPage() {
   return (
     <>
-      <Hero
+      <Hero backgroundImage="/images/hero/aga1.webp"
         heading="Contact Us"
         subheading="We Are Here to Help"
         variant="fullWidth"

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface ServiceCardProps {
   service: {
@@ -17,11 +18,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     <div className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-lg">
       <div className="relative h-48 overflow-hidden bg-gray-100">
         {service.featuredImage ? (
-          <img
+          <Image
             src={service.featuredImage}
             alt={service.title}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-brand-green/10">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface CTAButton {
   label: string
@@ -74,10 +75,18 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
           }`}
         >
           {/* Background image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.backgroundImage})` }}
-          >
+          <div className="absolute inset-0">
+            {slide.backgroundImage && (
+              <Image
+                src={slide.backgroundImage}
+                alt=""
+                role="presentation"
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority={index === 0}
+              />
+            )}
             <div
               className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"
               aria-hidden="true"

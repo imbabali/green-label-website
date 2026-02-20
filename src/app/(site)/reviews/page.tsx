@@ -52,7 +52,7 @@ export default async function ReviewsPage({ searchParams }: Props) {
 
   return (
     <>
-      <Hero
+      <Hero backgroundImage="/images/hero/waste.jpg"
         heading="Customer Reviews"
         subheading="What Our Clients Say"
         variant="fullWidth"

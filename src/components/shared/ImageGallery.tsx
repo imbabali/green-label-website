@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import ImageModal from '@/components/shared/ImageModal'
 
 interface GalleryImage {
@@ -110,11 +111,12 @@ export default function ImageGallery({
             className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
             aria-label={`View ${image.alt}${image.caption ? `: ${image.caption}` : ''}`}
           >
-            <img
+            <Image
               src={image.url}
               alt={image.alt}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
             {/* Hover Overlay */}
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/50">

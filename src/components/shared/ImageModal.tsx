@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useCallback } from 'react'
+import Image from 'next/image'
 
 interface ModalImage {
   url: string
@@ -116,11 +117,16 @@ export default function ImageModal({
 
       {/* Image */}
       <div className="flex max-h-[85vh] max-w-[90vw] flex-col items-center">
-        <img
-          src={currentImage.url}
-          alt={currentImage.alt}
-          className="max-h-[75vh] max-w-full rounded-lg object-contain"
-        />
+        <div className="relative h-[75vh] w-[90vw]">
+          <Image
+            src={currentImage.url}
+            alt={currentImage.alt}
+            fill
+            sizes="90vw"
+            className="rounded-lg object-contain"
+            priority
+          />
+        </div>
         {currentImage.caption && (
           <p className="mt-4 max-w-lg text-center text-sm text-gray-300">
             {currentImage.caption}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import { generatePageMetadata } from '@/lib/utils/seo'
@@ -22,6 +23,7 @@ const milestones = [
     title: 'Company Founded',
     description:
       'Green Label Services was established in Kampala with a mission to provide safe, reliable waste collection services across Uganda.',
+    image: '/images/hero/aga1.webp',
   },
   {
     year: 2004,
@@ -29,6 +31,7 @@ const milestones = [
     title: 'Medical Waste Division',
     description:
       'Launched our dedicated medical waste management division, partnering with hospitals and healthcare facilities across Kampala.',
+    image: '/images/offices/office2.jpg',
   },
   {
     year: 2008,
@@ -36,6 +39,7 @@ const milestones = [
     title: 'NEMA Certification',
     description:
       'Received full National Environment Management Authority certification, affirming our commitment to environmental compliance.',
+    image: '/images/certificates/iso.png',
   },
   {
     year: 2012,
@@ -43,6 +47,7 @@ const milestones = [
     title: 'Oil & Gas Expansion',
     description:
       'Expanded operations into the oil and gas sector, providing hazardous waste management for exploration and production companies.',
+    image: '/images/vehicles/hazard_vehicle1.jpg',
   },
   {
     year: 2015,
@@ -50,6 +55,7 @@ const milestones = [
     title: 'Fleet Modernisation',
     description:
       'Invested in a modern fleet of 50+ specialised waste collection and transport vehicles to serve clients nationwide.',
+    image: '/images/vehicles/harzard_vehicle2.jpg',
   },
   {
     year: 2018,
@@ -57,6 +63,7 @@ const milestones = [
     title: 'Training Academy',
     description:
       'Established the Green Label Training Academy to educate communities and businesses on proper waste management practices.',
+    image: '/images/training/training3.jpg',
   },
   {
     year: 2022,
@@ -64,6 +71,7 @@ const milestones = [
     title: 'National Recognition',
     description:
       'Awarded Uganda\'s Best Waste Management Company for outstanding service, innovation, and environmental stewardship.',
+    image: '/images/hero/waste.jpg',
   },
   {
     year: 2025,
@@ -71,6 +79,7 @@ const milestones = [
     title: '25 Years of Excellence',
     description:
       'Celebrating 25 years of environmental leadership with over 2,194 active clients and 76,000+ tonnes of waste safely managed annually.',
+    image: '/images/offices/office3.jpg',
   },
 ]
 
@@ -115,6 +124,7 @@ export default function OurStoryPage() {
         subheading="25 Years of Environmental Excellence"
         badge="Since 2000"
         variant="fullWidth"
+        backgroundImage="/images/hero/aga1.webp"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Our Story' }]}
         description="From humble beginnings in Kampala to becoming Uganda's most trusted waste management partner, our journey has been driven by a commitment to environmental stewardship and community wellbeing."
       />
@@ -145,14 +155,27 @@ export default function OurStoryPage() {
                       <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-green text-white shadow-lg">
                         <i className={milestone.icon} aria-hidden="true" />
                       </div>
-                      <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
-                        <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
-                          {milestone.year}
-                        </span>
-                        <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                          {milestone.title}
-                        </h3>
-                        <p className="text-sm text-gray-600">{milestone.description}</p>
+                      <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+                        {milestone.image && (
+                          <div className="relative h-40 w-full">
+                            <Image
+                              src={milestone.image}
+                              alt={milestone.title}
+                              fill
+                              sizes="(max-width: 768px) 80vw"
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
+                        <div className="p-5">
+                          <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
+                            {milestone.year}
+                          </span>
+                          <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
+                            {milestone.title}
+                          </h3>
+                          <p className="text-sm text-gray-600">{milestone.description}</p>
+                        </div>
                       </div>
                     </div>
 
@@ -161,14 +184,27 @@ export default function OurStoryPage() {
                       {isLeft ? (
                         <>
                           <div className="text-right">
-                            <div className="inline-block rounded-xl border border-gray-100 bg-white p-6 text-left shadow-sm">
-                              <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
-                                {milestone.year}
-                              </span>
-                              <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                                {milestone.title}
-                              </h3>
-                              <p className="text-sm text-gray-600">{milestone.description}</p>
+                            <div className="inline-block overflow-hidden rounded-xl border border-gray-100 bg-white text-left shadow-sm">
+                              {milestone.image && (
+                                <div className="relative h-48 w-full">
+                                  <Image
+                                    src={milestone.image}
+                                    alt={milestone.title}
+                                    fill
+                                    sizes="45vw"
+                                    className="object-cover"
+                                  />
+                                </div>
+                              )}
+                              <div className="p-6">
+                                <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
+                                  {milestone.year}
+                                </span>
+                                <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
+                                  {milestone.title}
+                                </h3>
+                                <p className="text-sm text-gray-600">{milestone.description}</p>
+                              </div>
                             </div>
                           </div>
                           <div />
@@ -177,14 +213,27 @@ export default function OurStoryPage() {
                         <>
                           <div />
                           <div>
-                            <div className="inline-block rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                              <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
-                                {milestone.year}
-                              </span>
-                              <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                                {milestone.title}
-                              </h3>
-                              <p className="text-sm text-gray-600">{milestone.description}</p>
+                            <div className="inline-block overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+                              {milestone.image && (
+                                <div className="relative h-48 w-full">
+                                  <Image
+                                    src={milestone.image}
+                                    alt={milestone.title}
+                                    fill
+                                    sizes="45vw"
+                                    className="object-cover"
+                                  />
+                                </div>
+                              )}
+                              <div className="p-6">
+                                <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
+                                  {milestone.year}
+                                </span>
+                                <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
+                                  {milestone.title}
+                                </h3>
+                                <p className="text-sm text-gray-600">{milestone.description}</p>
+                              </div>
                             </div>
                           </div>
                         </>

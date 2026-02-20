@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { ReactNode } from 'react'
 
 export interface BreadcrumbItem {
@@ -283,12 +284,14 @@ export default function Hero({
             {children}
           </div>
           {backgroundImage && (
-            <div className="relative hidden overflow-hidden rounded-xl md:block">
-              <img
+            <div className="relative hidden min-h-[400px] overflow-hidden rounded-xl md:block">
+              <Image
                 src={backgroundImage}
-                alt=""
-                className="h-full w-full object-cover"
-                loading="eager"
+                alt={heading}
+                fill
+                sizes="50vw"
+                className="object-cover"
+                priority
               />
             </div>
           )}
@@ -299,18 +302,20 @@ export default function Hero({
 
   // fullWidth (default)
   return (
-    <section
-      className="relative flex min-h-[400px] items-center md:min-h-[500px]"
-      style={
-        backgroundImage
-          ? {
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }
-          : undefined
-      }
-    >
+    <section className="relative flex min-h-[400px] items-center md:min-h-[500px]">
+      {/* Background image */}
+      {backgroundImage && (
+        <Image
+          src={backgroundImage}
+          alt=""
+          role="presentation"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+      )}
+
       {/* Dark overlay */}
       <div
         className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"

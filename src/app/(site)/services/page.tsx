@@ -45,7 +45,7 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <Hero
+      <Hero backgroundImage="/images/vehicles/harzard_vehicle3.jpg"
         heading="Our Services"
         subheading="Comprehensive Waste Management Solutions"
         variant="fullWidth"

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import HeroCarousel from '@/components/shared/HeroCarousel'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ReviewCarousel from '@/components/shared/ReviewCarousel'
@@ -451,11 +452,12 @@ export default async function HomePage() {
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                   {post.featuredImage ? (
-                    <img
+                    <Image
                       src={post.featuredImage}
                       alt={post.title}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-gray-200">
@@ -552,13 +554,14 @@ export default async function HomePage() {
             ].map((partner) => (
               <div
                 key={partner.alt}
-                className="flex items-center justify-center rounded-lg bg-gray-50 p-4 transition-all duration-300 hover:bg-gray-100 hover:shadow-sm"
+                className="relative flex h-20 items-center justify-center rounded-lg bg-gray-50 p-4 transition-all duration-300 hover:bg-gray-100 hover:shadow-sm"
               >
-                <img
+                <Image
                   src={partner.src}
                   alt={partner.alt}
-                  className="h-12 max-w-full object-contain opacity-70 transition-opacity hover:opacity-100"
-                  loading="lazy"
+                  width={120}
+                  height={48}
+                  className="object-contain opacity-70 transition-opacity hover:opacity-100"
                 />
               </div>
             ))}

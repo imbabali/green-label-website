@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -65,6 +66,7 @@ export default function LeadershipPage() {
         heading="Leadership Team"
         subheading="Guiding Environmental Excellence"
         variant="fullWidth"
+        backgroundImage="/images/gallery/img5.png"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Leadership' }]}
         description="Our leadership team combines decades of industry experience with a shared passion for environmental sustainability and community wellbeing."
       />
@@ -86,8 +88,15 @@ export default function LeadershipPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-lg md:p-12">
             <div className="flex flex-col items-center gap-8 md:flex-row">
-              <div className="flex h-40 w-40 shrink-0 items-center justify-center rounded-full bg-brand-green/10">
-                <i className="fa-solid fa-user-tie text-5xl text-brand-green" aria-hidden="true" />
+              <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full">
+                <Image
+                  src="/images/hero/mugume.jpg"
+                  alt="Dr. Grace Mugume - Chief Executive Officer"
+                  fill
+                  sizes="160px"
+                  className="object-cover"
+                  priority
+                />
               </div>
               <div>
                 <span className="mb-2 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-orange">

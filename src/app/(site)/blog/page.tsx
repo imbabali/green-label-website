@@ -74,7 +74,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
   return (
     <>
-      <Hero
+      <Hero backgroundImage="/images/gallery/img3.jpg"
         heading="Blog & News"
         subheading="Latest Insights on Waste Management"
         variant="fullWidth"

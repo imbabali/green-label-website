@@ -51,7 +51,7 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <Hero
+      <Hero backgroundImage="/images/gallery/img4.jpg"
         heading="Our Gallery"
         subheading="See Our Work in Action"
         variant="fullWidth"

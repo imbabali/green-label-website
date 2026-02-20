@@ -81,7 +81,7 @@ export default async function FAQsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(allFaqs)) }}
       />
-      <Hero
+      <Hero backgroundImage="/images/gallery/img6.jpg"
         heading="Frequently Asked Questions"
         subheading="Find answers to common questions"
         variant="fullWidth"

@@ -24,7 +24,7 @@ const benefits = [
 export default function CareersPage() {
   return (
     <>
-      <Hero
+      <Hero backgroundImage="/images/training/training2.jpg"
         heading="Join Our Team"
         subheading="Build a Career That Matters"
         variant="fullWidth"
