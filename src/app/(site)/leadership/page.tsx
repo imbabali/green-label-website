@@ -18,42 +18,82 @@ export function generateMetadata(): Metadata {
 const boardMembers = [
   {
     name: 'Mr. Francis Olupot',
+    initials: 'FO',
     role: 'Chairman, Board of Directors',
     bio: 'Brings over 30 years of corporate governance experience, guiding the strategic vision and long-term growth of Green Label Services.',
-    icon: 'fa-solid fa-chess-king',
   },
   {
     name: 'Ms. Sarah Nakamya',
+    initials: 'SN',
     role: 'Non-Executive Director',
     bio: 'An environmental law expert with extensive experience in regulatory compliance and sustainability policy in East Africa.',
-    icon: 'fa-solid fa-scale-balanced',
   },
   {
     name: 'Dr. Peter Otim',
+    initials: 'PO',
     role: 'Non-Executive Director',
     bio: 'A public health specialist who ensures Green Label maintains the highest standards in medical and hazardous waste management.',
-    icon: 'fa-solid fa-user-doctor',
   },
 ]
 
+function CompassIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.3" stroke="none" />
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+    </svg>
+  )
+}
+
+function ShieldCheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  )
+}
+
+function UsersIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
+function GlobeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  )
+}
+
 const leadershipValues = [
   {
-    icon: 'fa-solid fa-compass',
+    icon: CompassIcon,
     title: 'Strategic Vision',
     description: 'Setting the direction for sustainable growth and industry leadership across East Africa.',
   },
   {
-    icon: 'fa-solid fa-hands-holding-circle',
+    icon: ShieldCheckIcon,
     title: 'Accountability',
     description: 'Taking ownership of outcomes and maintaining the highest standards of corporate governance.',
   },
   {
-    icon: 'fa-solid fa-people-group',
+    icon: UsersIcon,
     title: 'Team Empowerment',
     description: 'Investing in our people through training, mentorship, and creating pathways for career growth.',
   },
   {
-    icon: 'fa-solid fa-earth-africa',
+    icon: GlobeIcon,
     title: 'Environmental Commitment',
     description: 'Leading by example in environmental stewardship and sustainable business practices.',
   },
@@ -135,8 +175,12 @@ export default function LeadershipPage() {
           <div className="grid gap-8 md:grid-cols-3">
             {boardMembers.map((member) => (
               <div key={member.name} className="rounded-xl border border-gray-100 bg-white p-8 text-center shadow-sm transition-shadow hover:shadow-md">
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-brand-green/10">
-                  <i className={`${member.icon} text-3xl text-brand-green`} aria-hidden="true" />
+                <div className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-brand-green shadow-md">
+                  <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
+                    <circle cx="50" cy="36" r="16" fill="rgba(255,255,255,0.18)" />
+                    <ellipse cx="50" cy="82" rx="28" ry="20" fill="rgba(255,255,255,0.18)" />
+                  </svg>
+                  <span className="relative text-2xl font-bold text-white">{member.initials}</span>
                 </div>
                 <h3 className="font-heading text-lg font-bold text-gray-900">{member.name}</h3>
                 <p className="mb-3 text-sm font-medium text-brand-orange">{member.role}</p>
@@ -155,15 +199,18 @@ export default function LeadershipPage() {
           </h2>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {leadershipValues.map((value) => (
-              <div key={value.title} className="rounded-xl bg-white p-6 text-center shadow-sm">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange/10">
-                  <i className={`${value.icon} text-2xl text-brand-orange`} aria-hidden="true" />
+            {leadershipValues.map((value) => {
+              const Icon = value.icon
+              return (
+                <div key={value.title} className="rounded-xl bg-white p-6 text-center shadow-sm">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange/10">
+                    <Icon className="h-7 w-7 text-brand-orange" />
+                  </div>
+                  <h3 className="mb-2 font-heading font-bold text-gray-900">{value.title}</h3>
+                  <p className="text-sm text-gray-600">{value.description}</p>
                 </div>
-                <h3 className="mb-2 font-heading font-bold text-gray-900">{value.title}</h3>
-                <p className="text-sm text-gray-600">{value.description}</p>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
