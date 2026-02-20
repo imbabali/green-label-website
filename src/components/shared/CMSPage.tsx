@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 interface CMSPageProps {
   title: string
-  breadcrumbs: { label: string; href?: string }[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content?: any[]
   fallbackContent?: string
@@ -12,10 +11,10 @@ interface CMSPageProps {
   children?: React.ReactNode
 }
 
-export default function CMSPage({ title, breadcrumbs, content, fallbackContent, heroImage, children }: CMSPageProps) {
+export default function CMSPage({ title, content, fallbackContent, heroImage, children }: CMSPageProps) {
   return (
     <>
-      <Hero heading={title} variant="fullWidth" breadcrumbs={breadcrumbs} backgroundImage={heroImage} />
+      <Hero heading={title} variant="fullWidth" backgroundImage={heroImage} />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

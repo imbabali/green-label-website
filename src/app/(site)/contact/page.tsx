@@ -21,7 +21,6 @@ export default function ContactPage() {
         heading="Contact Us"
         subheading="We Are Here to Help"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Contact Us' }]}
         description="Reach out to our team for waste management solutions, service inquiries, or emergency assistance."
       />
 

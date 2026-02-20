@@ -125,7 +125,6 @@ export default function OurStoryPage() {
         badge="Since 2000"
         variant="fullWidth"
         backgroundImage="/images/hero/aga1.webp"
-        breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Our Story' }]}
         description="From humble beginnings in Kampala to becoming Uganda's most trusted waste management partner, our journey has been driven by a commitment to environmental stewardship and community wellbeing."
       />
 

@@ -64,7 +64,6 @@ export default async function ServiceCategoryPage({ params }: Props) {
         heading={categoryName}
         subheading="Service Category"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Services', href: '/services' }, { label: categoryName }]}
       />
 
       <section className="py-16 md:py-20">

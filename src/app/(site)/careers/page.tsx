@@ -28,7 +28,6 @@ export default function CareersPage() {
         heading="Join Our Team"
         subheading="Build a Career That Matters"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Careers' }]}
         description="At Green Label Services, we believe our people are our greatest asset. Join a team of 300+ professionals dedicated to environmental excellence."
       />
 

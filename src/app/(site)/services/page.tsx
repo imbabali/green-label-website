@@ -49,7 +49,6 @@ export default async function ServicesPage() {
         heading="Our Services"
         subheading="Comprehensive Waste Management Solutions"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Services' }]}
         description="From medical waste to oil & gas operations, we provide safe, compliant, and environmentally responsible waste management across Uganda."
       />
 

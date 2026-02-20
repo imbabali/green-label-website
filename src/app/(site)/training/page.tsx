@@ -19,7 +19,6 @@ export default async function TrainingPage() {
   return (
     <CMSPage
       title="Training Services" heroImage="/images/training/training3.jpg"
-      breadcrumbs={[{ label: 'Training Services' }]}
       content={content}
       fallbackContent="<h2>Training &amp; Capacity Building</h2><p>The Green Label Training Academy offers professional development programmes for waste management professionals, healthcare workers, and community leaders.</p><h3>Programmes</h3><ul><li>Hazardous waste handling certification</li><li>Medical waste management training</li><li>Environmental compliance workshops</li><li>Community waste awareness programmes</li><li>Corporate waste management training</li></ul><p>Contact us to arrange a training session for your team.</p>"
     />

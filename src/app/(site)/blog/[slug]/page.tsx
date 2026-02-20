@@ -123,7 +123,6 @@ export default async function BlogPostPage({ params }: Props) {
       <Hero
         heading="Blog"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Blog', href: '/blog' }, { label: post.title }]}
       />
 
       <section className="py-16 md:py-20">

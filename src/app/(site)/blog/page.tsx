@@ -78,7 +78,6 @@ export default async function BlogPage({ searchParams }: Props) {
         heading="Blog & News"
         subheading="Latest Insights on Waste Management"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Blog' }]}
       />
 
       <section className="py-16 md:py-20">

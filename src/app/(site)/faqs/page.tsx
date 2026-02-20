@@ -85,7 +85,6 @@ export default async function FAQsPage() {
         heading="Frequently Asked Questions"
         subheading="Find answers to common questions"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'FAQs' }]}
       />
 
       <section className="py-16 md:py-20">

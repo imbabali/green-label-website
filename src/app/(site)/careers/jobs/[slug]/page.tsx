@@ -61,11 +61,6 @@ export default async function JobDetailPage({ params }: Props) {
       <Hero
         heading={job.title}
         variant="fullWidth"
-        breadcrumbs={[
-          { label: 'Careers', href: '/careers' },
-          { label: 'Jobs', href: '/careers/jobs' },
-          { label: job.title },
-        ]}
       />
 
       <section className="py-16 md:py-20">

@@ -19,7 +19,6 @@ export default async function PublicHealthPage() {
   return (
     <CMSPage
       title="Public Health Services" heroImage="/images/training/training5.jpg"
-      breadcrumbs={[{ label: 'Public Health Services' }]}
       content={content}
       fallbackContent="<h2>Public Health Services</h2><p>Green Label Services partners with public health institutions to ensure safe, compliant management of medical and healthcare waste across Uganda.</p><h3>Services</h3><ul><li>Medical waste collection and treatment</li><li>Sharps and pharmaceutical waste disposal</li><li>Infection control waste management</li><li>Healthcare facility waste audits</li><li>Staff training on waste handling protocols</li></ul>"
     />

@@ -19,7 +19,6 @@ export default async function FinancialCapacityPage() {
   return (
     <CMSPage
       title="Financial Capacity"
-      breadcrumbs={[{ label: 'Financial Capacity' }]}
       heroImage="/images/offices/office3.jpg"
       content={content}
       fallbackContent="<h2>Financial Strength</h2><p>Green Label Services maintains strong financial health, enabling us to invest in modern equipment, technology, and personnel to deliver world-class waste management services.</p><h3>Key Financial Highlights</h3><ul><li>25 years of consistent growth</li><li>Diversified revenue streams across waste management sectors</li><li>Strong client retention rates</li><li>Ongoing investment in technology and infrastructure</li></ul>"

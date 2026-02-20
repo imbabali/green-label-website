@@ -24,7 +24,6 @@ export default async function CreateReviewPage() {
       <Hero
         heading="Write a Review"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Reviews', href: '/reviews' }, { label: 'Write a Review' }]}
       />
 
       <section className="py-16 md:py-20">

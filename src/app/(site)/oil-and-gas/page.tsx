@@ -19,7 +19,6 @@ export default async function OilAndGasPage() {
   return (
     <CMSPage
       title="Oil & Gas Services" heroImage="/images/gallery/img3.jpg"
-      breadcrumbs={[{ label: 'Oil & Gas Services' }]}
       content={content}
       fallbackContent="<h2>Oil &amp; Gas Waste Management</h2><p>Green Label Services is a leading provider of waste management solutions for Uganda's growing oil and gas sector, ensuring compliance with NEMA regulations and international environmental standards.</p><h3>Our Capabilities</h3><ul><li>Drill cuttings and mud management</li><li>Produced water treatment</li><li>Hazardous waste containment and disposal</li><li>Spill response and remediation</li><li>Environmental impact assessments</li></ul>"
     />

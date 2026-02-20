@@ -47,7 +47,6 @@ export default async function ReviewsByServicePage({ params, searchParams }: Pro
       <Hero
         heading={`${typeName} Reviews`}
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Reviews', href: '/reviews' }, { label: typeName }]}
       />
 
       <section className="py-16 md:py-20">

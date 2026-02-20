@@ -31,7 +31,6 @@ export default async function MyReviewsPage() {
       <Hero
         heading="My Reviews"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Reviews', href: '/reviews' }, { label: 'My Reviews' }]}
       />
 
       <section className="py-16 md:py-20">

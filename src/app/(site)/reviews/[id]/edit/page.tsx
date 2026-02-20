@@ -38,7 +38,6 @@ export default async function EditReviewPage({ params }: Props) {
       <Hero
         heading="Edit Review"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Reviews', href: '/reviews' }, { label: 'Edit Review' }]}
       />
 
       <section className="py-16 md:py-20">

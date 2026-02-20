@@ -79,7 +79,6 @@ export default async function BlogCategoryPage({ params, searchParams }: Props) 
         heading={categoryName}
         subheading="Blog Category"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Blog', href: '/blog' }, { label: categoryName }]}
       />
 
       <section className="py-16 md:py-20">

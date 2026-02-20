@@ -59,7 +59,6 @@ export default async function JobsPage({ searchParams }: Props) {
         heading="Open Positions"
         subheading="Find Your Next Opportunity"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Careers', href: '/careers' }, { label: 'Jobs' }]}
       />
 
       <section className="py-16 md:py-20">

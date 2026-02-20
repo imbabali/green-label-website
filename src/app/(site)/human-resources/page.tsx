@@ -19,7 +19,6 @@ export default async function HumanResourcesPage() {
   return (
     <CMSPage
       title="Human Resources"
-      breadcrumbs={[{ label: 'Human Resources' }]}
       heroImage="/images/training/training4.jpg"
       content={content}
       fallbackContent="<h2>Human Resources</h2><p>Our team of over 300 qualified professionals is the backbone of Green Label Services. We invest heavily in training, development, and employee welfare.</p><h3>Our Team</h3><ul><li>Environmental scientists and engineers</li><li>Certified waste management specialists</li><li>Health and safety professionals</li><li>Logistics and fleet managers</li><li>Administrative and support staff</li></ul><p>Interested in joining our team? <a href='/careers'>View current openings</a>.</p>"

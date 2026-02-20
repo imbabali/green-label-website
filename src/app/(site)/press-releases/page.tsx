@@ -19,7 +19,6 @@ export default async function PressReleasesPage() {
   return (
     <CMSPage
       title="Press Releases"
-      breadcrumbs={[{ label: 'Press Releases' }]}
       heroImage="/images/offices/office2.jpg"
       content={content}
       fallbackContent="<h2>Press Releases & Newsroom</h2><p>Stay up to date with the latest news, announcements, and media coverage from Green Label Services.</p><p>For media inquiries, please contact our communications team at info@greenlabelservicesug.com.</p>"

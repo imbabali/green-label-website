@@ -64,11 +64,6 @@ export default async function ServiceDetailPage({ params }: Props) {
       <Hero
         heading={service.title}
         variant="fullWidth"
-        breadcrumbs={[
-          { label: 'Services', href: '/services' },
-          ...(service.category ? [{ label: service.category.name, href: `/services/category/${service.category.slug?.current || service.category.slug}` }] : []),
-          { label: service.title },
-        ]}
       />
 
       <section className="py-16 md:py-20">

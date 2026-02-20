@@ -56,7 +56,6 @@ export default async function ReviewsPage({ searchParams }: Props) {
         heading="Customer Reviews"
         subheading="What Our Clients Say"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Reviews' }]}
       />
 
       <section className="py-16 md:py-20">

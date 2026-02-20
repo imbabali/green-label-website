@@ -78,7 +78,6 @@ export default async function BlogTagPage({ params, searchParams }: Props) {
         heading={`#${tagName}`}
         subheading="Blog Tag"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Blog', href: '/blog' }, { label: `#${tagName}` }]}
       />
 
       <section className="py-16 md:py-20">

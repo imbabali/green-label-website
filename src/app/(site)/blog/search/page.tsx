@@ -63,7 +63,6 @@ export default async function BlogSearchPage({ searchParams }: Props) {
       <Hero
         heading="Search Results"
         variant="fullWidth"
-        breadcrumbs={[{ label: 'Blog', href: '/blog' }, { label: 'Search' }]}
       />
 
       <section className="py-16 md:py-20">

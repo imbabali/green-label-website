@@ -42,12 +42,6 @@ export default async function JobApplyPage({ params }: Props) {
       <Hero
         heading={`Apply for ${job.title}`}
         variant="fullWidth"
-        breadcrumbs={[
-          { label: 'Careers', href: '/careers' },
-          { label: 'Jobs', href: '/careers/jobs' },
-          { label: job.title, href: `/careers/jobs/${slug}` },
-          { label: 'Apply' },
-        ]}
       />
 
       <section className="py-16 md:py-20">

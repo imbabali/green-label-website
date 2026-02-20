@@ -19,7 +19,6 @@ export default async function ProjectsPage() {
   return (
     <CMSPage
       title="Our Projects" heroImage="/images/gallery/img1.jpg"
-      breadcrumbs={[{ label: 'Our Projects' }]}
       content={content}
       fallbackContent="<h2>Our Projects</h2><p>Explore the major waste management projects we have completed across Uganda, from healthcare facilities to oil and gas operations.</p><h3>Featured Projects</h3><ul><li><strong>Kampala Medical Waste Programme</strong> — Comprehensive medical waste management for 50+ healthcare facilities</li><li><strong>Oil Field Waste Management</strong> — Hazardous waste handling for exploration activities in Western Uganda</li><li><strong>Municipal Waste Upgrade</strong> — Modernising waste collection systems for local governments</li></ul>"
     />
