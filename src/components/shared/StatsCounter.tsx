@@ -7,6 +7,7 @@ interface StatItem {
   suffix?: string
   label: string
   icon?: string
+  iconNode?: React.ReactNode
 }
 
 interface StatsCounterProps {
@@ -66,14 +67,18 @@ function StatCard({
           : 'bg-white shadow-md'
       }`}
     >
-      {stat.icon && (
+      {stat.iconNode ? (
+        <div className={`mb-3 ${darkBackground ? 'text-brand-orange-light' : 'text-brand-orange'}`}>
+          {stat.iconNode}
+        </div>
+      ) : stat.icon ? (
         <i
           className={`${stat.icon} mb-3 text-2xl md:text-3xl ${
             darkBackground ? 'text-brand-orange-light' : 'text-brand-orange'
           }`}
           aria-hidden="true"
         />
-      )}
+      ) : null}
       <div
         className={`font-heading text-3xl font-bold md:text-4xl lg:text-5xl ${
           darkBackground ? 'text-white' : 'text-brand-green'
