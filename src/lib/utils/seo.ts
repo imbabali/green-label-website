@@ -14,6 +14,8 @@ interface SEOParams {
   tags?: string[]
 }
 
+const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.svg`
+
 export function generatePageMetadata({
   title,
   description = `${title} - ${COMPANY_INFO.name}`,
@@ -28,6 +30,7 @@ export function generatePageMetadata({
 }: SEOParams): Metadata {
   const url = `${SITE_URL}${path}`
   const fullTitle = path === '' ? title : `${title} | ${SITE_NAME}`
+  const imageUrl = ogImage || DEFAULT_OG_IMAGE
 
   return {
     title: fullTitle,
@@ -41,7 +44,7 @@ export function generatePageMetadata({
       siteName: SITE_NAME,
       type: type === 'article' ? 'article' : 'website',
       locale: 'en_UG',
-      ...(ogImage && { images: [{ url: ogImage, width: 1200, height: 630, alt: title }] }),
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
       ...(authors && { authors }),
@@ -51,7 +54,7 @@ export function generatePageMetadata({
       card: 'summary_large_image',
       title: fullTitle,
       description,
-      ...(ogImage && { images: [ogImage] }),
+      images: [imageUrl],
     },
     ...(noIndex && { robots: { index: false, follow: false } }),
   }

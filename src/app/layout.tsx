@@ -55,20 +55,13 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — ${COMPANY_INFO.tagline}`,
     description:
       'Uganda\'s leading waste management company. 25+ years of safe, trusted waste collection and disposal services.',
-    images: [
-      {
-        url: '/images/og-image.svg',
-        width: 1200,
-        height: 630,
-        alt: 'Green Label Services - Safe And Trusted Waste Collection',
-      },
-    ],
+    images: ['https://greenlabelservicesug.com/images/og-image.svg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: COMPANY_INFO.tagline,
-    images: ['/images/og-image.svg'],
+    images: ['https://greenlabelservicesug.com/images/og-image.svg'],
   },
   robots: {
     index: true,
