@@ -232,7 +232,7 @@ export default async function HomePage() {
       heading: 'Competitive And Reliable Medical Waste Collection!',
       description:
         'For over 25 years, Green Label Services has been Uganda\'s most trusted partner for safe and compliant medical waste management. We serve hospitals, clinics, and laboratories with excellence.',
-      backgroundImage: '', // TODO: Add hero background image
+      backgroundImage: '/images/gallery/img1.jpg',
       ctaButtons: [
         { label: 'Our Services', href: '/services', variant: 'primary' as const },
         { label: 'Get A Quote', href: '#quote', variant: 'outline' as const },
@@ -242,7 +242,7 @@ export default async function HomePage() {
       heading: 'Oil & Gas Waste Management Excellence',
       description:
         'Specialized waste management services for the oil and gas industry. From drill cuttings to produced water, we handle it all with the highest environmental and safety standards.',
-      backgroundImage: '', // TODO: Add hero background image
+      backgroundImage: '/images/gallery/img2.jpeg',
       ctaButtons: [
         { label: 'Learn More', href: '/oil-and-gas', variant: 'primary' as const },
         { label: 'Contact Us', href: '/contact', variant: 'outline' as const },
@@ -252,7 +252,7 @@ export default async function HomePage() {
       heading: 'Safe And Trusted Waste Collection Service',
       description:
         'Our commitment to environmental sustainability drives everything we do. From collection to disposal, we ensure your waste is managed responsibly and in full compliance with NEMA regulations.',
-      backgroundImage: '', // TODO: Add hero background image
+      backgroundImage: '/images/vehicles/harzard_vehicle3.jpg',
       ctaButtons: [
         { label: 'About Us', href: '/about', variant: 'secondary' as const },
         { label: 'Request Quote', href: '#quote', variant: 'outline' as const },
@@ -513,7 +513,61 @@ export default async function HomePage() {
       </section>
 
       {/* ----------------------------------------------------------------- */}
-      {/* g) CTA Section                                                     */}
+      {/* g) Partners & Clients Section                                      */}
+      {/* ----------------------------------------------------------------- */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-wider text-brand-orange">
+              Our Partners
+            </span>
+            <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+              Trusted By Industry Leaders
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              We proudly serve leading organizations across Uganda&apos;s oil &amp; gas, healthcare, and public sectors
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 items-center gap-8 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+            {[
+              { src: '/images/partners/cnooc.png', alt: 'CNOOC Uganda' },
+              { src: '/images/partners/cosl.png', alt: 'COSL' },
+              { src: '/images/partners/usaid.png', alt: 'USAID' },
+              { src: '/images/partners/nms.png', alt: 'National Medical Stores' },
+              { src: '/images/partners/moh.png', alt: 'Ministry of Health' },
+              { src: '/images/partners/nda.png', alt: 'National Drug Authority' },
+              { src: '/images/partners/excel.png', alt: 'Excel Construction' },
+              { src: '/images/partners/balton.png', alt: 'Balton' },
+              { src: '/images/partners/karmodbeta.png', alt: 'Karmod' },
+              { src: '/images/partners/mantrac.png', alt: 'Mantrac Uganda' },
+              { src: '/images/partners/daqing.png', alt: 'Daqing' },
+              { src: '/images/partners/cscec.png', alt: 'CSCEC' },
+              { src: '/images/partners/gcc.png', alt: 'GCC' },
+              { src: '/images/partners/jsi.png', alt: 'JSI' },
+              { src: '/images/partners/chai.png', alt: 'CHAI' },
+              { src: '/images/partners/aidstarone.png', alt: 'AIDStar-One' },
+              { src: '/images/partners/glazer.png', alt: 'Glazer' },
+              { src: '/images/partners/kcca.png', alt: 'KCCA' },
+            ].map((partner) => (
+              <div
+                key={partner.alt}
+                className="flex items-center justify-center rounded-lg bg-gray-50 p-4 transition-all duration-300 hover:bg-gray-100 hover:shadow-sm"
+              >
+                <img
+                  src={partner.src}
+                  alt={partner.alt}
+                  className="h-12 max-w-full object-contain opacity-70 transition-opacity hover:opacity-100"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ----------------------------------------------------------------- */}
+      {/* h) CTA Section                                                     */}
       {/* ----------------------------------------------------------------- */}
       <section className="bg-brand-green-dark py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
@@ -543,7 +597,7 @@ export default async function HomePage() {
       </section>
 
       {/* ----------------------------------------------------------------- */}
-      {/* h) JSON-LD                                                         */}
+      {/* i) JSON-LD                                                         */}
       {/* ----------------------------------------------------------------- */}
       <script
         type="application/ld+json"

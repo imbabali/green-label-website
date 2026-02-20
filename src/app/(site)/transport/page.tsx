@@ -18,7 +18,7 @@ export default async function TransportPage() {
 
   return (
     <CMSPage
-      title="Transport Services"
+      title="Transport Services" heroImage="/images/vehicles/harzard_vehicle5.jpg"
       breadcrumbs={[{ label: 'Transport Services' }]}
       content={content}
       fallbackContent="<h2>Waste Transport Services</h2><p>Green Label Services operates a modern fleet of over 50 specialised vehicles for safe, compliant waste transport across Uganda.</p><h3>Our Fleet</h3><ul><li>Hazardous waste tankers</li><li>Medical waste collection vehicles</li><li>Compactor trucks</li><li>Roll-on/roll-off containers</li><li>Emergency response vehicles</li></ul><p>All vehicles are GPS-tracked and operated by trained, certified drivers.</p>"

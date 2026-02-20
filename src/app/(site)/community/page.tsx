@@ -18,7 +18,7 @@ export default async function CommunityImpactPage() {
 
   return (
     <CMSPage
-      title="Community Impact"
+      title="Community Impact" heroImage="/images/training/training1.jpg"
       breadcrumbs={[{ label: 'Community Impact' }]}
       content={content}
       fallbackContent="<h2>Community Impact</h2><p>Green Label Services is deeply committed to making a positive difference in the communities where we operate across Uganda.</p><h3>Our Initiatives</h3><ul><li>Environmental education programs in schools</li><li>Community cleanup campaigns</li><li>Waste management training for local authorities</li><li>Employment opportunities for local communities</li><li>Sponsorship of environmental conservation projects</li></ul>"

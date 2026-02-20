@@ -18,7 +18,7 @@ export default async function WasteManagementPage() {
 
   return (
     <CMSPage
-      title="Waste Management"
+      title="Waste Management" heroImage="/images/vehicles/harzard_vehicle3.jpg"
       breadcrumbs={[{ label: 'Waste Management' }]}
       content={content}
       fallbackContent="<h2>Waste Management Solutions</h2><p>Green Label Services provides end-to-end waste management solutions for businesses, healthcare facilities, and industrial operations across Uganda.</p><h3>Our Services Include</h3><ul><li>Solid waste collection and disposal</li><li>Hazardous waste management</li><li>Medical waste treatment</li><li>Industrial waste handling</li><li>Waste auditing and consulting</li></ul><p>Contact us at <a href='mailto:info@greenlabelservicesug.com'>info@greenlabelservicesug.com</a> to learn more.</p>"

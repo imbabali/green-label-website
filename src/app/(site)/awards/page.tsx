@@ -18,7 +18,7 @@ export default async function AwardsPage() {
 
   return (
     <CMSPage
-      title="Awards & Recognition"
+      title="Awards & Recognition" heroImage="/images/certificates/iso.png"
       breadcrumbs={[{ label: 'Awards & Recognition' }]}
       content={content}
       fallbackContent="<h2>Awards &amp; Recognition</h2><p>Green Label Services has been recognised for its commitment to environmental excellence and outstanding waste management services.</p><h3>Notable Awards</h3><ul><li><strong>Best Waste Management Company</strong> — National Environmental Award 2022</li><li><strong>Environmental Excellence Award</strong> — East Africa Business Awards 2020</li><li><strong>Community Impact Award</strong> — Uganda CSR Awards 2019</li></ul>"

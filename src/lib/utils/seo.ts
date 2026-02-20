@@ -14,7 +14,7 @@ interface SEOParams {
   tags?: string[]
 }
 
-const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.svg`
+const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.png`
 
 export function generatePageMetadata({
   title,

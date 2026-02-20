@@ -8,13 +8,14 @@ interface CMSPageProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content?: any[]
   fallbackContent?: string
+  heroImage?: string
   children?: React.ReactNode
 }
 
-export default function CMSPage({ title, breadcrumbs, content, fallbackContent, children }: CMSPageProps) {
+export default function CMSPage({ title, breadcrumbs, content, fallbackContent, heroImage, children }: CMSPageProps) {
   return (
     <>
-      <Hero heading={title} variant="fullWidth" breadcrumbs={breadcrumbs} />
+      <Hero heading={title} variant="fullWidth" breadcrumbs={breadcrumbs} backgroundImage={heroImage} />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

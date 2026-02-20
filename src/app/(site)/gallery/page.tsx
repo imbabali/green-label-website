@@ -34,10 +34,18 @@ export default async function GalleryPage() {
   // Fallback images if none from Sanity
   if (images.length === 0) {
     images = [
-      { url: '/images/placeholder-gallery-1.jpg', alt: 'Waste collection operations', category: 'Operations' },
-      { url: '/images/placeholder-gallery-2.jpg', alt: 'Fleet of vehicles', category: 'Fleet' },
-      { url: '/images/placeholder-gallery-3.jpg', alt: 'Community outreach', category: 'Community' },
-      { url: '/images/placeholder-gallery-4.jpg', alt: 'Treatment facility', category: 'Facilities' },
+      { url: '/images/gallery/img1.jpg', alt: 'Green Label Services waste collection operations', category: 'Operations' },
+      { url: '/images/vehicles/harzard_vehicle3.jpg', alt: 'Hazardous waste collection vehicle', category: 'Fleet' },
+      { url: '/images/training/training1.jpg', alt: 'Staff training and community outreach', category: 'Training' },
+      { url: '/images/hero/aga1.webp', alt: 'Green Label Services headquarters', category: 'Facilities' },
+      { url: '/images/vehicles/hazard_vehicle1.jpg', alt: 'Medical waste transport vehicle', category: 'Fleet' },
+      { url: '/images/gallery/img3.jpg', alt: 'Waste management operations', category: 'Operations' },
+      { url: '/images/training/training3.jpg', alt: 'Environmental safety training', category: 'Training' },
+      { url: '/images/offices/office1.jpg', alt: 'Iganga treatment facility', category: 'Facilities' },
+      { url: '/images/vehicles/harzard_vehicle5.jpg', alt: 'Liquid waste collection truck', category: 'Fleet' },
+      { url: '/images/gallery/img6.jpg', alt: 'Waste disposal operations', category: 'Operations' },
+      { url: '/images/offices/office2.jpg', alt: 'Mbarara eco-center', category: 'Facilities' },
+      { url: '/images/training/training5.jpg', alt: 'Community awareness program', category: 'Training' },
     ]
   }
 

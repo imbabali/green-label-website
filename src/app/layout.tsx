@@ -47,6 +47,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
   openGraph: {
     type: 'website',
     locale: 'en_UG',
@@ -55,13 +63,13 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — ${COMPANY_INFO.tagline}`,
     description:
       'Uganda\'s leading waste management company. 25+ years of safe, trusted waste collection and disposal services.',
-    images: ['https://greenlabelservicesug.com/images/og-image.svg'],
+    images: [{ url: `${SITE_URL}/images/og-image.png`, width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: COMPANY_INFO.tagline,
-    images: ['https://greenlabelservicesug.com/images/og-image.svg'],
+    images: [`${SITE_URL}/images/og-image.png`],
   },
   robots: {
     index: true,
@@ -84,6 +92,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="manifest" href="/manifest.json" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
