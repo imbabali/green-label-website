@@ -107,7 +107,6 @@ export default function LeadershipPage() {
         subheading="Guiding Environmental Excellence"
         variant="fullWidth"
         backgroundImage="/images/gallery/img5.png"
-        breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Leadership' }]}
         description="Our leadership team combines decades of industry experience with a shared passion for environmental sustainability and community wellbeing."
       />
 
