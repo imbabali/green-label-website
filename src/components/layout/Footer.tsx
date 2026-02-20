@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { COMPANY_INFO, FOOTER_LINKS } from '@/lib/data/constants'
+import NewsletterForm from '@/components/shared/NewsletterForm'
 
 interface FooterProps {
   services?: { title: string; slug: string }[]
@@ -115,8 +116,7 @@ export default function Footer({ services = [] }: FooterProps) {
               Subscribe to our newsletter for the latest news, updates, and
               insights on waste management in Uganda.
             </p>
-            {/* Placeholder for NewsletterForm component */}
-            <div id="newsletter-form" />
+            <NewsletterForm variant="footer" />
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { emailSchema } from '@/lib/validators/email'
 import { honeypotSchema } from '@/lib/validators/honeypot'
 import HoneypotField from '@/components/shared/HoneypotField'
+import { subscribeNewsletter } from '@/lib/actions/newsletter'
 
 const newsletterSchema = z.object({
   email: emailSchema,
@@ -50,11 +51,21 @@ export default function NewsletterForm({
       setStatus('loading')
 
       try {
-        // TODO: Replace with actual server action
-        console.log('Newsletter subscription:', data)
-        await new Promise((resolve) => setTimeout(resolve, 800))
-        setStatus('success')
-        reset()
+        const formData = new FormData()
+        Object.entries(data).forEach(([key, value]) => {
+          if (value !== undefined && value !== null) {
+            formData.append(key, String(value))
+          }
+        })
+
+        const result = await subscribeNewsletter({ success: false, message: '' }, formData)
+
+        if (result.success) {
+          setStatus('success')
+          reset()
+        } else {
+          setStatus('error')
+        }
       } catch {
         setStatus('error')
       }

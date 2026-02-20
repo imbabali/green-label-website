@@ -9,6 +9,7 @@ import { phoneSchema } from '@/lib/validators/phone'
 import { honeypotSchema } from '@/lib/validators/honeypot'
 import { SERVICE_TYPES, FREQUENCY_OPTIONS, TIMELINE_OPTIONS } from '@/lib/data/service-types'
 import { UGANDA_DISTRICTS } from '@/lib/data/uganda-districts'
+import { submitQuoteRequest } from '@/lib/actions/quote'
 
 const BUDGET_RANGES = [
   { value: 'under_500k', label: 'Under UGX 500,000' },
@@ -153,10 +154,20 @@ export default function QuoteModal() {
     setSubmitStatus('loading')
 
     try {
-      // TODO: Replace with actual server action
-      console.log('Quote request submitted:', data)
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      setSubmitStatus('success')
+      const formData = new FormData()
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          formData.append(key, String(value))
+        }
+      })
+
+      const result = await submitQuoteRequest({ success: false, message: '' }, formData)
+
+      if (result.success) {
+        setSubmitStatus('success')
+      } else {
+        setSubmitStatus('error')
+      }
     } catch {
       setSubmitStatus('error')
     }
