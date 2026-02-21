@@ -20,21 +20,21 @@ export function generateMetadata(): Metadata {
 
 const awards = [
   {
-    icon: 'fa-solid fa-trophy',
+    icon: 'fa-solid fa-ranking-star',
     year: '2022',
     title: 'Best Waste Management Company',
     body: 'National Environmental Award',
     description: 'Recognised as the leading waste management company in Uganda for outstanding service delivery, environmental compliance, and innovation in waste processing.',
   },
   {
-    icon: 'fa-solid fa-award',
+    icon: 'fa-solid fa-earth-africa',
     year: '2020',
     title: 'Environmental Excellence Award',
     body: 'East Africa Business Awards',
     description: 'Honoured for exceptional commitment to environmental sustainability and pioneering eco-friendly waste management practices across East Africa.',
   },
   {
-    icon: 'fa-solid fa-medal',
+    icon: 'fa-solid fa-hand-holding-heart',
     year: '2019',
     title: 'Community Impact Award',
     body: 'Uganda CSR Awards',

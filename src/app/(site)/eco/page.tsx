@@ -19,23 +19,23 @@ export function generateMetadata(): Metadata {
 
 const pillars = [
   { icon: 'fa-solid fa-arrows-rotate', title: 'Circular Economy', description: 'Transforming waste into reusable materials, reducing landfill dependency and creating value from discarded resources.' },
-  { icon: 'fa-solid fa-solar-panel', title: 'Clean Operations', description: 'Continuously upgrading facilities and fleet to minimise carbon emissions and energy consumption.' },
-  { icon: 'fa-solid fa-seedling', title: 'Ecosystem Protection', description: 'Environmental monitoring and remediation to safeguard Uganda\'s soil, water, and air quality.' },
+  { icon: 'fa-solid fa-wind', title: 'Clean Operations', description: 'Continuously upgrading facilities and fleet to minimise carbon emissions and energy consumption.' },
+  { icon: 'fa-solid fa-shield-halved', title: 'Ecosystem Protection', description: 'Environmental monitoring and remediation to safeguard Uganda\'s soil, water, and air quality.' },
 ]
 
 const programmes = [
   { icon: 'fa-solid fa-recycle', title: 'Industrial Recycling', desc: 'Plastics, metals, paper, and glass diverted from landfill through dedicated sorting facilities.' },
   { icon: 'fa-solid fa-flask-vial', title: 'Chemical Recovery', desc: 'Safe extraction and reuse of solvents, oils, and chemicals from industrial waste streams.' },
-  { icon: 'fa-solid fa-leaf', title: 'Organic Composting', desc: 'Converting organic waste into nutrient-rich compost for agriculture.' },
-  { icon: 'fa-solid fa-droplet', title: 'Wastewater Treatment', desc: 'Treating and recycling process water to reduce freshwater consumption.' },
-  { icon: 'fa-solid fa-tree-city', title: 'Community Clean-Ups', desc: 'Neighbourhood waste drives and environmental awareness campaigns.' },
+  { icon: 'fa-solid fa-wheat-awn', title: 'Organic Composting', desc: 'Converting organic waste into nutrient-rich compost for agriculture.' },
+  { icon: 'fa-solid fa-filter', title: 'Wastewater Treatment', desc: 'Treating and recycling process water to reduce freshwater consumption.' },
+  { icon: 'fa-solid fa-broom', title: 'Community Clean-Ups', desc: 'Neighbourhood waste drives and environmental awareness campaigns.' },
   { icon: 'fa-solid fa-chart-line', title: 'Carbon Tracking', desc: 'Measuring and reporting greenhouse gas reductions from our programmes.' },
 ]
 
 const goals = [
-  { target: 'Zero Waste to Landfill', year: '2030', icon: 'fa-solid fa-bullseye' },
-  { target: '100% Fleet Electrification', year: '2035', icon: 'fa-solid fa-bolt' },
-  { target: 'Carbon Neutral Ops', year: '2035', icon: 'fa-solid fa-cloud' },
+  { target: 'Zero Waste to Landfill', year: '2030', icon: 'fa-solid fa-dumpster' },
+  { target: '100% Fleet Electrification', year: '2035', icon: 'fa-solid fa-charging-station' },
+  { target: 'Carbon Neutral Ops', year: '2035', icon: 'fa-solid fa-scale-balanced' },
   { target: 'ISO 14001 All Sites', year: '2027', icon: 'fa-solid fa-certificate' },
 ]
 
