@@ -14,7 +14,8 @@ export default defineType({
     defineField({
       name: 'subheading',
       title: 'Subheading',
-      type: 'string',
+      type: 'text',
+      rows: 3,
     }),
     defineField({
       name: 'backgroundImage',

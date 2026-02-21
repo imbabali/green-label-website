@@ -12,21 +12,19 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alt Text',
-          description: 'Descriptive text for accessibility.',
-          validation: (rule) => rule.required(),
-        },
-      ],
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'alt',
+      title: 'Alt Text',
+      type: 'string',
+      description: 'Descriptive text for accessibility.',
     }),
     defineField({
       name: 'caption',
       title: 'Caption',
-      type: 'string',
+      type: 'text',
+      rows: 3,
     }),
     defineField({
       name: 'category',

@@ -63,14 +63,13 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Standard', value: 'standard' },
-          { title: 'Featured', value: 'featured' },
-          { title: 'Breaking', value: 'breaking' },
+          { title: 'Article', value: 'article' },
+          { title: 'News', value: 'news' },
+          { title: 'Guide', value: 'guide' },
           { title: 'Opinion', value: 'opinion' },
-          { title: 'Interview', value: 'interview' },
         ],
       },
-      initialValue: 'standard',
+      initialValue: 'article',
     }),
     defineField({
       name: 'status',

@@ -1,17 +1,15 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
-import schemas from './schemas'
-
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemas'
 
 export default defineConfig({
-  name: 'green-label-services',
-  title: 'Green Label Services CMS',
-  projectId,
-  dataset,
-  plugins: [structureTool()],
+  name: 'green-label',
+  title: 'Green Label Services',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  plugins: [structureTool(), visionTool()],
   schema: {
-    types: schemas,
+    types: schemaTypes,
   },
 })

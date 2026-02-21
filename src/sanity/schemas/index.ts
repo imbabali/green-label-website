@@ -24,7 +24,7 @@ import faqItem from './documents/faqItem'
 import award from './documents/award'
 import project from './documents/project'
 
-const schemas: SchemaTypeDefinition[] = [
+export const schemaTypes: SchemaTypeDefinition[] = [
   // Objects
   seo,
   blockContent,
@@ -50,4 +50,4 @@ const schemas: SchemaTypeDefinition[] = [
   project,
 ]
 
-export default schemas
+export default schemaTypes
