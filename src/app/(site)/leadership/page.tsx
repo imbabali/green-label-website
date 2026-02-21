@@ -121,7 +121,7 @@ export default function LeadershipPage() {
                   </span>
                   <h3 className="font-heading text-xl font-bold text-gray-900 md:text-2xl">Dr. Grace Mugume</h3>
                   <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    Dr. Grace Mugume founded Green Label Services in 2000 with a vision to transform waste management in Uganda. Under her leadership, the company has grown from a small Kampala-based operation to the nation&apos;s leading environmental services provider, serving over 2,194 clients across healthcare, oil and gas, manufacturing, and government sectors.
+                    Dr. Grace Mugume founded Green Label Services in 2000 with a vision to transform waste management in Uganda. Under his leadership, the company has grown from a small Kampala-based operation to the nation&apos;s leading environmental services provider, serving over 2,194 clients across healthcare, oil and gas, manufacturing, and government sectors.
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">
                     With a doctorate in Environmental Science and over 25 years of industry experience, Dr. Mugume is a recognised voice in sustainable waste management across East Africa.
