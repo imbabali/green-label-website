@@ -125,7 +125,7 @@ export default async function ServicesPage() {
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
-            Need a Custom Waste Management Solution?
+            <i className="fa-solid fa-headset mr-2" aria-hidden="true" />Need a Custom Waste Management Solution?
           </h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">

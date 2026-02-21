@@ -67,7 +67,7 @@ export default async function GalleryPage() {
         <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Browse by Category</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl"><i className="fa-solid fa-images mr-2 text-brand-orange-light" aria-hidden="true" />Browse by Category</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Filter images by operations, fleet, training, or facilities.</p>
           </ScrollRevealSection>
           <ImageGallery images={images} filterable />

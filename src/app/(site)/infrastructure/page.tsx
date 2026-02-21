@@ -51,7 +51,7 @@ export default function InfrastructurePage() {
         <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Facilities</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-warehouse mr-2 text-brand-green" aria-hidden="true" />Our Facilities</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Licensed, inspected, and strategically positioned across Uganda.</p>
           </ScrollRevealSection>
           <CardGrid columns={3}>
@@ -89,7 +89,7 @@ export default function InfrastructurePage() {
         <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-white md:text-3xl">Treatment Capabilities</h2>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-white md:text-3xl"><i className="fa-solid fa-flask mr-2 text-brand-orange-light" aria-hidden="true" />Treatment Capabilities</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -112,7 +112,7 @@ export default function InfrastructurePage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Visit Our Facilities</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-headset mr-2" aria-hidden="true" />Visit Our Facilities</h2>
           <p className="mx-auto mt-3 max-w-lg text-sm text-gray-200">We welcome site visits from prospective clients and regulatory bodies.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Arrange a Visit</Link>

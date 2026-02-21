@@ -85,7 +85,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">How We Work</h2>
+            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-gears mr-2 text-brand-green" aria-hidden="true" />How We Work</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
             <div className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -137,7 +137,7 @@ export default function AboutPage() {
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Why Choose Us</h2>
+            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-star mr-2 text-brand-green" aria-hidden="true" />Why Choose Us</h2>
           </ScrollRevealSection>
           <CardGrid columns={3}>
             {whyUs.map((item) => (
@@ -168,7 +168,7 @@ export default function AboutPage() {
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
-            Ready to experience superior waste management?
+            <i className="fa-solid fa-handshake mr-2" aria-hidden="true" />Ready to experience superior waste management?
           </h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">

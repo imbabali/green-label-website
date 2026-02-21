@@ -48,7 +48,7 @@ export default function ContactPage() {
             <ScrollRevealSection className="lg:col-span-2">
               <div className="reveal reveal-left">
                 <h2 className="mb-2 font-heading text-2xl font-bold text-gray-900 md:text-3xl">
-                  Send Us a Message
+                  <i className="fa-solid fa-paper-plane mr-2 text-brand-green" aria-hidden="true" />Send Us a Message
                 </h2>
                 <p className="mb-8 text-gray-600">
                   Fill out the form below and our team will get back to you within 24 hours.

@@ -85,7 +85,7 @@ export default function AwardsPage() {
         <GradientOrb color="orange" size="lg" className="-left-32 top-10 opacity-20" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Notable Awards</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-crown mr-2 text-brand-green" aria-hidden="true" />Notable Awards</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Recognised for leadership in waste management and environmental stewardship.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
@@ -110,7 +110,7 @@ export default function AwardsPage() {
       <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Certifications & Licences</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-certificate mr-2 text-brand-green" aria-hidden="true" />Certifications & Licences</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Fully licensed and certified by every relevant authority — your guarantee of compliance.</p>
           </ScrollRevealSection>
           <CardGrid columns={4}>
@@ -140,7 +140,7 @@ export default function AwardsPage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Partner with a Certified Leader</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-trophy mr-2" aria-hidden="true" />Partner with a Certified Leader</h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Contact Us</Link>
             <Link href="#quote" data-quote-trigger="" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Request A Quote</Link>

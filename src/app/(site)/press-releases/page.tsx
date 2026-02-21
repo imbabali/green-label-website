@@ -79,7 +79,7 @@ export default function PressReleasesPage() {
         <GradientOrb color="green" size="lg" className="-right-32 top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Recent Announcements</h2>
+            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-bullhorn mr-2 text-brand-green" aria-hidden="true" />Recent Announcements</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
             <div className="space-y-4">
@@ -105,7 +105,7 @@ export default function PressReleasesPage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Media Inquiries Welcome</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-newspaper mr-2" aria-hidden="true" />Media Inquiries Welcome</h2>
           <p className="mx-auto mt-3 max-w-lg text-sm text-gray-200">For interviews, press kits, or editorial images, reach our communications team.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Contact Media Team</Link>

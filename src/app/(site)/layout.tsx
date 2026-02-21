@@ -1,4 +1,3 @@
-import TopBar from '@/components/layout/TopBar'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import BackToTop from '@/components/layout/BackToTop'
@@ -16,7 +15,6 @@ export default function SiteLayout({
 
   return (
     <>
-      <TopBar />
       <Navbar services={services} />
       <main id="main-content">{children}</main>
       <Footer services={services} />

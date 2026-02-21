@@ -65,7 +65,7 @@ export default function MiningPage() {
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Mining Capabilities</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-mountain mr-2 text-brand-green" aria-hidden="true" />Our Mining Capabilities</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">End-to-end solutions for exploration, extraction, processing, and mine closure.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
@@ -90,7 +90,7 @@ export default function MiningPage() {
       <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Credentials</h2>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-ribbon mr-2 text-brand-green" aria-hidden="true" />Credentials</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -112,7 +112,7 @@ export default function MiningPage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-24 top-1/2 -translate-y-1/2 opacity-30" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Need Waste Management for Your Mine?</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-headset mr-2" aria-hidden="true" />Need Waste Management for Your Mine?</h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Get A Quote</Link>
             <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Contact Us</Link>

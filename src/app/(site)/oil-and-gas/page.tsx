@@ -80,7 +80,7 @@ export default function OilAndGasPage() {
         <GradientOrb color="orange" size="lg" className="-left-32 top-10 opacity-30" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Our Capabilities</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl"><i className="fa-solid fa-flask-vial mr-2 text-brand-orange-light" aria-hidden="true" />Our Capabilities</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Full-spectrum waste management for exploration, production, and decommissioning.</p>
           </ScrollRevealSection>
           <CardCarousel>
@@ -104,7 +104,7 @@ export default function OilAndGasPage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Need a Waste Partner for Oil &amp; Gas?</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-headset mr-2" aria-hidden="true" />Need a Waste Partner for Oil &amp; Gas?</h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Get A Quote</Link>
             <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Contact Us</Link>

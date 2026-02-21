@@ -37,7 +37,7 @@ export default function CareersPage() {
           <ScrollRevealSection>
             <div className="reveal reveal-up mx-auto max-w-3xl text-center">
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Why Work With Us?
+                <i className="fa-solid fa-star mr-2 text-brand-green" aria-hidden="true" />Why Work With Us?
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Green Label Services has been recognized as one of Uganda&apos;s best employers in the environmental sector.

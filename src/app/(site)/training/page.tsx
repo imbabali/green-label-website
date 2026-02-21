@@ -56,7 +56,7 @@ export default function TrainingPage() {
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Programmes</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-book-open mr-2 text-brand-green" aria-hidden="true" />Our Programmes</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six certified courses covering every aspect of waste management.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
@@ -85,7 +85,7 @@ export default function TrainingPage() {
       <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">How We Deliver</h2>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-graduation-cap mr-2 text-brand-green" aria-hidden="true" />How We Deliver</h2>
           </ScrollRevealSection>
           <CardCarousel>
             {delivery.map((m) => (
@@ -108,7 +108,7 @@ export default function TrainingPage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Invest in Your Team&apos;s Safety Skills</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-headset mr-2" aria-hidden="true" />Invest in Your Team&apos;s Safety Skills</h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Book Training</Link>
             <Link href="#quote" data-quote-trigger="" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Request A Quote</Link>

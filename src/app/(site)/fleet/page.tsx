@@ -69,7 +69,7 @@ export default function OurFleetPage() {
         <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Our Vehicles</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl"><i className="fa-solid fa-truck-fast mr-2 text-brand-orange-light" aria-hidden="true" />Our Vehicles</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Browse our fleet by category.</p>
           </ScrollRevealSection>
           <ImageGallery images={galleryImages} filterable />
@@ -80,7 +80,7 @@ export default function OurFleetPage() {
       <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Fleet Standards</h2>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-gears mr-2 text-brand-green" aria-hidden="true" />Fleet Standards</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -103,7 +103,7 @@ export default function OurFleetPage() {
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Need Waste Collection or Transport?</h2>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl"><i className="fa-solid fa-headset mr-2" aria-hidden="true" />Need Waste Collection or Transport?</h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Request A Quote</Link>
             <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Contact Us</Link>

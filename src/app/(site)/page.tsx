@@ -309,7 +309,7 @@ export default async function HomePage() {
                 What We Offer
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Our Services
+                <i className="fa-solid fa-layer-group mr-2 text-brand-green" aria-hidden="true" />Our Services
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Comprehensive Waste Management Solutions
@@ -377,7 +377,7 @@ export default async function HomePage() {
                 Compliance
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Licensed &amp; Certified
+                <i className="fa-solid fa-certificate mr-2 text-brand-green" aria-hidden="true" />Licensed &amp; Certified
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Fully licensed by the National Environment Management Authority (NEMA) for all waste management operations
@@ -423,7 +423,7 @@ export default async function HomePage() {
                 Testimonials
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                What Our Clients Say
+                <i className="fa-solid fa-quote-left mr-2 text-brand-green" aria-hidden="true" />What Our Clients Say
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Trusted by hospitals, oil companies, and businesses across Uganda
@@ -458,7 +458,7 @@ export default async function HomePage() {
                 Our Blog
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Latest News &amp; Insights
+                <i className="fa-solid fa-newspaper mr-2 text-brand-green" aria-hidden="true" />Latest News &amp; Insights
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Stay informed about waste management best practices, industry updates, and company news
@@ -552,7 +552,7 @@ export default async function HomePage() {
                 Our Partners
               </span>
               <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Trusted By Industry Leaders
+                <i className="fa-solid fa-handshake mr-2 text-brand-green" aria-hidden="true" />Trusted By Industry Leaders
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 We proudly serve leading organizations across Uganda&apos;s oil &amp; gas, healthcare, and public sectors
@@ -610,7 +610,7 @@ export default async function HomePage() {
           <ScrollRevealSection>
             <div className="reveal reveal-up">
               <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
-                Ready to Get Started?
+                <i className="fa-solid fa-headset mr-2" aria-hidden="true" />Ready to Get Started?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-200">
                 Partner with Uganda&apos;s most trusted waste management company. Let us handle your waste
