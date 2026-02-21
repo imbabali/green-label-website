@@ -166,7 +166,7 @@ export default function ChatbotWidget() {
           aria-label="Chat assistant"
         >
           {/* Header */}
-          <div className="flex items-center gap-3 bg-brand-green px-4 py-3">
+          <div className="flex items-center gap-3 bg-gradient-green px-4 py-3">
             <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
               <i
                 className="fa-solid fa-leaf text-lg text-white"
@@ -211,8 +211,8 @@ export default function ChatbotWidget() {
                 <div
                   className={`max-w-[85%] rounded-xl px-3 py-2 text-sm ${
                     msg.sender === 'user'
-                      ? 'bg-brand-green text-white'
-                      : 'bg-gray-100 text-gray-800'
+                      ? 'bg-brand-green text-white shadow-sm'
+                      : 'bg-brand-green-50 text-gray-800'
                   }`}
                 >
                   <p className="whitespace-pre-line">{msg.text}</p>
@@ -290,7 +290,7 @@ export default function ChatbotWidget() {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? 'Close chat assistant' : 'Open chat assistant'}
         aria-expanded={isOpen}
-        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-white shadow-lg transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6"
+        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-white shadow-lg shadow-brand-green/30 transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-brand-green/40 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6"
       >
         <i
           className={`text-xl transition-transform duration-300 ${

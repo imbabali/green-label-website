@@ -50,21 +50,23 @@ function StatCard({
   stat,
   isVisible,
   darkBackground,
+  index,
 }: {
   stat: StatItem
   isVisible: boolean
   darkBackground: boolean
+  index: number
 }) {
   const count = useCountAnimation(stat.value, isVisible)
 
   return (
     <div
-      className={`flex flex-col items-center rounded-xl p-6 text-center transition-all duration-500 ${
-        isVisible ? 'animate-count-up' : 'opacity-0'
+      className={`reveal reveal-up stagger-${index + 1} flex flex-col items-center rounded-2xl p-6 text-center transition-all duration-500 ${
+        isVisible ? 'visible' : ''
       } ${
         darkBackground
-          ? 'bg-white/10 backdrop-blur-sm'
-          : 'bg-white shadow-md'
+          ? 'glass-dark'
+          : 'card-premium bg-white shadow-lg'
       }`}
     >
       {stat.iconNode ? (
@@ -135,12 +137,12 @@ export default function StatsCounter({
   return (
     <section
       ref={sectionRef}
-      className={`py-12 md:py-16 ${
-        darkBackground ? 'bg-brand-green-dark' : 'bg-gray-50'
+      className={`relative overflow-hidden py-12 md:py-16 ${
+        darkBackground ? 'bg-gradient-green pattern-dots' : 'bg-gradient-subtle'
       }`}
       aria-label="Company statistics"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <StatCard
@@ -148,6 +150,7 @@ export default function StatsCounter({
               stat={stat}
               isVisible={isVisible}
               darkBackground={darkBackground}
+              index={index}
             />
           ))}
         </div>

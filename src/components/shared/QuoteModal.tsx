@@ -176,7 +176,7 @@ export default function QuoteModal() {
   if (!isOpen) return null
 
   const inputClass =
-    'w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20'
+    'w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 transition-all focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:shadow-sm focus:shadow-brand-green/10'
   const labelClass = 'mb-1 block text-sm font-medium text-gray-700'
   const errorClass = 'mt-1 text-xs text-red-600'
 
@@ -192,12 +192,12 @@ export default function QuoteModal() {
     >
       <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-6 py-4 rounded-t-2xl">
+        <div className="sticky top-0 z-10 flex items-center justify-between bg-gradient-green px-6 py-4 rounded-t-2xl">
           <div>
-            <h2 className="font-heading text-xl font-bold text-gray-900">
+            <h2 className="font-heading text-xl font-bold text-white">
               Request A Quote
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-green-200">
               Step {currentStep} of 3
             </p>
           </div>
@@ -205,7 +205,7 @@ export default function QuoteModal() {
             type="button"
             onClick={closeModal}
             aria-label="Close quote form"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-green"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
           >
             <i className="fa-solid fa-xmark text-lg" aria-hidden="true" />
           </button>
@@ -227,9 +227,9 @@ export default function QuoteModal() {
         {/* Success State */}
         {submitStatus === 'success' && (
           <div className="flex flex-col items-center px-6 py-12 text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-green shadow-lg shadow-brand-green/25">
               <i
-                className="fa-solid fa-check text-3xl text-brand-green"
+                className="fa-solid fa-check text-3xl text-white"
                 aria-hidden="true"
               />
             </div>

@@ -15,7 +15,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-lg">
+    <div className="card-premium group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
       <div className="relative h-48 overflow-hidden bg-gray-100">
         {service.featuredImage ? (
           <Image
@@ -30,20 +30,23 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             <i className={`${service.icon || 'fa-solid fa-recycle'} text-4xl text-brand-green`} />
           </div>
         )}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/40">
+        {/* Premium hover overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-brand-green-dark/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <Link
             href={`/services/${service.slug}`}
-            className="translate-y-4 rounded-md bg-brand-orange px-4 py-2 text-sm font-semibold text-white opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+            className="translate-y-4 rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
           >
             View Details
           </Link>
         </div>
         {service.isFeatured && (
-          <span className="absolute left-3 top-3 rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+          <span className="absolute left-3 top-3 rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white shadow-md">
             Featured
           </span>
         )}
       </div>
+      {/* Gradient top border on hover */}
+      <div className="absolute left-0 right-0 top-[192px] h-0.5 bg-gradient-to-r from-brand-green to-brand-orange opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
       <div className="p-5">
         {service.category && (
           <span className="mb-2 inline-block text-xs font-medium uppercase tracking-wider text-brand-green">
@@ -62,7 +65,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           href={`/services/${service.slug}`}
           className="mt-4 inline-flex items-center text-sm font-semibold text-brand-green hover:text-brand-green-dark"
         >
-          Learn More <i className="fa-solid fa-arrow-right ml-2 text-xs" />
+          Learn More <i className="fa-solid fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </div>

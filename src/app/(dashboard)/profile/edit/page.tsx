@@ -63,7 +63,7 @@ export default function EditProfilePage() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6 rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+      <form onSubmit={handleSubmit} className="card-premium space-y-6 rounded-2xl bg-white p-8 shadow-md ring-1 ring-gray-100">
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <label htmlFor="first_name" className="mb-1 block text-sm font-medium text-gray-700">
@@ -159,7 +159,7 @@ export default function EditProfilePage() {
         <button
           type="submit"
           disabled={saving}
-          className="w-full rounded-lg bg-brand-green py-3 font-semibold text-white hover:bg-brand-green-dark disabled:opacity-50"
+          className="w-full rounded-lg bg-brand-green py-3 font-semibold text-white shadow-md shadow-brand-green/20 hover:bg-brand-green-dark hover:shadow-lg disabled:opacity-50"
         >
           {saving ? 'Saving...' : 'Save Changes'}
         </button>

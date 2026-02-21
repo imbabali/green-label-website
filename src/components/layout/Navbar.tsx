@@ -63,8 +63,10 @@ export default function Navbar({ services = [] }: NavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-white transition-shadow duration-300 ${
-        scrolled ? 'shadow-md' : 'shadow-none'
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? 'glass shadow-lg border-b-2 border-brand-green/10'
+          : 'bg-white shadow-none'
       }`}
     >
       <nav
@@ -147,7 +149,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden rounded-md bg-brand-green px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark lg:inline-flex"
+            className="hidden rounded-md bg-brand-green px-5 py-2 text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/30 lg:inline-flex"
           >
             Contact Us
           </Link>
@@ -171,7 +173,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 top-[57px] z-50 overflow-y-auto bg-white transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-0 top-[57px] z-50 overflow-y-auto bg-white/95 backdrop-blur-lg transition-transform duration-300 lg:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Mobile navigation"

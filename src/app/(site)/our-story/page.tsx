@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
 export const revalidate = 3600
@@ -232,19 +234,21 @@ export default function OurStoryPage() {
       />
 
       {/* Timeline Section */}
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-            Our Journey
-          </h2>
-          <p className="mx-auto mb-16 max-w-2xl text-center text-gray-600">
-            A timeline of key milestones that have shaped Green Label Services into the company it is today.
-          </p>
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+              Our Journey
+            </h2>
+            <p className="reveal reveal-up stagger-2 mx-auto mb-16 max-w-2xl text-center text-gray-600">
+              A timeline of key milestones that have shaped Green Label Services into the company it is today.
+            </p>
+          </ScrollRevealSection>
 
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-brand-green/20 md:block" aria-hidden="true" />
-            <div className="absolute left-6 top-0 h-full w-0.5 bg-brand-green/20 md:hidden" aria-hidden="true" />
+            {/* Vertical line — gradient */}
+            <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 md:block" aria-hidden="true" style={{ background: 'linear-gradient(to bottom, #2c632c, #F7941D)' }} />
+            <div className="absolute left-6 top-0 h-full w-0.5 md:hidden" aria-hidden="true" style={{ background: 'linear-gradient(to bottom, #2c632c, #F7941D)' }} />
 
             <div className="space-y-12">
               {milestones.map((milestone, index) => {
@@ -257,7 +261,7 @@ export default function OurStoryPage() {
                       <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-green text-white shadow-lg">
                         <i className={milestone.icon} aria-hidden="true" />
                       </div>
-                      <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+                      <div className="card-premium overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
                         {milestone.image && (
                           <div className="relative h-40 w-full">
                             <Image
@@ -286,7 +290,7 @@ export default function OurStoryPage() {
                       {isLeft ? (
                         <>
                           <div className="text-right">
-                            <div className="inline-block overflow-hidden rounded-xl border border-gray-100 bg-white text-left shadow-sm">
+                            <div className="inline-block card-premium overflow-hidden rounded-2xl border border-gray-100 bg-white text-left shadow-md">
                               {milestone.image && (
                                 <div className="relative h-48 w-full">
                                   <Image
@@ -315,7 +319,7 @@ export default function OurStoryPage() {
                         <>
                           <div />
                           <div>
-                            <div className="inline-block overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+                            <div className="inline-block card-premium overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
                               {milestone.image && (
                                 <div className="relative h-48 w-full">
                                   <Image
@@ -355,29 +359,33 @@ export default function OurStoryPage() {
       </section>
 
       {/* Values Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-            Our Core Values
-          </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-gray-600">
-            The principles that guide every decision and action at Green Label Services.
-          </p>
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+              Our Core Values
+            </h2>
+            <p className="reveal reveal-up stagger-2 mx-auto mb-12 max-w-2xl text-center text-gray-600">
+              The principles that guide every decision and action at Green Label Services.
+            </p>
+          </ScrollRevealSection>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((value) => {
-              const Icon = value.icon
-              return (
-                <div key={value.title} className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-brand-green/10">
-                    <Icon className="h-7 w-7 text-brand-green" />
+          <ScrollRevealSection>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {values.map((value, index) => {
+                const Icon = value.icon
+                return (
+                  <div key={value.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-6 shadow-md`}>
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-green/10">
+                      <Icon className="h-7 w-7 text-brand-green" />
+                    </div>
+                    <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">{value.title}</h3>
+                    <p className="text-sm leading-relaxed text-gray-600">{value.description}</p>
                   </div>
-                  <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">{value.title}</h3>
-                  <p className="text-sm leading-relaxed text-gray-600">{value.description}</p>
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
@@ -392,8 +400,10 @@ export default function OurStoryPage() {
       />
 
       {/* CTA Section */}
-      <section className="bg-brand-green-dark py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-green py-16">
+        <DotPattern />
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
             Be Part of Our Next Chapter
           </h2>
@@ -401,7 +411,7 @@ export default function OurStoryPage() {
             Partner with us for reliable, environmentally responsible waste management.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white hover:bg-brand-orange-dark">
+            <Link href="/contact" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark hover:shadow-xl">
               Contact Us
             </Link>
             <Link href="/careers" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">

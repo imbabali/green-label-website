@@ -104,7 +104,7 @@ export default function FilterBar({
   }, [router, basePath])
 
   return (
-    <div className="mb-8 rounded-xl bg-white p-4 shadow-md ring-1 ring-gray-100 md:p-6">
+    <div className="mb-8 rounded-2xl glass p-4 shadow-lg md:p-6">
       {/* Search + Filters Row */}
       <div className="flex flex-col gap-4 md:flex-row md:items-end">
         {/* Search */}

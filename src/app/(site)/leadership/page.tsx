@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
 export const revalidate = 3600
@@ -111,23 +113,25 @@ export default function LeadershipPage() {
       />
 
       {/* Intro Section */}
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-            Driven by Purpose, Led by Experience
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-gray-600">
-            Since 2000, our leadership team has steered Green Label Services through 25 years of growth, innovation, and environmental impact. Their collective expertise spans waste management, environmental science, public health, and corporate governance.
-          </p>
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+              Driven by Purpose, Led by Experience
+            </h2>
+            <p className="reveal reveal-up stagger-2 mt-6 text-lg leading-relaxed text-gray-600">
+              Since 2000, our leadership team has steered Green Label Services through 25 years of growth, innovation, and environmental impact. Their collective expertise spans waste management, environmental science, public health, and corporate governance.
+            </p>
+          </ScrollRevealSection>
         </div>
       </section>
 
       {/* CEO Section */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-lg md:p-12">
+          <div className="card-premium mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-xl md:p-12">
             <div className="flex flex-col items-center gap-8 md:flex-row">
-              <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full">
+              <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full ring-4 ring-brand-green/20 shadow-lg">
                 <Image
                   src="/images/hero/mugume.jpg"
                   alt="Dr. Grace Mugume - Chief Executive Officer"
@@ -162,18 +166,21 @@ export default function LeadershipPage() {
       </section>
 
       {/* Board of Directors */}
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-            Board of Directors
-          </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-gray-600">
-            Our board provides strategic oversight and guidance, ensuring Green Label maintains the highest standards of corporate governance and environmental responsibility.
-          </p>
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+              Board of Directors
+            </h2>
+            <p className="reveal reveal-up stagger-2 mx-auto mb-12 max-w-2xl text-center text-gray-600">
+              Our board provides strategic oversight and guidance, ensuring Green Label maintains the highest standards of corporate governance and environmental responsibility.
+            </p>
+          </ScrollRevealSection>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            {boardMembers.map((member) => (
-              <div key={member.name} className="rounded-xl border border-gray-100 bg-white p-8 text-center shadow-sm transition-shadow hover:shadow-md">
+          <ScrollRevealSection>
+            <div className="grid gap-8 md:grid-cols-3">
+              {boardMembers.map((member, index) => (
+                <div key={member.name} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl bg-white p-8 text-center shadow-md`}>
                 <div className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-brand-green shadow-md">
                   <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                     <circle cx="50" cy="36" r="16" fill="rgba(255,255,255,0.18)" />
@@ -186,37 +193,42 @@ export default function LeadershipPage() {
                 <p className="text-sm leading-relaxed text-gray-600">{member.bio}</p>
               </div>
             ))}
-          </div>
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
       {/* Leadership Values */}
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section className="py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-12 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-            Leadership Values
-          </h2>
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-12 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+              Leadership Values
+            </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {leadershipValues.map((value) => {
-              const Icon = value.icon
-              return (
-                <div key={value.title} className="rounded-xl bg-white p-6 text-center shadow-sm">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange/10">
-                    <Icon className="h-7 w-7 text-brand-orange" />
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {leadershipValues.map((value, index) => {
+                const Icon = value.icon
+                return (
+                  <div key={value.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl bg-white p-6 text-center shadow-md`}>
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange/10">
+                      <Icon className="h-7 w-7 text-brand-orange" />
+                    </div>
+                    <h3 className="mb-2 font-heading font-bold text-gray-900">{value.title}</h3>
+                    <p className="text-sm text-gray-600">{value.description}</p>
                   </div>
-                  <h3 className="mb-2 font-heading font-bold text-gray-900">{value.title}</h3>
-                  <p className="text-sm text-gray-600">{value.description}</p>
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-green-dark py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-green py-16">
+        <DotPattern />
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
             Interested in Joining Our Team?
           </h2>
@@ -224,7 +236,7 @@ export default function LeadershipPage() {
             We are always looking for passionate people to join our mission.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/careers" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white hover:bg-brand-orange-dark">
+            <Link href="/careers" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark hover:shadow-xl">
               View Careers
             </Link>
             <Link href="/contact" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">

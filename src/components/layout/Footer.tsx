@@ -10,7 +10,14 @@ export default function Footer({ services = [] }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-white" role="contentinfo">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white" role="contentinfo">
+      {/* Gradient top border */}
+      <div
+        aria-hidden="true"
+        className="h-1"
+        style={{ background: 'linear-gradient(to right, #2c632c, #F7941D)' }}
+      />
+
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Column 1: Company Info & Contact */}
@@ -33,8 +40,10 @@ export default function Footer({ services = [] }: FooterProps) {
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-brand-orange"
               >
-                <i className="fa-solid fa-envelope mt-0.5 text-brand-green-light" aria-hidden="true" />
-                <span>{COMPANY_INFO.email}</span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green/20">
+                  <i className="fa-solid fa-envelope text-xs text-brand-green-light" aria-hidden="true" />
+                </span>
+                <span className="pt-1">{COMPANY_INFO.email}</span>
               </a>
               {COMPANY_INFO.phones.map((phone) => (
                 <a
@@ -42,8 +51,10 @@ export default function Footer({ services = [] }: FooterProps) {
                   href={`tel:${phone.replace(/\s/g, '')}`}
                   className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-brand-orange"
                 >
-                  <i className="fa-solid fa-phone mt-0.5 text-brand-green-light" aria-hidden="true" />
-                  <span>{phone}</span>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green/20">
+                    <i className="fa-solid fa-phone text-xs text-brand-green-light" aria-hidden="true" />
+                  </span>
+                  <span className="pt-1">{phone}</span>
                 </a>
               ))}
             </address>
@@ -52,7 +63,7 @@ export default function Footer({ services = [] }: FooterProps) {
           {/* Column 2: Company Links */}
           <div>
             <h2 className="mb-4 font-heading text-base font-bold uppercase tracking-wider text-white">
-              Company
+              <span className="inline-block border-b-2 border-brand-green pb-1">Company</span>
             </h2>
             <ul className="space-y-2.5">
               {FOOTER_LINKS.company.map((link) => (
@@ -71,7 +82,7 @@ export default function Footer({ services = [] }: FooterProps) {
           {/* Column 3: Industries + Dynamic Services */}
           <div>
             <h2 className="mb-4 font-heading text-base font-bold uppercase tracking-wider text-white">
-              Industries
+              <span className="inline-block border-b-2 border-brand-green pb-1">Industries</span>
             </h2>
             <ul className="space-y-2.5">
               {FOOTER_LINKS.industries.map((link) => (
@@ -89,7 +100,7 @@ export default function Footer({ services = [] }: FooterProps) {
             {services.length > 0 && (
               <>
                 <h3 className="mb-3 mt-6 font-heading text-sm font-bold uppercase tracking-wider text-white">
-                  Services
+                  <span className="inline-block border-b-2 border-brand-green pb-1">Services</span>
                 </h3>
                 <ul className="space-y-2.5">
                   {services.map((service) => (
@@ -110,7 +121,7 @@ export default function Footer({ services = [] }: FooterProps) {
           {/* Column 4: Newsletter */}
           <div>
             <h2 className="mb-4 font-heading text-base font-bold uppercase tracking-wider text-white">
-              Newsletter
+              <span className="inline-block border-b-2 border-brand-green pb-1">Newsletter</span>
             </h2>
             <p className="mb-4 text-sm text-gray-400">
               Subscribe to our newsletter for the latest news, updates, and

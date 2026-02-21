@@ -27,7 +27,7 @@ export default function PostCard({ post }: PostCardProps) {
       : post.excerpt
 
   return (
-    <article className="group overflow-hidden rounded-xl bg-white shadow-md ring-1 ring-gray-100 transition-shadow duration-300 hover:shadow-lg">
+    <article className="card-premium group overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-gray-100">
       {/* Image */}
       <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
         {post.featuredImage ? (
@@ -47,8 +47,11 @@ export default function PostCard({ post }: PostCardProps) {
           </div>
         )}
 
+        {/* Gradient overlay on image bottom */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" aria-hidden="true" />
+
         {/* Date Badge */}
-        <div className="absolute left-4 top-4 flex flex-col items-center rounded-lg bg-brand-green px-3 py-2 text-center text-white shadow-md">
+        <div className="absolute left-4 top-4 flex flex-col items-center rounded-lg bg-brand-green px-3 py-2 text-center text-white shadow-lg shadow-brand-green/30 backdrop-blur-sm">
           <span className="text-xl font-bold leading-tight">{day}</span>
           <span className="text-xs font-medium uppercase leading-tight">
             {month}
@@ -60,7 +63,7 @@ export default function PostCard({ post }: PostCardProps) {
         {post.category && (
           <Link
             href={`/blog/category/${post.category.slug}`}
-            className="absolute right-4 top-4 rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-brand-orange-dark"
+            className="absolute right-4 top-4 rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white shadow-md transition-colors hover:bg-brand-orange-dark"
           >
             {post.category.name}
           </Link>
@@ -99,7 +102,7 @@ export default function PostCard({ post }: PostCardProps) {
               <Link
                 key={tag.slug}
                 href={`/blog/tag/${tag.slug}`}
-                className="rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-medium text-gray-600 transition-colors hover:bg-brand-green/10 hover:text-brand-green"
+                className="rounded-full bg-brand-green-50 px-2.5 py-0.5 text-[11px] font-medium text-brand-green transition-colors hover:bg-brand-green/10"
               >
                 #{tag.name}
               </Link>

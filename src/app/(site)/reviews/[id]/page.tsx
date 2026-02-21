@@ -48,7 +48,7 @@ export default async function ReviewDetailPage({ params }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ReviewDetail review={review} isOwner={isOwner} />
         </div>

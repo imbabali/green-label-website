@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react'
 import Hero from '@/components/shared/Hero'
 import Link from 'next/link'
+import { GradientOrb, WaveDivider } from '@/components/shared/DecorativeElements'
 
 interface CMSPageProps {
   title: string
@@ -16,38 +17,46 @@ export default function CMSPage({ title, content, fallbackContent, heroImage, ch
     <>
       <Hero heading={title} variant="fullWidth" backgroundImage={heroImage} />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          {content ? (
-            <div className="portable-text">
-              <PortableText value={content} />
-            </div>
-          ) : fallbackContent ? (
-            <div className="prose prose-lg max-w-none text-gray-700" dangerouslySetInnerHTML={{ __html: fallbackContent }} />
-          ) : null}
+          <div className="border-l-4 border-brand-green/20 pl-6">
+            {content ? (
+              <div className="portable-text">
+                <PortableText value={content} />
+              </div>
+            ) : fallbackContent ? (
+              <div className="prose prose-lg max-w-none text-gray-700" dangerouslySetInnerHTML={{ __html: fallbackContent }} />
+            ) : null}
+          </div>
           {children}
         </div>
       </section>
 
-      <section className="bg-brand-green-dark py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-green py-16">
+        {/* Decorative elements */}
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-32 opacity-20" />
+        <GradientOrb color="green" size="md" className="-bottom-16 -left-16 opacity-20" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots" />
+        <WaveDivider flip />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
             Need More Information?
           </h2>
-          <p className="mt-3 text-gray-300">
+          <p className="mt-3 text-gray-200">
             Contact our team for any questions or inquiries about our services.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white hover:bg-brand-orange-dark"
+              className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 transition-colors hover:bg-brand-orange-dark"
             >
               Contact Us
             </Link>
             <Link
               href="#quote"
               data-quote-trigger=""
-              className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10"
+              className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
             >
               Request A Quote
             </Link>

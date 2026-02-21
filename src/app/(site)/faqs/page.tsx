@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import { generatePageMetadata, faqJsonLd } from '@/lib/utils/seo'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { sanityFetch } from '@/lib/sanity/client'
 import { faqsQuery } from '@/lib/sanity/queries'
 
@@ -87,28 +88,34 @@ export default async function FAQsPage() {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          {categories.map((cat) => (
-            <div key={cat.id} className="mb-10">
-              <h2 className="mb-6 flex items-center gap-3 font-heading text-2xl font-bold text-gray-900">
-                {cat.icon && <i className={`${cat.icon} text-brand-green`} aria-hidden="true" />}
-                {cat.name}
-              </h2>
-              <div className="space-y-3">
-                {cat.items.map((item) => (
-                  <details key={item._id} className="group rounded-lg border border-gray-200 bg-white">
-                    <summary className="flex cursor-pointer items-center justify-between p-5 font-medium text-gray-900 hover:text-brand-green">
-                      {item.question}
-                      <i className="fa-solid fa-chevron-down text-sm text-gray-400 transition-transform group-open:rotate-180" aria-hidden="true" />
-                    </summary>
-                    <div className="border-t border-gray-100 px-5 pb-5 pt-3 text-gray-600 leading-relaxed">
-                      {item.answer}
-                    </div>
-                  </details>
-                ))}
+          {categories.map((cat, catIndex) => (
+            <ScrollRevealSection key={cat.id}>
+              <div className={`reveal reveal-up stagger-${Math.min(catIndex + 1, 6)} mb-10`}>
+                <h2 className="mb-6 flex items-center gap-3 font-heading text-2xl font-bold text-gray-900">
+                  {cat.icon && (
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
+                      <i className={`${cat.icon} text-brand-green`} aria-hidden="true" />
+                    </span>
+                  )}
+                  {cat.name}
+                </h2>
+                <div className="space-y-3">
+                  {cat.items.map((item) => (
+                    <details key={item._id} className="group card-premium rounded-2xl border border-gray-200 bg-white shadow-sm">
+                      <summary className="flex cursor-pointer items-center justify-between p-5 font-medium text-gray-900 hover:text-brand-green">
+                        {item.question}
+                        <i className="fa-solid fa-chevron-down text-sm text-gray-400 transition-transform group-open:rotate-180" aria-hidden="true" />
+                      </summary>
+                      <div className="border-t border-gray-100 px-5 pb-5 pt-3 text-gray-600 leading-relaxed">
+                        {item.answer}
+                      </div>
+                    </details>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollRevealSection>
           ))}
         </div>
       </section>

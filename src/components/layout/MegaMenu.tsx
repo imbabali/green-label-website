@@ -19,7 +19,7 @@ export default function MegaMenu({ groups, dynamicLinks, id }: MegaMenuProps) {
     <div
       id={id}
       role="menu"
-      className="mega-menu absolute left-1/2 top-full z-50 mt-0 w-max min-w-[280px] -translate-x-1/2 rounded-b-lg bg-white p-6 shadow-xl ring-1 ring-black/5"
+      className="mega-menu absolute left-1/2 top-full z-50 mt-0 w-max min-w-[280px] -translate-x-1/2 rounded-b-xl glass shadow-2xl border-t-2 border-brand-green p-6"
     >
       <div
         className="grid gap-8"
@@ -40,7 +40,7 @@ export default function MegaMenu({ groups, dynamicLinks, id }: MegaMenuProps) {
                   <Link
                     href={link.href}
                     role="menuitem"
-                    className="block rounded px-2 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-green"
+                    className="block rounded px-2 py-1.5 text-sm text-gray-700 transition-all hover:bg-brand-green/5 hover:pl-3 hover:text-brand-green"
                   >
                     {link.label}
                   </Link>
@@ -61,7 +61,7 @@ export default function MegaMenu({ groups, dynamicLinks, id }: MegaMenuProps) {
                   <Link
                     href={`/services/${service.slug}`}
                     role="menuitem"
-                    className="block rounded px-2 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-brand-green"
+                    className="block rounded px-2 py-1.5 text-sm text-gray-700 transition-all hover:bg-brand-green/5 hover:pl-3 hover:text-brand-green"
                   >
                     {service.title}
                   </Link>

@@ -93,9 +93,10 @@ export default function NewsletterForm({
 
     if (variant === 'section') {
       return (
-        <section className="bg-brand-green py-16">
-          <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
-            <div className="rounded-xl bg-white/10 p-8">
+        <section className="relative overflow-hidden bg-gradient-green py-16">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots" />
+          <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+            <div className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
               {successMessage}
               <button
                 type="button"
@@ -131,8 +132,9 @@ export default function NewsletterForm({
   // Section variant - full layout
   if (variant === 'section') {
     return (
-      <section className="bg-brand-green py-16">
-        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-green py-16">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots" />
+        <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
           <i
             className="fa-solid fa-envelope-open-text mb-4 text-4xl text-brand-orange-light"
             aria-hidden="true"

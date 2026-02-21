@@ -7,6 +7,8 @@ import { sanityFetch } from '@/lib/sanity/client'
 import { blogListQuery, blogTagsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const revalidate = 300
 
@@ -80,22 +82,25 @@ export default async function BlogTagPage({ params, searchParams }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedPosts.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {transformedPosts.map((post: any) => (
-                <PostCard key={post.slug} post={post} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {transformedPosts.map((post: any, index: number) => (
+                  <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <PostCard post={post} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-tags mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No posts with this tag</h3>
-              <Link href="/blog" className="mt-4 inline-block text-brand-green hover:underline">
-                View all posts
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-tags"
+              title="No posts with this tag"
+              actionLabel="View all posts"
+              actionHref="/blog"
+            />
           )}
 
           <Pagination

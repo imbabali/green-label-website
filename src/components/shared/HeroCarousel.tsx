@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { GradientOrb, WaveDivider } from '@/components/shared/DecorativeElements'
 
 interface CTAButton {
   label: string
@@ -23,9 +24,9 @@ interface HeroCarouselProps {
 
 const variantClasses: Record<CTAButton['variant'], string> = {
   primary:
-    'bg-brand-orange text-white hover:bg-brand-orange-dark focus:ring-brand-orange',
+    'bg-brand-orange text-white hover:bg-brand-orange-dark focus:ring-brand-orange shadow-lg shadow-brand-orange/25',
   secondary:
-    'bg-brand-green text-white hover:bg-brand-green-dark focus:ring-brand-green',
+    'bg-brand-green text-white hover:bg-brand-green-dark focus:ring-brand-green shadow-lg shadow-brand-green/25',
   outline:
     'border-2 border-white text-white hover:bg-white/10 focus:ring-white',
 }
@@ -74,7 +75,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
               : 'z-0 opacity-0'
           }`}
         >
-          {/* Background image */}
+          {/* Background image with Ken Burns */}
           <div className="absolute inset-0">
             {slide.backgroundImage && (
               <Image
@@ -83,15 +84,19 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                 role="presentation"
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className={`object-cover ${index === currentSlide ? 'ken-burns' : ''}`}
                 priority={index === 0}
               />
             )}
+            {/* Premium brand-tinted overlay */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"
+              className="absolute inset-0 bg-gradient-to-r from-brand-green-dark/80 via-black/50 to-transparent"
               aria-hidden="true"
             />
           </div>
+
+          {/* Decorative orb */}
+          <GradientOrb color="green" size="lg" className="bottom-0 right-0 opacity-20" />
 
           {/* Content */}
           <div className="relative z-10 flex min-h-[400px] items-center md:min-h-[500px] lg:min-h-[600px]">
@@ -134,9 +139,12 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
         </div>
       ))}
 
+      {/* Wave divider at bottom */}
+      <WaveDivider className="z-20" />
+
       {/* Dot navigation */}
       {slides.length > 1 && (
-        <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+        <div className="absolute bottom-14 left-1/2 z-20 flex -translate-x-1/2 gap-2">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -144,10 +152,10 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
               aria-current={index === currentSlide ? 'true' : undefined}
-              className={`h-3 w-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50 ${
+              className={`h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50 ${
                 index === currentSlide
-                  ? 'w-8 bg-brand-orange'
-                  : 'bg-white/50 hover:bg-white/80'
+                  ? 'w-8 bg-brand-orange shadow-lg shadow-brand-orange/40'
+                  : 'w-3 bg-white/30 backdrop-blur-sm hover:bg-white/60'
               }`}
             />
           ))}

@@ -6,6 +6,8 @@ import { generatePageMetadata } from '@/lib/utils/seo'
 import { createClient } from '@/lib/supabase/server'
 import { SERVICE_TYPE_MAP } from '@/lib/data/service-types'
 import Link from 'next/link'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import EmptyState from '@/components/shared/EmptyState'
 
 const REVIEWS_PER_PAGE = 12
 
@@ -49,22 +51,25 @@ export default async function ReviewsByServicePage({ params, searchParams }: Pro
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {reviews && reviews.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {reviews.map((review: any) => (
-                <ReviewCard key={review.id} review={review} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {reviews.map((review: any, index: number) => (
+                  <div key={review.id} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <ReviewCard review={review} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-star mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No reviews for this service</h3>
-              <Link href="/reviews" className="mt-4 inline-block text-brand-green hover:underline">
-                View all reviews
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-star"
+              title="No reviews for this service"
+              actionLabel="View all reviews"
+              actionHref="/reviews"
+            />
           )}
 
           <Pagination currentPage={page} totalPages={totalPages} basePath={`/reviews/service/${type}`} />

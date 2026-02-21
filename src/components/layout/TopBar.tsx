@@ -9,7 +9,7 @@ const quickLinks = [
 
 export default function TopBar() {
   return (
-    <div className="bg-brand-green-dark text-white">
+    <div className="bg-gradient-green border-b border-white/10 text-white">
       {/* Mobile: simplified bar */}
       <div className="flex items-center justify-between px-4 py-2 md:hidden">
         <span className="text-xs font-medium tracking-wide">
@@ -17,7 +17,7 @@ export default function TopBar() {
         </span>
         <Link
           href="/quote"
-          className="rounded bg-brand-orange px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-brand-orange-dark"
+          className="rounded bg-brand-orange px-3 py-1 text-xs font-semibold text-white shadow-sm shadow-brand-orange/20 transition-colors hover:bg-brand-orange-dark"
           data-quote-trigger
         >
           Get A Quote
@@ -52,7 +52,7 @@ export default function TopBar() {
         <div className="flex items-center gap-4">
           <button
             type="button"
-            className="rounded bg-brand-orange px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-dark"
+            className="rounded bg-brand-orange px-4 py-1.5 text-sm font-semibold text-white shadow-sm shadow-brand-orange/20 transition-all hover:bg-brand-orange-dark hover:shadow-md hover:shadow-brand-orange/30"
             data-quote-trigger
           >
             Request A Quote!
@@ -64,7 +64,7 @@ export default function TopBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our Facebook page"
-              className="transition-colors hover:text-brand-orange-light"
+              className="transition-all hover:scale-110 hover:text-brand-orange-light"
             >
               <i className="fa-brands fa-facebook-f" aria-hidden="true" />
             </a>
@@ -73,7 +73,7 @@ export default function TopBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our LinkedIn page"
-              className="transition-colors hover:text-brand-orange-light"
+              className="transition-all hover:scale-110 hover:text-brand-orange-light"
             >
               <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
             </a>

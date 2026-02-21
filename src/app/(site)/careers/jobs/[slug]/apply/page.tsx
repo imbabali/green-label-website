@@ -44,9 +44,9 @@ export default async function JobApplyPage({ params }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 rounded-lg bg-brand-green/5 p-6">
+          <div className="mb-8 rounded-2xl bg-brand-green/5 p-6 shadow-sm">
             <h2 className="font-heading text-lg font-bold text-gray-900">{job.title}</h2>
             <div className="mt-2 flex flex-wrap gap-3 text-sm text-gray-600">
               <span><i className="fa-solid fa-location-dot mr-1" /> {job.location}</span>

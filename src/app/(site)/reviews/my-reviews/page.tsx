@@ -5,6 +5,8 @@ import ReviewCard from '@/components/reviews/ReviewCard'
 import { generatePageMetadata } from '@/lib/utils/seo'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import EmptyState from '@/components/shared/EmptyState'
 
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
@@ -33,30 +35,36 @@ export default async function MyReviewsPage() {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex items-center justify-between">
             <p className="text-gray-600">You have written {reviews?.length || 0} review(s).</p>
             <Link
               href="/reviews/create"
-              className="rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+              className="rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand-orange/20 hover:bg-brand-orange-dark hover:shadow-lg"
             >
               Write New Review
             </Link>
           </div>
 
           {reviews && reviews.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {reviews.map((review: any) => (
-                <ReviewCard key={review.id} review={review} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {reviews.map((review: any, index: number) => (
+                  <div key={review.id} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <ReviewCard review={review} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-16 text-center">
-              <i className="fa-solid fa-star mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No reviews yet</h3>
-              <p className="mt-2 text-gray-600">Share your experience with our services.</p>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-star"
+              title="No reviews yet"
+              description="Share your experience with our services."
+              actionLabel="Write a Review"
+              actionHref="/reviews/create"
+            />
           )}
         </div>
       </section>

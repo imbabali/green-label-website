@@ -2,11 +2,14 @@ import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import ServiceCard from '@/components/services/ServiceCard'
 import StatsCounter from '@/components/shared/StatsCounter'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 import { sanityFetch } from '@/lib/sanity/client'
 import { serviceListQuery, serviceCategoriesQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const revalidate = 300
 
@@ -52,15 +55,15 @@ export default async function ServicesPage() {
         description="From medical waste to oil & gas operations, we provide safe, compliant, and environmentally responsible waste management across Uganda."
       />
 
-      {/* Category filters */}
+      {/* Category filters — glass style */}
       {categories.length > 0 && (
-        <section className="border-b border-gray-200 bg-white py-6">
+        <section className="border-b border-gray-200 bg-white/80 py-6 backdrop-blur-sm">
           <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-3 px-4">
             {categories.map((cat: any) => (
               <Link
                 key={cat.slug?.current || cat.slug}
                 href={`/services/category/${cat.slug?.current || cat.slug}`}
-                className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-brand-green hover:text-white"
+                className="rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-100 transition-all hover:bg-brand-green hover:text-white hover:shadow-md"
               >
                 {cat.icon && <i className={`${cat.icon} mr-1`} />}
                 {cat.name}
@@ -70,20 +73,26 @@ export default async function ServicesPage() {
         </section>
       )}
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedServices.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {transformedServices.map((service: any) => (
-                <ServiceCard key={service.slug} service={service} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {transformedServices.map((service: any, index: number) => (
+                  <div key={service.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <ServiceCard service={service} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-recycle mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">Services coming soon</h3>
-              <p className="mt-2 text-gray-600">Contact us for more information.</p>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-recycle"
+              title="Services coming soon"
+              description="Contact us for more information."
+              actionLabel="Contact Us"
+              actionHref="/contact"
+            />
           )}
         </div>
       </section>
@@ -99,8 +108,10 @@ export default async function ServicesPage() {
       />
 
       {/* CTA */}
-      <section className="bg-brand-green-dark py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-green py-16">
+        <DotPattern />
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
             Need a Custom Waste Management Solution?
           </h2>
@@ -108,7 +119,7 @@ export default async function ServicesPage() {
             Contact us for a tailored quote based on your specific requirements.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white hover:bg-brand-orange-dark">
+            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
               Get A Quote
             </Link>
             <Link href="/contact" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">

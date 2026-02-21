@@ -5,6 +5,8 @@ import { generatePageMetadata } from '@/lib/utils/seo'
 import { sanityFetch } from '@/lib/sanity/client'
 import { jobListQuery } from '@/lib/sanity/queries'
 import Link from 'next/link'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const revalidate = 300
 
@@ -61,28 +63,26 @@ export default async function JobsPage({ searchParams }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedJobs.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2">
-              {transformedJobs.map((job: any) => (
-                <JobCard key={job.slug} job={job} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-6 md:grid-cols-2">
+                {transformedJobs.map((job: any, index: number) => (
+                  <div key={job.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <JobCard job={job} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-briefcase mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No open positions right now</h3>
-              <p className="mt-2 text-gray-600">
-                Check back soon or send your CV to{' '}
-                <a href="mailto:careers@greenlabelservicesug.com" className="text-brand-green hover:underline">
-                  careers@greenlabelservicesug.com
-                </a>
-              </p>
-              <Link href="/careers" className="mt-4 inline-block text-brand-green hover:underline">
-                Back to Careers
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-briefcase"
+              title="No open positions right now"
+              description="Check back soon or send your CV to careers@greenlabelservicesug.com"
+              actionLabel="Back to Careers"
+              actionHref="/careers"
+            />
           )}
         </div>
       </section>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
 export function generateMetadata(): Metadata {
@@ -31,37 +32,43 @@ export default function CareersPage() {
         description="At Green Label Services, we believe our people are our greatest asset. Join a team of 300+ professionals dedicated to environmental excellence."
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Why Work With Us?
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Green Label Services has been recognized as one of Uganda&apos;s best employers in the environmental sector.
-            </p>
-          </div>
+          <ScrollRevealSection>
+            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
+              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                Why Work With Us?
+              </h2>
+              <p className="mt-4 text-lg text-gray-600">
+                Green Label Services has been recognized as one of Uganda&apos;s best employers in the environmental sector.
+              </p>
+            </div>
+          </ScrollRevealSection>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((b) => (
-              <div key={b.title} className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-green/10">
-                  <i className={`${b.icon} text-xl text-brand-green`} />
+          <ScrollRevealSection>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {benefits.map((b, index) => (
+                <div key={b.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-6 shadow-md`}>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/10">
+                    <i className={`${b.icon} text-xl text-brand-green`} />
+                  </div>
+                  <h3 className="mb-2 font-heading font-bold text-gray-900">{b.title}</h3>
+                  <p className="text-sm text-gray-600">{b.desc}</p>
                 </div>
-                <h3 className="mb-2 font-heading font-bold text-gray-900">{b.title}</h3>
-                <p className="text-sm text-gray-600">{b.desc}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollRevealSection>
 
-          <div className="mt-12 text-center">
-            <Link
-              href="/careers/jobs"
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-8 py-4 text-lg font-semibold text-white hover:bg-brand-orange-dark"
-            >
-              <i className="fa-solid fa-briefcase" /> View Open Positions
-            </Link>
-          </div>
+          <ScrollRevealSection>
+            <div className="reveal reveal-scale mt-12 text-center">
+              <Link
+                href="/careers/jobs"
+                className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-brand-orange/25 transition-all hover:bg-brand-orange-dark hover:shadow-xl"
+              >
+                <i className="fa-solid fa-briefcase" /> View Open Positions
+              </Link>
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 

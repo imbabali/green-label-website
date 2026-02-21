@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import ContactForm from '@/components/forms/ContactForm'
 import StatsCounter from '@/components/shared/StatsCounter'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { generatePageMetadata } from '@/lib/utils/seo'
 import { COMPANY_INFO } from '@/lib/data/constants'
 
@@ -24,7 +25,7 @@ export default function ContactPage() {
         description="Reach out to our team for waste management solutions, service inquiries, or emergency assistance."
       />
 
-      {/* Google Maps */}
+      {/* Google Maps — floating card effect */}
       <section className="bg-gray-100">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7533!2d32.5825!3d0.3476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMjAnNTEuNCJOIDMywrAzNCc1Ny4wIkU!5e0!3m2!1sen!2sug!4v1"
@@ -40,36 +41,42 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form + Info */}
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-3">
             {/* Form */}
-            <div className="lg:col-span-2">
-              <h2 className="mb-2 font-heading text-2xl font-bold text-gray-900 md:text-3xl">
-                Send Us a Message
-              </h2>
-              <p className="mb-8 text-gray-600">
-                Fill out the form below and our team will get back to you within 24 hours.
-              </p>
-              <ContactForm />
-            </div>
+            <ScrollRevealSection className="lg:col-span-2">
+              <div className="reveal reveal-left">
+                <h2 className="mb-2 font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+                  Send Us a Message
+                </h2>
+                <p className="mb-8 text-gray-600">
+                  Fill out the form below and our team will get back to you within 24 hours.
+                </p>
+                <ContactForm />
+              </div>
+            </ScrollRevealSection>
 
-            {/* Contact Info Card */}
-            <div>
+            {/* Contact Info Cards */}
+            <ScrollRevealSection>
               <div className="sticky top-24 space-y-6">
                 {/* Address */}
-                <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <div className="reveal reveal-right stagger-1 card-premium rounded-2xl border border-gray-100 bg-white p-6 shadow-md">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">
-                    <i className="fa-solid fa-location-dot mr-2 text-brand-green" aria-hidden="true" />
+                    <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-green/10">
+                      <i className="fa-solid fa-location-dot text-sm text-brand-green" aria-hidden="true" />
+                    </span>
                     Our Office
                   </h3>
                   <p className="text-sm leading-relaxed text-gray-600">{COMPANY_INFO.address}</p>
                 </div>
 
                 {/* Phone Numbers */}
-                <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <div className="reveal reveal-right stagger-2 card-premium rounded-2xl border border-gray-100 bg-white p-6 shadow-md">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">
-                    <i className="fa-solid fa-phone mr-2 text-brand-green" aria-hidden="true" />
+                    <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-green/10">
+                      <i className="fa-solid fa-phone text-sm text-brand-green" aria-hidden="true" />
+                    </span>
                     Phone Numbers
                   </h3>
                   <ul className="space-y-2">
@@ -84,9 +91,11 @@ export default function ContactPage() {
                 </div>
 
                 {/* Email */}
-                <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <div className="reveal reveal-right stagger-3 card-premium rounded-2xl border border-gray-100 bg-white p-6 shadow-md">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">
-                    <i className="fa-solid fa-envelope mr-2 text-brand-green" aria-hidden="true" />
+                    <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-green/10">
+                      <i className="fa-solid fa-envelope text-sm text-brand-green" aria-hidden="true" />
+                    </span>
                     Email Addresses
                   </h3>
                   <ul className="space-y-2">
@@ -104,9 +113,11 @@ export default function ContactPage() {
                 </div>
 
                 {/* Working Hours */}
-                <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <div className="reveal reveal-right stagger-4 card-premium rounded-2xl border border-gray-100 bg-white p-6 shadow-md">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">
-                    <i className="fa-solid fa-clock mr-2 text-brand-green" aria-hidden="true" />
+                    <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-green/10">
+                      <i className="fa-solid fa-clock text-sm text-brand-green" aria-hidden="true" />
+                    </span>
                     Working Hours
                   </h3>
                   <ul className="space-y-1 text-sm text-gray-600">
@@ -116,8 +127,8 @@ export default function ContactPage() {
                   </ul>
                 </div>
 
-                {/* Emergency */}
-                <div className="rounded-xl bg-red-50 p-6 ring-1 ring-red-100">
+                {/* Emergency — pulsing border */}
+                <div className="reveal reveal-right stagger-5 rounded-2xl bg-red-50 p-6 ring-2 ring-red-200 pulse-glow">
                   <h3 className="mb-2 font-heading text-lg font-bold text-red-700">
                     <i className="fa-solid fa-triangle-exclamation mr-2" aria-hidden="true" />
                     Emergency Hotline
@@ -127,14 +138,14 @@ export default function ContactPage() {
                   </p>
                   <a
                     href={`tel:${COMPANY_INFO.emergencyHotline.replace(/\s/g, '')}`}
-                    className="inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-sm font-bold text-white hover:bg-red-700"
+                    className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-bold text-white shadow-md hover:bg-red-700"
                   >
                     <i className="fa-solid fa-phone" aria-hidden="true" />
                     {COMPANY_INFO.emergencyHotline}
                   </a>
                 </div>
               </div>
-            </div>
+            </ScrollRevealSection>
           </div>
         </div>
       </section>

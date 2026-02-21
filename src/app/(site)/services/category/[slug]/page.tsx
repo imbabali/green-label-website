@@ -6,6 +6,8 @@ import { sanityFetch } from '@/lib/sanity/client'
 import { serviceListQuery, serviceCategoriesQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const revalidate = 300
 
@@ -66,22 +68,25 @@ export default async function ServiceCategoryPage({ params }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedServices.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {transformedServices.map((service: any) => (
-                <ServiceCard key={service.slug} service={service} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {transformedServices.map((service: any, index: number) => (
+                  <div key={service.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <ServiceCard service={service} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-folder-open mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No services in this category</h3>
-              <Link href="/services" className="mt-4 inline-block text-brand-green hover:underline">
-                View all services
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-folder-open"
+              title="No services in this category"
+              actionLabel="View all services"
+              actionHref="/services"
+            />
           )}
         </div>
       </section>

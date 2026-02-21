@@ -1,4 +1,8 @@
-import type { ReactNode } from 'react'
+'use client'
+
+import type { ReactNode, ReactElement } from 'react'
+import { Children } from 'react'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 
 interface CardGridProps {
   children: ReactNode
@@ -13,8 +17,14 @@ const columnClasses: Record<2 | 3 | 4, string> = {
 
 export default function CardGrid({ children, columns = 3 }: CardGridProps) {
   return (
-    <div className={`grid grid-cols-1 gap-6 scroll-animate ${columnClasses[columns]}`}>
-      {children}
-    </div>
+    <ScrollRevealSection>
+      <div className={`grid grid-cols-1 gap-6 ${columnClasses[columns]}`}>
+        {Children.map(children, (child, index) => (
+          <div className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+            {child as ReactElement}
+          </div>
+        ))}
+      </div>
+    </ScrollRevealSection>
   )
 }

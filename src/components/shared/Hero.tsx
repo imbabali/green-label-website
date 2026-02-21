@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { ReactNode } from 'react'
+import { GradientOrb, WaveDivider } from '@/components/shared/DecorativeElements'
 
 export interface BreadcrumbItem {
   label: string
@@ -108,9 +109,9 @@ function CenteredBreadcrumbs({ items }: { items: BreadcrumbItem[] }) {
 function CTAButtonGroup({ buttons, centered = true }: { buttons: CTAButton[]; centered?: boolean }) {
   const variantClasses: Record<CTAButton['variant'], string> = {
     primary:
-      'bg-brand-orange text-white hover:bg-brand-orange-dark focus:ring-brand-orange',
+      'bg-brand-orange text-white hover:bg-brand-orange-dark focus:ring-brand-orange shadow-lg shadow-brand-orange/25',
     secondary:
-      'bg-brand-green text-white hover:bg-brand-green-dark focus:ring-brand-green',
+      'bg-brand-green text-white hover:bg-brand-green-dark focus:ring-brand-green shadow-lg shadow-brand-green/25',
     outline:
       'border-2 border-white text-white hover:bg-white/10 focus:ring-white',
   }
@@ -138,7 +139,7 @@ function StatsRow({ stats, light = false }: { stats: StatItem[]; light?: boolean
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`rounded-lg p-4 text-center ${
+          className={`rounded-xl p-4 text-center ${
             light
               ? 'bg-white/10 backdrop-blur-sm'
               : 'bg-brand-green/10'
@@ -186,11 +187,16 @@ export default function Hero({
 
   if (variant === 'centered') {
     return (
-      <section className="bg-gray-50 py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-subtle py-16 md:py-20">
+        {/* Decorative */}
+        <GradientOrb color="green" size="lg" className="-left-32 -top-32 opacity-50" />
+        <GradientOrb color="orange" size="md" className="-bottom-16 -right-16 opacity-40" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots opacity-40" />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           {breadcrumbs && <CenteredBreadcrumbs items={breadcrumbs} />}
           {badge && (
-            <span className="mb-4 inline-block rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-green">
+            <span className="mb-4 inline-block rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-green backdrop-blur-sm">
               {badge}
             </span>
           )}
@@ -284,7 +290,7 @@ export default function Hero({
             {children}
           </div>
           {backgroundImage && (
-            <div className="relative hidden min-h-[400px] overflow-hidden rounded-xl md:block">
+            <div className="relative hidden min-h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white md:block">
               <Image
                 src={backgroundImage}
                 alt={heading}
@@ -302,7 +308,7 @@ export default function Hero({
 
   // fullWidth (default)
   return (
-    <section className="relative flex min-h-[400px] items-center md:min-h-[500px]">
+    <section className="relative flex min-h-[400px] items-center overflow-hidden md:min-h-[500px]">
       {/* Background image */}
       {backgroundImage && (
         <Image
@@ -316,16 +322,22 @@ export default function Hero({
         />
       )}
 
-      {/* Dark overlay */}
+      {/* Premium overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"
+        className="absolute inset-0 bg-gradient-to-r from-brand-green-dark/90 via-black/60 to-black/40"
         aria-hidden="true"
       />
+
+      {/* Bottom gradient orb */}
+      <GradientOrb color="green" size="lg" className="bottom-0 left-1/4 opacity-30" />
+
+      {/* Wave divider */}
+      <WaveDivider />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
         {breadcrumbs && <HeroBreadcrumbs items={breadcrumbs} />}
         {badge && (
-          <span className="mb-4 inline-block rounded-full bg-brand-orange/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
+          <span className="mb-4 inline-block rounded-full bg-brand-orange/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
             {badge}
           </span>
         )}

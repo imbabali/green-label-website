@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import PostCard from '@/components/blog/PostCard'
 import Pagination from '@/components/shared/Pagination'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { generatePageMetadata } from '@/lib/utils/seo'
 import { sanityFetch } from '@/lib/sanity/client'
 import { blogListQuery, blogCategoriesQuery, blogTagsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const revalidate = 60
 
@@ -80,15 +82,15 @@ export default async function BlogPage({ searchParams }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Category Filters */}
           {categories.length > 0 && (
             <div className="mb-8 flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  !params.category ? 'bg-brand-green text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                  !params.category ? 'bg-brand-green text-white shadow-md shadow-brand-green/20' : 'bg-white text-gray-700 shadow-sm hover:bg-gray-50'
                 }`}
               >
                 All
@@ -97,10 +99,10 @@ export default async function BlogPage({ searchParams }: Props) {
                 <Link
                   key={cat.slug?.current || cat.slug}
                   href={`/blog/category/${cat.slug?.current || cat.slug}`}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                     params.category === (cat.slug?.current || cat.slug)
-                      ? 'bg-brand-green text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-brand-green text-white shadow-md shadow-brand-green/20'
+                      : 'bg-white text-gray-700 shadow-sm hover:bg-gray-50'
                   }`}
                 >
                   {cat.name} ({cat.postCount})
@@ -109,7 +111,7 @@ export default async function BlogPage({ searchParams }: Props) {
             </div>
           )}
 
-          {/* Search bar */}
+          {/* Search bar — glass style */}
           <form action="/blog/search" method="get" className="mb-10">
             <div className="relative mx-auto max-w-xl">
               <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -118,27 +120,30 @@ export default async function BlogPage({ searchParams }: Props) {
                 name="q"
                 defaultValue={params.q || ''}
                 placeholder="Search articles..."
-                className="w-full rounded-full border border-gray-300 py-3 pl-12 pr-4 text-sm focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
+                className="w-full rounded-2xl border border-gray-200 bg-white/80 py-3 pl-12 pr-4 text-sm shadow-md backdrop-blur-sm focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
               />
             </div>
           </form>
 
           {/* Posts Grid */}
           {transformedPosts.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {transformedPosts.map((post: any) => (
-                <PostCard key={post.slug} post={post} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {transformedPosts.map((post: any, index: number) => (
+                  <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <PostCard post={post} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-newspaper mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No posts found</h3>
-              <p className="mt-2 text-gray-600">Check back soon for new articles.</p>
-              <Link href="/blog" className="mt-4 inline-block text-brand-green hover:underline">
-                View all posts
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-newspaper"
+              title="No posts found"
+              description="Check back soon for new articles."
+              actionLabel="View all posts"
+              actionHref="/blog"
+            />
           )}
 
           <Pagination currentPage={page} totalPages={totalPages} basePath="/blog" />

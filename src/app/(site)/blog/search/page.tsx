@@ -7,6 +7,8 @@ import { sanityFetch } from '@/lib/sanity/client'
 import { blogListQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import EmptyState from '@/components/shared/EmptyState'
 
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
@@ -65,9 +67,9 @@ export default async function BlogSearchPage({ searchParams }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Search form */}
+          {/* Search form — glass style */}
           <form action="/blog/search" method="get" className="mb-10">
             <div className="relative mx-auto max-w-xl">
               <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -76,7 +78,7 @@ export default async function BlogSearchPage({ searchParams }: Props) {
                 name="q"
                 defaultValue={query}
                 placeholder="Search articles..."
-                className="w-full rounded-full border border-gray-300 py-3 pl-12 pr-4 text-sm focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
+                className="w-full rounded-2xl border border-gray-200 bg-white/80 py-3 pl-12 pr-4 text-sm shadow-sm backdrop-blur-sm focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
               />
             </div>
           </form>
@@ -89,26 +91,29 @@ export default async function BlogSearchPage({ searchParams }: Props) {
           )}
 
           {transformedPosts.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {transformedPosts.map((post: any) => (
-                <PostCard key={post.slug} post={post} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {transformedPosts.map((post: any, index: number) => (
+                  <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <PostCard post={post} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : query ? (
-            <div className="py-16 text-center">
-              <i className="fa-solid fa-magnifying-glass mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No posts found</h3>
-              <p className="mt-2 text-gray-600">Try a different search term.</p>
-              <Link href="/blog" className="mt-4 inline-block text-brand-green hover:underline">
-                Browse all posts
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-magnifying-glass"
+              title="No posts found"
+              description="Try a different search term."
+              actionLabel="Browse all posts"
+              actionHref="/blog"
+            />
           ) : (
-            <div className="py-16 text-center">
-              <i className="fa-solid fa-magnifying-glass mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">Enter a search term</h3>
-              <p className="mt-2 text-gray-600">Type above to search our blog.</p>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-magnifying-glass"
+              title="Enter a search term"
+              description="Type above to search our blog."
+            />
           )}
 
           {total > POSTS_PER_PAGE && (

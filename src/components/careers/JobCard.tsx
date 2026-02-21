@@ -38,9 +38,9 @@ export default function JobCard({ job }: JobCardProps) {
     (new Date(job.applicationDeadline).getTime() - Date.now()) / 86400000 < 7
 
   return (
-    <div className="relative rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+    <div className={`card-premium relative rounded-2xl border border-gray-100 bg-white p-6 shadow-md ${job.isFeatured ? 'ring-2 ring-brand-orange/30' : ''}`}>
       {job.isFeatured && (
-        <span className="absolute right-4 top-4 rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+        <span className="absolute right-4 top-4 rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white shadow-md shadow-brand-orange/20">
           Featured
         </span>
       )}
@@ -63,15 +63,15 @@ export default function JobCard({ job }: JobCardProps) {
 
       <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-gray-500">
         {job.category && (
-          <span>
+          <span className="rounded-full bg-brand-green-50 px-2.5 py-0.5 text-xs font-medium text-brand-green">
             <i className="fa-solid fa-folder mr-1" /> {job.category.name}
           </span>
         )}
-        <span>
+        <span className="rounded-full bg-brand-orange-50 px-2.5 py-0.5 text-xs font-medium text-brand-orange-dark">
           <i className="fa-solid fa-location-dot mr-1" /> {job.location}
         </span>
         {job.isRemote && (
-          <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">
+          <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">
             Remote
           </span>
         )}
@@ -103,13 +103,13 @@ export default function JobCard({ job }: JobCardProps) {
       <div className="flex gap-3">
         <Link
           href={`/careers/jobs/${job.slug}`}
-          className="rounded-md border border-brand-green px-4 py-2 text-sm font-semibold text-brand-green hover:bg-brand-green hover:text-white"
+          className="rounded-lg border border-brand-green px-4 py-2 text-sm font-semibold text-brand-green transition-colors hover:bg-brand-green hover:text-white"
         >
           View Details
         </Link>
         <Link
           href={`/careers/jobs/${job.slug}/apply`}
-          className="rounded-md bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+          className="rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand-orange/20 transition-colors hover:bg-brand-orange-dark"
         >
           Apply Now
         </Link>

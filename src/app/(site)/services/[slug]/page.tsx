@@ -66,7 +66,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
@@ -75,14 +75,14 @@ export default async function ServiceDetailPage({ params }: Props) {
 
             <aside>
               <div className="sticky top-24 space-y-6">
-                <div className="rounded-xl bg-white p-6 shadow-md ring-1 ring-gray-100">
+                <div className="card-premium rounded-2xl bg-white p-6 shadow-md ring-1 ring-gray-100">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">
                     Enquire About This Service
                   </h3>
                   <ServiceInquiryForm serviceSlug={slug} serviceTitle={service.title} />
                 </div>
 
-                <div className="rounded-xl bg-brand-green/5 p-6">
+                <div className="rounded-2xl bg-brand-green/5 p-6">
                   <h3 className="mb-3 font-heading font-bold text-gray-900">Need Help?</h3>
                   <p className="mb-4 text-sm text-gray-600">Speak directly to our service team.</p>
                   <a href="tel:+256772423092" className="inline-flex items-center gap-2 text-brand-green font-semibold hover:underline">

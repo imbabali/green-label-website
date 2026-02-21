@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import ReviewCard from '@/components/reviews/ReviewCard'
 import Pagination from '@/components/shared/Pagination'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { generatePageMetadata } from '@/lib/utils/seo'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { SERVICE_TYPES } from '@/lib/data/service-types'
+import EmptyState from '@/components/shared/EmptyState'
 
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
@@ -58,29 +60,32 @@ export default async function ReviewsPage({ searchParams }: Props) {
         variant="fullWidth"
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Summary */}
-          <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <p className="text-3xl font-bold text-gray-900">{avgRating} <span className="text-lg font-normal text-gray-500">/ 5</span></p>
-              <p className="text-sm text-gray-600">Based on {count || 0} reviews</p>
+          {/* Summary — premium hero stat card */}
+          <div className="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-white p-6 shadow-md ring-1 ring-gray-100">
+            <div className="flex items-center gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-green shadow-lg shadow-brand-green/20">
+                <i className="fa-solid fa-star text-2xl text-white" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-gray-900">{avgRating} <span className="text-lg font-normal text-gray-500">/ 5</span></p>
+                <p className="text-sm text-gray-600">Based on {count || 0} reviews</p>
+              </div>
             </div>
-            <div className="flex gap-3">
-              <Link
-                href="/reviews/create"
-                className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white hover:bg-brand-orange-dark"
-              >
-                Write a Review
-              </Link>
-            </div>
+            <Link
+              href="/reviews/create"
+              className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-md shadow-brand-orange/20 transition-all hover:bg-brand-orange-dark hover:shadow-lg"
+            >
+              Write a Review
+            </Link>
           </div>
 
           {/* Service type filter */}
           <div className="mb-8 flex flex-wrap gap-2">
             <Link
               href="/reviews"
-              className={`rounded-full px-4 py-2 text-sm font-medium ${!params.service ? 'bg-brand-green text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${!params.service ? 'bg-brand-green text-white shadow-md shadow-brand-green/20' : 'bg-white text-gray-700 shadow-sm hover:bg-gray-50'}`}
             >
               All
             </Link>
@@ -88,7 +93,7 @@ export default async function ReviewsPage({ searchParams }: Props) {
               <Link
                 key={st.value}
                 href={`/reviews/service/${st.value}`}
-                className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+                className="rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50"
               >
                 {st.label}
               </Link>
@@ -97,20 +102,23 @@ export default async function ReviewsPage({ searchParams }: Props) {
 
           {/* Reviews grid */}
           {reviews && reviews.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {reviews.map((review: any) => (
-                <ReviewCard key={review.id} review={review} />
-              ))}
-            </div>
+            <ScrollRevealSection>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {reviews.map((review: any, index: number) => (
+                  <div key={review.id} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                    <ReviewCard review={review} />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           ) : (
-            <div className="py-20 text-center">
-              <i className="fa-solid fa-star mb-4 text-5xl text-gray-300" />
-              <h3 className="text-xl font-bold text-gray-900">No reviews yet</h3>
-              <p className="mt-2 text-gray-600">Be the first to leave a review!</p>
-              <Link href="/reviews/create" className="mt-4 inline-block rounded-lg bg-brand-green px-6 py-3 font-semibold text-white hover:bg-brand-green-dark">
-                Write a Review
-              </Link>
-            </div>
+            <EmptyState
+              icon="fa-solid fa-star"
+              title="No reviews yet"
+              description="Be the first to leave a review!"
+              actionLabel="Write a Review"
+              actionHref="/reviews/create"
+            />
           )}
 
           <Pagination currentPage={page} totalPages={totalPages} basePath="/reviews" />
