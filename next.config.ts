@@ -61,6 +61,7 @@ const nextConfig: NextConfig = {
               "img-src 'self' blob: data: https://cdn.sanity.io https://*.supabase.co",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://*.supabase.co https://*.sanity.io wss://*.supabase.co https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+              "frame-src 'self' https://www.google.com https://maps.google.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
