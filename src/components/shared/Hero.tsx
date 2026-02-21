@@ -53,27 +53,27 @@ function CTAButtonGroup({ buttons, centered = true }: { buttons: CTAButton[]; ce
   )
 }
 
-function StatsRow({ stats, light = false }: { stats: StatItem[]; light?: boolean }) {
+function StatsRow({ stats, light = false, compact = false }: { stats: StatItem[]; light?: boolean; compact?: boolean }) {
   return (
-    <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+    <div className={`mt-8 grid grid-cols-2 gap-3 ${compact ? 'lg:grid-cols-4' : 'md:grid-cols-4'}`}>
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`rounded-xl p-4 text-center ${
+          className={`min-w-0 rounded-xl p-3 text-center ${
             light
               ? 'bg-white/10 backdrop-blur-sm'
               : 'bg-brand-green/10'
           }`}
         >
           <div
-            className={`font-heading text-2xl font-bold md:text-3xl ${
-              light ? 'text-white' : 'text-brand-green'
-            }`}
+            className={`font-heading font-bold ${
+              compact ? 'text-xl lg:text-2xl' : 'text-2xl md:text-3xl'
+            } ${light ? 'text-white' : 'text-brand-green'}`}
           >
             {stat.value}
           </div>
           <div
-            className={`mt-1 text-sm ${
+            className={`mt-1 ${compact ? 'text-xs' : 'text-sm'} ${
               light ? 'text-white/80' : 'text-gray-600'
             }`}
           >
@@ -167,7 +167,7 @@ export default function Hero({
             {ctaButtons && ctaButtons.length > 0 && (
               <CTAButtonGroup buttons={ctaButtons} centered={false} />
             )}
-            {stats && <StatsRow stats={stats} light={false} />}
+            {stats && <StatsRow stats={stats} light={false} compact />}
             {children}
           </div>
           {backgroundImage && (
