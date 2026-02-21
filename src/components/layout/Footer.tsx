@@ -138,17 +138,39 @@ export default function Footer({ services = [] }: FooterProps) {
           <p className="text-center text-xs text-gray-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>
-          <nav aria-label="Policy links" className="flex flex-wrap items-center gap-4">
-            {FOOTER_LINKS.policies.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-xs text-gray-500 transition-colors hover:text-brand-orange"
+          <div className="flex flex-wrap items-center gap-5">
+            <nav aria-label="Policy links" className="flex flex-wrap items-center gap-4">
+              {FOOTER_LINKS.policies.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs text-gray-500 transition-colors hover:text-brand-orange"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex items-center gap-3">
+              <a
+                href={COMPANY_INFO.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit our Facebook page"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
               >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+                <i className="fa-brands fa-facebook-f text-xs" aria-hidden="true" />
+              </a>
+              <a
+                href={COMPANY_INFO.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit our LinkedIn page"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
+              >
+                <i className="fa-brands fa-linkedin-in text-xs" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

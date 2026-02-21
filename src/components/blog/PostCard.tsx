@@ -39,9 +39,9 @@ export default function PostCard({ post }: PostCardProps) {
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gray-200">
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-green/5 to-brand-orange/5">
             <i
-              className="fa-solid fa-image text-4xl text-gray-400"
+              className="fa-solid fa-newspaper text-4xl text-brand-green/30"
               aria-hidden="true"
             />
           </div>

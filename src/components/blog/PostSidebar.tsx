@@ -160,9 +160,9 @@ export default function PostSidebar({
                         className="object-cover transition-transform duration-200 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center">
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-green/5 to-brand-orange/5">
                         <i
-                          className="fa-solid fa-image text-sm text-gray-400"
+                          className="fa-solid fa-newspaper text-sm text-brand-green/30"
                           aria-hidden="true"
                         />
                       </div>

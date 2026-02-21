@@ -86,6 +86,9 @@ export default function FinancialCapacityPage() {
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {investments.map((item, i) => (
                 <div key={item.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl border-b-4 border-b-brand-orange bg-white p-4 text-center shadow-sm`}>
+                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
+                    <i className={`${item.icon} text-lg text-brand-green`} aria-hidden="true" />
+                  </div>
                   <p className="text-gradient-green text-2xl font-bold">{item.stat}</p>
                   <h3 className="mt-1 font-heading text-xs font-bold text-gray-900">{item.title}</h3>
                   <p className="mt-1 text-[10px] text-gray-600">{item.desc}</p>

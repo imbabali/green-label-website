@@ -483,8 +483,8 @@ export default async function HomePage() {
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gray-200">
-                        <i className="fa-solid fa-image text-4xl text-gray-400" aria-hidden="true" />
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-green/5 to-brand-orange/5">
+                        <i className="fa-solid fa-newspaper text-4xl text-brand-green/30" aria-hidden="true" />
                       </div>
                     )}
                     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" aria-hidden="true" />

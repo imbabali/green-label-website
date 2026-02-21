@@ -6,12 +6,6 @@ import { usePathname } from 'next/navigation'
 import { NAV_ITEMS, COMPANY_INFO } from '@/lib/data/constants'
 import MegaMenu from '@/components/layout/MegaMenu'
 
-const quickLinks = [
-  { label: 'Drop Off Locations', href: '/locations' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'FAQs', href: '/faqs' },
-]
-
 interface NavbarProps {
   services?: { title: string; slug: string }[]
 }
@@ -69,199 +63,120 @@ export default function Navbar({ services = [] }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-40">
-      {/* Utility Strip — desktop only, collapses on scroll */}
-      <div
-        className={`hidden overflow-hidden bg-gradient-green text-white transition-all duration-300 md:block ${
-          scrolled ? 'max-h-0' : 'max-h-12'
-        }`}
+    <header
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? 'glass shadow-lg border-b-2 border-brand-green/10'
+          : 'bg-white shadow-none'
+      }`}
+    >
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6"
+        aria-label="Main navigation"
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-sm">
-          {/* Left: Phone + Email */}
-          <div className="flex items-center gap-4">
-            <a
-              href={`tel:${COMPANY_INFO.phones[0].replace(/\s/g, '')}`}
-              className="flex items-center gap-1.5 transition-colors hover:text-brand-orange-light"
-            >
-              <i className="fa-solid fa-phone text-xs" aria-hidden="true" />
-              {COMPANY_INFO.phones[0]}
-            </a>
-            <a
-              href={`mailto:${COMPANY_INFO.email}`}
-              className="flex items-center gap-1.5 transition-colors hover:text-brand-orange-light"
-            >
-              <i className="fa-solid fa-envelope text-xs" aria-hidden="true" />
-              {COMPANY_INFO.email}
-            </a>
-          </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-1" aria-label="Green Label Services home">
+          <span className="font-heading text-xl font-extrabold tracking-tight text-brand-green lg:text-2xl">
+            GREEN
+          </span>
+          <span className="font-heading text-xl font-extrabold tracking-tight text-brand-orange lg:text-2xl">
+            LABEL
+          </span>
+        </Link>
 
-          {/* Center: Quick links */}
-          <nav aria-label="Quick links" className="flex items-center gap-1">
-            {quickLinks.map((link, index) => (
-              <span key={link.href} className="flex items-center">
-                {index > 0 && (
-                  <span className="mx-2 text-green-300/60" aria-hidden="true">|</span>
-                )}
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-brand-orange-light"
-                >
-                  {link.label}
-                </Link>
-              </span>
-            ))}
-          </nav>
+        {/* Desktop Navigation */}
+        <ul className="hidden items-center gap-1 lg:flex" role="menubar">
+          {NAV_ITEMS.map((item) => {
+            const hasChildren = 'children' in item && item.children
+            const active = isNavItemActive(item)
 
-          {/* Right: Quote button + social icons */}
-          <div className="flex items-center gap-4">
-            <button
-              type="button"
-              className="rounded bg-brand-orange px-4 py-1.5 text-sm font-semibold text-white shadow-sm shadow-brand-orange/20 transition-all hover:bg-brand-orange-dark hover:shadow-md hover:shadow-brand-orange/30"
-              data-quote-trigger
-            >
-              Request A Quote!
-            </button>
-
-            <div className="flex items-center gap-3" aria-label="Social media links">
-              <a
-                href={COMPANY_INFO.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our Facebook page"
-                className="transition-all hover:scale-110 hover:text-brand-orange-light"
-              >
-                <i className="fa-brands fa-facebook-f" aria-hidden="true" />
-              </a>
-              <a
-                href={COMPANY_INFO.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our LinkedIn page"
-                className="transition-all hover:scale-110 hover:text-brand-orange-light"
-              >
-                <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Nav Row */}
-      <div
-        className={`transition-all duration-300 ${
-          scrolled
-            ? 'glass shadow-lg border-b-2 border-brand-green/10'
-            : 'bg-white shadow-none'
-        }`}
-      >
-        <nav
-          className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6"
-          aria-label="Main navigation"
-        >
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-1" aria-label="Green Label Services home">
-            <span className="font-heading text-xl font-extrabold tracking-tight text-brand-green lg:text-2xl">
-              GREEN
-            </span>
-            <span className="font-heading text-xl font-extrabold tracking-tight text-brand-orange lg:text-2xl">
-              LABEL
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <ul className="hidden items-center gap-1 lg:flex" role="menubar">
-            {NAV_ITEMS.map((item) => {
-              const hasChildren = 'children' in item && item.children
-              const active = isNavItemActive(item)
-
-              if (!hasChildren) {
-                return (
-                  <li key={item.label} role="none">
-                    <Link
-                      href={'href' in item ? item.href : '#'}
-                      role="menuitem"
-                      aria-current={active ? 'page' : undefined}
-                      className={`rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand-green ${
-                        active
-                          ? 'text-brand-green'
-                          : 'text-gray-700'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                )
-              }
-
-              const menuId = `mega-menu-${item.label.toLowerCase().replace(/\s+/g, '-')}`
-              const isDynamicServices =
-                'dynamicServices' in item && item.dynamicServices
-
+            if (!hasChildren) {
               return (
-                <li
-                  key={item.label}
-                  role="none"
-                  className="group relative"
-                  onMouseEnter={() => setOpenMegaMenu(item.label)}
-                  onMouseLeave={() => setOpenMegaMenu(null)}
-                >
-                  <button
-                    type="button"
+                <li key={item.label} role="none">
+                  <Link
+                    href={'href' in item ? item.href : '#'}
                     role="menuitem"
-                    aria-haspopup="true"
-                    aria-expanded={openMegaMenu === item.label}
-                    aria-controls={menuId}
-                    onFocus={() => setOpenMegaMenu(item.label)}
-                    className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand-green ${
+                    aria-current={active ? 'page' : undefined}
+                    className={`rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand-green ${
                       active
                         ? 'text-brand-green'
                         : 'text-gray-700'
                     }`}
                   >
                     {item.label}
-                    <i
-                      className="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"
-                      aria-hidden="true"
-                    />
-                  </button>
-                  <MegaMenu
-                    id={menuId}
-                    groups={item.children.map((g) => ({
-                      heading: g.heading,
-                      links: [...g.links],
-                    }))}
-                    dynamicLinks={isDynamicServices ? services : undefined}
-                  />
+                  </Link>
                 </li>
               )
-            })}
-          </ul>
+            }
 
-          {/* Desktop CTA + Mobile Hamburger */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="hidden rounded-md bg-brand-green px-5 py-2 text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/30 lg:inline-flex"
-            >
-              Contact Us
-            </Link>
+            const menuId = `mega-menu-${item.label.toLowerCase().replace(/\s+/g, '-')}`
+            const isDynamicServices =
+              'dynamicServices' in item && item.dynamicServices
 
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100 hover:text-brand-green lg:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            >
-              <i
-                className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl`}
-                aria-hidden="true"
-              />
-            </button>
-          </div>
-        </nav>
-      </div>
+            return (
+              <li
+                key={item.label}
+                role="none"
+                className="group relative"
+                onMouseEnter={() => setOpenMegaMenu(item.label)}
+                onMouseLeave={() => setOpenMegaMenu(null)}
+              >
+                <button
+                  type="button"
+                  role="menuitem"
+                  aria-haspopup="true"
+                  aria-expanded={openMegaMenu === item.label}
+                  aria-controls={menuId}
+                  onFocus={() => setOpenMegaMenu(item.label)}
+                  className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand-green ${
+                    active
+                      ? 'text-brand-green'
+                      : 'text-gray-700'
+                  }`}
+                >
+                  {item.label}
+                  <i
+                    className="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"
+                    aria-hidden="true"
+                  />
+                </button>
+                <MegaMenu
+                  id={menuId}
+                  groups={item.children.map((g) => ({
+                    heading: g.heading,
+                    links: [...g.links],
+                  }))}
+                  dynamicLinks={isDynamicServices ? services : undefined}
+                />
+              </li>
+            )
+          })}
+        </ul>
+
+        {/* Desktop CTA + Mobile Hamburger */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/contact"
+            className="hidden rounded-md bg-brand-green px-5 py-2 text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/30 lg:inline-flex"
+          >
+            Contact Us
+          </Link>
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100 hover:text-brand-green lg:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            <i
+              className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl`}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+      </nav>
 
       {/* Mobile Menu */}
       <div
