@@ -27,10 +27,10 @@ const services = [
 ]
 
 const process = [
-  { num: '01', title: 'Assessment', desc: 'We audit your waste streams — volume, composition, compliance.' },
-  { num: '02', title: 'Custom Plan', desc: 'Tailored schedule, treatment method, and reporting framework.' },
-  { num: '03', title: 'Collection', desc: 'Trained crews arrive on schedule with the right equipment.' },
-  { num: '04', title: 'Treatment', desc: 'Licensed facility processing with full chain-of-custody docs.' },
+  { num: '01', icon: 'fa-solid fa-clipboard-check', title: 'Assessment', desc: 'We audit your waste streams — volume, composition, compliance.' },
+  { num: '02', icon: 'fa-solid fa-pen-ruler', title: 'Custom Plan', desc: 'Tailored schedule, treatment method, and reporting framework.' },
+  { num: '03', icon: 'fa-solid fa-truck-fast', title: 'Collection', desc: 'Trained crews arrive on schedule with the right equipment.' },
+  { num: '04', icon: 'fa-solid fa-flask-vial', title: 'Treatment', desc: 'Licensed facility processing with full chain-of-custody docs.' },
 ]
 
 export default function WasteManagementPage() {
@@ -44,23 +44,68 @@ export default function WasteManagementPage() {
         variant="fullWidth"
       />
 
-      {/* How It Works — Process Steps */}
+      {/* How It Works — Pipeline Flow Cards */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-diagram-project mr-2 text-brand-green" aria-hidden="true" />How It Works</h2>
+            <h2 className="reveal reveal-up mb-10 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-diagram-project mr-2 text-brand-green" aria-hidden="true" />How It Works</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="relative grid gap-6 md:grid-cols-4">
-              <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green md:block" aria-hidden="true" />
-              {process.map((s, i) => (
-                <div key={s.num} className={`reveal reveal-up stagger-${i + 1} relative text-center`}>
-                  <div className="relative z-10 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-green text-sm font-bold text-white shadow-lg shadow-brand-green/25">{s.num}</div>
-                  <div className="border-b-2 border-b-brand-orange pb-3">
-                    <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
-                    <p className="text-xs text-gray-600">{s.desc}</p>
+            {/* Desktop: cards in a row with dashed connector + chevron nodes */}
+            <div className="relative hidden md:block">
+              {/* Dashed connector line behind the icons */}
+              <div className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-[52px] z-0 border-t-2 border-dashed border-brand-green/25" aria-hidden="true" />
+              {/* Chevron nodes between columns */}
+              <div className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-[52px] z-[5] flex -translate-y-1/2 justify-around" aria-hidden="true">
+                {[0, 1, 2].map((n) => (
+                  <div key={n} className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-orange shadow-md shadow-brand-orange/25">
+                    <i className="fa-solid fa-chevron-right text-[10px] text-white" />
                   </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-4 gap-6">
+                {process.map((s, i) => (
+                  <div key={s.num} className={`reveal reveal-up stagger-${i + 1} relative`}>
+                    <div className="relative overflow-hidden rounded-2xl bg-white p-5 shadow-lg ring-1 ring-gray-100 transition-shadow hover:shadow-xl">
+                      {/* Watermark number */}
+                      <span className="pointer-events-none absolute -right-1 -top-3 select-none font-heading text-[72px] font-black leading-none text-brand-green/[0.06]" aria-hidden="true">{s.num}</span>
+                      {/* Icon in rounded square */}
+                      <div className="relative z-10 mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green to-emerald-600 text-white shadow-md shadow-brand-green/25">
+                        <i className={`${s.icon} text-lg`} aria-hidden="true" />
+                      </div>
+                      <h3 className="mb-1.5 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
+                      <p className="text-xs leading-relaxed text-gray-600">{s.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile: vertical stack with down-arrow connectors */}
+            <div className="space-y-0 md:hidden">
+              {process.map((s, i) => (
+                <div key={s.num}>
+                  <div className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} relative overflow-hidden rounded-2xl bg-white p-5 shadow-lg ring-1 ring-gray-100`}>
+                    <span className="pointer-events-none absolute -right-1 -top-3 select-none font-heading text-[72px] font-black leading-none text-brand-green/[0.06]" aria-hidden="true">{s.num}</span>
+                    <div className="flex items-start gap-4">
+                      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green to-emerald-600 text-white shadow-md shadow-brand-green/25">
+                        <i className={`${s.icon} text-lg`} aria-hidden="true" />
+                      </div>
+                      <div>
+                        <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
+                        <p className="text-xs leading-relaxed text-gray-600">{s.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {i < process.length - 1 && (
+                    <div className="flex justify-center py-2" aria-hidden="true">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-orange shadow-md shadow-brand-orange/25">
+                        <i className="fa-solid fa-chevron-down text-[10px] text-white" />
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
