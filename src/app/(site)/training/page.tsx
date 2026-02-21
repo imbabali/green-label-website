@@ -62,9 +62,6 @@ export default function TrainingPage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {programmes.map((p, i) => (
                 <div key={p.title} className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium relative h-full overflow-hidden rounded-2xl bg-white p-5 shadow-md`}>
-                  <span className="pointer-events-none absolute right-3 top-2 select-none text-4xl font-bold text-brand-green/10" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
                       <i className={`${p.icon} text-lg text-brand-green`} aria-hidden="true" />
