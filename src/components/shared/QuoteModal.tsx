@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -46,6 +46,8 @@ export default function QuoteModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const modalRef = useRef<HTMLDivElement>(null)
+  const previousFocusRef = useRef<HTMLElement | null>(null)
 
   const {
     register,
@@ -111,12 +113,42 @@ export default function QuoteModal() {
     }
   }, [openModal])
 
-  // Escape key to close
+  // Escape key, focus trap, and body scroll lock
   useEffect(() => {
     if (!isOpen) return
 
+    previousFocusRef.current = document.activeElement as HTMLElement
+
+    // Focus the modal container on open
+    requestAnimationFrame(() => {
+      const firstFocusable = modalRef.current?.querySelector<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+      firstFocusable?.focus()
+    })
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') closeModal()
+      if (e.key === 'Escape') {
+        closeModal()
+        return
+      }
+
+      // Focus trap
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input:not([tabindex="-1"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last?.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first?.focus()
+        }
+      }
     }
 
     document.addEventListener('keydown', handleKeyDown)
@@ -125,6 +157,7 @@ export default function QuoteModal() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
+      previousFocusRef.current?.focus()
     }
   }, [isOpen, closeModal])
 
@@ -182,6 +215,7 @@ export default function QuoteModal() {
 
   return (
     <div
+      ref={modalRef}
       className="modal-overlay open fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       role="dialog"
       aria-modal="true"

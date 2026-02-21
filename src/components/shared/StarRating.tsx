@@ -67,10 +67,12 @@ export default function StarRating({
         <button
           key={index}
           type="button"
+          role="radio"
+          aria-checked={rating === starValue}
           onClick={() => handleClick(starValue)}
           onMouseEnter={() => handleMouseEnter(starValue)}
           onMouseLeave={handleMouseLeave}
-          aria-label={`Rate ${starValue} of 5 stars`}
+          aria-label={`${starValue} of 5 stars`}
           className="star cursor-pointer text-brand-orange transition-transform hover:scale-110 focus:outline-none focus:ring-1 focus:ring-brand-orange focus:ring-offset-1 rounded-sm"
         >
           <i className={iconClass} aria-hidden="true" />

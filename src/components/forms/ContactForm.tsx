@@ -370,9 +370,7 @@ export default function ContactForm() {
             <span className="text-sm text-gray-700">
               I agree to the{' '}
               <a
-                href="/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/privacy"
                 className="text-brand-green underline hover:text-brand-green-dark"
               >
                 Privacy Policy

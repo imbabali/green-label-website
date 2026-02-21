@@ -68,10 +68,9 @@ export default function Pagination({
       <div className="flex flex-wrap items-center gap-1">
         {/* First */}
         {isFirst ? (
-          <span className={`${baseButtonClass} ${disabledClass}`} aria-disabled="true">
+          <button type="button" disabled className={`${baseButtonClass} ${disabledClass}`} aria-label="First page">
             <i className="fa-solid fa-angles-left text-xs" aria-hidden="true" />
-            <span className="sr-only">First page</span>
-          </span>
+          </button>
         ) : (
           <Link
             href={buildUrl(basePath, 1, searchParams)}
@@ -84,10 +83,9 @@ export default function Pagination({
 
         {/* Previous */}
         {isFirst ? (
-          <span className={`${baseButtonClass} ${disabledClass}`} aria-disabled="true">
+          <button type="button" disabled className={`${baseButtonClass} ${disabledClass}`} aria-label="Previous page">
             <i className="fa-solid fa-angle-left text-xs" aria-hidden="true" />
-            <span className="sr-only">Previous page</span>
-          </span>
+          </button>
         ) : (
           <Link
             href={buildUrl(basePath, currentPage - 1, searchParams)}
@@ -130,10 +128,9 @@ export default function Pagination({
 
         {/* Next */}
         {isLast ? (
-          <span className={`${baseButtonClass} ${disabledClass}`} aria-disabled="true">
+          <button type="button" disabled className={`${baseButtonClass} ${disabledClass}`} aria-label="Next page">
             <i className="fa-solid fa-angle-right text-xs" aria-hidden="true" />
-            <span className="sr-only">Next page</span>
-          </span>
+          </button>
         ) : (
           <Link
             href={buildUrl(basePath, currentPage + 1, searchParams)}
@@ -146,10 +143,9 @@ export default function Pagination({
 
         {/* Last */}
         {isLast ? (
-          <span className={`${baseButtonClass} ${disabledClass}`} aria-disabled="true">
+          <button type="button" disabled className={`${baseButtonClass} ${disabledClass}`} aria-label="Last page">
             <i className="fa-solid fa-angles-right text-xs" aria-hidden="true" />
-            <span className="sr-only">Last page</span>
-          </span>
+          </button>
         ) : (
           <Link
             href={buildUrl(basePath, totalPages, searchParams)}

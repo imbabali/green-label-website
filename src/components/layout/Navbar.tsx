@@ -15,6 +15,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openAccordion, setOpenAccordion] = useState<string | null>(null)
+  const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,13 +114,20 @@ export default function Navbar({ services = [] }: NavbarProps) {
               'dynamicServices' in item && item.dynamicServices
 
             return (
-              <li key={item.label} role="none" className="group relative">
+              <li
+                key={item.label}
+                role="none"
+                className="group relative"
+                onMouseEnter={() => setOpenMegaMenu(item.label)}
+                onMouseLeave={() => setOpenMegaMenu(null)}
+              >
                 <button
                   type="button"
                   role="menuitem"
                   aria-haspopup="true"
-                  aria-expanded="false"
+                  aria-expanded={openMegaMenu === item.label}
                   aria-controls={menuId}
+                  onFocus={() => setOpenMegaMenu(item.label)}
                   className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-brand-green ${
                     active
                       ? 'text-brand-green'

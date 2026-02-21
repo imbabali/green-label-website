@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
 
 interface ModalImage {
@@ -23,6 +23,8 @@ export default function ImageModal({
   onClose,
 }: ImageModalProps) {
   const currentIndex = initialIndex
+  const modalRef = useRef<HTMLDivElement>(null)
+  const previousFocusRef = useRef<HTMLElement | null>(null)
 
   const goToPrev = useCallback(() => {
     const prevIndex = currentIndex <= 0 ? images.length - 1 : currentIndex - 1
@@ -39,40 +41,58 @@ export default function ImageModal({
     )
   }, [currentIndex, images.length])
 
-  // Keyboard navigation
+  // Keyboard navigation, focus trap, and body scroll lock
   useEffect(() => {
     if (!isOpen) return
+
+    previousFocusRef.current = document.activeElement as HTMLElement
+    document.body.style.overflow = 'hidden'
+
+    // Focus the close button on open
+    requestAnimationFrame(() => {
+      const firstBtn = modalRef.current?.querySelector<HTMLElement>('button')
+      firstBtn?.focus()
+    })
 
     function handleKeyDown(e: KeyboardEvent) {
       switch (e.key) {
         case 'Escape':
           onClose()
-          break
+          return
         case 'ArrowLeft':
           goToPrev()
-          break
+          return
         case 'ArrowRight':
           goToNext()
-          break
+          return
+      }
+
+      // Focus trap
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], [tabindex]:not([tabindex="-1"])'
+        )
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last?.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first?.focus()
+        }
       }
     }
 
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [isOpen, onClose, goToPrev, goToNext])
-
-  // Prevent body scroll when open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
 
     return () => {
+      document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
+      previousFocusRef.current?.focus()
     }
-  }, [isOpen])
+  }, [isOpen, onClose, goToPrev, goToNext])
 
   if (!isOpen || images.length === 0) return null
 
@@ -80,6 +100,7 @@ export default function ImageModal({
 
   return (
     <div
+      ref={modalRef}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
       role="dialog"
       aria-modal="true"

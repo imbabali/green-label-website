@@ -210,13 +210,13 @@ export default function NewsletterForm({
             </div>
 
             {errors.email && (
-              <p className="mt-2 text-left text-xs text-red-300">
+              <p className="mt-2 text-left text-xs font-medium text-yellow-200" role="alert">
                 {errors.email.message}
               </p>
             )}
 
             {status === 'error' && (
-              <p className="mt-2 text-xs text-red-300">
+              <p className="mt-2 text-xs font-medium text-yellow-200" role="alert">
                 Something went wrong. Please try again.
               </p>
             )}
@@ -313,11 +313,11 @@ export default function NewsletterForm({
       </div>
 
       {errors.email && (
-        <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
+        <p className="mt-1 text-xs text-red-300" role="alert">{errors.email.message}</p>
       )}
 
       {status === 'error' && (
-        <p className="mt-1 text-xs text-red-400">
+        <p className="mt-1 text-xs text-red-300" role="alert">
           Something went wrong. Please try again.
         </p>
       )}
