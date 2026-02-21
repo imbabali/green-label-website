@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
-import ServiceCard from '@/components/services/ServiceCard'
+import ServiceCarousel from '@/components/services/ServiceCarousel'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
@@ -215,19 +215,19 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Carousel */}
       <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
         <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10">
           <ScrollRevealSection>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {displayServices.map((service, index) => (
-                <div key={service.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
-                  <ServiceCard service={service} />
-                </div>
-              ))}
-            </div>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+              <i className="fa-solid fa-layer-group mr-2 text-brand-green" aria-hidden="true" />What We Offer
+            </h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">
+              10 specialist services across 5 categories — hover to explore, click to learn more.
+            </p>
           </ScrollRevealSection>
+          <ServiceCarousel services={displayServices} />
         </div>
       </section>
 

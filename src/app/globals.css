@@ -421,6 +421,10 @@ h1, h2, h3, h4, h5, h6 {
   animation: marquee 35s linear infinite;
 }
 
+.animate-marquee-slow {
+  animation: marquee 50s linear infinite;
+}
+
 /* --- Hide Scrollbar (horizontal timeline) --- */
 .hide-scrollbar {
   scrollbar-width: none;
