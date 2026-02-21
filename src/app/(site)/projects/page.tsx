@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import CardCarousel from '@/components/shared/CardCarousel'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -24,44 +25,44 @@ const projects = [
     client: '50+ Healthcare Facilities',
     status: 'Ongoing',
     image: '/images/training/training5.jpg',
-    description: 'Comprehensive medical waste collection, treatment, and disposal programme serving over 50 hospitals, clinics, and laboratories across the Kampala metropolitan area. Includes sharps management, pharmaceutical waste, and infection-control materials.',
-    highlights: ['50+ facilities served', 'Daily collection schedules', 'Autoclave & incineration treatment'],
+    description: 'Comprehensive medical waste collection, treatment, and disposal serving over 50 hospitals and clinics across Kampala.',
+    highlights: ['50+ facilities', 'Daily collections', 'Autoclave treatment'],
   },
   {
     icon: 'fa-solid fa-oil-well',
     title: 'Oil Field Waste Management',
-    client: 'Western Uganda Exploration Sites',
+    client: 'Western Uganda Exploration',
     status: 'Ongoing',
     image: '/images/gallery/img3.jpg',
-    description: 'Full-spectrum hazardous waste management for oil exploration and production activities in the Albertine Graben region. Covers drill cuttings, produced water, chemical waste, and spill remediation.',
-    highlights: ['NEMA & PAU compliant', 'Spill response capability', 'Environmental monitoring'],
+    description: 'Full-spectrum hazardous waste management for oil exploration in the Albertine Graben region.',
+    highlights: ['NEMA compliant', 'Spill response', 'Env. monitoring'],
   },
   {
     icon: 'fa-solid fa-city',
     title: 'Municipal Waste Modernisation',
     client: 'Local Government Authorities',
-    status: 'Completed 2023',
+    status: '2023',
     image: '/images/gallery/img1.jpg',
-    description: 'Modernised waste collection infrastructure for multiple municipal authorities, replacing outdated systems with GPS-tracked fleets, scheduled routes, and community recycling points.',
-    highlights: ['3 districts upgraded', 'GPS-tracked fleet', '40% recycling increase'],
+    description: 'Modernised waste collection for municipal authorities with GPS-tracked fleets and community recycling points.',
+    highlights: ['3 districts', 'GPS fleet', '40% recycling ↑'],
   },
   {
     icon: 'fa-solid fa-industry',
-    title: 'Industrial Waste Audit & Compliance',
-    client: 'Manufacturing Sector Clients',
-    status: 'Completed 2022',
+    title: 'Industrial Waste Compliance',
+    client: 'Manufacturing Sector',
+    status: '2022',
     image: '/images/vehicles/harzard_vehicle3.jpg',
-    description: 'Comprehensive waste auditing and compliance advisory for major manufacturers, resulting in optimised waste streams, reduced disposal costs, and full regulatory alignment.',
-    highlights: ['12 factories audited', '30% cost reduction', '100% NEMA compliance'],
+    description: 'Waste auditing and compliance advisory for 12 major manufacturers — optimising streams and reducing costs.',
+    highlights: ['12 factories', '30% cost ↓', '100% compliant'],
   },
   {
     icon: 'fa-solid fa-mountain-sun',
     title: 'Mining Waste Remediation',
-    client: 'Eastern Uganda Mining Operations',
-    status: 'Completed 2021',
+    client: 'Eastern Uganda Mining Ops',
+    status: '2021',
     image: '/images/gallery/img4.jpg',
-    description: 'Environmental remediation of legacy mining waste at three sites in Eastern Uganda, including tailings stabilisation, soil restoration, and groundwater monitoring.',
-    highlights: ['3 sites remediated', 'Groundwater protected', 'Community health improved'],
+    description: 'Environmental remediation of legacy mining waste — tailings stabilisation, soil restoration, groundwater monitoring.',
+    highlights: ['3 sites', 'Groundwater safe', 'Community health ↑'],
   },
   {
     icon: 'fa-solid fa-graduation-cap',
@@ -69,8 +70,8 @@ const projects = [
     client: 'Ministry of Health / NEMA',
     status: 'Ongoing',
     image: '/images/training/training3.jpg',
-    description: 'Multi-year capacity-building programme training healthcare workers, local government officers, and community leaders in safe waste handling, segregation, and disposal best practices.',
-    highlights: ['2,000+ people trained', '15 districts covered', 'Certified curriculum'],
+    description: 'Multi-year capacity-building programme training healthcare workers and local government officers.',
+    highlights: ['2,000+ trained', '15 districts', 'Certified'],
   },
 ]
 
@@ -80,28 +81,12 @@ export default function ProjectsPage() {
       <Hero
         heading="Our Projects"
         subheading="Delivering Impact Across Uganda"
+        description="From healthcare facilities in Kampala to oil fields in the Albertine Graben — proven results across every sector."
         backgroundImage="/images/gallery/img1.jpg"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Project Profiles' }]}
         variant="fullWidth"
       />
 
-      {/* Intro */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Proven Results, Measurable Impact
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                From healthcare facilities in Kampala to oil fields in the Albertine Graben, our projects demonstrate a consistent track record of safe, compliant, and innovative waste management. Each engagement is tailored to the client&apos;s sector, scale, and regulatory landscape.
-              </p>
-            </div>
-          </ScrollRevealSection>
-        </div>
-      </section>
-
-      {/* Stats */}
       <StatsCounter
         stats={[
           { value: 50, suffix: '+', label: 'Active Projects', icon: 'fa-solid fa-diagram-project' },
@@ -112,78 +97,64 @@ export default function ProjectsPage() {
         darkBackground
       />
 
-      {/* Featured Projects */}
-      <section className="relative overflow-hidden bg-white py-16 md:py-20">
+      {/* Featured Projects — Carousel */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
               Featured Projects
             </h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-12 max-w-2xl text-center text-gray-600">
-              A selection of flagship engagements that showcase our capabilities across healthcare, oil &amp; gas, municipal, industrial, and mining sectors.
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-2xl text-center text-sm text-gray-600">
+              Flagship engagements across healthcare, oil &amp; gas, municipal, industrial, and mining sectors.
             </p>
           </ScrollRevealSection>
 
-          <div className="space-y-8">
-            {projects.map((project, index) => (
-              <ScrollRevealSection key={project.title}>
-                <div className={`reveal reveal-up stagger-${Math.min((index % 3) + 1, 3)} card-premium overflow-hidden rounded-2xl bg-white shadow-md md:flex ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className="relative h-64 md:h-auto md:w-2/5">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col justify-center p-6 md:p-8">
-                    <div className="mb-3 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                        <i className={`${project.icon} text-lg text-brand-green`} aria-hidden="true" />
-                      </div>
-                      <span className="rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-semibold text-brand-orange">
+          <CardCarousel hint="Swipe to see more projects">
+            {projects.map((project) => (
+              <article key={project.title} className="w-[85vw] max-w-[420px] shrink-0 snap-start">
+                <div className="card-premium h-full overflow-hidden rounded-2xl bg-white shadow-md">
+                  <div className="relative h-44">
+                    <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 85vw, 420px" className="object-cover" />
+                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-bold shadow backdrop-blur-sm">
                         {project.status}
                       </span>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-gray-900">{project.title}</h3>
-                    <p className="mt-1 text-sm font-medium text-brand-green">{project.client}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-gray-600">{project.description}</p>
-                    <ul className="mt-4 flex flex-wrap gap-2">
+                  </div>
+                  <div className="p-5">
+                    <div className="mb-2 flex items-center gap-2">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-green/10">
+                        <i className={`${project.icon} text-sm text-brand-green`} aria-hidden="true" />
+                      </div>
+                      <p className="text-xs font-medium text-brand-green">{project.client}</p>
+                    </div>
+                    <h3 className="font-heading text-base font-bold text-gray-900">{project.title}</h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-gray-600">{project.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
                       {project.highlights.map((h) => (
-                        <li key={h} className="flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
-                          <i className="fa-solid fa-check text-brand-green text-[10px]" aria-hidden="true" />
-                          {h}
-                        </li>
+                        <span key={h} className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-700">
+                          <i className="fa-solid fa-check text-brand-green text-[8px]" aria-hidden="true" />{h}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
-              </ScrollRevealSection>
+              </article>
             ))}
-          </div>
+          </CardCarousel>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
-            Have a Waste Management Challenge?
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-200">
-            We design tailored solutions for every sector and scale. Let&apos;s discuss your project.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
-              Request A Quote
-            </Link>
-            <Link href="/contact" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
-              Contact Us
-            </Link>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Have a Waste Management Challenge?</h2>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Request A Quote</Link>
+            <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Contact Us</Link>
           </div>
         </div>
       </section>

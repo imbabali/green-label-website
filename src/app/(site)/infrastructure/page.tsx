@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardGrid from '@/components/shared/CardGrid'
+import CardCarousel from '@/components/shared/CardCarousel'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -18,49 +18,19 @@ export function generateMetadata(): Metadata {
 }
 
 const facilities = [
-  {
-    icon: 'fa-solid fa-building',
-    title: 'Kampala Headquarters',
-    location: 'Industrial Area, Kampala',
-    description: 'Main operational base housing administrative offices, dispatch centre, vehicle workshop, and the Green Label Training Academy campus.',
-  },
-  {
-    icon: 'fa-solid fa-industry',
-    title: 'Iganga Treatment Facility',
-    location: 'Iganga District',
-    description: 'Licensed waste treatment plant with autoclave, incinerator, and chemical treatment capacity — serving Eastern Uganda and overflow from Kampala.',
-  },
-  {
-    icon: 'fa-solid fa-warehouse',
-    title: 'Mbarara Regional Depot',
-    location: 'Mbarara City',
-    description: 'Regional collection and transfer station serving Western Uganda, including oil & gas operations in the Albertine Graben region.',
-  },
-  {
-    icon: 'fa-solid fa-microscope',
-    title: 'Waste Analysis Laboratory',
-    location: 'Kampala HQ',
-    description: 'In-house laboratory for waste characterisation, hazard classification, and environmental sample analysis — supporting compliance documentation.',
-  },
-  {
-    icon: 'fa-solid fa-screwdriver-wrench',
-    title: 'Vehicle Maintenance Workshop',
-    location: 'Kampala HQ',
-    description: 'Full-service maintenance facility with certified mechanics, parts inventory, and a preventive maintenance programme for the entire 50+ vehicle fleet.',
-  },
-  {
-    icon: 'fa-solid fa-box-archive',
-    title: 'Hazardous Waste Storage',
-    location: 'Kampala & Iganga',
-    description: 'NEMA-licenced temporary storage facilities for hazardous and special waste, with bunded containment, ventilation, and fire suppression systems.',
-  },
+  { icon: 'fa-solid fa-building', title: 'Kampala HQ', location: 'Industrial Area', description: 'Admin offices, dispatch centre, vehicle workshop, Training Academy campus.' },
+  { icon: 'fa-solid fa-industry', title: 'Iganga Treatment Plant', location: 'Iganga District', description: 'Autoclave, incinerator, and chemical treatment serving Eastern Uganda.' },
+  { icon: 'fa-solid fa-warehouse', title: 'Mbarara Depot', location: 'Mbarara City', description: 'Regional collection and transfer station for Western Uganda and oil & gas.' },
+  { icon: 'fa-solid fa-microscope', title: 'Waste Analysis Lab', location: 'Kampala HQ', description: 'In-house waste characterisation, hazard classification, and environmental analysis.' },
+  { icon: 'fa-solid fa-screwdriver-wrench', title: 'Vehicle Workshop', location: 'Kampala HQ', description: 'Full-service maintenance with certified mechanics and parts inventory.' },
+  { icon: 'fa-solid fa-box-archive', title: 'Hazardous Storage', location: 'Kampala & Iganga', description: 'NEMA-licenced bunded containment with ventilation and fire suppression.' },
 ]
 
 const capabilities = [
-  { icon: 'fa-solid fa-temperature-high', title: 'Incineration', desc: 'High-temperature incineration for medical and hazardous waste destruction.' },
-  { icon: 'fa-solid fa-virus-slash', title: 'Autoclave Treatment', desc: 'Steam sterilisation for infectious waste before safe landfill disposal.' },
-  { icon: 'fa-solid fa-vial', title: 'Chemical Treatment', desc: 'Neutralisation, stabilisation, and detoxification of chemical waste streams.' },
-  { icon: 'fa-solid fa-arrows-rotate', title: 'Recycling Lines', desc: 'Sorting and processing of plastics, metals, paper, and glass.' },
+  { icon: 'fa-solid fa-temperature-high', title: 'Incineration', desc: 'High-temp destruction for medical and hazardous waste.' },
+  { icon: 'fa-solid fa-virus-slash', title: 'Autoclave', desc: 'Steam sterilisation for infectious waste before safe disposal.' },
+  { icon: 'fa-solid fa-vial', title: 'Chemical Treatment', desc: 'Neutralisation, stabilisation, detoxification.' },
+  { icon: 'fa-solid fa-arrows-rotate', title: 'Recycling Lines', desc: 'Sorting and processing plastics, metals, paper, glass.' },
 ]
 
 export default function InfrastructurePage() {
@@ -68,89 +38,67 @@ export default function InfrastructurePage() {
     <>
       <Hero
         heading="Infrastructure"
-        subheading="Facilities Built for Scale and Safety"
+        subheading="Built for Scale and Safety"
+        description="Strategically located treatment facilities, modern laboratories, and well-equipped depots — serving clients from Kampala to the Albertine Graben."
         backgroundImage="/images/offices/office1.jpg"
         breadcrumbs={[{ label: 'Capacity', href: '/infrastructure' }, { label: 'Infrastructure' }]}
         variant="fullWidth"
       />
 
-      {/* Intro */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                World-Class Facilities Across Uganda
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                Our infrastructure is the backbone of reliable, compliant waste management. Strategically located treatment facilities, modern laboratories, and well-equipped depots enable us to serve clients from Kampala to the Albertine Graben with consistent quality and rapid response times.
-              </p>
-            </div>
-          </ScrollRevealSection>
-        </div>
-      </section>
-
-      {/* Stats */}
       <StatsCounter
         stats={[
           { value: 3, label: 'Operational Bases', icon: 'fa-solid fa-location-dot' },
           { value: 2, label: 'Treatment Plants', icon: 'fa-solid fa-industry' },
-          { value: 1, label: 'In-House Laboratory', icon: 'fa-solid fa-flask-vial' },
+          { value: 1, label: 'In-House Lab', icon: 'fa-solid fa-flask-vial' },
           { value: 4, label: 'Treatment Methods', icon: 'fa-solid fa-gears' },
         ]}
         darkBackground
       />
 
-      {/* Facilities */}
-      <section className="relative overflow-hidden bg-white py-16 md:py-20">
+      {/* Facilities — Carousel */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Our Facilities
-            </h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-12 max-w-2xl text-center text-gray-600">
-              Licensed, inspected, and strategically positioned to serve every region of Uganda.
-            </p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Facilities</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Licensed, inspected, and strategically positioned across Uganda.</p>
           </ScrollRevealSection>
-
-          <CardGrid columns={3}>
+          <CardCarousel>
             {facilities.map((f) => (
-              <div key={f.title} className="card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-6 shadow-md">
-                <div className="mb-3 flex items-center justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${f.icon} text-xl text-brand-green`} aria-hidden="true" />
+              <div key={f.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
+                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
+                  <div className="mb-2 flex items-center justify-between">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
+                      <i className={`${f.icon} text-lg text-brand-green`} aria-hidden="true" />
+                    </div>
+                    <span className="flex items-center gap-1 text-[10px] font-medium text-gray-500">
+                      <i className="fa-solid fa-map-pin text-brand-orange" aria-hidden="true" />{f.location}
+                    </span>
                   </div>
-                  <span className="flex items-center gap-1 text-xs font-medium text-gray-500">
-                    <i className="fa-solid fa-map-pin text-brand-orange" aria-hidden="true" />
-                    {f.location}
-                  </span>
+                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{f.title}</h3>
+                  <p className="text-xs leading-relaxed text-gray-600">{f.description}</p>
                 </div>
-                <h3 className="mb-2 font-heading font-bold text-gray-900">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">{f.description}</p>
               </div>
             ))}
-          </CardGrid>
+          </CardCarousel>
         </div>
       </section>
 
-      {/* Treatment Capabilities */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      {/* Treatment Capabilities — compact */}
+      <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-12 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Treatment Capabilities
-            </h2>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Treatment Capabilities</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {capabilities.map((c, index) => (
-                <div key={c.title} className={`reveal reveal-up stagger-${index + 1} card-premium flex flex-col items-center rounded-2xl bg-white p-6 text-center shadow-md`}>
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10">
-                    <i className={`${c.icon} text-xl text-brand-orange`} aria-hidden="true" />
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {capabilities.map((c, i) => (
+                <div key={c.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
+                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
+                    <i className={`${c.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading text-sm font-bold text-gray-900">{c.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">{c.desc}</p>
+                  <h3 className="font-heading text-xs font-bold text-gray-900">{c.title}</h3>
+                  <p className="mt-1 text-[10px] text-gray-600">{c.desc}</p>
                 </div>
               ))}
             </div>
@@ -159,23 +107,15 @@ export default function InfrastructurePage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
-            Visit Our Facilities
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-200">
-            We welcome site visits from prospective clients and regulatory bodies. See our infrastructure first-hand.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
-              Arrange a Visit
-            </Link>
-            <Link href="#quote" data-quote-trigger="" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
-              Request A Quote
-            </Link>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Visit Our Facilities</h2>
+          <p className="mx-auto mt-3 max-w-lg text-sm text-gray-200">We welcome site visits from prospective clients and regulatory bodies.</p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Arrange a Visit</Link>
+            <Link href="#quote" data-quote-trigger="" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Request A Quote</Link>
           </div>
         </div>
       </section>
