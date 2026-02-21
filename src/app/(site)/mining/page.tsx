@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -26,18 +25,31 @@ const services = [
   { icon: 'fa-solid fa-scale-balanced', title: 'Regulatory Advisory', description: 'NEMA, Ministry of Energy, and international mining waste standards guidance.' },
 ]
 
+const credentials = [
+  { icon: 'fa-solid fa-certificate', label: 'NEMA Licensed' },
+  { icon: 'fa-solid fa-shield-halved', label: 'ISO 14001 Certified' },
+  { icon: 'fa-solid fa-helmet-safety', label: 'OSHA Compliant' },
+  { icon: 'fa-solid fa-globe', label: 'IFC Standards' },
+]
+
 export default function MiningPage() {
   return (
     <>
+      {/* Split Hero — text left, image right */}
       <Hero
         heading="Mining Services"
         subheading="Responsible Waste Management for Mining"
         description="Specialised knowledge and licensed infrastructure for tailings, chemical residues, and contaminated materials — protecting both environment and licence."
         backgroundImage="/images/gallery/img4.jpg"
         breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Mining' }]}
-        variant="fullWidth"
+        variant="split"
+        ctaButtons={[
+          { label: 'Get Assessment', href: '#quote', variant: 'secondary' },
+          { label: 'View Credentials', href: '/about', variant: 'outline' },
+        ]}
       />
 
+      {/* Stats — Dark */}
       <StatsCounter
         stats={[
           { value: 8, suffix: '+', label: 'Mining Clients', icon: 'fa-solid fa-gem' },
@@ -48,34 +60,57 @@ export default function MiningPage() {
         darkBackground
       />
 
-      {/* Capabilities — Carousel */}
+      {/* Capabilities — 2-col paired rows with alternating reveals */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Mining Capabilities</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">End-to-end solutions for exploration, extraction, processing, and mine closure.</p>
           </ScrollRevealSection>
-          <CardCarousel>
-            {services.map((s) => (
-              <div key={s.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${s.icon} text-lg text-brand-green`} aria-hidden="true" />
+          <ScrollRevealSection>
+            <div className="grid gap-4 md:grid-cols-2">
+              {services.map((s, i) => (
+                <div key={s.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-orange bg-white p-5 shadow-md`}>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
+                    <i className={`${s.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{s.description}</p>
+                  <div>
+                    <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
+                    <p className="text-xs leading-relaxed text-gray-600">{s.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </CardCarousel>
+              ))}
+            </div>
+          </ScrollRevealSection>
+        </div>
+      </section>
+
+      {/* Credentials — glass badge cards */}
+      <section className="bg-gradient-subtle py-10 md:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Credentials</h2>
+          </ScrollRevealSection>
+          <ScrollRevealSection>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              {credentials.map((c, i) => (
+                <div key={c.label} className={`reveal reveal-up stagger-${i + 1} glass flex items-center gap-2.5 rounded-xl p-3`}>
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-green/10">
+                    <i className={`${c.icon} text-base text-brand-green`} aria-hidden="true" />
+                  </div>
+                  <span className="font-heading text-xs font-bold text-gray-900">{c.label}</span>
+                </div>
+              ))}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
-        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
+        <GradientOrb color="orange" size="lg" className="-right-24 top-1/2 -translate-y-1/2 opacity-30" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Need Waste Management for Your Mine?</h2>
           <div className="mt-5 flex flex-wrap justify-center gap-3">

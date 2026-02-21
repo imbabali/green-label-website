@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import ImageGallery from '@/components/shared/ImageGallery'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -36,6 +35,13 @@ const features = [
   { icon: 'fa-solid fa-shield-halved', title: 'Safety Equipment', desc: 'Fire suppression, spill kits, cameras, reflective markings.' },
 ]
 
+const galleryImages = vehicles.map((v) => ({
+  url: v.image,
+  alt: v.title,
+  caption: v.title,
+  category: v.type,
+}))
+
 export default function OurFleetPage() {
   return (
     <>
@@ -58,33 +64,19 @@ export default function OurFleetPage() {
         darkBackground
       />
 
-      {/* Vehicle Gallery — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+      {/* Vehicle Gallery — Dark filterable section */}
+      <section className="relative overflow-hidden bg-gradient-green py-12 md:py-16">
+        <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Vehicles</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Our Vehicles</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Browse our fleet by category.</p>
           </ScrollRevealSection>
-
-          <CardCarousel hint="Swipe to see more vehicles">
-            {vehicles.map((v) => (
-              <div key={v.title} className="w-[75vw] max-w-[280px] shrink-0 snap-start">
-                <div className="card-premium overflow-hidden rounded-2xl bg-white shadow-md">
-                  <div className="relative h-40">
-                    <Image src={v.image} alt={v.title} fill sizes="(max-width: 768px) 75vw, 280px" className="object-cover" />
-                    <span className="absolute bottom-2 left-2 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-bold shadow backdrop-blur-sm">{v.type}</span>
-                  </div>
-                  <div className="p-3">
-                    <h3 className="font-heading text-xs font-bold text-gray-900">{v.title}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </CardCarousel>
+          <ImageGallery images={galleryImages} filterable />
         </div>
       </section>
 
-      {/* Fleet Features — compact row */}
+      {/* Fleet Standards — glass frosted cards */}
       <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
@@ -93,7 +85,7 @@ export default function OurFleetPage() {
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {features.map((f, i) => (
-                <div key={f.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
+                <div key={f.title} className={`reveal reveal-up stagger-${i + 1} glass flex flex-col items-center rounded-xl p-4 text-center`}>
                   <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
                     <i className={`${f.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>

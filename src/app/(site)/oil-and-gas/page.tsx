@@ -43,15 +43,16 @@ export default function OilAndGasPage() {
         backgroundImage="/images/gallery/img3.jpg"
         breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Oil & Gas' }]}
         variant="fullWidth"
+        badge="PAU & NEMA Licenced"
       />
 
-      {/* Credentials bar */}
+      {/* Credentials — glass frosted cards */}
       <section className="bg-gradient-subtle py-8 md:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
               {credentials.map((c, i) => (
-                <div key={c.label} className={`reveal reveal-up stagger-${i + 1} card-premium flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm`}>
+                <div key={c.label} className={`reveal reveal-up stagger-${i + 1} glass flex items-center gap-2.5 rounded-xl p-3`}>
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
                     <i className={`${c.icon} text-base text-brand-orange`} aria-hidden="true" />
                   </div>
@@ -73,23 +74,24 @@ export default function OilAndGasPage() {
         darkBackground
       />
 
-      {/* Capabilities — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+      {/* Capabilities — Dark glass section */}
+      <section className="relative overflow-hidden bg-gradient-green py-12 md:py-16">
+        <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
+        <GradientOrb color="orange" size="lg" className="-left-32 top-10 opacity-30" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Capabilities</h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Full-spectrum waste management for exploration, production, and decommissioning.</p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Our Capabilities</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Full-spectrum waste management for exploration, production, and decommissioning.</p>
           </ScrollRevealSection>
           <CardCarousel>
             {capabilities.map((c) => (
               <div key={c.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${c.icon} text-lg text-brand-green`} aria-hidden="true" />
+                <div className="glass-dark h-full rounded-2xl p-5">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
+                    <i className={`${c.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{c.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{c.description}</p>
+                  <h3 className="mb-1 font-heading text-sm font-bold text-white">{c.title}</h3>
+                  <p className="text-xs leading-relaxed text-gray-300">{c.description}</p>
                 </div>
               </div>
             ))}

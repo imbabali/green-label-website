@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -36,18 +36,24 @@ const services = [
 export default function PublicHealthPage() {
   return (
     <>
+      {/* Centered Hero — light, clinical */}
       <Hero
         heading="Public Health Services"
         subheading="Safe Healthcare Waste, Healthy Communities"
         description="End-to-end healthcare waste management — from colour-coded segregation at the ward level to final treatment and disposal."
-        backgroundImage="/images/training/training5.jpg"
         breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Public Health' }]}
-        variant="fullWidth"
+        variant="centered"
+        badge="WHO & NEMA Compliant"
+        ctaButtons={[
+          { label: 'Request Audit', href: '#quote', variant: 'secondary' },
+          { label: 'Learn More', href: '/contact', variant: 'outline' },
+        ]}
       />
 
-      {/* Client types bar */}
-      <section className="bg-gradient-subtle py-8 md:py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Client Types */}
+      <section className="relative overflow-hidden bg-white py-8 md:py-10">
+        <GradientOrb color="green" size="lg" className="-right-20 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
               {clientTypes.map((c, i) => (
@@ -63,6 +69,7 @@ export default function PublicHealthPage() {
         </div>
       </section>
 
+      {/* Stats — Light Mode */}
       <StatsCounter
         stats={[
           { value: 50, suffix: '+', label: 'Facilities Served', icon: 'fa-solid fa-hospital' },
@@ -70,30 +77,26 @@ export default function PublicHealthPage() {
           { value: 365, label: 'Days Coverage', icon: 'fa-solid fa-calendar-days' },
           { value: 0, label: 'Infection Incidents', icon: 'fa-solid fa-shield-virus' },
         ]}
-        darkBackground
       />
 
-      {/* Services — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Services — 3-col with left-green border + check icons */}
+      <section className="bg-gradient-subtle py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Healthcare Waste Services</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Covering every category of medical waste your facility generates.</p>
           </ScrollRevealSection>
-          <CardCarousel>
+          <CardGrid columns={3}>
             {services.map((s) => (
-              <div key={s.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${s.icon} text-lg text-brand-green`} aria-hidden="true" />
-                  </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{s.description}</p>
-                </div>
+              <div key={s.title} className="card-premium h-full rounded-2xl border-l-4 border-l-brand-green bg-white p-5 shadow-md">
+                <h3 className="mb-1 flex items-center gap-2 font-heading text-sm font-bold text-gray-900">
+                  <i className="fa-solid fa-circle-check text-brand-green" aria-hidden="true" />
+                  {s.title}
+                </h3>
+                <p className="text-xs leading-relaxed text-gray-600">{s.description}</p>
               </div>
             ))}
-          </CardCarousel>
+          </CardGrid>
         </div>
       </section>
 

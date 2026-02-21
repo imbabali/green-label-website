@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -17,13 +16,22 @@ export function generateMetadata(): Metadata {
 }
 
 const releases = [
-  { date: 'Jan 2026', title: 'Operations Expand to Mbarara Region', summary: 'New regional depot and treatment facility creating 50+ local jobs.', tag: 'Expansion', color: 'bg-blue-50 text-blue-700' },
-  { date: 'Nov 2025', title: 'Ministry of Health Medical Waste Contract', summary: 'Multi-year contract for government health facilities across 10 districts.', tag: 'Partnership', color: 'bg-purple-50 text-purple-700' },
-  { date: 'Sep 2025', title: 'ISO 14001 Certification Achieved', summary: 'Among the first waste companies in Uganda to achieve ISO 14001:2015.', tag: 'Certification', color: 'bg-green-50 text-green-700' },
-  { date: 'Jun 2025', title: 'Community Recycling Points Launch', summary: 'Five new recycling drop-offs in Kampala, reaching 100,000+ residents.', tag: 'Community', color: 'bg-amber-50 text-amber-700' },
-  { date: 'Mar 2025', title: 'Training Academy: 2,000th Graduate', summary: 'Milestone as the Academy certifies its 2,000th waste management professional.', tag: 'Training', color: 'bg-teal-50 text-teal-700' },
-  { date: 'Jan 2025', title: '15 New Specialist Vehicles Commissioned', summary: 'UGX 2B+ investment in compactors, tankers, and medical waste vehicles.', tag: 'Investment', color: 'bg-rose-50 text-rose-700' },
+  { date: 'Jan 2026', title: 'Operations Expand to Mbarara Region', summary: 'New regional depot and treatment facility creating 50+ local jobs.', tag: 'Expansion', borderColor: 'border-l-blue-500' },
+  { date: 'Nov 2025', title: 'Ministry of Health Medical Waste Contract', summary: 'Multi-year contract for government health facilities across 10 districts.', tag: 'Partnership', borderColor: 'border-l-purple-500' },
+  { date: 'Sep 2025', title: 'ISO 14001 Certification Achieved', summary: 'Among the first waste companies in Uganda to achieve ISO 14001:2015.', tag: 'Certification', borderColor: 'border-l-green-500' },
+  { date: 'Jun 2025', title: 'Community Recycling Points Launch', summary: 'Five new recycling drop-offs in Kampala, reaching 100,000+ residents.', tag: 'Community', borderColor: 'border-l-amber-500' },
+  { date: 'Mar 2025', title: 'Training Academy: 2,000th Graduate', summary: 'Milestone as the Academy certifies its 2,000th waste management professional.', tag: 'Training', borderColor: 'border-l-teal-500' },
+  { date: 'Jan 2025', title: '15 New Specialist Vehicles Commissioned', summary: 'UGX 2B+ investment in compactors, tankers, and medical waste vehicles.', tag: 'Investment', borderColor: 'border-l-rose-500' },
 ]
+
+const tagColors: Record<string, string> = {
+  Expansion: 'bg-blue-50 text-blue-700',
+  Partnership: 'bg-purple-50 text-purple-700',
+  Certification: 'bg-green-50 text-green-700',
+  Community: 'bg-amber-50 text-amber-700',
+  Training: 'bg-teal-50 text-teal-700',
+  Investment: 'bg-rose-50 text-rose-700',
+}
 
 const mediaHighlights = [
   { icon: 'fa-solid fa-newspaper', title: 'Press Coverage', desc: 'Daily Monitor, New Vision, The Observer' },
@@ -35,22 +43,23 @@ const mediaHighlights = [
 export default function PressReleasesPage() {
   return (
     <>
+      {/* Split Hero — editorial */}
       <Hero
         heading="Press Releases"
         subheading="News & Announcements"
         description="Stay up to date with our latest milestones, partnerships, and initiatives."
         backgroundImage="/images/offices/office2.jpg"
         breadcrumbs={[{ label: 'News & Media', href: '/blog' }, { label: 'Press Releases' }]}
-        variant="fullWidth"
+        variant="split"
       />
 
-      {/* Media highlights — compact bar */}
-      <section className="bg-gradient-subtle py-8 md:py-10">
+      {/* Media highlights — warm bg with reveal-right */}
+      <section className="bg-gradient-warm py-8 md:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
               {mediaHighlights.map((m, i) => (
-                <div key={m.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm`}>
+                <div key={m.title} className={`reveal reveal-right stagger-${i + 1} card-premium flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm`}>
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-green/10">
                     <i className={`${m.icon} text-base text-brand-green`} aria-hidden="true" />
                   </div>
@@ -65,28 +74,29 @@ export default function PressReleasesPage() {
         </div>
       </section>
 
-      {/* Releases — Horizontal carousel */}
+      {/* Releases — Vertical stacked list */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <GradientOrb color="green" size="lg" className="-right-32 top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Recent Announcements</h2>
           </ScrollRevealSection>
-
-          <CardCarousel hint="Swipe for more releases">
-            {releases.map((r) => (
-              <div key={r.title} className="w-[80vw] max-w-[360px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-l-4 border-l-brand-green bg-white p-5 shadow-md">
+          <ScrollRevealSection>
+            <div className="space-y-4">
+              {releases.map((r, i) => (
+                <div key={r.title} className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium rounded-xl border-l-4 ${r.borderColor} bg-white p-4 shadow-sm`}>
                   <div className="mb-2 flex items-center gap-2">
-                    <span className="text-xs font-medium text-gray-500"><i className="fa-regular fa-calendar mr-1" aria-hidden="true" />{r.date}</span>
-                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${r.color}`}>{r.tag}</span>
+                    <span className="text-xs font-medium text-gray-500">
+                      <i className="fa-regular fa-calendar mr-1" aria-hidden="true" />{r.date}
+                    </span>
+                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${tagColors[r.tag]}`}>{r.tag}</span>
                   </div>
                   <h3 className="font-heading text-sm font-bold text-gray-900">{r.title}</h3>
                   <p className="mt-1.5 text-xs leading-relaxed text-gray-600">{r.summary}</p>
                 </div>
-              </div>
-            ))}
-          </CardCarousel>
+              ))}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 

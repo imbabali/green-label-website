@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
-import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import CardCarousel from '@/components/shared/CardCarousel'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
@@ -36,26 +35,23 @@ const delivery = [
 export default function TrainingPage() {
   return (
     <>
+      {/* Centered Hero with inline stats */}
       <Hero
         heading="Education & Training"
         subheading="The Green Label Training Academy"
         description="Certified professional development for waste handlers, healthcare workers, corporate teams, and community leaders."
-        backgroundImage="/images/training/training3.jpg"
         breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Education & Training' }]}
-        variant="fullWidth"
-      />
-
-      <StatsCounter
+        variant="centered"
+        badge="Training Academy"
         stats={[
-          { value: 2000, suffix: '+', label: 'People Trained', icon: 'fa-solid fa-user-graduate' },
-          { value: 6, label: 'Certified Courses', icon: 'fa-solid fa-scroll' },
-          { value: 15, label: 'Districts Covered', icon: 'fa-solid fa-map-pin' },
-          { value: 98, suffix: '%', label: 'Pass Rate', icon: 'fa-solid fa-chart-simple' },
+          { value: '2,000+', label: 'People Trained' },
+          { value: '6', label: 'Certified Courses' },
+          { value: '15', label: 'Districts Covered' },
+          { value: '98%', label: 'Pass Rate' },
         ]}
-        darkBackground
       />
 
-      {/* Programmes — Carousel */}
+      {/* Programmes — numbered 3-col grid */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -63,10 +59,13 @@ export default function TrainingPage() {
             <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Programmes</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six certified courses covering every aspect of waste management.</p>
           </ScrollRevealSection>
-          <CardCarousel>
-            {programmes.map((p) => (
-              <div key={p.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
+          <ScrollRevealSection>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {programmes.map((p, i) => (
+                <div key={p.title} className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium relative h-full overflow-hidden rounded-2xl bg-white p-5 shadow-md`}>
+                  <span className="pointer-events-none absolute right-3 top-2 select-none text-4xl font-bold text-brand-green/10" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
                       <i className={`${p.icon} text-lg text-brand-green`} aria-hidden="true" />
@@ -76,31 +75,31 @@ export default function TrainingPage() {
                   <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{p.title}</h3>
                   <p className="text-xs leading-relaxed text-gray-600">{p.description}</p>
                 </div>
-              </div>
-            ))}
-          </CardCarousel>
+              ))}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
-      {/* Delivery — compact inline */}
+      {/* Delivery Methods — glass frosted carousel */}
       <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">How We Deliver</h2>
           </ScrollRevealSection>
-          <ScrollRevealSection>
-            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-              {delivery.map((m, i) => (
-                <div key={m.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
+          <CardCarousel>
+            {delivery.map((m) => (
+              <div key={m.title} className="w-[60vw] max-w-[240px] shrink-0 snap-start">
+                <div className="glass flex h-full flex-col items-center rounded-xl p-4 text-center">
                   <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
                     <i className={`${m.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>
                   <h3 className="font-heading text-xs font-bold text-gray-900">{m.title}</h3>
                   <p className="mt-1 text-[10px] text-gray-600">{m.desc}</p>
                 </div>
-              ))}
-            </div>
-          </ScrollRevealSection>
+              </div>
+            ))}
+          </CardCarousel>
         </div>
       </section>
 

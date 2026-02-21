@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -36,15 +36,22 @@ const benefits = [
 export default function HumanResourcesPage() {
   return (
     <>
+      {/* Split Hero — team photo right */}
       <Hero
         heading="Human Resources"
         subheading="300+ Professionals Driving Excellence"
         description="Behind every safe collection and compliant disposal stands a team of qualified professionals. We invest heavily in recruitment, training, and welfare."
         backgroundImage="/images/training/training4.jpg"
         breadcrumbs={[{ label: 'Capacity', href: '/infrastructure' }, { label: 'Human Resources' }]}
-        variant="fullWidth"
+        variant="split"
+        badge="300+ Professionals"
+        ctaButtons={[
+          { label: 'View Positions', href: '/careers', variant: 'secondary' },
+          { label: 'Contact HR', href: '/contact', variant: 'outline' },
+        ]}
       />
 
+      {/* Stats — Light Mode */}
       <StatsCounter
         stats={[
           { value: 300, suffix: '+', label: 'Team Members', icon: 'fa-solid fa-users' },
@@ -52,38 +59,35 @@ export default function HumanResourcesPage() {
           { value: 95, suffix: '%', label: 'Retention', icon: 'fa-solid fa-user-check' },
           { value: 40, suffix: '+', label: 'Training Hours / Year', icon: 'fa-solid fa-chalkboard' },
         ]}
-        darkBackground
       />
 
-      {/* Departments — Carousel */}
+      {/* Departments — 3-col CardGrid with green top-border + count badges */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+        <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Team</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six departments working together for safe, compliant waste management.</p>
           </ScrollRevealSection>
-          <CardCarousel>
+          <CardGrid columns={3}>
             {departments.map((d) => (
-              <div key={d.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
-                  <div className="mb-2 flex items-center justify-between">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                      <i className={`${d.icon} text-lg text-brand-green`} aria-hidden="true" />
-                    </div>
-                    <span className="rounded-full bg-brand-orange/10 px-2.5 py-0.5 text-[10px] font-bold text-brand-orange">{d.count}</span>
+              <div key={d.title} className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
+                    <i className={`${d.icon} text-lg text-brand-green`} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{d.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{d.description}</p>
+                  <span className="rounded-full bg-brand-orange/10 px-2.5 py-0.5 text-[10px] font-bold text-brand-orange">{d.count}</span>
                 </div>
+                <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{d.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-600">{d.description}</p>
               </div>
             ))}
-          </CardCarousel>
+          </CardGrid>
         </div>
       </section>
 
-      {/* Benefits — compact row */}
-      <section className="bg-gradient-subtle py-10 md:py-12">
+      {/* Benefits — glass frosted with reveal-scale */}
+      <section className="bg-gradient-warm py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Why People Stay</h2>
@@ -91,9 +95,9 @@ export default function HumanResourcesPage() {
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {benefits.map((b, i) => (
-                <div key={b.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
-                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
-                    <i className={`${b.icon} text-lg text-brand-orange`} aria-hidden="true" />
+                <div key={b.title} className={`reveal reveal-scale stagger-${i + 1} glass flex flex-col items-center rounded-xl p-4 text-center`}>
+                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
+                    <i className={`${b.icon} text-lg text-brand-green`} aria-hidden="true" />
                   </div>
                   <h3 className="font-heading text-xs font-bold text-gray-900">{b.title}</h3>
                   <p className="mt-1 text-[10px] text-gray-600">{b.desc}</p>

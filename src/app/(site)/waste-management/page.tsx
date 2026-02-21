@@ -3,8 +3,8 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
-import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
+import CardGrid from '@/components/shared/CardGrid'
+import { GradientOrb, WaveDivider, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
 export const revalidate = 3600
@@ -45,43 +45,10 @@ export default function WasteManagementPage() {
         variant="fullWidth"
       />
 
-      <StatsCounter
-        stats={[
-          { value: 2194, suffix: '+', label: 'Clients Served', icon: 'fa-solid fa-building-user' },
-          { value: 76000, label: 'Tonnes Processed', icon: 'fa-solid fa-weight-hanging' },
-          { value: 50, suffix: '+', label: 'Collection Vehicles', icon: 'fa-solid fa-truck' },
-          { value: 99, suffix: '%', label: 'On-Time Collection', icon: 'fa-solid fa-clock' },
-        ]}
-        darkBackground
-      />
-
-      {/* Services — Carousel */}
+      {/* How It Works — Process Steps */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Services</h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six core capabilities covering every waste type.</p>
-          </ScrollRevealSection>
-          <CardCarousel>
-            {services.map((s) => (
-              <div key={s.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${s.icon} text-lg text-brand-green`} aria-hidden="true" />
-                  </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{s.description}</p>
-                </div>
-              </div>
-            ))}
-          </CardCarousel>
-        </div>
-      </section>
-
-      {/* How It Works — Horizontal timeline */}
-      <section className="bg-gradient-subtle py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">How It Works</h2>
           </ScrollRevealSection>
@@ -91,8 +58,10 @@ export default function WasteManagementPage() {
               {process.map((s, i) => (
                 <div key={s.num} className={`reveal reveal-up stagger-${i + 1} relative text-center`}>
                   <div className="relative z-10 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-green text-sm font-bold text-white shadow-lg shadow-brand-green/25">{s.num}</div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
-                  <p className="text-xs text-gray-600">{s.desc}</p>
+                  <div className="border-b-2 border-b-brand-orange pb-3">
+                    <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
+                    <p className="text-xs text-gray-600">{s.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -100,8 +69,41 @@ export default function WasteManagementPage() {
         </div>
       </section>
 
+      {/* Stats — Light Mode */}
+      <StatsCounter
+        stats={[
+          { value: 2194, suffix: '+', label: 'Clients Served', icon: 'fa-solid fa-building-user' },
+          { value: 76000, label: 'Tonnes Processed', icon: 'fa-solid fa-weight-hanging' },
+          { value: 50, suffix: '+', label: 'Collection Vehicles', icon: 'fa-solid fa-truck' },
+          { value: 99, suffix: '%', label: 'On-Time Collection', icon: 'fa-solid fa-clock' },
+        ]}
+      />
+
+      {/* Services — 3-col Grid on warm bg */}
+      <section className="relative overflow-hidden bg-gradient-warm py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-20" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Services</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six core capabilities covering every waste type.</p>
+          </ScrollRevealSection>
+          <CardGrid columns={3}>
+            {services.map((s) => (
+              <div key={s.title} className="card-premium h-full rounded-2xl border-t-4 border-t-brand-orange bg-white p-5 shadow-md">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
+                  <i className={`${s.icon} text-lg text-brand-orange`} aria-hidden="true" />
+                </div>
+                <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-600">{s.description}</p>
+              </div>
+            ))}
+          </CardGrid>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-green py-12">
+        <WaveDivider flip color="#fef7ed" />
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">

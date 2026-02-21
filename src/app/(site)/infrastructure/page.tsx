@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -43,8 +43,37 @@ export default function InfrastructurePage() {
         backgroundImage="/images/offices/office1.jpg"
         breadcrumbs={[{ label: 'Capacity', href: '/infrastructure' }, { label: 'Infrastructure' }]}
         variant="fullWidth"
+        badge="Strategically Located"
       />
 
+      {/* Facilities — 3-col CardGrid, clean card-premium, no top border */}
+      <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Facilities</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Licensed, inspected, and strategically positioned across Uganda.</p>
+          </ScrollRevealSection>
+          <CardGrid columns={3}>
+            {facilities.map((f) => (
+              <div key={f.title} className="card-premium h-full rounded-2xl bg-white p-5 shadow-md">
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
+                    <i className={`${f.icon} text-lg text-brand-green`} aria-hidden="true" />
+                  </div>
+                  <span className="flex items-center gap-1 text-[10px] font-medium text-gray-500">
+                    <i className="fa-solid fa-map-pin text-brand-orange" aria-hidden="true" />{f.location}
+                  </span>
+                </div>
+                <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{f.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-600">{f.description}</p>
+              </div>
+            ))}
+          </CardGrid>
+        </div>
+      </section>
+
+      {/* Stats — Dark, moved AFTER facilities */}
       <StatsCounter
         stats={[
           { value: 3, label: 'Operational Bases', icon: 'fa-solid fa-location-dot' },
@@ -55,50 +84,22 @@ export default function InfrastructurePage() {
         darkBackground
       />
 
-      {/* Facilities — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+      {/* Capabilities — Dark glass section */}
+      <section className="relative overflow-hidden bg-gradient-green py-12 md:py-16">
+        <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Facilities</h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Licensed, inspected, and strategically positioned across Uganda.</p>
-          </ScrollRevealSection>
-          <CardCarousel>
-            {facilities.map((f) => (
-              <div key={f.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl border-t-4 border-t-brand-green bg-white p-5 shadow-md">
-                  <div className="mb-2 flex items-center justify-between">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
-                      <i className={`${f.icon} text-lg text-brand-green`} aria-hidden="true" />
-                    </div>
-                    <span className="flex items-center gap-1 text-[10px] font-medium text-gray-500">
-                      <i className="fa-solid fa-map-pin text-brand-orange" aria-hidden="true" />{f.location}
-                    </span>
-                  </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{f.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{f.description}</p>
-                </div>
-              </div>
-            ))}
-          </CardCarousel>
-        </div>
-      </section>
-
-      {/* Treatment Capabilities — compact */}
-      <section className="bg-gradient-subtle py-10 md:py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Treatment Capabilities</h2>
+            <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-white md:text-3xl">Treatment Capabilities</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {capabilities.map((c, i) => (
-                <div key={c.title} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
+                <div key={c.title} className={`reveal reveal-up stagger-${i + 1} glass-dark flex flex-col items-center rounded-xl p-4 text-center`}>
                   <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
-                    <i className={`${c.icon} text-lg text-brand-orange`} aria-hidden="true" />
+                    <i className={`${c.icon} text-lg text-brand-orange-light`} aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading text-xs font-bold text-gray-900">{c.title}</h3>
-                  <p className="mt-1 text-[10px] text-gray-600">{c.desc}</p>
+                  <h3 className="font-heading text-xs font-bold text-white">{c.title}</h3>
+                  <p className="mt-1 text-[10px] text-gray-300">{c.desc}</p>
                 </div>
               ))}
             </div>
