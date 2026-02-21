@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
@@ -20,70 +19,14 @@ export function generateMetadata(): Metadata {
 }
 
 const milestones = [
-  {
-    year: 2000,
-    icon: 'fa-solid fa-seedling',
-    title: 'Company Founded',
-    description:
-      'Green Label Services was established in Kampala with a mission to provide safe, reliable waste collection services across Uganda.',
-    image: '/images/hero/aga1.webp',
-  },
-  {
-    year: 2004,
-    icon: 'fa-solid fa-hospital',
-    title: 'Medical Waste Division',
-    description:
-      'Launched our dedicated medical waste management division, partnering with hospitals and healthcare facilities across Kampala.',
-    image: '/images/offices/office2.jpg',
-  },
-  {
-    year: 2008,
-    icon: 'fa-solid fa-certificate',
-    title: 'NEMA Certification',
-    description:
-      'Received full National Environment Management Authority certification, affirming our commitment to environmental compliance.',
-    image: '/images/certificates/iso.png',
-  },
-  {
-    year: 2012,
-    icon: 'fa-solid fa-oil-well',
-    title: 'Oil & Gas Expansion',
-    description:
-      'Expanded operations into the oil and gas sector, providing hazardous waste management for exploration and production companies.',
-    image: '/images/vehicles/hazard_vehicle1.jpg',
-  },
-  {
-    year: 2015,
-    icon: 'fa-solid fa-truck-fast',
-    title: 'Fleet Modernisation',
-    description:
-      'Invested in a modern fleet of 50+ specialised waste collection and transport vehicles to serve clients nationwide.',
-    image: '/images/vehicles/harzard_vehicle2.jpg',
-  },
-  {
-    year: 2018,
-    icon: 'fa-solid fa-graduation-cap',
-    title: 'Training Academy',
-    description:
-      'Established the Green Label Training Academy to educate communities and businesses on proper waste management practices.',
-    image: '/images/training/training3.jpg',
-  },
-  {
-    year: 2022,
-    icon: 'fa-solid fa-award',
-    title: 'National Recognition',
-    description:
-      'Awarded Uganda\'s Best Waste Management Company for outstanding service, innovation, and environmental stewardship.',
-    image: '/images/hero/waste.jpg',
-  },
-  {
-    year: 2025,
-    icon: 'fa-solid fa-earth-africa',
-    title: '25 Years of Excellence',
-    description:
-      'Celebrating 25 years of environmental leadership with over 2,194 active clients and 76,000+ tonnes of waste safely managed annually.',
-    image: '/images/offices/office3.jpg',
-  },
+  { year: 2000, icon: 'fa-solid fa-seedling', title: 'Company Founded', description: 'Green Label Services was established in Kampala with a mission to provide safe, reliable waste collection services across Uganda.', image: '/images/hero/aga1.webp' },
+  { year: 2004, icon: 'fa-solid fa-hospital', title: 'Medical Waste Division', description: 'Launched our dedicated medical waste management division, partnering with hospitals and healthcare facilities across Kampala.', image: '/images/offices/office2.jpg' },
+  { year: 2008, icon: 'fa-solid fa-certificate', title: 'NEMA Certification', description: 'Received full National Environment Management Authority certification, affirming our commitment to environmental compliance.', image: '/images/certificates/iso.png' },
+  { year: 2012, icon: 'fa-solid fa-oil-well', title: 'Oil & Gas Expansion', description: 'Expanded operations into the oil and gas sector, providing hazardous waste management for exploration and production companies.', image: '/images/vehicles/hazard_vehicle1.jpg' },
+  { year: 2015, icon: 'fa-solid fa-truck-fast', title: 'Fleet Modernisation', description: 'Invested in a modern fleet of 50+ specialised waste collection and transport vehicles to serve clients nationwide.', image: '/images/vehicles/harzard_vehicle2.jpg' },
+  { year: 2018, icon: 'fa-solid fa-graduation-cap', title: 'Training Academy', description: 'Established the Green Label Training Academy to educate communities and businesses on proper waste management practices.', image: '/images/training/training3.jpg' },
+  { year: 2022, icon: 'fa-solid fa-award', title: 'National Recognition', description: 'Awarded Uganda\'s Best Waste Management Company for outstanding service, innovation, and environmental stewardship.', image: '/images/hero/waste.jpg' },
+  { year: 2025, icon: 'fa-solid fa-earth-africa', title: '25 Years of Excellence', description: 'Celebrating 25 years of environmental leadership with over 2,194 active clients and 76,000+ tonnes of waste safely managed annually.', image: '/images/offices/office3.jpg' },
 ]
 
 function ShieldIcon({ className }: { className?: string }) {
@@ -190,88 +133,73 @@ function RecycleIcon({ className }: { className?: string }) {
 }
 
 const values = [
-  {
-    icon: ShieldIcon,
-    title: 'Safety First',
-    description: 'Every operation prioritises the safety of our team, clients, and the communities we serve.',
-  },
-  {
-    icon: LeafIcon,
-    title: 'Environmental Stewardship',
-    description: 'We go beyond compliance to actively protect and restore Uganda\'s natural environment.',
-  },
-  {
-    icon: HandshakeIcon,
-    title: 'Integrity',
-    description: 'Transparent business practices and honest communication form the foundation of every relationship.',
-  },
-  {
-    icon: LightbulbIcon,
-    title: 'Innovation',
-    description: 'Continuously adopting new technologies and methods to improve waste management outcomes.',
-  },
-  {
-    icon: UsersIcon,
-    title: 'Community Focus',
-    description: 'Investing in community education and environmental awareness programmes across Uganda.',
-  },
-  {
-    icon: StarIcon,
-    title: 'Excellence',
-    description: 'Delivering consistently high-quality services that exceed client expectations every time.',
-  },
+  { icon: ShieldIcon, title: 'Safety First', description: 'Every operation prioritises the safety of our team, clients, and the communities we serve.' },
+  { icon: LeafIcon, title: 'Environmental Stewardship', description: 'We go beyond compliance to actively protect and restore Uganda\'s natural environment.' },
+  { icon: HandshakeIcon, title: 'Integrity', description: 'Transparent business practices and honest communication form the foundation of every relationship.' },
+  { icon: LightbulbIcon, title: 'Innovation', description: 'Continuously adopting new technologies and methods to improve waste management outcomes.' },
+  { icon: UsersIcon, title: 'Community Focus', description: 'Investing in community education and environmental awareness programmes across Uganda.' },
+  { icon: StarIcon, title: 'Excellence', description: 'Delivering consistently high-quality services that exceed client expectations every time.' },
 ]
 
 export default function OurStoryPage() {
   return (
     <>
+      {/* Split Hero with badge */}
       <Hero
         heading="Our Story"
         subheading="25 Years of Environmental Excellence"
         badge="Since 2000"
-        variant="fullWidth"
+        variant="split"
         backgroundImage="/images/hero/aga1.webp"
         description="From humble beginnings in Kampala to becoming Uganda's most trusted waste management partner, our journey has been driven by a commitment to environmental stewardship and community wellbeing."
+        ctaButtons={[
+          { label: 'Our Services', href: '/services', variant: 'secondary' },
+          { label: 'Contact Us', href: '/contact', variant: 'outline' },
+        ]}
       />
 
       {/* Timeline Section */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Our Journey
-            </h2>
-            <p className="reveal reveal-up stagger-2 mx-auto mb-4 max-w-2xl text-center text-gray-600">
-              A timeline of key milestones that have shaped Green Label Services into the company it is today.
-            </p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Journey</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-4 max-w-xl text-center text-sm text-gray-600">A timeline of key milestones that have shaped Green Label Services.</p>
           </ScrollRevealSection>
           <HorizontalTimeline milestones={milestones} />
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Our Core Values
-            </h2>
-            <p className="reveal reveal-up stagger-2 mx-auto mb-12 max-w-2xl text-center text-gray-600">
-              The principles that guide every decision and action at Green Label Services.
-            </p>
-          </ScrollRevealSection>
+      {/* Stats — Light (after timeline) */}
+      <StatsCounter
+        stats={[
+          { value: 25, suffix: '+', label: 'Years Experience', iconNode: <CalendarIcon className="h-7 w-7" /> },
+          { value: 2194, suffix: '+', label: 'Clients Served', iconNode: <BuildingIcon className="h-7 w-7" /> },
+          { value: 76000, label: 'Tonnes Managed', iconNode: <RecycleIcon className="h-7 w-7" /> },
+          { value: 300, suffix: '+', label: 'Team Members', iconNode: <UsersIcon className="h-7 w-7" /> },
+        ]}
+      />
 
+      {/* Values — left-green border glass cards */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {values.map((value, index) => {
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Core Values</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">The principles that guide every decision and action.</p>
+          </ScrollRevealSection>
+          <ScrollRevealSection>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {values.map((value, i) => {
                 const Icon = value.icon
                 return (
-                  <div key={value.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-6 shadow-md`}>
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-green/10">
-                      <Icon className="h-7 w-7 text-brand-green" />
+                  <div key={value.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} glass flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-green p-5`}>
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-green/10">
+                      <Icon className="h-5 w-5 text-brand-green" />
                     </div>
-                    <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">{value.title}</h3>
-                    <p className="text-sm leading-relaxed text-gray-600">{value.description}</p>
+                    <div>
+                      <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{value.title}</h3>
+                      <p className="text-xs leading-relaxed text-gray-600">{value.description}</p>
+                    </div>
                   </div>
                 )
               })}
@@ -280,34 +208,15 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      <StatsCounter
-        stats={[
-          { value: 25, suffix: '+', label: 'Years Experience', iconNode: <CalendarIcon className="h-8 w-8" /> },
-          { value: 2194, suffix: '+', label: 'Clients Served', iconNode: <BuildingIcon className="h-8 w-8" /> },
-          { value: 76000, label: 'Tonnes Managed', iconNode: <RecycleIcon className="h-8 w-8" /> },
-          { value: 300, suffix: '+', label: 'Team Members', iconNode: <UsersIcon className="h-8 w-8" /> },
-        ]}
-        darkBackground
-      />
-
-      {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      {/* CTA */}
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
-            Be Part of Our Next Chapter
-          </h2>
-          <p className="mt-4 text-gray-200">
-            Partner with us for reliable, environmentally responsible waste management.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark hover:shadow-xl">
-              Contact Us
-            </Link>
-            <Link href="/careers" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
-              Join Our Team
-            </Link>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Be Part of Our Next Chapter</h2>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Contact Us</Link>
+            <Link href="/careers" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Join Our Team</Link>
           </div>
         </div>
       </section>

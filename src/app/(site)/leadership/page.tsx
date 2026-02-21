@@ -79,143 +79,109 @@ function GlobeIcon({ className }: { className?: string }) {
 }
 
 const leadershipValues = [
-  {
-    icon: CompassIcon,
-    title: 'Strategic Vision',
-    description: 'Setting the direction for sustainable growth and industry leadership across East Africa.',
-  },
-  {
-    icon: ShieldCheckIcon,
-    title: 'Accountability',
-    description: 'Taking ownership of outcomes and maintaining the highest standards of corporate governance.',
-  },
-  {
-    icon: UsersIcon,
-    title: 'Team Empowerment',
-    description: 'Investing in our people through training, mentorship, and creating pathways for career growth.',
-  },
-  {
-    icon: GlobeIcon,
-    title: 'Environmental Commitment',
-    description: 'Leading by example in environmental stewardship and sustainable business practices.',
-  },
+  { icon: CompassIcon, title: 'Strategic Vision', description: 'Setting the direction for sustainable growth and industry leadership across East Africa.' },
+  { icon: ShieldCheckIcon, title: 'Accountability', description: 'Taking ownership of outcomes and maintaining the highest standards of corporate governance.' },
+  { icon: UsersIcon, title: 'Team Empowerment', description: 'Investing in our people through training, mentorship, and creating pathways for career growth.' },
+  { icon: GlobeIcon, title: 'Environmental Commitment', description: 'Leading by example in environmental stewardship and sustainable business practices.' },
 ]
 
 export default function LeadershipPage() {
   return (
     <>
+      {/* Split Hero — professional leadership feel */}
       <Hero
         heading="Leadership Team"
         subheading="Guiding Environmental Excellence"
-        variant="fullWidth"
         backgroundImage="/images/gallery/img5.png"
         description="Our leadership team combines decades of industry experience with a shared passion for environmental sustainability and community wellbeing."
+        variant="split"
+        badge="Since 2000"
       />
 
-      {/* Intro Section */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      {/* CEO Section — premium glass card */}
+      <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-left-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Driven by Purpose, Led by Experience
-            </h2>
-            <p className="reveal reveal-up stagger-2 mt-6 text-lg leading-relaxed text-gray-600">
-              Since 2000, our leadership team has steered Green Label Services through 25 years of growth, innovation, and environmental impact. Their collective expertise spans waste management, environmental science, public health, and corporate governance.
-            </p>
-          </ScrollRevealSection>
-        </div>
-      </section>
-
-      {/* CEO Section */}
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="card-premium mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-xl md:p-12">
-            <div className="flex flex-col items-center gap-8 md:flex-row">
-              <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full ring-4 ring-brand-green/20 shadow-lg">
-                <Image
-                  src="/images/hero/mugume.jpg"
-                  alt="Dr. Grace Mugume - Chief Executive Officer"
-                  fill
-                  sizes="160px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div>
-                <span className="mb-2 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-orange">
-                  Chief Executive Officer
-                </span>
-                <h3 className="font-heading text-2xl font-bold text-gray-900 md:text-3xl">
-                  Dr. Grace Mugume
-                </h3>
-                <p className="mt-4 leading-relaxed text-gray-600">
-                  Dr. Grace Mugume founded Green Label Services in 2000 with a vision to transform waste management in Uganda. Under her leadership, the company has grown from a small Kampala-based operation to the nation&apos;s leading environmental services provider, serving over 2,194 clients across healthcare, oil and gas, manufacturing, and government sectors.
-                </p>
-                <p className="mt-3 leading-relaxed text-gray-600">
-                  With a doctorate in Environmental Science and over 25 years of industry experience, Dr. Mugume is a recognised voice in sustainable waste management across East Africa. She champions innovation, community education, and regulatory excellence.
-                </p>
-                <div className="mt-4 flex gap-3">
-                  <a href={`mailto:ceo@greenlabelservicesug.com`} className="inline-flex items-center gap-2 rounded-md bg-brand-green px-4 py-2 text-sm font-semibold text-white hover:bg-brand-green-dark">
-                    <i className="fa-solid fa-envelope" aria-hidden="true" /> Contact
-                  </a>
+            <div className="reveal reveal-up glass mx-auto max-w-4xl rounded-2xl p-6 md:p-10">
+              <div className="flex flex-col items-center gap-6 md:flex-row">
+                <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full ring-4 ring-brand-green/20 shadow-lg">
+                  <Image
+                    src="/images/hero/mugume.jpg"
+                    alt="Dr. Grace Mugume - Chief Executive Officer"
+                    fill
+                    sizes="144px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div>
+                  <span className="mb-2 inline-block rounded-full bg-brand-orange/10 px-3 py-0.5 text-xs font-semibold uppercase tracking-wider text-brand-orange">
+                    Chief Executive Officer
+                  </span>
+                  <h3 className="font-heading text-xl font-bold text-gray-900 md:text-2xl">Dr. Grace Mugume</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    Dr. Grace Mugume founded Green Label Services in 2000 with a vision to transform waste management in Uganda. Under her leadership, the company has grown from a small Kampala-based operation to the nation&apos;s leading environmental services provider, serving over 2,194 clients across healthcare, oil and gas, manufacturing, and government sectors.
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    With a doctorate in Environmental Science and over 25 years of industry experience, Dr. Mugume is a recognised voice in sustainable waste management across East Africa.
+                  </p>
+                  <div className="mt-3">
+                    <a href="mailto:ceo@greenlabelservicesug.com" className="inline-flex items-center gap-2 rounded-md bg-brand-green px-4 py-2 text-xs font-semibold text-white hover:bg-brand-green-dark">
+                      <i className="fa-solid fa-envelope" aria-hidden="true" /> Contact
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
-      {/* Board of Directors */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      {/* Board of Directors — warm bg with glass cards */}
+      <section className="bg-gradient-warm py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Board of Directors
-            </h2>
-            <p className="reveal reveal-up stagger-2 mx-auto mb-12 max-w-2xl text-center text-gray-600">
-              Our board provides strategic oversight and guidance, ensuring Green Label maintains the highest standards of corporate governance and environmental responsibility.
-            </p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Board of Directors</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Strategic oversight ensuring the highest standards of governance and environmental responsibility.</p>
           </ScrollRevealSection>
-
           <ScrollRevealSection>
-            <div className="grid gap-8 md:grid-cols-3">
-              {boardMembers.map((member, index) => (
-                <div key={member.name} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl bg-white p-8 text-center shadow-md`}>
-                <div className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-brand-green shadow-md">
-                  <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
-                    <circle cx="50" cy="36" r="16" fill="rgba(255,255,255,0.18)" />
-                    <ellipse cx="50" cy="82" rx="28" ry="20" fill="rgba(255,255,255,0.18)" />
-                  </svg>
-                  <span className="relative text-2xl font-bold text-white">{member.initials}</span>
+            <div className="grid gap-6 md:grid-cols-3">
+              {boardMembers.map((member, i) => (
+                <div key={member.name} className={`reveal reveal-scale stagger-${i + 1} glass rounded-2xl p-6 text-center`}>
+                  <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-brand-green shadow-md">
+                    <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
+                      <circle cx="50" cy="36" r="16" fill="rgba(255,255,255,0.18)" />
+                      <ellipse cx="50" cy="82" rx="28" ry="20" fill="rgba(255,255,255,0.18)" />
+                    </svg>
+                    <span className="relative text-xl font-bold text-white">{member.initials}</span>
+                  </div>
+                  <h3 className="font-heading text-sm font-bold text-gray-900">{member.name}</h3>
+                  <p className="mb-2 text-xs font-medium text-brand-orange">{member.role}</p>
+                  <p className="text-xs leading-relaxed text-gray-600">{member.bio}</p>
                 </div>
-                <h3 className="font-heading text-lg font-bold text-gray-900">{member.name}</h3>
-                <p className="mb-3 text-sm font-medium text-brand-orange">{member.role}</p>
-                <p className="text-sm leading-relaxed text-gray-600">{member.bio}</p>
-              </div>
-            ))}
+              ))}
             </div>
           </ScrollRevealSection>
         </div>
       </section>
 
-      {/* Leadership Values */}
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Leadership Values — dark glass section */}
+      <section className="relative overflow-hidden bg-gradient-green py-12 md:py-16">
+        <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-12 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Leadership Values
-            </h2>
-
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {leadershipValues.map((value, index) => {
+            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl">Leadership Values</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {leadershipValues.map((value, i) => {
                 const Icon = value.icon
                 return (
-                  <div key={value.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl bg-white p-6 text-center shadow-md`}>
-                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange/10">
-                      <Icon className="h-7 w-7 text-brand-orange" />
+                  <div key={value.title} className={`reveal reveal-up stagger-${i + 1} glass-dark rounded-2xl p-5 text-center`}>
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10">
+                      <Icon className="h-6 w-6 text-brand-orange-light" />
                     </div>
-                    <h3 className="mb-2 font-heading font-bold text-gray-900">{value.title}</h3>
-                    <p className="text-sm text-gray-600">{value.description}</p>
+                    <h3 className="mb-1 font-heading text-sm font-bold text-white">{value.title}</h3>
+                    <p className="text-xs leading-relaxed text-gray-300">{value.description}</p>
                   </div>
                 )
               })}
@@ -225,23 +191,14 @@ export default function LeadershipPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
-            Interested in Joining Our Team?
-          </h2>
-          <p className="mt-4 text-gray-200">
-            We are always looking for passionate people to join our mission.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/careers" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark hover:shadow-xl">
-              View Careers
-            </Link>
-            <Link href="/contact" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
-              Contact Us
-            </Link>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Interested in Joining Our Team?</h2>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="/careers" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">View Careers</Link>
+            <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Contact Us</Link>
           </div>
         </div>
       </section>

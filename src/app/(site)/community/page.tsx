@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
-import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -36,52 +35,51 @@ const impacts = [
 export default function CommunityImpactPage() {
   return (
     <>
+      {/* Split Hero — warm community feel with inline stats */}
       <Hero
         heading="Community Impact"
         subheading="Empowering Communities, Protecting Environments"
         description="Responsible waste management is inseparable from community well-being. We invest in education, employment, and protection in every community where we operate."
         backgroundImage="/images/training/training1.jpg"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Community Impact' }]}
-        variant="fullWidth"
-      />
-
-      <StatsCounter
+        variant="split"
+        badge="15 Districts"
         stats={[
-          { value: 15, label: 'Districts Reached', icon: 'fa-solid fa-map' },
-          { value: 10000, suffix: '+', label: 'Students Educated', icon: 'fa-solid fa-graduation-cap' },
-          { value: 200, suffix: '+', label: 'Clean-Up Events', icon: 'fa-solid fa-broom' },
-          { value: 150, suffix: '+', label: 'Youth Employed', icon: 'fa-solid fa-user-plus' },
+          { value: '10,000+', label: 'Students' },
+          { value: '200+', label: 'Clean-Ups' },
+          { value: '150+', label: 'Youth Jobs' },
+          { value: '30+', label: 'Water Sources' },
         ]}
-        darkBackground
       />
 
-      {/* Initiatives — Carousel */}
+      {/* Initiatives — 2-col with left-orange borders + alternating reveals */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+        <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Initiatives</h2>
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Hands-on programmes creating lasting environmental and social change.</p>
           </ScrollRevealSection>
-
-          <CardCarousel>
-            {initiatives.map((item) => (
-              <div key={item.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
-                    <i className={`${item.icon} text-lg text-brand-green`} aria-hidden="true" />
+          <ScrollRevealSection>
+            <div className="grid gap-4 md:grid-cols-2">
+              {initiatives.map((item, i) => (
+                <div key={item.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-orange bg-white p-5 shadow-md`}>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
+                    <i className={`${item.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{item.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{item.description}</p>
+                  <div>
+                    <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{item.title}</h3>
+                    <p className="text-xs leading-relaxed text-gray-600">{item.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </CardCarousel>
+              ))}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
-      {/* Impact — compact row */}
-      <section className="bg-gradient-subtle py-10 md:py-12">
+      {/* Impact — glass cards on warm bg */}
+      <section className="bg-gradient-warm py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Measurable Impact</h2>
@@ -89,14 +87,12 @@ export default function CommunityImpactPage() {
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {impacts.map((item, i) => (
-                <div key={item.label} className={`reveal reveal-up stagger-${i + 1} card-premium flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm`}>
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
-                    <i className={`${item.icon} text-base text-brand-orange`} aria-hidden="true" />
+                <div key={item.label} className={`reveal reveal-scale stagger-${i + 1} glass flex flex-col items-center rounded-xl p-4 text-center`}>
+                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
+                    <i className={`${item.icon} text-lg text-brand-green`} aria-hidden="true" />
                   </div>
-                  <div>
-                    <p className="font-heading text-base font-bold text-brand-green">{item.stat}</p>
-                    <p className="text-[10px] text-gray-600">{item.label}</p>
-                  </div>
+                  <p className="text-gradient-green text-xl font-bold">{item.stat}</p>
+                  <p className="mt-0.5 text-[10px] text-gray-600">{item.label}</p>
                 </div>
               ))}
             </div>

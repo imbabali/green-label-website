@@ -48,14 +48,23 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <Hero backgroundImage="/images/vehicles/harzard_vehicle3.jpg"
+      {/* Centered Hero with inline stats */}
+      <Hero
         heading="Our Services"
         subheading="Comprehensive Waste Management Solutions"
-        variant="fullWidth"
         description="From medical waste to oil & gas operations, we provide safe, compliant, and environmentally responsible waste management across Uganda."
+        breadcrumbs={[{ label: 'Services' }]}
+        variant="centered"
+        badge="Full-Service Provider"
+        stats={[
+          { value: '25+', label: 'Years Experience' },
+          { value: '2,194+', label: 'Clients Served' },
+          { value: '76,000', label: 'Tonnes Recycled' },
+          { value: '99%', label: 'Satisfaction' },
+        ]}
       />
 
-      {/* Category filters — glass style */}
+      {/* Category filters — glass pills */}
       {categories.length > 0 && (
         <section className="border-b border-gray-200 bg-white/80 py-6 backdrop-blur-sm">
           <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-3 px-4">
@@ -63,7 +72,7 @@ export default async function ServicesPage() {
               <Link
                 key={cat.slug?.current || cat.slug}
                 href={`/services/category/${cat.slug?.current || cat.slug}`}
-                className="rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-100 transition-all hover:bg-brand-green hover:text-white hover:shadow-md"
+                className="glass rounded-full px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-brand-green hover:text-white hover:shadow-md"
               >
                 {cat.icon && <i className={`${cat.icon} mr-1`} />}
                 {cat.name}
@@ -73,11 +82,13 @@ export default async function ServicesPage() {
         </section>
       )}
 
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Services Grid */}
+      <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-right-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedServices.length > 0 ? (
             <ScrollRevealSection>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {transformedServices.map((service: any, index: number) => (
                   <div key={service.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <ServiceCard service={service} />
@@ -97,6 +108,7 @@ export default async function ServicesPage() {
         </div>
       </section>
 
+      {/* Stats — Dark */}
       <StatsCounter
         stats={[
           { value: 25, suffix: '+', label: 'Years Experience', icon: 'fa-solid fa-calendar' },
@@ -108,21 +120,18 @@ export default async function ServicesPage() {
       />
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
             Need a Custom Waste Management Solution?
           </h2>
-          <p className="mt-4 text-gray-200">
-            Contact us for a tailored quote based on your specific requirements.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
               Get A Quote
             </Link>
-            <Link href="/contact" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
+            <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
               Contact Us
             </Link>
           </div>

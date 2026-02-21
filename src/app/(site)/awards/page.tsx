@@ -60,31 +60,16 @@ const certificates = [
 export default function AwardsPage() {
   return (
     <>
+      {/* Centered Hero — prestige feel */}
       <Hero
         heading="Awards & Recognition"
         subheading="Certified Excellence in Waste Management"
-        backgroundImage="/images/certificates/iso.png"
+        description="Over 25 years, Green Label Services has earned the trust of regulators, industry bodies, and clients alike."
         breadcrumbs={[{ label: 'Awards & Recognition' }]}
-        variant="fullWidth"
+        variant="centered"
+        badge="15+ Certifications"
       />
 
-      {/* Intro */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                A Track Record of Excellence
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                Over 25 years, Green Label Services has earned the trust of regulators, industry bodies, and clients alike. Our awards and certifications reflect an unwavering commitment to environmental compliance, operational safety, and service excellence across Uganda and East Africa.
-              </p>
-            </div>
-          </ScrollRevealSection>
-        </div>
-      </section>
-
-      {/* Stats */}
       <StatsCounter
         stats={[
           { value: 15, suffix: '+', label: 'Certifications', icon: 'fa-solid fa-certificate' },
@@ -95,35 +80,25 @@ export default function AwardsPage() {
         darkBackground
       />
 
-      {/* Awards */}
-      <section className="relative overflow-hidden bg-white py-16 md:py-20">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+      {/* Awards — amber/gold accent trophy cards */}
+      <section className="relative overflow-hidden bg-gradient-warm py-12 md:py-16">
+        <GradientOrb color="orange" size="lg" className="-left-32 top-10 opacity-20" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Notable Awards
-            </h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-12 max-w-2xl text-center text-gray-600">
-              Recognised by national and regional bodies for leadership in waste management and environmental stewardship.
-            </p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Notable Awards</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Recognised for leadership in waste management and environmental stewardship.</p>
           </ScrollRevealSection>
-
           <ScrollRevealSection>
-            <div className="grid gap-8 md:grid-cols-3">
-              {awards.map((award, index) => (
-                <div
-                  key={award.title}
-                  className={`reveal reveal-up stagger-${index + 1} card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-8 text-center shadow-md`}
-                >
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${award.icon} text-2xl text-brand-green`} aria-hidden="true" />
+            <div className="grid gap-6 md:grid-cols-3">
+              {awards.map((award, i) => (
+                <div key={award.title} className={`reveal reveal-scale stagger-${i + 1} card-premium rounded-2xl border-b-4 border-b-amber-400 bg-white p-6 text-center shadow-md`}>
+                  <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-amber-50">
+                    <i className={`${award.icon} text-2xl text-amber-500`} aria-hidden="true" />
                   </div>
-                  <span className="inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-semibold text-brand-orange">
-                    {award.year}
-                  </span>
-                  <h3 className="mt-3 font-heading text-lg font-bold text-gray-900">{award.title}</h3>
-                  <p className="mt-1 text-sm font-medium text-brand-green">{award.body}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">{award.description}</p>
+                  <span className="inline-block rounded-full bg-brand-orange/10 px-3 py-0.5 text-xs font-semibold text-brand-orange">{award.year}</span>
+                  <h3 className="mt-2 font-heading text-base font-bold text-gray-900">{award.title}</h3>
+                  <p className="mt-1 text-xs font-medium text-brand-green">{award.body}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-gray-600">{award.description}</p>
                 </div>
               ))}
             </div>
@@ -131,22 +106,17 @@ export default function AwardsPage() {
         </div>
       </section>
 
-      {/* Certifications & Licences */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      {/* Certifications — 4-col grid with glass hover */}
+      <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-              Certifications & Licences
-            </h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-12 max-w-2xl text-center text-gray-600">
-              Fully licensed and certified by every relevant national and international authority — your guarantee of safe, compliant waste management.
-            </p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Certifications & Licences</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Fully licensed and certified by every relevant authority — your guarantee of compliance.</p>
           </ScrollRevealSection>
-
           <CardGrid columns={4}>
             {certificates.map((cert) => (
               <div key={cert.image} className="card-premium overflow-hidden rounded-2xl bg-white shadow-md">
-                <div className="flex h-40 items-center justify-center bg-gray-50 p-4">
+                <div className="flex h-36 items-center justify-center bg-gray-50 p-3">
                   <Image
                     src={`/images/certificates/${cert.image}`}
                     alt={cert.name}
@@ -155,9 +125,9 @@ export default function AwardsPage() {
                     className="h-full w-auto object-contain"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="font-heading text-sm font-bold text-gray-900">{cert.name}</h3>
-                  <p className="mt-1 text-xs text-gray-500">{cert.issuer}</p>
+                <div className="p-3">
+                  <h3 className="font-heading text-xs font-bold text-gray-900">{cert.name}</h3>
+                  <p className="mt-0.5 text-[10px] text-gray-500">{cert.issuer}</p>
                 </div>
               </div>
             ))}
@@ -166,23 +136,14 @@ export default function AwardsPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
-            Partner with a Certified Leader
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-200">
-            Work with a company whose credentials are backed by every major environmental and standards authority in Uganda.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
-              Contact Us
-            </Link>
-            <Link href="#quote" data-quote-trigger="" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
-              Request A Quote
-            </Link>
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Partner with a Certified Leader</h2>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="/contact" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">Contact Us</Link>
+            <Link href="#quote" data-quote-trigger="" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">Request A Quote</Link>
           </div>
         </div>
       </section>

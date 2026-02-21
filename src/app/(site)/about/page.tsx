@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -47,55 +48,55 @@ const whyUs = [
 export default function AboutPage() {
   return (
     <>
-      <Hero heading="About Us" variant="fullWidth" backgroundImage="/images/hero/waste.jpg" />
+      {/* Split Hero — company intro with image */}
+      <Hero
+        heading="About Us"
+        subheading="Uganda's Leading Waste Management Company"
+        description="Founded in 2000, Green Label Services has grown from a small Kampala-based operation into Uganda's premier waste management company. Over 25 years of trusted service."
+        backgroundImage="/images/hero/waste.jpg"
+        variant="split"
+        badge="Since 2000"
+        ctaButtons={[
+          { label: 'Our Services', href: '/services', variant: 'secondary' },
+          { label: 'Contact Us', href: '/contact', variant: 'outline' },
+        ]}
+      />
 
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                Providing Trusted, Competitive And Reliable Business Waste Collection
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                Founded in 2000, Green Label Services has grown from a small Kampala-based operation into Uganda&apos;s premier waste management company. With over 25 years of experience, we serve hospitals, oil companies, manufacturers, and government agencies across the country.
-              </p>
-            </div>
-          </ScrollRevealSection>
-
-          <ScrollRevealSection>
-            <div className="mt-16 grid gap-8 md:grid-cols-3">
-              {features.map((f, index) => (
-                <div key={f.title} className={`reveal reveal-up stagger-${index + 1} card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-8 text-center shadow-md`}>
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${f.icon} text-2xl text-brand-green`} />
-                  </div>
-                  <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">{f.title}</h3>
-                  <p className="text-sm text-gray-600">{f.description}</p>
+      {/* Features — 3-col glass cards on white */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-left-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <CardGrid columns={3}>
+            {features.map((f) => (
+              <div key={f.title} className="glass h-full rounded-2xl p-6 text-center">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green/10">
+                  <i className={`${f.icon} text-xl text-brand-green`} aria-hidden="true" />
                 </div>
-              ))}
-            </div>
-          </ScrollRevealSection>
+                <h3 className="mb-2 font-heading text-sm font-bold text-gray-900">{f.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-600">{f.description}</p>
+              </div>
+            ))}
+          </CardGrid>
         </div>
       </section>
 
-      {/* How We Work — Timeline */}
-      <section className="relative overflow-hidden bg-white py-16 md:py-20">
+      {/* How We Work — numbered steps with orange bottom borders */}
+      <section className="relative overflow-hidden bg-gradient-warm py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-12 text-center font-heading text-3xl font-bold text-gray-900">How We Work</h2>
+            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">How We Work</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {/* Connecting line */}
-              <div className="absolute left-0 right-0 top-8 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green lg:block" aria-hidden="true" />
-              {steps.map((s, index) => (
-                <div key={s.num} className={`reveal reveal-up stagger-${index + 1} relative text-center`}>
-                  <div className="relative z-10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-green text-xl font-bold text-white shadow-lg shadow-brand-green/25">
-                    {s.num}
+            <div className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green lg:block" aria-hidden="true" />
+              {steps.map((s, i) => (
+                <div key={s.num} className={`reveal reveal-up stagger-${i + 1} relative text-center`}>
+                  <div className="relative z-10 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-green text-sm font-bold text-white shadow-lg shadow-brand-green/25">{s.num}</div>
+                  <div className="border-b-2 border-b-brand-orange pb-3">
+                    <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
+                    <p className="text-xs text-gray-600">{s.desc}</p>
                   </div>
-                  <h3 className="mb-2 font-heading font-bold text-gray-900">{s.title}</h3>
-                  <p className="text-sm text-gray-600">{s.desc}</p>
                 </div>
               ))}
             </div>
@@ -103,23 +104,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      {/* Mission / Vision / Values — left-green border cards */}
+      <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="grid gap-8 md:grid-cols-3">
-              {values.map((v, index) => (
-                <div key={v.title} className={`reveal reveal-up stagger-${index + 1} card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-8 shadow-md`}>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/10">
-                    <i className={`${v.icon} text-xl text-brand-green`} />
+            <div className="grid gap-6 md:grid-cols-3">
+              {values.map((v, i) => (
+                <div key={v.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${i + 1} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-6 shadow-md`}>
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
+                    <i className={`${v.icon} text-lg text-brand-green`} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">{v.title}</h3>
-                  {v.text && <p className="text-gray-600 leading-relaxed">{v.text}</p>}
+                  <h3 className="mb-2 font-heading text-base font-bold text-gray-900">{v.title}</h3>
+                  {v.text && <p className="text-sm leading-relaxed text-gray-600">{v.text}</p>}
                   {v.list && (
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5">
                       {v.list.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-gray-600">
-                          <i className="fa-solid fa-check text-brand-green text-sm" /> {item}
+                        <li key={item} className="flex items-center gap-2 text-sm text-gray-600">
+                          <i className="fa-solid fa-circle-check text-xs text-brand-green" aria-hidden="true" /> {item}
                         </li>
                       ))}
                     </ul>
@@ -131,28 +132,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="relative overflow-hidden bg-white py-16 md:py-20">
-        <div className="absolute inset-0 bg-gradient-radial-green" aria-hidden="true" />
+      {/* Why Choose Us — 3-col with orange accent */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-12 text-center font-heading text-3xl font-bold text-gray-900">Why Choose Us</h2>
+            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Why Choose Us</h2>
           </ScrollRevealSection>
-          <ScrollRevealSection>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {whyUs.map((item, index) => (
-                <div key={item.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium flex items-center gap-4 rounded-2xl bg-white p-6 shadow-md`}>
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-orange/10 shadow-sm">
-                    <i className={`${item.icon} text-xl text-brand-orange`} />
-                  </div>
-                  <span className="font-heading font-bold text-gray-900">{item.title}</span>
+          <CardGrid columns={3}>
+            {whyUs.map((item) => (
+              <div key={item.title} className="card-premium flex items-center gap-3 rounded-2xl border-b-2 border-b-brand-orange bg-white p-4 shadow-md">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
+                  <i className={`${item.icon} text-lg text-brand-orange`} aria-hidden="true" />
                 </div>
-              ))}
-            </div>
-          </ScrollRevealSection>
+                <span className="font-heading text-sm font-bold text-gray-900">{item.title}</span>
+              </div>
+            ))}
+          </CardGrid>
         </div>
       </section>
 
+      {/* Stats — Light Mode */}
       <StatsCounter
         stats={[
           { value: 25, suffix: '+', label: 'Years Experience', icon: 'fa-solid fa-calendar' },
@@ -160,22 +160,21 @@ export default function AboutPage() {
           { value: 76000, label: 'Tonnes Recycled', icon: 'fa-solid fa-recycle' },
           { value: 99, suffix: '%', label: 'Satisfaction', icon: 'fa-solid fa-star' },
         ]}
-        darkBackground
       />
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
         <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
             Ready to experience superior waste management?
           </h2>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-6 py-3 font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="#quote" data-quote-trigger="" className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark">
               Get A Quote
             </Link>
-            <Link href="/contact" className="rounded-lg border-2 border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
+            <Link href="/contact" className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
               Contact Us
             </Link>
           </div>

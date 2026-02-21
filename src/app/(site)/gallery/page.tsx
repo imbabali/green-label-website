@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import ImageGallery from '@/components/shared/ImageGallery'
+import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { generatePageMetadata } from '@/lib/utils/seo'
 import { sanityFetch } from '@/lib/sanity/client'
 import { galleryQuery } from '@/lib/sanity/queries'
@@ -51,16 +52,25 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <Hero backgroundImage="/images/gallery/img4.jpg"
+      {/* Centered Hero — visual/gallery feel */}
+      <Hero
         heading="Our Gallery"
         subheading="See Our Work in Action"
-        variant="fullWidth"
         description="Explore our operations, facilities, fleet, and community initiatives across Uganda."
+        breadcrumbs={[{ label: 'Gallery' }]}
+        variant="centered"
+        badge="Photo Gallery"
       />
 
-      <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ImageGallery images={images} />
+      {/* Filterable gallery on dark bg */}
+      <section className="relative overflow-hidden bg-gradient-green py-12 md:py-16">
+        <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Browse by Category</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Filter images by operations, fleet, training, or facilities.</p>
+          </ScrollRevealSection>
+          <ImageGallery images={images} filterable />
         </div>
       </section>
     </>

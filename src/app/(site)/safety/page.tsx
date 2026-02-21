@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -36,6 +36,7 @@ const protocols = [
 export default function SafetyStandardsPage() {
   return (
     <>
+      {/* fullWidth Hero with badge */}
       <Hero
         heading="Safety Standards"
         subheading="Zero Harm. Zero Compromise."
@@ -43,17 +44,18 @@ export default function SafetyStandardsPage() {
         backgroundImage="/images/hero/waste.jpg"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Safety Standards' }]}
         variant="fullWidth"
+        badge="Zero Harm Policy"
       />
 
-      {/* Badges + Stats combined */}
-      <section className="bg-gradient-subtle py-10 md:py-12">
+      {/* Certification badges — glass on warm bg */}
+      <section className="bg-gradient-warm py-8 md:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
               {certifications.map((c, i) => (
-                <div key={c.label} className={`reveal reveal-up stagger-${i + 1} card-premium flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm`}>
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
-                    <i className={`${c.icon} text-base text-brand-orange`} aria-hidden="true" />
+                <div key={c.label} className={`reveal reveal-scale stagger-${i + 1} glass flex items-center gap-2.5 rounded-xl p-3`}>
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red-50">
+                    <i className={`${c.icon} text-base text-red-600`} aria-hidden="true" />
                   </div>
                   <span className="font-heading text-xs font-bold text-gray-900">{c.label}</span>
                 </div>
@@ -63,6 +65,29 @@ export default function SafetyStandardsPage() {
         </div>
       </section>
 
+      {/* Protocols — 3-col grid with left-red border */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollRevealSection>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Safety Protocols</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six layers of protection keeping our people, clients, and communities safe.</p>
+          </ScrollRevealSection>
+          <CardGrid columns={3}>
+            {protocols.map((p) => (
+              <div key={p.title} className="card-premium h-full rounded-2xl border-l-4 border-l-red-400 bg-white p-5 shadow-md">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-red-50">
+                  <i className={`${p.icon} text-lg text-red-600`} aria-hidden="true" />
+                </div>
+                <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{p.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-600">{p.description}</p>
+              </div>
+            ))}
+          </CardGrid>
+        </div>
+      </section>
+
+      {/* Stats — Dark, after protocols */}
       <StatsCounter
         stats={[
           { value: 100, suffix: '%', label: 'OSHA Compliance', icon: 'fa-solid fa-shield-halved' },
@@ -72,31 +97,6 @@ export default function SafetyStandardsPage() {
         ]}
         darkBackground
       />
-
-      {/* Protocols — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Safety Protocols</h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six layers of protection keeping our people, clients, and communities safe.</p>
-          </ScrollRevealSection>
-
-          <CardCarousel>
-            {protocols.map((p) => (
-              <div key={p.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
-                    <i className={`${p.icon} text-lg text-brand-green`} aria-hidden="true" />
-                  </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{p.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{p.description}</p>
-                </div>
-              </div>
-            ))}
-          </CardCarousel>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-gradient-green py-12">

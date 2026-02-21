@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
+import CardGrid from '@/components/shared/CardGrid'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -42,34 +42,35 @@ const goals = [
 export default function SustainabilityPage() {
   return (
     <>
+      {/* Centered Hero — eco feel */}
       <Hero
         heading="Sustainability"
         subheading="Building a Greener Future for Uganda"
         description="Sustainability is our business model. Every tonne we manage is an opportunity to recover resources and reduce Uganda's environmental footprint."
-        backgroundImage="/images/gallery/img6.jpg"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Sustainability' }]}
-        variant="fullWidth"
+        variant="centered"
+        badge="Eco Commitment"
       />
 
-      {/* Pillars — compact 3-col */}
-      <section className="bg-gradient-subtle py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <div className="grid gap-6 md:grid-cols-3">
-              {pillars.map((p, i) => (
-                <div key={p.title} className={`reveal reveal-up stagger-${i + 1} card-premium rounded-2xl border-t-4 border-t-brand-green bg-white p-6 text-center shadow-md`}>
-                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green/10">
-                    <i className={`${p.icon} text-xl text-brand-green`} aria-hidden="true" />
-                  </div>
-                  <h3 className="mb-1 font-heading text-base font-bold text-gray-900">{p.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{p.description}</p>
+      {/* Pillars — 3-col glass cards */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-left-32 -top-20 opacity-15" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <CardGrid columns={3}>
+            {pillars.map((p) => (
+              <div key={p.title} className="glass h-full rounded-2xl p-6 text-center">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green/10">
+                  <i className={`${p.icon} text-xl text-brand-green`} aria-hidden="true" />
                 </div>
-              ))}
-            </div>
-          </ScrollRevealSection>
+                <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{p.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-600">{p.description}</p>
+              </div>
+            ))}
+          </CardGrid>
         </div>
       </section>
 
+      {/* Stats — Light */}
       <StatsCounter
         stats={[
           { value: 76000, label: 'Tonnes Recycled', icon: 'fa-solid fa-recycle' },
@@ -77,48 +78,46 @@ export default function SustainabilityPage() {
           { value: 12, label: 'Recovery Programmes', icon: 'fa-solid fa-gears' },
           { value: 3, label: 'Treatment Facilities', icon: 'fa-solid fa-warehouse' },
         ]}
-        darkBackground
       />
 
-      {/* Programmes — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+      {/* Programmes — dark glass section */}
+      <section className="relative overflow-hidden bg-gradient-green py-12 md:py-16">
+        <div className="absolute inset-0 pattern-dots opacity-40" aria-hidden="true" />
+        <GradientOrb color="orange" size="lg" className="-right-32 top-10 opacity-25" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Our Programmes</h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Practical initiatives turning environmental ambition into measurable results.</p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-white md:text-3xl">Our Programmes</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-300">Practical initiatives turning environmental ambition into measurable results.</p>
           </ScrollRevealSection>
-
-          <CardCarousel>
+          <CardGrid columns={3}>
             {programmes.map((prog) => (
-              <div key={prog.title} className="w-[75vw] max-w-[300px] shrink-0 snap-start">
-                <div className="card-premium h-full rounded-2xl bg-white p-5 shadow-md">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
-                    <i className={`${prog.icon} text-lg text-brand-green`} aria-hidden="true" />
-                  </div>
-                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{prog.title}</h3>
-                  <p className="text-xs leading-relaxed text-gray-600">{prog.desc}</p>
+              <div key={prog.title} className="glass-dark h-full rounded-2xl p-5">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-orange/10">
+                  <i className={`${prog.icon} text-lg text-brand-orange`} aria-hidden="true" />
                 </div>
+                <h3 className="mb-1 font-heading text-sm font-bold text-white">{prog.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-300">{prog.desc}</p>
               </div>
             ))}
-          </CardCarousel>
+          </CardGrid>
         </div>
       </section>
 
-      {/* Goals — inline row */}
+      {/* Goals — timeline-style with year badges */}
       <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Sustainability Goals</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-4">
+              <div className="absolute left-0 right-0 top-5 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green lg:block" aria-hidden="true" />
               {goals.map((g, i) => (
-                <div key={g.target} className={`reveal reveal-up stagger-${i + 1} card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
-                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
-                    <i className={`${g.icon} text-lg text-brand-orange`} aria-hidden="true" />
+                <div key={g.target} className={`reveal reveal-up stagger-${i + 1} relative card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
+                  <div className="relative z-10 mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-green text-white shadow-lg shadow-brand-green/25">
+                    <i className={`${g.icon} text-sm`} aria-hidden="true" />
                   </div>
-                  <span className="rounded-full bg-brand-green/10 px-2 py-0.5 text-[10px] font-bold text-brand-green">Target {g.year}</span>
+                  <span className="rounded-full bg-brand-orange/10 px-2 py-0.5 text-[10px] font-bold text-brand-orange">Target {g.year}</span>
                   <h3 className="mt-1.5 font-heading text-xs font-bold text-gray-900">{g.target}</h3>
                 </div>
               ))}

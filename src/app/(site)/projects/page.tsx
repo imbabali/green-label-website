@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
-import CardCarousel from '@/components/shared/CardCarousel'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -44,7 +43,7 @@ const projects = [
     status: '2023',
     image: '/images/gallery/img1.jpg',
     description: 'Modernised waste collection for municipal authorities with GPS-tracked fleets and community recycling points.',
-    highlights: ['3 districts', 'GPS fleet', '40% recycling ↑'],
+    highlights: ['3 districts', 'GPS fleet', '40% recycling \u2191'],
   },
   {
     icon: 'fa-solid fa-industry',
@@ -52,8 +51,8 @@ const projects = [
     client: 'Manufacturing Sector',
     status: '2022',
     image: '/images/vehicles/harzard_vehicle3.jpg',
-    description: 'Waste auditing and compliance advisory for 12 major manufacturers — optimising streams and reducing costs.',
-    highlights: ['12 factories', '30% cost ↓', '100% compliant'],
+    description: 'Waste auditing and compliance advisory for 12 major manufacturers \u2014 optimising streams and reducing costs.',
+    highlights: ['12 factories', '30% cost \u2193', '100% compliant'],
   },
   {
     icon: 'fa-solid fa-mountain-sun',
@@ -61,8 +60,8 @@ const projects = [
     client: 'Eastern Uganda Mining Ops',
     status: '2021',
     image: '/images/gallery/img4.jpg',
-    description: 'Environmental remediation of legacy mining waste — tailings stabilisation, soil restoration, groundwater monitoring.',
-    highlights: ['3 sites', 'Groundwater safe', 'Community health ↑'],
+    description: 'Environmental remediation of legacy mining waste \u2014 tailings stabilisation, soil restoration, groundwater monitoring.',
+    highlights: ['3 sites', 'Groundwater safe', 'Community health \u2191'],
   },
   {
     icon: 'fa-solid fa-graduation-cap',
@@ -78,15 +77,18 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <>
+      {/* Split Hero with badge */}
       <Hero
         heading="Our Projects"
         subheading="Delivering Impact Across Uganda"
-        description="From healthcare facilities in Kampala to oil fields in the Albertine Graben — proven results across every sector."
+        description="From healthcare facilities in Kampala to oil fields in the Albertine Graben \u2014 proven results across every sector."
         backgroundImage="/images/gallery/img1.jpg"
         breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Project Profiles' }]}
-        variant="fullWidth"
+        variant="split"
+        badge="50+ Active Projects"
       />
 
+      {/* Stats — Light */}
       <StatsCounter
         stats={[
           { value: 50, suffix: '+', label: 'Active Projects', icon: 'fa-solid fa-diagram-project' },
@@ -94,43 +96,37 @@ export default function ProjectsPage() {
           { value: 2194, suffix: '+', label: 'Clients Served', icon: 'fa-solid fa-building' },
           { value: 100, suffix: '%', label: 'Compliance Rate', icon: 'fa-solid fa-clipboard-check' },
         ]}
-        darkBackground
       />
 
-      {/* Featured Projects — Carousel */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16">
-        <div className="absolute inset-0 pattern-grid opacity-50" aria-hidden="true" />
+      {/* Projects — 2-col paired image+text cards */}
+      <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
+        <GradientOrb color="green" size="lg" className="-right-32 top-20 opacity-15" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
-              Featured Projects
-            </h2>
-            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-2xl text-center text-sm text-gray-600">
-              Flagship engagements across healthcare, oil &amp; gas, municipal, industrial, and mining sectors.
-            </p>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">Featured Projects</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Flagship engagements across healthcare, oil &amp; gas, municipal, industrial, and mining sectors.</p>
           </ScrollRevealSection>
-
-          <CardCarousel hint="Swipe to see more projects">
-            {projects.map((project) => (
-              <article key={project.title} className="w-[85vw] max-w-[420px] shrink-0 snap-start">
-                <div className="card-premium h-full overflow-hidden rounded-2xl bg-white shadow-md">
-                  <div className="relative h-44">
-                    <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 85vw, 420px" className="object-cover" />
-                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
-                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-bold shadow backdrop-blur-sm">
+          <ScrollRevealSection>
+            <div className="grid gap-6 md:grid-cols-2">
+              {projects.map((project, i) => (
+                <article key={project.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium overflow-hidden rounded-2xl bg-white shadow-md`}>
+                  <div className="relative h-40">
+                    <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                    <div className="absolute bottom-2 left-2 flex items-center gap-2">
+                      <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold shadow backdrop-blur-sm ${project.status === 'Ongoing' ? 'bg-brand-green/90 text-white' : 'bg-white/90 text-gray-800'}`}>
                         {project.status}
                       </span>
                     </div>
                   </div>
                   <div className="p-5">
                     <div className="mb-2 flex items-center gap-2">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-green/10">
-                        <i className={`${project.icon} text-sm text-brand-green`} aria-hidden="true" />
+                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-green/10">
+                        <i className={`${project.icon} text-xs text-brand-green`} aria-hidden="true" />
                       </div>
                       <p className="text-xs font-medium text-brand-green">{project.client}</p>
                     </div>
-                    <h3 className="font-heading text-base font-bold text-gray-900">{project.title}</h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-gray-600">{project.description}</p>
+                    <h3 className="font-heading text-sm font-bold text-gray-900">{project.title}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-gray-600">{project.description}</p>
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {project.highlights.map((h) => (
                         <span key={h} className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-700">
@@ -139,10 +135,10 @@ export default function ProjectsPage() {
                       ))}
                     </div>
                   </div>
-                </div>
-              </article>
-            ))}
-          </CardCarousel>
+                </article>
+              ))}
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 

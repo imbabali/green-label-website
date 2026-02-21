@@ -82,33 +82,40 @@ export default async function FAQsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(allFaqs)) }}
       />
-      <Hero backgroundImage="/images/gallery/img6.jpg"
+
+      {/* Centered Hero — search/help feel */}
+      <Hero
         heading="Frequently Asked Questions"
-        subheading="Find answers to common questions"
-        variant="fullWidth"
+        subheading="Find Answers to Common Questions"
+        description="Everything you need to know about our waste management services, billing, and environmental practices."
+        breadcrumbs={[{ label: 'FAQs' }]}
+        variant="centered"
+        badge="Help Centre"
       />
 
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      {/* Category-grouped accordions with glass category headers */}
+      <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {categories.map((cat, catIndex) => (
             <ScrollRevealSection key={cat.id}>
-              <div className={`reveal reveal-up stagger-${Math.min(catIndex + 1, 6)} mb-10`}>
-                <h2 className="mb-6 flex items-center gap-3 font-heading text-2xl font-bold text-gray-900">
+              <div className={`reveal reveal-up stagger-${Math.min(catIndex + 1, 6)} mb-8`}>
+                <div className="glass mb-4 flex items-center gap-3 rounded-xl p-3">
                   {cat.icon && (
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
                       <i className={`${cat.icon} text-brand-green`} aria-hidden="true" />
                     </span>
                   )}
-                  {cat.name}
-                </h2>
+                  <h2 className="font-heading text-lg font-bold text-gray-900">{cat.name}</h2>
+                  <span className="ml-auto rounded-full bg-brand-orange/10 px-2 py-0.5 text-[10px] font-bold text-brand-orange">{cat.items.length}</span>
+                </div>
                 <div className="space-y-3">
                   {cat.items.map((item) => (
-                    <details key={item._id} className="group card-premium rounded-2xl border border-gray-200 bg-white shadow-sm">
-                      <summary className="flex cursor-pointer items-center justify-between p-5 font-medium text-gray-900 hover:text-brand-green">
+                    <details key={item._id} className="group card-premium rounded-2xl border-l-4 border-l-brand-green bg-white shadow-sm">
+                      <summary className="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-gray-900 hover:text-brand-green">
                         {item.question}
-                        <i className="fa-solid fa-chevron-down text-sm text-gray-400 transition-transform group-open:rotate-180" aria-hidden="true" />
+                        <i className="fa-solid fa-chevron-down ml-2 text-xs text-gray-400 transition-transform group-open:rotate-180" aria-hidden="true" />
                       </summary>
-                      <div className="border-t border-gray-100 px-5 pb-5 pt-3 text-gray-600 leading-relaxed">
+                      <div className="border-t border-gray-100 px-4 pb-4 pt-3 text-sm leading-relaxed text-gray-600">
                         {item.answer}
                       </div>
                     </details>
