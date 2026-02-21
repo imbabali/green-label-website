@@ -1,27 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, Raleway, Fraunces } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { SITE_NAME, SITE_URL, COMPANY_INFO } from '@/lib/data/constants'
-
-const dmSans = DM_Sans({
-  variable: '--font-sans',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const raleway = Raleway({
-  variable: '--font-heading',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const fraunces = Fraunces({
-  variable: '--font-display',
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -102,7 +83,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${dmSans.variable} ${raleway.variable} ${fraunces.variable} font-sans antialiased`}
+        className="font-sans antialiased"
       >
         <a
           href="#main-content"
