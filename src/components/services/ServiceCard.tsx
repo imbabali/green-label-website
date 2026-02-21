@@ -10,10 +10,13 @@ interface ServiceCardProps {
     icon?: string
     category?: { name: string; slug: string }
     isFeatured?: boolean
+    href?: string
   }
 }
 
 export default function ServiceCard({ service }: ServiceCardProps) {
+  const serviceHref = service.href || `/services/${service.slug}`
+
   return (
     <div className="card-premium group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
       <div className="relative h-48 overflow-hidden bg-gray-100">
@@ -33,7 +36,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* Premium hover overlay */}
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-brand-green-dark/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <Link
-            href={`/services/${service.slug}`}
+            href={serviceHref}
             className="translate-y-4 rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
           >
             View Details
@@ -54,7 +57,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           </span>
         )}
         <h3 className="font-heading text-lg font-bold text-gray-900">
-          <Link href={`/services/${service.slug}`} className="hover:text-brand-green">
+          <Link href={serviceHref} className="hover:text-brand-green">
             {service.title}
           </Link>
         </h3>
@@ -62,7 +65,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           {service.shortDescription}
         </p>
         <Link
-          href={`/services/${service.slug}`}
+          href={serviceHref}
           className="mt-4 inline-flex items-center text-sm font-semibold text-brand-green hover:text-brand-green-dark"
         >
           Learn More <i className="fa-solid fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1" />
