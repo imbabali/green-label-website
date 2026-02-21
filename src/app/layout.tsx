@@ -74,13 +74,6 @@ export default function RootLayout({
     <html lang="en-UG">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl0HPNiekfRLfg8+p0all20u7gA0hMatt4J6VkZYi3fOn+p8gSwCYfpKf8MDBK0fNO0RsFP+s2sktg=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
       </head>
       <body
         className="font-sans antialiased"

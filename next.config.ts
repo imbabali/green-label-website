@@ -57,9 +57,9 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
-              "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' blob: data: https://cdn.sanity.io https://*.supabase.co",
-              "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com",
+              "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://*.supabase.co https://*.sanity.io wss://*.supabase.co https://va.vercel-scripts.com https://vitals.vercel-insights.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
