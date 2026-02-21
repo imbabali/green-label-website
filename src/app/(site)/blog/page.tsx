@@ -22,6 +22,84 @@ export function generateMetadata(): Metadata {
 
 const POSTS_PER_PAGE = 9
 
+// ---------------------------------------------------------------------------
+// Fallback data — shown when Sanity CMS has no blog content
+// ---------------------------------------------------------------------------
+
+const fallbackCategories = [
+  { name: 'Medical Waste', slug: 'medical-waste', postCount: 2 },
+  { name: 'Oil & Gas', slug: 'oil-and-gas', postCount: 1 },
+  { name: 'Company News', slug: 'company-news', postCount: 2 },
+  { name: 'Sustainability', slug: 'sustainability', postCount: 1 },
+]
+
+const fallbackPosts = [
+  {
+    title: 'Best Practices for Medical Waste Disposal in Healthcare Facilities',
+    slug: 'best-practices-medical-waste-disposal',
+    excerpt: 'Learn the essential guidelines for proper medical waste segregation, storage, and disposal to protect healthcare workers and the environment.',
+    featuredImage: '/images/gallery/img1.jpg',
+    publishedAt: '2025-12-15',
+    category: { name: 'Medical Waste', slug: 'medical-waste' },
+    author: { name: 'Green Label Services' },
+    tags: [{ name: 'Healthcare', slug: 'healthcare' }, { name: 'Safety', slug: 'safety' }],
+  },
+  {
+    title: 'Understanding Oil & Gas Waste Management Regulations in East Africa',
+    slug: 'oil-gas-waste-regulations-east-africa',
+    excerpt: 'A comprehensive overview of the regulatory framework governing oil and gas waste management across the East African region.',
+    featuredImage: '/images/gallery/img3.jpg',
+    publishedAt: '2025-11-28',
+    category: { name: 'Oil & Gas', slug: 'oil-and-gas' },
+    author: { name: 'Green Label Services' },
+    tags: [{ name: 'Regulations', slug: 'regulations' }, { name: 'Oil & Gas', slug: 'oil-gas' }],
+  },
+  {
+    title: 'Green Label Services Expands Operations to Western Uganda',
+    slug: 'expansion-western-uganda',
+    excerpt: 'We are proud to announce the expansion of our waste management services to Mbarara, Fort Portal, and surrounding districts in western Uganda.',
+    featuredImage: '/images/offices/office2.jpg',
+    publishedAt: '2025-11-10',
+    category: { name: 'Company News', slug: 'company-news' },
+    author: { name: 'Green Label Services' },
+    tags: [{ name: 'Expansion', slug: 'expansion' }],
+  },
+  {
+    title: 'How Proper Sharps Disposal Prevents Needlestick Injuries',
+    slug: 'sharps-disposal-needlestick-prevention',
+    excerpt: 'Needlestick injuries remain a leading occupational hazard in healthcare. Learn how proper sharps disposal protocols can significantly reduce risk.',
+    featuredImage: '/images/training/training1.jpg',
+    publishedAt: '2025-10-22',
+    category: { name: 'Medical Waste', slug: 'medical-waste' },
+    author: { name: 'Green Label Services' },
+    tags: [{ name: 'Healthcare', slug: 'healthcare' }, { name: 'Training', slug: 'training' }],
+  },
+  {
+    title: 'Green Label Training Academy Certifies 2,000th Graduate',
+    slug: 'training-academy-2000th-graduate',
+    excerpt: 'A major milestone as the Green Label Training Academy certifies its 2,000th waste management professional, strengthening environmental safety across Uganda.',
+    featuredImage: '/images/training/training3.jpg',
+    publishedAt: '2025-09-15',
+    category: { name: 'Company News', slug: 'company-news' },
+    author: { name: 'Green Label Services' },
+    tags: [{ name: 'Training', slug: 'training' }, { name: 'Milestone', slug: 'milestone' }],
+  },
+  {
+    title: 'The Role of Waste Management in Uganda\'s Sustainability Goals',
+    slug: 'waste-management-sustainability-goals',
+    excerpt: 'How responsible waste management practices contribute to Uganda\'s national development plan and the United Nations Sustainable Development Goals.',
+    featuredImage: '/images/gallery/img4.jpg',
+    publishedAt: '2025-08-20',
+    category: { name: 'Sustainability', slug: 'sustainability' },
+    author: { name: 'Green Label Services' },
+    tags: [{ name: 'SDGs', slug: 'sdgs' }, { name: 'Environment', slug: 'environment' }],
+  },
+]
+
+// ---------------------------------------------------------------------------
+// Page component
+// ---------------------------------------------------------------------------
+
 interface Props {
   searchParams: Promise<{ page?: string; category?: string; tag?: string; q?: string }>
 }
@@ -57,13 +135,11 @@ export default async function BlogPage({ searchParams }: Props) {
     categories = catsData || []
     tags = tagsData || []
   } catch {
-    // fallback
+    // Sanity not configured — use fallbacks
   }
 
-  const totalPages = Math.ceil(total / POSTS_PER_PAGE)
-
-  // Transform posts for PostCard
-  const transformedPosts = posts.map((p: any) => ({
+  // Use fallbacks when CMS has no data
+  const displayPosts = posts.length > 0 ? posts.map((p: any) => ({
     title: p.title,
     slug: p.slug?.current || p.slug,
     excerpt: p.excerpt || '',
@@ -72,7 +148,11 @@ export default async function BlogPage({ searchParams }: Props) {
     author: p.author ? { name: p.author.name } : undefined,
     publishedAt: p.publishedAt,
     tags: p.tags?.map((t: any) => ({ name: t.name, slug: t.slug?.current || t.slug })),
-  }))
+  })) : fallbackPosts
+
+  const displayCategories = categories.length > 0 ? categories : fallbackCategories
+  const displayTotal = posts.length > 0 ? total : fallbackPosts.length
+  const totalPages = Math.ceil(displayTotal / POSTS_PER_PAGE)
 
   return (
     <>
@@ -85,7 +165,7 @@ export default async function BlogPage({ searchParams }: Props) {
       <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Category Filters */}
-          {categories.length > 0 && (
+          {displayCategories.length > 0 && (
             <div className="mb-8 flex flex-wrap gap-2">
               <Link
                 href="/blog"
@@ -95,7 +175,7 @@ export default async function BlogPage({ searchParams }: Props) {
               >
                 All
               </Link>
-              {categories.map((cat: any) => (
+              {displayCategories.map((cat: any) => (
                 <Link
                   key={cat.slug?.current || cat.slug}
                   href={`/blog/category/${cat.slug?.current || cat.slug}`}
@@ -126,10 +206,10 @@ export default async function BlogPage({ searchParams }: Props) {
           </form>
 
           {/* Posts Grid */}
-          {transformedPosts.length > 0 ? (
+          {displayPosts.length > 0 ? (
             <ScrollRevealSection>
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {transformedPosts.map((post: any, index: number) => (
+                {displayPosts.map((post: any, index: number) => (
                   <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <PostCard post={post} />
                   </div>
