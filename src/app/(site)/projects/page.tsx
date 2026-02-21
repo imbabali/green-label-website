@@ -83,7 +83,6 @@ export default function ProjectsPage() {
         subheading="Delivering Impact Across Uganda"
         description="From healthcare facilities in Kampala to oil fields in the Albertine Graben \u2014 proven results across every sector."
         backgroundImage="/images/gallery/img1.jpg"
-        breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Project Profiles' }]}
         variant="split"
         badge="50+ Active Projects"
       />

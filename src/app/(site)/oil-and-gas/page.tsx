@@ -41,7 +41,6 @@ export default function OilAndGasPage() {
         subheading="Specialist Waste Solutions for Petroleum"
         description="The certified partner operators trust for compliant, efficient handling of every waste stream — from drill site to final disposal."
         backgroundImage="/images/gallery/img3.jpg"
-        breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Oil & Gas' }]}
         variant="fullWidth"
         badge="PAU & NEMA Licenced"
       />

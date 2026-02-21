@@ -88,7 +88,6 @@ export default async function FAQsPage() {
         heading="Frequently Asked Questions"
         subheading="Find Answers to Common Questions"
         description="Everything you need to know about our waste management services, billing, and environmental practices."
-        breadcrumbs={[{ label: 'FAQs' }]}
         variant="centered"
         badge="Help Centre"
       />

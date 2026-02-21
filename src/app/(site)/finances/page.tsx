@@ -39,7 +39,6 @@ export default function FinancialCapacityPage() {
         heading="Financial Capacity"
         subheading="Strength to Deliver, Stability to Endure"
         description="25 years of financial health enabling us to invest in equipment, retain skilled professionals, and mobilise quickly for new contracts."
-        breadcrumbs={[{ label: 'Capacity', href: '/infrastructure' }, { label: 'Finances' }]}
         variant="centered"
         badge="25+ Years of Growth"
         stats={[

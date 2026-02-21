@@ -4,6 +4,7 @@ import Image from 'next/image'
 import HeroCarousel from '@/components/shared/HeroCarousel'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ReviewCarousel from '@/components/shared/ReviewCarousel'
+import LogoMarquee from '@/components/shared/LogoMarquee'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { GradientOrb, WaveDivider, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata, organizationJsonLd } from '@/lib/utils/seo'
@@ -535,8 +536,8 @@ export default async function HomePage() {
             </p>
           </ScrollRevealSection>
 
-          <div className="grid grid-cols-3 items-center gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6">
-            {[
+          <LogoMarquee
+            partners={[
               { src: '/images/partners/cnooc.png', alt: 'CNOOC Uganda' },
               { src: '/images/partners/cosl.png', alt: 'COSL' },
               { src: '/images/partners/usaid.png', alt: 'USAID' },
@@ -555,21 +556,8 @@ export default async function HomePage() {
               { src: '/images/partners/aidstarone.png', alt: 'AIDStar-One' },
               { src: '/images/partners/glazer.png', alt: 'Glazer' },
               { src: '/images/partners/kcca.png', alt: 'KCCA' },
-            ].map((partner) => (
-              <div
-                key={partner.alt}
-                className="relative flex h-16 items-center justify-center rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
-              >
-                <Image
-                  src={partner.src}
-                  alt={partner.alt}
-                  width={100}
-                  height={40}
-                  className="object-contain opacity-70 transition-opacity hover:opacity-100"
-                />
-              </div>
-            ))}
-          </div>
+            ]}
+          />
         </div>
       </section>
 

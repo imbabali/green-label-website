@@ -41,7 +41,6 @@ export default function CommunityImpactPage() {
         subheading="Empowering Communities, Protecting Environments"
         description="Responsible waste management is inseparable from community well-being. We invest in education, employment, and protection in every community where we operate."
         backgroundImage="/images/training/training1.jpg"
-        breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Community Impact' }]}
         variant="split"
         badge="15 Districts"
         stats={[

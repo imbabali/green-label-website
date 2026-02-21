@@ -42,7 +42,6 @@ export default function HumanResourcesPage() {
         subheading="300+ Professionals Driving Excellence"
         description="Behind every safe collection and compliant disposal stands a team of qualified professionals. We invest heavily in recruitment, training, and welfare."
         backgroundImage="/images/training/training4.jpg"
-        breadcrumbs={[{ label: 'Capacity', href: '/infrastructure' }, { label: 'Human Resources' }]}
         variant="split"
         badge="300+ Professionals"
         ctaButtons={[

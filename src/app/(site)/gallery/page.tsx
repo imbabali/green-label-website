@@ -57,7 +57,6 @@ export default async function GalleryPage() {
         heading="Our Gallery"
         subheading="See Our Work in Action"
         description="Explore our operations, facilities, fleet, and community initiatives across Uganda."
-        breadcrumbs={[{ label: 'Gallery' }]}
         variant="centered"
         badge="Photo Gallery"
       />

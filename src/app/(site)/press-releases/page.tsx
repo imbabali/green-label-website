@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Hero from '@/components/shared/Hero'
+import PressTimeline from '@/components/shared/PressTimeline'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
@@ -16,12 +17,12 @@ export function generateMetadata(): Metadata {
 }
 
 const releases = [
-  { date: 'Jan 2026', title: 'Operations Expand to Mbarara Region', summary: 'New regional depot and treatment facility creating 50+ local jobs.', tag: 'Expansion', borderColor: 'border-l-blue-500' },
-  { date: 'Nov 2025', title: 'Ministry of Health Medical Waste Contract', summary: 'Multi-year contract for government health facilities across 10 districts.', tag: 'Partnership', borderColor: 'border-l-purple-500' },
-  { date: 'Sep 2025', title: 'ISO 14001 Certification Achieved', summary: 'Among the first waste companies in Uganda to achieve ISO 14001:2015.', tag: 'Certification', borderColor: 'border-l-green-500' },
-  { date: 'Jun 2025', title: 'Community Recycling Points Launch', summary: 'Five new recycling drop-offs in Kampala, reaching 100,000+ residents.', tag: 'Community', borderColor: 'border-l-amber-500' },
-  { date: 'Mar 2025', title: 'Training Academy: 2,000th Graduate', summary: 'Milestone as the Academy certifies its 2,000th waste management professional.', tag: 'Training', borderColor: 'border-l-teal-500' },
-  { date: 'Jan 2025', title: '15 New Specialist Vehicles Commissioned', summary: 'UGX 2B+ investment in compactors, tankers, and medical waste vehicles.', tag: 'Investment', borderColor: 'border-l-rose-500' },
+  { date: 'Jan 2026', title: 'Operations Expand to Mbarara Region', summary: 'New regional depot and treatment facility creating 50+ local jobs.', tag: 'Expansion' },
+  { date: 'Nov 2025', title: 'Ministry of Health Medical Waste Contract', summary: 'Multi-year contract for government health facilities across 10 districts.', tag: 'Partnership' },
+  { date: 'Sep 2025', title: 'ISO 14001 Certification Achieved', summary: 'Among the first waste companies in Uganda to achieve ISO 14001:2015.', tag: 'Certification' },
+  { date: 'Jun 2025', title: 'Community Recycling Points Launch', summary: 'Five new recycling drop-offs in Kampala, reaching 100,000+ residents.', tag: 'Community' },
+  { date: 'Mar 2025', title: 'Training Academy: 2,000th Graduate', summary: 'Milestone as the Academy certifies its 2,000th waste management professional.', tag: 'Training' },
+  { date: 'Jan 2025', title: '15 New Specialist Vehicles Commissioned', summary: 'UGX 2B+ investment in compactors, tankers, and medical waste vehicles.', tag: 'Investment' },
 ]
 
 const tagColors: Record<string, string> = {
@@ -49,7 +50,6 @@ export default function PressReleasesPage() {
         subheading="News & Announcements"
         description="Stay up to date with our latest milestones, partnerships, and initiatives."
         backgroundImage="/images/offices/office2.jpg"
-        breadcrumbs={[{ label: 'News & Media', href: '/blog' }, { label: 'Press Releases' }]}
         variant="split"
       />
 
@@ -74,29 +74,14 @@ export default function PressReleasesPage() {
         </div>
       </section>
 
-      {/* Releases — Vertical stacked list */}
+      {/* Releases — Horizontal Timeline */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <GradientOrb color="green" size="lg" className="-right-32 top-20 opacity-15" />
-        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-bullhorn mr-2 text-brand-green" aria-hidden="true" />Recent Announcements</h2>
           </ScrollRevealSection>
-          <ScrollRevealSection>
-            <div className="space-y-4">
-              {releases.map((r, i) => (
-                <div key={r.title} className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium rounded-xl border-l-4 ${r.borderColor} bg-white p-4 shadow-sm`}>
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="text-xs font-medium text-gray-500">
-                      <i className="fa-regular fa-calendar mr-1" aria-hidden="true" />{r.date}
-                    </span>
-                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${tagColors[r.tag]}`}>{r.tag}</span>
-                  </div>
-                  <h3 className="font-heading text-sm font-bold text-gray-900">{r.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-gray-600">{r.summary}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollRevealSection>
+          <PressTimeline releases={releases} tagColors={tagColors} />
         </div>
       </section>
 

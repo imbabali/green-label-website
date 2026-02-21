@@ -41,7 +41,6 @@ export default function WasteManagementPage() {
         subheading="End-to-End Solutions for Every Waste Stream"
         description="From a single office bin to multi-site hazardous waste programmes — safe, compliant, cost-effective waste management across Uganda."
         backgroundImage="/images/vehicles/harzard_vehicle3.jpg"
-        breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Waste Management' }]}
         variant="fullWidth"
       />
 

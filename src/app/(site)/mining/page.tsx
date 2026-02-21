@@ -41,7 +41,6 @@ export default function MiningPage() {
         subheading="Responsible Waste Management for Mining"
         description="Specialised knowledge and licensed infrastructure for tailings, chemical residues, and contaminated materials — protecting both environment and licence."
         backgroundImage="/images/gallery/img4.jpg"
-        breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Mining' }]}
         variant="split"
         ctaButtons={[
           { label: 'Get Assessment', href: '#quote', variant: 'secondary' },

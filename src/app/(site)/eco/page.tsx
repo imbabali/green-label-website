@@ -47,7 +47,6 @@ export default function SustainabilityPage() {
         heading="Sustainability"
         subheading="Building a Greener Future for Uganda"
         description="Sustainability is our business model. Every tonne we manage is an opportunity to recover resources and reduce Uganda's environmental footprint."
-        breadcrumbs={[{ label: 'Company', href: '/about' }, { label: 'Sustainability' }]}
         variant="centered"
         badge="Eco Commitment"
       />

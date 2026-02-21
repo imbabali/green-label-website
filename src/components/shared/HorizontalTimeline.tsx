@@ -20,6 +20,7 @@ export default function HorizontalTimeline({ milestones }: HorizontalTimelinePro
   const [activeIndex, setActiveIndex] = useState(0)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current
@@ -66,6 +67,27 @@ export default function HorizontalTimeline({ milestones }: HorizontalTimelinePro
     el.addEventListener('scroll', updateScrollState, { passive: true })
     return () => el.removeEventListener('scroll', updateScrollState)
   }, [updateScrollState])
+
+  // Auto-advance to next card every 5s
+  useEffect(() => {
+    if (isPaused || milestones.length <= 1) return
+
+    const interval = setInterval(() => {
+      const el = scrollRef.current
+      if (!el) return
+
+      // If at end, wrap to start; otherwise scroll to next card
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 10) {
+        const first = el.querySelector<HTMLElement>('[data-milestone-index="0"]')
+        if (first) first.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+      } else {
+        const cardWidth = el.querySelector<HTMLElement>('[data-milestone-index]')?.offsetWidth ?? 520
+        el.scrollBy({ left: cardWidth + 24, behavior: 'smooth' })
+      }
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isPaused, milestones.length])
 
   const scrollToIndex = (index: number) => {
     const el = scrollRef.current
@@ -150,7 +172,11 @@ export default function HorizontalTimeline({ milestones }: HorizontalTimelinePro
       </div>
 
       {/* Scroll Container */}
-      <div className="group/timeline relative">
+      <div
+        className="group/timeline relative"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         {/* Left Arrow */}
         <button
           onClick={() => scrollByDirection('left')}

@@ -65,7 +65,6 @@ export default function AwardsPage() {
         heading="Awards & Recognition"
         subheading="Certified Excellence in Waste Management"
         description="Over 25 years, Green Label Services has earned the trust of regulators, industry bodies, and clients alike."
-        breadcrumbs={[{ label: 'Awards & Recognition' }]}
         variant="centered"
         badge="15+ Certifications"
       />

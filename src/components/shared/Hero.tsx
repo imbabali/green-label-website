@@ -3,11 +3,6 @@ import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { GradientOrb, WaveDivider } from '@/components/shared/DecorativeElements'
 
-export interface BreadcrumbItem {
-  label: string
-  href?: string
-}
-
 export interface CTAButton {
   label: string
   href: string
@@ -24,86 +19,11 @@ interface HeroProps {
   subheading?: string
   description?: string
   backgroundImage?: string
-  breadcrumbs?: BreadcrumbItem[]
   variant?: 'fullWidth' | 'split' | 'centered' | 'carousel'
   ctaButtons?: CTAButton[]
   badge?: string
   stats?: StatItem[]
   children?: ReactNode
-}
-
-function HeroBreadcrumbs({ items }: { items: BreadcrumbItem[] }) {
-  return (
-    <nav aria-label="Breadcrumb" className="mb-4">
-      <ol className="flex flex-wrap items-center gap-1 text-sm">
-        <li className="flex items-center">
-          <Link
-            href="/"
-            className="text-white/80 transition-colors hover:text-white"
-          >
-            Home
-          </Link>
-        </li>
-        {items.map((item, index) => (
-          <li key={index} className="flex items-center">
-            <i
-              className="fa-solid fa-chevron-right mx-2 text-xs text-white/50"
-              aria-hidden="true"
-            />
-            {item.href ? (
-              <Link
-                href={item.href}
-                className="text-white/80 transition-colors hover:text-white"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <span className="font-medium text-white" aria-current="page">
-                {item.label}
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
-  )
-}
-
-function CenteredBreadcrumbs({ items }: { items: BreadcrumbItem[] }) {
-  return (
-    <nav aria-label="Breadcrumb" className="mb-4">
-      <ol className="flex flex-wrap items-center justify-center gap-1 text-sm">
-        <li className="flex items-center">
-          <Link
-            href="/"
-            className="text-gray-500 transition-colors hover:text-brand-green"
-          >
-            Home
-          </Link>
-        </li>
-        {items.map((item, index) => (
-          <li key={index} className="flex items-center">
-            <i
-              className="fa-solid fa-chevron-right mx-2 text-xs text-gray-400"
-              aria-hidden="true"
-            />
-            {item.href ? (
-              <Link
-                href={item.href}
-                className="text-gray-500 transition-colors hover:text-brand-green"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <span className="font-medium text-brand-green" aria-current="page">
-                {item.label}
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
-  )
 }
 
 function CTAButtonGroup({ buttons, centered = true }: { buttons: CTAButton[]; centered?: boolean }) {
@@ -170,7 +90,6 @@ export default function Hero({
   subheading,
   description,
   backgroundImage,
-  breadcrumbs,
   variant = 'fullWidth',
   ctaButtons,
   badge,
@@ -194,7 +113,6 @@ export default function Hero({
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots opacity-40" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          {breadcrumbs && <CenteredBreadcrumbs items={breadcrumbs} />}
           {badge && (
             <span className="mb-4 inline-block rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-green backdrop-blur-sm">
               {badge}
@@ -228,43 +146,6 @@ export default function Hero({
       <section className="bg-white">
         <div className="mx-auto grid min-h-[400px] max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 md:min-h-[500px] md:grid-cols-2 lg:px-8">
           <div>
-            {breadcrumbs && (
-              <nav aria-label="Breadcrumb" className="mb-4">
-                <ol className="flex flex-wrap items-center gap-1 text-sm">
-                  <li className="flex items-center">
-                    <Link
-                      href="/"
-                      className="text-gray-500 transition-colors hover:text-brand-green"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  {breadcrumbs.map((item, index) => (
-                    <li key={index} className="flex items-center">
-                      <i
-                        className="fa-solid fa-chevron-right mx-2 text-xs text-gray-400"
-                        aria-hidden="true"
-                      />
-                      {item.href ? (
-                        <Link
-                          href={item.href}
-                          className="text-gray-500 transition-colors hover:text-brand-green"
-                        >
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <span
-                          className="font-medium text-brand-green"
-                          aria-current="page"
-                        >
-                          {item.label}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
             {badge && (
               <span className="mb-4 inline-block rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-green">
                 {badge}
@@ -335,7 +216,6 @@ export default function Hero({
       <WaveDivider />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        {breadcrumbs && <HeroBreadcrumbs items={breadcrumbs} />}
         {badge && (
           <span className="mb-4 inline-block rounded-full bg-brand-orange/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
             {badge}

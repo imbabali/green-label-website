@@ -40,7 +40,6 @@ export default function TrainingPage() {
         heading="Education & Training"
         subheading="The Green Label Training Academy"
         description="Certified professional development for waste handlers, healthcare workers, corporate teams, and community leaders."
-        breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Education & Training' }]}
         variant="centered"
         badge="Training Academy"
         stats={[

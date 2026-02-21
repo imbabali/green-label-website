@@ -41,7 +41,6 @@ export default function PublicHealthPage() {
         heading="Public Health Services"
         subheading="Safe Healthcare Waste, Healthy Communities"
         description="End-to-end healthcare waste management — from colour-coded segregation at the ward level to final treatment and disposal."
-        breadcrumbs={[{ label: 'Services', href: '/services' }, { label: 'Public Health' }]}
         variant="centered"
         badge="WHO & NEMA Compliant"
         ctaButtons={[
