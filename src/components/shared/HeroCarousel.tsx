@@ -127,6 +127,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                     <Link
                       key={btnIndex}
                       href={btn.href}
+                      {...(btn.href === '#quote' ? { 'data-quote-trigger': '' } : {})}
                       className={`inline-flex items-center rounded-lg px-6 py-3 font-heading text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${variantClasses[btn.variant]}`}
                     >
                       {btn.label}

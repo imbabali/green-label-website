@@ -13,7 +13,7 @@ export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: 'Edit Review',
     description: 'Edit your review for Green Label Services.',
-    path: '/reviews/edit',
+    path: '/reviews',
   })
 }
 
