@@ -190,7 +190,8 @@ export default async function ServicesPage() {
         heading="Our Services"
         subheading="Comprehensive Waste Management Solutions"
         description="From medical waste to oil & gas operations, we provide safe, compliant, and environmentally responsible waste management across Uganda."
-        variant="centered"
+        backgroundImage="/images/hero/waste.jpg"
+        variant="split"
         badge="Full-Service Provider"
         stats={[
           { value: '25+', label: 'Years Experience' },

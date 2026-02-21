@@ -88,7 +88,8 @@ export default async function FAQsPage() {
         heading="Frequently Asked Questions"
         subheading="Find Answers to Common Questions"
         description="Everything you need to know about our waste management services, billing, and environmental practices."
-        variant="centered"
+        backgroundImage="/images/offices/office1.jpg"
+        variant="split"
         badge="Help Centre"
       />
 

@@ -26,14 +26,15 @@ interface HeroProps {
   children?: ReactNode
 }
 
-function CTAButtonGroup({ buttons, centered = true }: { buttons: CTAButton[]; centered?: boolean }) {
+function CTAButtonGroup({ buttons, centered = true, light = false }: { buttons: CTAButton[]; centered?: boolean; light?: boolean }) {
   const variantClasses: Record<CTAButton['variant'], string> = {
     primary:
       'bg-brand-orange text-white hover:bg-brand-orange-dark focus:ring-brand-orange shadow-lg shadow-brand-orange/25',
     secondary:
       'bg-brand-green text-white hover:bg-brand-green-dark focus:ring-brand-green shadow-lg shadow-brand-green/25',
-    outline:
-      'border-2 border-white text-white hover:bg-white/10 focus:ring-white',
+    outline: light
+      ? 'border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-brand-green'
+      : 'border-2 border-white text-white hover:bg-white/10 focus:ring-white',
   }
 
   return (
@@ -44,6 +45,7 @@ function CTAButtonGroup({ buttons, centered = true }: { buttons: CTAButton[]; ce
         <Link
           key={index}
           href={btn.href}
+          {...(btn.href === '#quote' ? { 'data-quote-trigger': '' } : {})}
           className={`inline-flex items-center rounded-lg px-6 py-3 font-heading text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${variantClasses[btn.variant]}`}
         >
           {btn.label}
@@ -132,7 +134,7 @@ export default function Hero({
             </p>
           )}
           {ctaButtons && ctaButtons.length > 0 && (
-            <CTAButtonGroup buttons={ctaButtons} centered />
+            <CTAButtonGroup buttons={ctaButtons} centered light />
           )}
           {stats && <StatsRow stats={stats} light={false} />}
           {children}
@@ -165,7 +167,7 @@ export default function Hero({
               </p>
             )}
             {ctaButtons && ctaButtons.length > 0 && (
-              <CTAButtonGroup buttons={ctaButtons} centered={false} />
+              <CTAButtonGroup buttons={ctaButtons} centered={false} light />
             )}
             {stats && <StatsRow stats={stats} light={false} compact />}
             {children}

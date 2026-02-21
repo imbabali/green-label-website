@@ -18,11 +18,13 @@ export function generateMetadata(): Metadata {
 export default function ContactPage() {
   return (
     <>
-      <Hero backgroundImage="/images/hero/aga1.webp"
+      <Hero
         heading="Contact Us"
         subheading="We Are Here to Help"
-        variant="fullWidth"
         description="Reach out to our team for waste management solutions, service inquiries, or emergency assistance."
+        backgroundImage="/images/hero/aga1.webp"
+        variant="split"
+        badge="Get In Touch"
       />
 
       {/* Google Maps — floating card effect */}

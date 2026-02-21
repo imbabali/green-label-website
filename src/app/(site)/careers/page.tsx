@@ -25,11 +25,17 @@ const benefits = [
 export default function CareersPage() {
   return (
     <>
-      <Hero backgroundImage="/images/training/training2.jpg"
+      <Hero
         heading="Join Our Team"
         subheading="Build a Career That Matters"
-        variant="fullWidth"
         description="At Green Label Services, we believe our people are our greatest asset. Join a team of 300+ professionals dedicated to environmental excellence."
+        backgroundImage="/images/training/training2.jpg"
+        variant="split"
+        badge="We Are Hiring"
+        ctaButtons={[
+          { label: 'View Positions', href: '/careers/jobs', variant: 'secondary' },
+          { label: 'Contact HR', href: '/contact', variant: 'outline' },
+        ]}
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

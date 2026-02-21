@@ -54,10 +54,13 @@ export default async function ReviewsPage({ searchParams }: Props) {
 
   return (
     <>
-      <Hero backgroundImage="/images/hero/waste.jpg"
+      <Hero
         heading="Customer Reviews"
         subheading="What Our Clients Say"
-        variant="fullWidth"
+        description="Read what our clients have to say about our waste management services, or share your own experience."
+        backgroundImage="/images/hero/waste.jpg"
+        variant="split"
+        badge="Client Feedback"
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

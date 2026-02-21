@@ -39,7 +39,8 @@ export default function FinancialCapacityPage() {
         heading="Financial Capacity"
         subheading="Strength to Deliver, Stability to Endure"
         description="25 years of financial health enabling us to invest in equipment, retain skilled professionals, and mobilise quickly for new contracts."
-        variant="centered"
+        backgroundImage="/images/offices/office2.jpg"
+        variant="split"
         badge="25+ Years of Growth"
         stats={[
           { value: '25+', label: 'Years in Business' },

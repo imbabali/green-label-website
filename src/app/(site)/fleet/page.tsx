@@ -50,7 +50,8 @@ export default function OurFleetPage() {
         subheading="50+ Specialist Vehicles"
         description="One of Uganda's largest and most diverse waste management fleets — purpose-built, GPS-tracked, and maintained to the highest standards."
         backgroundImage="/images/vehicles/harzard_vehicle8.jpg"
-        variant="fullWidth"
+        variant="split"
+        badge="50+ Vehicles"
       />
 
       <StatsCounter

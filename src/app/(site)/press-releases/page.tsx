@@ -51,6 +51,7 @@ export default function PressReleasesPage() {
         description="Stay up to date with our latest milestones, partnerships, and initiatives."
         backgroundImage="/images/offices/office2.jpg"
         variant="split"
+        badge="Media Centre"
       />
 
       {/* Media highlights — warm bg with reveal-right */}

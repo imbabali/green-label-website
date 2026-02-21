@@ -41,7 +41,8 @@ export default function TransportPage() {
         subheading="Safe, Tracked, Compliant"
         description="50+ specialised vehicles \u2014 GPS-tracked, regularly maintained, driven by certified operators. From routine collection to emergency HAZMAT response."
         backgroundImage="/images/vehicles/harzard_vehicle5.jpg"
-        variant="fullWidth"
+        variant="split"
+        badge="Tracked Fleet"
       />
 
       {/* Safety badges — glass frosted on warm bg */}

@@ -47,7 +47,8 @@ export default function SustainabilityPage() {
         heading="Sustainability"
         subheading="Building a Greener Future for Uganda"
         description="Sustainability is our business model. Every tonne we manage is an opportunity to recover resources and reduce Uganda's environmental footprint."
-        variant="centered"
+        backgroundImage="/images/gallery/img4.jpg"
+        variant="split"
         badge="Eco Commitment"
       />
 

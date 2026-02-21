@@ -41,7 +41,12 @@ export default function WasteManagementPage() {
         subheading="End-to-End Solutions for Every Waste Stream"
         description="From a single office bin to multi-site hazardous waste programmes — safe, compliant, cost-effective waste management across Uganda."
         backgroundImage="/images/vehicles/harzard_vehicle3.jpg"
-        variant="fullWidth"
+        variant="split"
+        badge="Full Service"
+        ctaButtons={[
+          { label: 'Get A Quote', href: '#quote', variant: 'secondary' },
+          { label: 'Contact Us', href: '/contact', variant: 'outline' },
+        ]}
       />
 
       {/* How It Works — Pipeline Flow Cards */}

@@ -83,10 +83,13 @@ export default async function BlogPage({ searchParams }: Props) {
 
   return (
     <>
-      <Hero backgroundImage="/images/gallery/img3.jpg"
+      <Hero
         heading="Blog & News"
         subheading="Latest Insights on Waste Management"
-        variant="fullWidth"
+        description="Stay informed with the latest articles, updates, and insights on waste management and environmental sustainability."
+        backgroundImage="/images/gallery/img3.jpg"
+        variant="split"
+        badge="Latest Articles"
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

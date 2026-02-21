@@ -40,7 +40,8 @@ export default function TrainingPage() {
         heading="Education & Training"
         subheading="The Green Label Training Academy"
         description="Certified professional development for waste handlers, healthcare workers, corporate teams, and community leaders."
-        variant="centered"
+        backgroundImage="/images/training/training3.jpg"
+        variant="split"
         badge="Training Academy"
         stats={[
           { value: '2,000+', label: 'People Trained' },

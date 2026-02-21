@@ -42,6 +42,7 @@ export default function MiningPage() {
         description="Specialised knowledge and licensed infrastructure for tailings, chemical residues, and contaminated materials — protecting both environment and licence."
         backgroundImage="/images/gallery/img4.jpg"
         variant="split"
+        badge="NEMA Licensed"
         ctaButtons={[
           { label: 'Get Assessment', href: '#quote', variant: 'secondary' },
           { label: 'View Credentials', href: '/about', variant: 'outline' },

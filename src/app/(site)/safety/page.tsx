@@ -42,7 +42,7 @@ export default function SafetyStandardsPage() {
         subheading="Zero Harm. Zero Compromise."
         description="We mitigate every risk through rigorous protocols, continuous training, and a culture where every team member can stop work if conditions are unsafe."
         backgroundImage="/images/hero/waste.jpg"
-        variant="fullWidth"
+        variant="split"
         badge="Zero Harm Policy"
       />
 

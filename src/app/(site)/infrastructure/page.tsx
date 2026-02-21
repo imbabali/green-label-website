@@ -41,7 +41,7 @@ export default function InfrastructurePage() {
         subheading="Built for Scale and Safety"
         description="Strategically located treatment facilities, modern laboratories, and well-equipped depots — serving clients from Kampala to the Albertine Graben."
         backgroundImage="/images/offices/office1.jpg"
-        variant="fullWidth"
+        variant="split"
         badge="Strategically Located"
       />
 

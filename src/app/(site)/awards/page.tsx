@@ -65,7 +65,8 @@ export default function AwardsPage() {
         heading="Awards & Recognition"
         subheading="Certified Excellence in Waste Management"
         description="Over 25 years, Green Label Services has earned the trust of regulators, industry bodies, and clients alike."
-        variant="centered"
+        backgroundImage="/images/gallery/img5.png"
+        variant="split"
         badge="15+ Certifications"
       />
 

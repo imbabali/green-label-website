@@ -85,6 +85,10 @@ export default function ProjectsPage() {
         backgroundImage="/images/gallery/img1.jpg"
         variant="split"
         badge="50+ Active Projects"
+        ctaButtons={[
+          { label: 'Get A Quote', href: '#quote', variant: 'secondary' },
+          { label: 'Contact Us', href: '/contact', variant: 'outline' },
+        ]}
       />
 
       {/* Stats — Light */}
