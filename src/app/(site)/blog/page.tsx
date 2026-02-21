@@ -9,6 +9,7 @@ import { blogListQuery, blogCategoriesQuery, blogTagsQuery } from '@/lib/sanity/
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
 import EmptyState from '@/components/shared/EmptyState'
+import { fallbackPosts, fallbackCategories } from '@/lib/data/fallback-blog'
 
 export const revalidate = 60
 
@@ -21,80 +22,6 @@ export function generateMetadata(): Metadata {
 }
 
 const POSTS_PER_PAGE = 9
-
-// ---------------------------------------------------------------------------
-// Fallback data — shown when Sanity CMS has no blog content
-// ---------------------------------------------------------------------------
-
-const fallbackCategories = [
-  { name: 'Medical Waste', slug: 'medical-waste', postCount: 2 },
-  { name: 'Oil & Gas', slug: 'oil-and-gas', postCount: 1 },
-  { name: 'Company News', slug: 'company-news', postCount: 2 },
-  { name: 'Sustainability', slug: 'sustainability', postCount: 1 },
-]
-
-const fallbackPosts = [
-  {
-    title: 'Best Practices for Medical Waste Disposal in Healthcare Facilities',
-    slug: 'best-practices-medical-waste-disposal',
-    excerpt: 'Learn the essential guidelines for proper medical waste segregation, storage, and disposal to protect healthcare workers and the environment.',
-    featuredImage: '/images/gallery/img1.jpg',
-    publishedAt: '2025-12-15',
-    category: { name: 'Medical Waste', slug: 'medical-waste' },
-    author: { name: 'Green Label Services' },
-    tags: [{ name: 'Healthcare', slug: 'healthcare' }, { name: 'Safety', slug: 'safety' }],
-  },
-  {
-    title: 'Understanding Oil & Gas Waste Management Regulations in East Africa',
-    slug: 'oil-gas-waste-regulations-east-africa',
-    excerpt: 'A comprehensive overview of the regulatory framework governing oil and gas waste management across the East African region.',
-    featuredImage: '/images/gallery/img3.jpg',
-    publishedAt: '2025-11-28',
-    category: { name: 'Oil & Gas', slug: 'oil-and-gas' },
-    author: { name: 'Green Label Services' },
-    tags: [{ name: 'Regulations', slug: 'regulations' }, { name: 'Oil & Gas', slug: 'oil-gas' }],
-  },
-  {
-    title: 'Green Label Services Expands Operations to Western Uganda',
-    slug: 'expansion-western-uganda',
-    excerpt: 'We are proud to announce the expansion of our waste management services to Mbarara, Fort Portal, and surrounding districts in western Uganda.',
-    featuredImage: '/images/offices/office2.jpg',
-    publishedAt: '2025-11-10',
-    category: { name: 'Company News', slug: 'company-news' },
-    author: { name: 'Green Label Services' },
-    tags: [{ name: 'Expansion', slug: 'expansion' }],
-  },
-  {
-    title: 'How Proper Sharps Disposal Prevents Needlestick Injuries',
-    slug: 'sharps-disposal-needlestick-prevention',
-    excerpt: 'Needlestick injuries remain a leading occupational hazard in healthcare. Learn how proper sharps disposal protocols can significantly reduce risk.',
-    featuredImage: '/images/training/training1.jpg',
-    publishedAt: '2025-10-22',
-    category: { name: 'Medical Waste', slug: 'medical-waste' },
-    author: { name: 'Green Label Services' },
-    tags: [{ name: 'Healthcare', slug: 'healthcare' }, { name: 'Training', slug: 'training' }],
-  },
-  {
-    title: 'Green Label Training Academy Certifies 2,000th Graduate',
-    slug: 'training-academy-2000th-graduate',
-    excerpt: 'A major milestone as the Green Label Training Academy certifies its 2,000th waste management professional, strengthening environmental safety across Uganda.',
-    featuredImage: '/images/training/training3.jpg',
-    publishedAt: '2025-09-15',
-    category: { name: 'Company News', slug: 'company-news' },
-    author: { name: 'Green Label Services' },
-    tags: [{ name: 'Training', slug: 'training' }, { name: 'Milestone', slug: 'milestone' }],
-  },
-  {
-    title: 'The Role of Waste Management in Uganda\'s Sustainability Goals',
-    slug: 'waste-management-sustainability-goals',
-    excerpt: 'How responsible waste management practices contribute to Uganda\'s national development plan and the United Nations Sustainable Development Goals.',
-    featuredImage: '/images/gallery/img4.jpg',
-    publishedAt: '2025-08-20',
-    category: { name: 'Sustainability', slug: 'sustainability' },
-    author: { name: 'Green Label Services' },
-    tags: [{ name: 'SDGs', slug: 'sdgs' }, { name: 'Environment', slug: 'environment' }],
-  },
-]
 
 // ---------------------------------------------------------------------------
 // Page component
