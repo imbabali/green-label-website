@@ -92,8 +92,13 @@ export default function AwardsPage() {
             <div className="grid gap-6 md:grid-cols-3">
               {awards.map((award, i) => (
                 <div key={award.title} className={`reveal reveal-scale stagger-${i + 1} card-premium rounded-2xl border-b-4 border-b-amber-400 bg-white p-6 text-center shadow-md`}>
-                  <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-amber-50">
-                    <i className={`${award.icon} text-2xl text-amber-500`} aria-hidden="true" />
+                  <div className="relative mx-auto mb-4 w-fit">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 via-amber-50 to-white shadow-lg shadow-amber-200/40 ring-4 ring-amber-100/60">
+                      <i className={`${award.icon} text-2xl text-amber-600`} aria-hidden="true" />
+                    </div>
+                    <div className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand-green shadow-md">
+                      <i className="fa-solid fa-check text-[10px] text-white" aria-hidden="true" />
+                    </div>
                   </div>
                   <span className="inline-block rounded-full bg-brand-orange/10 px-3 py-0.5 text-xs font-semibold text-brand-orange">{award.year}</span>
                   <h3 className="mt-2 font-heading text-base font-bold text-gray-900">{award.title}</h3>

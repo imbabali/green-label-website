@@ -59,8 +59,8 @@ export default function SustainabilityPage() {
           <CardGrid columns={3}>
             {pillars.map((p) => (
               <div key={p.title} className="glass h-full rounded-2xl p-6 text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green/10">
-                  <i className={`${p.icon} text-xl text-brand-green`} aria-hidden="true" />
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-green/20 via-brand-green/10 to-transparent shadow-md shadow-brand-green/10 ring-2 ring-brand-green/20">
+                  <i className={`${p.icon} text-2xl text-brand-green`} aria-hidden="true" />
                 </div>
                 <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{p.title}</h3>
                 <p className="text-xs leading-relaxed text-gray-600">{p.description}</p>
@@ -92,8 +92,8 @@ export default function SustainabilityPage() {
           <CardGrid columns={3}>
             {programmes.map((prog) => (
               <div key={prog.title} className="glass-dark h-full rounded-2xl p-5">
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-orange/10">
-                  <i className={`${prog.icon} text-lg text-brand-orange`} aria-hidden="true" />
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-orange/20 via-brand-orange/10 to-transparent shadow-md shadow-brand-orange/10 ring-2 ring-brand-orange/20">
+                  <i className={`${prog.icon} text-xl text-brand-orange`} aria-hidden="true" />
                 </div>
                 <h3 className="mb-1 font-heading text-sm font-bold text-white">{prog.title}</h3>
                 <p className="text-xs leading-relaxed text-gray-300">{prog.desc}</p>
@@ -103,24 +103,90 @@ export default function SustainabilityPage() {
         </div>
       </section>
 
-      {/* Goals — timeline-style with year badges */}
+      {/* Goals — unique alternating zigzag roadmap */}
       <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-bullseye mr-2 text-brand-green" aria-hidden="true" />Sustainability Goals</h2>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-bullseye mr-2 text-brand-green" aria-hidden="true" />Sustainability Goals</h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-10 max-w-xl text-center text-sm text-gray-600">Our roadmap to a cleaner, greener future.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-4">
-              <div className="absolute left-0 right-0 top-5 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green lg:block" aria-hidden="true" />
-              {goals.map((g, i) => (
-                <div key={g.target} className={`reveal reveal-up stagger-${i + 1} relative card-premium flex flex-col items-center rounded-xl bg-white p-4 text-center shadow-sm`}>
-                  <div className="relative z-10 mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-green text-white shadow-lg shadow-brand-green/25">
-                    <i className={`${g.icon} text-sm`} aria-hidden="true" />
-                  </div>
-                  <span className="rounded-full bg-brand-orange/10 px-2 py-0.5 text-[10px] font-bold text-brand-orange">Target {g.year}</span>
-                  <h3 className="mt-1.5 font-heading text-xs font-bold text-gray-900">{g.target}</h3>
+            {/* Desktop: Alternating zigzag roadmap */}
+            <div className="hidden lg:block">
+              <div className="relative mx-auto max-w-4xl" style={{ minHeight: '280px' }}>
+                {/* Gradient track line — centered vertically */}
+                <div
+                  className="pointer-events-none absolute inset-x-[10%] top-1/2 h-1 -translate-y-1/2 rounded-full"
+                  style={{ background: 'linear-gradient(to right, #2c632c, #3a8a3a, #F7941D)' }}
+                  aria-hidden="true"
+                />
+                {/* Small directional chevrons on the track */}
+                <div className="pointer-events-none absolute inset-x-[10%] top-1/2 flex -translate-y-1/2 items-center justify-around px-[15%]" aria-hidden="true">
+                  {[1, 2, 3].map((n) => (
+                    <i key={n} className="fa-solid fa-chevron-right text-[8px] text-white/60" />
+                  ))}
                 </div>
-              ))}
+
+                <div className="grid h-full grid-cols-4">
+                  {goals.map((g, i) => {
+                    const isAbove = i % 2 === 0
+                    return (
+                      <div key={g.target} className={`reveal reveal-up stagger-${i + 1} flex flex-col items-center`}>
+                        {/* Upper half */}
+                        <div className={`flex flex-1 flex-col items-center justify-end pb-3 ${isAbove ? '' : 'pointer-events-none opacity-0'}`}>
+                          <div className="rounded-xl bg-white p-3 text-center shadow-md ring-1 ring-gray-100">
+                            <span className="inline-block rounded-full bg-brand-orange/10 px-2.5 py-0.5 text-[10px] font-bold text-brand-orange">Target {g.year}</span>
+                            <h3 className="mt-1.5 font-heading text-xs font-bold text-gray-900">{g.target}</h3>
+                          </div>
+                        </div>
+
+                        {/* Stem + Node + Stem */}
+                        <div className="flex flex-col items-center">
+                          <div className={`h-4 w-px ${isAbove ? 'bg-brand-green/40' : ''}`} aria-hidden="true" />
+                          <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-green to-emerald-700 text-white shadow-xl shadow-brand-green/30 ring-4 ring-white">
+                            <i className={`${g.icon} text-lg`} aria-hidden="true" />
+                          </div>
+                          <div className={`h-4 w-px ${!isAbove ? 'bg-brand-green/40' : ''}`} aria-hidden="true" />
+                        </div>
+
+                        {/* Lower half */}
+                        <div className={`flex flex-1 flex-col items-center justify-start pt-3 ${!isAbove ? '' : 'pointer-events-none opacity-0'}`}>
+                          <div className="rounded-xl bg-white p-3 text-center shadow-md ring-1 ring-gray-100">
+                            <span className="inline-block rounded-full bg-brand-orange/10 px-2.5 py-0.5 text-[10px] font-bold text-brand-orange">Target {g.year}</span>
+                            <h3 className="mt-1.5 font-heading text-xs font-bold text-gray-900">{g.target}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile / Tablet: Vertical roadmap with nodes and connecting line */}
+            <div className="lg:hidden">
+              <div className="space-y-0">
+                {goals.map((g, i) => (
+                  <div key={g.target} className={`reveal reveal-up stagger-${i + 1} flex gap-4`}>
+                    {/* Left column: node + connector */}
+                    <div className="flex flex-col items-center">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-green to-emerald-700 text-white shadow-lg shadow-brand-green/25 ring-4 ring-white">
+                        <i className={`${g.icon} text-base`} aria-hidden="true" />
+                      </div>
+                      {i < goals.length - 1 && (
+                        <div className="w-0.5 flex-1 bg-brand-green/20" aria-hidden="true" />
+                      )}
+                    </div>
+                    {/* Right column: content card */}
+                    <div className="flex-1 pb-6">
+                      <div className="card-premium rounded-xl bg-white p-4 shadow-sm">
+                        <span className="inline-block rounded-full bg-brand-orange/10 px-2 py-0.5 text-[10px] font-bold text-brand-orange">Target {g.year}</span>
+                        <h3 className="mt-1 font-heading text-sm font-bold text-gray-900">{g.target}</h3>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </ScrollRevealSection>
         </div>
