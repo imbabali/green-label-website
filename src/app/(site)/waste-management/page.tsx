@@ -70,7 +70,6 @@ export default function WasteManagementPage() {
                   <div key={s.num} className={`reveal reveal-up stagger-${i + 1} relative`}>
                     <div className="relative overflow-hidden rounded-2xl bg-white p-5 shadow-lg ring-1 ring-gray-100 transition-shadow hover:shadow-xl">
                       {/* Watermark number */}
-                      <span className="pointer-events-none absolute -right-1 -top-3 select-none font-heading text-[72px] font-black leading-none text-brand-green/[0.06]" aria-hidden="true">{s.num}</span>
                       {/* Icon in rounded square */}
                       <div className="relative z-10 mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green to-emerald-600 text-white shadow-md shadow-brand-green/25">
                         <i className={`${s.icon} text-lg`} aria-hidden="true" />
