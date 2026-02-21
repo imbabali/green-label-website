@@ -300,45 +300,40 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* b) Services Grid Section                                           */}
       {/* ----------------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-gradient-subtle py-16 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
         <div className="absolute inset-0 bg-gradient-radial-green" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
-              <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-wider text-brand-orange">
-                What We Offer
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                <i className="fa-solid fa-layer-group mr-2 text-brand-green" aria-hidden="true" />Our Services
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Comprehensive Waste Management Solutions
-              </p>
-            </div>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+              <i className="fa-solid fa-layer-group mr-2 text-brand-green" aria-hidden="true" />Our Services
+            </h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">
+              Comprehensive waste management solutions for every sector.
+            </p>
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service, index) => (
                 <div
                   key={service.title}
-                  className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium group rounded-2xl border border-gray-100 bg-white p-6 shadow-md`}
+                  className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium group rounded-2xl border border-gray-100 bg-white p-5 shadow-md`}
                 >
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green transition-colors group-hover:bg-brand-green group-hover:text-white">
-                    <i className={`${service.icon} text-2xl`} aria-hidden="true" />
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green transition-colors group-hover:bg-brand-green group-hover:text-white">
+                    <i className={`${service.icon} text-lg`} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
+                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">
                     {service.title}
                   </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-gray-600">
+                  <p className="mb-3 text-xs leading-relaxed text-gray-600">
                     {service.description}
                   </p>
                   <Link
                     href={service.href}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors hover:text-brand-green-dark"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-green transition-colors hover:text-brand-green-dark"
                   >
                     Learn More
-                    <i className="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                    <i className="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </Link>
                 </div>
               ))}
@@ -346,10 +341,10 @@ export default async function HomePage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="reveal reveal-scale mt-10 text-center">
+            <div className="reveal reveal-scale mt-6 text-center">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 rounded-lg bg-brand-green px-6 py-3 font-heading text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
+                className="inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-2.5 font-heading text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
               >
                 View All Services
                 <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
@@ -367,41 +362,36 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* d) NEMA Licenses Section                                           */}
       {/* ----------------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-white py-16 md:py-20">
+      <section className="relative overflow-hidden bg-white py-12 md:py-16">
         <div className="absolute inset-0 pattern-grid" aria-hidden="true" />
         <WaveDivider flip color="#f9fafb" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto max-w-3xl text-center">
-              <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-wider text-brand-orange">
-                Compliance
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                <i className="fa-solid fa-certificate mr-2 text-brand-green" aria-hidden="true" />Licensed &amp; Certified
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Fully licensed by the National Environment Management Authority (NEMA) for all waste management operations
-              </p>
-            </div>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+              <i className="fa-solid fa-certificate mr-2 text-brand-green" aria-hidden="true" />Licensed &amp; Certified
+            </h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">
+              Fully licensed by NEMA for all waste management operations.
+            </p>
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {licenses.map((license, index) => (
                 <div
                   key={license.number ?? index}
-                  className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border border-gray-100 bg-white p-6 shadow-md`}
+                  className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border border-gray-100 bg-white p-4 shadow-md`}
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
-                    <i className="fa-solid fa-certificate text-xl" aria-hidden="true" />
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
+                    <i className="fa-solid fa-certificate text-lg" aria-hidden="true" />
                   </div>
-                  <h3 className="mb-1 font-heading text-base font-bold text-gray-900">
+                  <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">
                     {license.title}
                   </h3>
-                  <p className="mb-2 text-sm font-medium text-brand-green">
+                  <p className="mb-1 text-xs font-medium text-brand-green">
                     {license.number}
                   </p>
-                  <p className="text-sm leading-relaxed text-gray-600">
+                  <p className="text-xs leading-relaxed text-gray-600">
                     {license.scope}
                   </p>
                 </div>
@@ -414,26 +404,21 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* e) Reviews Section                                                 */}
       {/* ----------------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-gradient-subtle py-16 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-subtle py-12 md:py-16">
         <div className="absolute inset-0 bg-gradient-radial-orange" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto mb-12 max-w-3xl text-center">
-              <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-wider text-brand-orange">
-                Testimonials
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                <i className="fa-solid fa-quote-left mr-2 text-brand-green" aria-hidden="true" />What Our Clients Say
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Trusted by hospitals, oil companies, and businesses across Uganda
-              </p>
-            </div>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+              <i className="fa-solid fa-quote-left mr-2 text-brand-green" aria-hidden="true" />What Our Clients Say
+            </h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">
+              Trusted by hospitals, oil companies, and businesses across Uganda.
+            </p>
           </ScrollRevealSection>
 
           <ReviewCarousel reviews={reviewData} />
 
-          <div className="mt-10 text-center">
+          <div className="mt-6 text-center">
             <Link
               href="/reviews"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand-green transition-colors hover:text-brand-green-dark"
@@ -448,26 +433,21 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* f) Latest Blog Posts Section                                       */}
       {/* ----------------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-gradient-warm py-16 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-warm py-12 md:py-16">
         <DotPattern className="opacity-30" />
         <WaveDivider flip color="#ffffff" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto mb-12 max-w-3xl text-center">
-              <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-wider text-brand-orange">
-                Our Blog
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                <i className="fa-solid fa-newspaper mr-2 text-brand-green" aria-hidden="true" />Latest News &amp; Insights
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Stay informed about waste management best practices, industry updates, and company news
-              </p>
-            </div>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+              <i className="fa-solid fa-newspaper mr-2 text-brand-green" aria-hidden="true" />Latest News &amp; Insights
+            </h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">
+              Stay informed about waste management best practices and company news.
+            </p>
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post, index) => (
                 <article
                   key={post.slug}
@@ -494,14 +474,14 @@ export default async function HomePage() {
                       </span>
                     )}
                   </div>
-                  <div className="p-5">
+                  <div className="p-4">
                     {post.author && (
-                      <p className="mb-2 text-xs font-medium text-gray-500">
+                      <p className="mb-1.5 text-xs font-medium text-gray-500">
                         <i className="fa-solid fa-user mr-1.5" aria-hidden="true" />
                         {post.author.name}
                       </p>
                     )}
-                    <h3 className="mb-2 text-lg font-bold leading-tight text-gray-900">
+                    <h3 className="mb-1.5 text-sm font-bold leading-tight text-gray-900">
                       <Link
                         href={`/blog/${post.slug}`}
                         className="transition-colors hover:text-brand-green"
@@ -509,17 +489,17 @@ export default async function HomePage() {
                         {post.title}
                       </Link>
                     </h3>
-                    <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                      {post.excerpt.length > 150
-                        ? post.excerpt.substring(0, 150).trimEnd() + '...'
+                    <p className="mb-3 text-xs leading-relaxed text-gray-600">
+                      {post.excerpt.length > 120
+                        ? post.excerpt.substring(0, 120).trimEnd() + '...'
                         : post.excerpt}
                     </p>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-colors hover:text-brand-green-dark"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-green transition-colors hover:text-brand-green-dark"
                     >
                       Read Article
-                      <i className="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                      <i className="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </Link>
                   </div>
                 </article>
@@ -528,10 +508,10 @@ export default async function HomePage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="reveal reveal-scale mt-10 text-center">
+            <div className="reveal reveal-scale mt-6 text-center">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 rounded-lg bg-brand-green px-6 py-3 font-heading text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
+                className="inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-2.5 font-heading text-sm font-semibold text-white shadow-md shadow-brand-green/20 transition-all hover:bg-brand-green-dark hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
               >
                 View All Posts
                 <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
@@ -544,23 +524,18 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* g) Partners & Clients Section                                      */}
       {/* ----------------------------------------------------------------- */}
-      <section className="bg-gradient-subtle py-16 md:py-20">
+      <section className="bg-gradient-subtle py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="reveal reveal-up mx-auto mb-12 max-w-3xl text-center">
-              <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-wider text-brand-orange">
-                Our Partners
-              </span>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 md:text-4xl">
-                <i className="fa-solid fa-handshake mr-2 text-brand-green" aria-hidden="true" />Trusted By Industry Leaders
-              </h2>
-              <p className="mt-4 text-lg text-gray-600">
-                We proudly serve leading organizations across Uganda&apos;s oil &amp; gas, healthcare, and public sectors
-              </p>
-            </div>
+            <h2 className="reveal reveal-up mb-2 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl">
+              <i className="fa-solid fa-handshake mr-2 text-brand-green" aria-hidden="true" />Trusted By Industry Leaders
+            </h2>
+            <p className="reveal reveal-up stagger-1 mx-auto mb-6 max-w-xl text-center text-sm text-gray-600">
+              Proudly serving leading organizations across Uganda&apos;s oil &amp; gas, healthcare, and public sectors.
+            </p>
           </ScrollRevealSection>
 
-          <div className="grid grid-cols-3 items-center gap-8 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+          <div className="grid grid-cols-3 items-center gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6">
             {[
               { src: '/images/partners/cnooc.png', alt: 'CNOOC Uganda' },
               { src: '/images/partners/cosl.png', alt: 'COSL' },
@@ -583,13 +558,13 @@ export default async function HomePage() {
             ].map((partner) => (
               <div
                 key={partner.alt}
-                className="relative flex h-20 items-center justify-center rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                className="relative flex h-16 items-center justify-center rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
               >
                 <Image
                   src={partner.src}
                   alt={partner.alt}
-                  width={120}
-                  height={48}
+                  width={100}
+                  height={40}
                   className="object-contain opacity-70 transition-opacity hover:opacity-100"
                 />
               </div>
@@ -601,38 +576,32 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* h) CTA Section                                                     */}
       {/* ----------------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-gradient-green py-16 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-green py-12">
         <DotPattern />
-        <GradientOrb color="orange" size="lg" className="-right-32 -top-32 opacity-20" />
-        <GradientOrb color="green" size="md" className="-bottom-16 -left-16 opacity-20" />
+        <GradientOrb color="orange" size="lg" className="-right-32 -top-20 opacity-20" />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <ScrollRevealSection>
-            <div className="reveal reveal-up">
-              <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
-                <i className="fa-solid fa-headset mr-2" aria-hidden="true" />Ready to Get Started?
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-200">
-                Partner with Uganda&apos;s most trusted waste management company. Let us handle your waste
-                professionally, safely, and in full compliance with environmental regulations.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <Link
-                  href="#quote"
-                  data-quote-trigger=""
-                  className="inline-flex items-center rounded-lg bg-brand-orange px-6 py-3 font-heading text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 transition-all hover:bg-brand-orange-dark hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
-                >
-                  Request A Quote
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3 font-heading text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-                >
-                  Contact Us
-                </Link>
-              </div>
-            </div>
-          </ScrollRevealSection>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
+            <i className="fa-solid fa-headset mr-2" aria-hidden="true" />Ready to Get Started?
+          </h2>
+          <p className="mx-auto mt-3 max-w-lg text-sm text-gray-200">
+            Partner with Uganda&apos;s most trusted waste management company for safe, compliant waste disposal.
+          </p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link
+              href="#quote"
+              data-quote-trigger=""
+              className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-orange/25 hover:bg-brand-orange-dark"
+            >
+              Request A Quote
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-lg border-2 border-white px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </section>
 

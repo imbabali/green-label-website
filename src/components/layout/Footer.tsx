@@ -18,43 +18,37 @@ export default function Footer({ services = [] }: FooterProps) {
         style={{ background: 'linear-gradient(to right, #2c632c, #F7941D)' }}
       />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Column 1: Company Info & Contact */}
           <div>
-            <Link href="/" className="mb-4 inline-flex items-center gap-1" aria-label="Green Label Services home">
-              <span className="font-heading text-xl font-extrabold tracking-tight text-brand-green-light">
+            <Link href="/" className="mb-3 inline-flex items-center gap-1" aria-label="Green Label Services home">
+              <span className="font-heading text-lg font-extrabold tracking-tight text-brand-green-light">
                 GREEN
               </span>
-              <span className="font-heading text-xl font-extrabold tracking-tight text-brand-orange">
+              <span className="font-heading text-lg font-extrabold tracking-tight text-brand-orange">
                 LABEL
               </span>
             </Link>
-            <p className="mb-6 text-sm leading-relaxed text-gray-400">
-              Uganda&apos;s leading waste management company with over 25 years
-              of experience in safe, trusted waste collection and disposal
-              services across the country.
+            <p className="mb-4 text-xs leading-relaxed text-gray-400">
+              Uganda&apos;s leading waste management company — 25+ years of safe, trusted waste collection and disposal.
             </p>
-            <address className="space-y-3 not-italic">
+            <address className="space-y-2 not-italic">
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-brand-orange"
+                className="flex items-center gap-2 text-xs text-gray-400 transition-colors hover:text-brand-orange"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green/20">
-                  <i className="fa-solid fa-envelope text-xs text-brand-green-light" aria-hidden="true" />
-                </span>
-                <span className="pt-1">{COMPANY_INFO.email}</span>
+                <i className="fa-solid fa-envelope text-[10px] text-brand-green-light" aria-hidden="true" />
+                {COMPANY_INFO.email}
               </a>
               {COMPANY_INFO.phones.map((phone) => (
                 <a
                   key={phone}
                   href={`tel:${phone.replace(/\s/g, '')}`}
-                  className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-brand-orange"
+                  className="flex items-center gap-2 text-xs text-gray-400 transition-colors hover:text-brand-orange"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green/20">
-                    <i className="fa-solid fa-phone text-xs text-brand-green-light" aria-hidden="true" />
-                  </span>
-                  <span className="pt-1">{phone}</span>
+                  <i className="fa-solid fa-phone text-[10px] text-brand-green-light" aria-hidden="true" />
+                  {phone}
                 </a>
               ))}
             </address>
@@ -62,15 +56,15 @@ export default function Footer({ services = [] }: FooterProps) {
 
           {/* Column 2: Company Links */}
           <div>
-            <h2 className="mb-4 font-heading text-base font-bold uppercase tracking-wider text-white">
+            <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Company</span>
             </h2>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               {FOOTER_LINKS.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 transition-colors hover:text-brand-orange"
+                    className="text-xs text-gray-400 transition-colors hover:text-brand-orange"
                   >
                     {link.label}
                   </Link>
@@ -81,15 +75,15 @@ export default function Footer({ services = [] }: FooterProps) {
 
           {/* Column 3: Industries + Dynamic Services */}
           <div>
-            <h2 className="mb-4 font-heading text-base font-bold uppercase tracking-wider text-white">
+            <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Industries</span>
             </h2>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               {FOOTER_LINKS.industries.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 transition-colors hover:text-brand-orange"
+                    className="text-xs text-gray-400 transition-colors hover:text-brand-orange"
                   >
                     {link.label}
                   </Link>
@@ -99,15 +93,15 @@ export default function Footer({ services = [] }: FooterProps) {
 
             {services.length > 0 && (
               <>
-                <h3 className="mb-3 mt-6 font-heading text-sm font-bold uppercase tracking-wider text-white">
+                <h3 className="mb-2 mt-4 font-heading text-xs font-bold uppercase tracking-wider text-white">
                   <span className="inline-block border-b-2 border-brand-green pb-1">Services</span>
                 </h3>
-                <ul className="space-y-2.5">
+                <ul className="space-y-1.5">
                   {services.map((service) => (
                     <li key={service.slug}>
                       <Link
                         href={`/services/${service.slug}`}
-                        className="text-sm text-gray-400 transition-colors hover:text-brand-orange"
+                        className="text-xs text-gray-400 transition-colors hover:text-brand-orange"
                       >
                         {service.title}
                       </Link>
@@ -120,12 +114,11 @@ export default function Footer({ services = [] }: FooterProps) {
 
           {/* Column 4: Newsletter */}
           <div>
-            <h2 className="mb-4 font-heading text-base font-bold uppercase tracking-wider text-white">
+            <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Newsletter</span>
             </h2>
-            <p className="mb-4 text-sm text-gray-400">
-              Subscribe to our newsletter for the latest news, updates, and
-              insights on waste management in Uganda.
+            <p className="mb-3 text-xs text-gray-400">
+              Subscribe for the latest news and insights on waste management.
             </p>
             <NewsletterForm variant="footer" />
           </div>
@@ -134,7 +127,7 @@ export default function Footer({ services = [] }: FooterProps) {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
           <p className="text-center text-xs text-gray-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>
@@ -150,24 +143,24 @@ export default function Footer({ services = [] }: FooterProps) {
                 </Link>
               ))}
             </nav>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <a
                 href={COMPANY_INFO.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit our Facebook page"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
               >
-                <i className="fa-brands fa-facebook-f text-xs" aria-hidden="true" />
+                <i className="fa-brands fa-facebook-f text-[10px]" aria-hidden="true" />
               </a>
               <a
                 href={COMPANY_INFO.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit our LinkedIn page"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
               >
-                <i className="fa-brands fa-linkedin-in text-xs" aria-hidden="true" />
+                <i className="fa-brands fa-linkedin-in text-[10px]" aria-hidden="true" />
               </a>
             </div>
           </div>
