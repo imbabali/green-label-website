@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Hero from '@/components/shared/Hero'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
+import HorizontalTimeline from '@/components/shared/HorizontalTimeline'
 import { GradientOrb, DotPattern } from '@/components/shared/DecorativeElements'
 import { generatePageMetadata } from '@/lib/utils/seo'
 
@@ -235,126 +236,16 @@ export default function OurStoryPage() {
 
       {/* Timeline Section */}
       <section className="bg-gradient-subtle py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-4 text-center font-heading text-3xl font-bold text-gray-900 md:text-4xl">
               Our Journey
             </h2>
-            <p className="reveal reveal-up stagger-2 mx-auto mb-16 max-w-2xl text-center text-gray-600">
+            <p className="reveal reveal-up stagger-2 mx-auto mb-4 max-w-2xl text-center text-gray-600">
               A timeline of key milestones that have shaped Green Label Services into the company it is today.
             </p>
           </ScrollRevealSection>
-
-          <div className="relative">
-            {/* Vertical line — gradient */}
-            <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 md:block" aria-hidden="true" style={{ background: 'linear-gradient(to bottom, #2c632c, #F7941D)' }} />
-            <div className="absolute left-6 top-0 h-full w-0.5 md:hidden" aria-hidden="true" style={{ background: 'linear-gradient(to bottom, #2c632c, #F7941D)' }} />
-
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => {
-                const isLeft = index % 2 === 0
-
-                return (
-                  <div key={milestone.year} className="relative">
-                    {/* Mobile layout */}
-                    <div className="flex gap-6 md:hidden">
-                      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-green text-white shadow-lg">
-                        <i className={milestone.icon} aria-hidden="true" />
-                      </div>
-                      <div className="card-premium overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
-                        {milestone.image && (
-                          <div className="relative h-40 w-full">
-                            <Image
-                              src={milestone.image}
-                              alt={milestone.title}
-                              fill
-                              sizes="(max-width: 768px) 80vw"
-                              className="object-cover"
-                            />
-                          </div>
-                        )}
-                        <div className="p-5">
-                          <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
-                            {milestone.year}
-                          </span>
-                          <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                            {milestone.title}
-                          </h3>
-                          <p className="text-sm text-gray-600">{milestone.description}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Desktop alternating layout */}
-                    <div className="hidden md:grid md:grid-cols-2 md:gap-8">
-                      {isLeft ? (
-                        <>
-                          <div className="text-right">
-                            <div className="inline-block card-premium overflow-hidden rounded-2xl border border-gray-100 bg-white text-left shadow-md">
-                              {milestone.image && (
-                                <div className="relative h-48 w-full">
-                                  <Image
-                                    src={milestone.image}
-                                    alt={milestone.title}
-                                    fill
-                                    sizes="45vw"
-                                    className="object-cover"
-                                  />
-                                </div>
-                              )}
-                              <div className="p-6">
-                                <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
-                                  {milestone.year}
-                                </span>
-                                <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                                  {milestone.title}
-                                </h3>
-                                <p className="text-sm text-gray-600">{milestone.description}</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div />
-                        </>
-                      ) : (
-                        <>
-                          <div />
-                          <div>
-                            <div className="inline-block card-premium overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
-                              {milestone.image && (
-                                <div className="relative h-48 w-full">
-                                  <Image
-                                    src={milestone.image}
-                                    alt={milestone.title}
-                                    fill
-                                    sizes="45vw"
-                                    className="object-cover"
-                                  />
-                                </div>
-                              )}
-                              <div className="p-6">
-                                <span className="mb-1 inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-sm font-bold text-brand-orange">
-                                  {milestone.year}
-                                </span>
-                                <h3 className="mb-2 font-heading text-lg font-bold text-gray-900">
-                                  {milestone.title}
-                                </h3>
-                                <p className="text-sm text-gray-600">{milestone.description}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-
-                    {/* Center icon (desktop) */}
-                    <div className="absolute left-1/2 top-6 z-10 hidden h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full bg-brand-green text-white shadow-lg md:flex">
-                      <i className={milestone.icon} aria-hidden="true" />
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+          <HorizontalTimeline milestones={milestones} />
         </div>
       </section>
 
