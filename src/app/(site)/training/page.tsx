@@ -60,7 +60,7 @@ export default function TrainingPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six certified courses covering every aspect of waste management.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
               {programmes.map((p, i) => (
                 <div key={p.title} className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium relative h-full overflow-hidden rounded-2xl bg-white p-5 shadow-md`}>
                   <div className="mb-2 flex items-center justify-between">

@@ -84,7 +84,7 @@ export default function OurFleetPage() {
             <h2 className="reveal reveal-up mb-6 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-gears mr-2 text-brand-green" aria-hidden="true" />Fleet Standards</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {features.map((f, i) => (
                 <div key={f.title} className={`reveal reveal-up stagger-${i + 1} glass flex flex-col items-center rounded-xl p-4 text-center`}>
                   <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">

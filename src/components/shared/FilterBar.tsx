@@ -106,7 +106,7 @@ export default function FilterBar({
   return (
     <div className="mb-8 rounded-2xl glass p-4 shadow-lg md:p-6">
       {/* Search + Filters Row */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-end">
+      <div className="flex flex-wrap gap-4 items-end">
         {/* Search */}
         <form
           onSubmit={handleSearch}

@@ -60,7 +60,7 @@ export default function FinancialCapacityPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">The foundations that make us a reliable long-term partner.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid grid-cols-2 gap-4">
               {strengths.map((s, i) => (
                 <div key={s.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} glass flex items-start gap-4 rounded-2xl p-5`}>
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-green/10">

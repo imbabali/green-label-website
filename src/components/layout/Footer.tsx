@@ -127,7 +127,7 @@ export default function Footer({ services = [] }: FooterProps) {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
           <p className="text-center text-xs text-gray-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>

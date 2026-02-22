@@ -171,7 +171,7 @@ export default function NewsletterForm({
             <HoneypotField register={register as unknown as (name: string) => Record<string, unknown>} />
             <input type="hidden" {...register('frequency')} />
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex gap-3">
               <div className="flex-1">
                 <label htmlFor="newsletter-section-name" className="sr-only">
                   Your name
@@ -286,7 +286,7 @@ export default function NewsletterForm({
       <HoneypotField register={register as unknown as (name: string) => Record<string, unknown>} />
       <input type="hidden" {...register('frequency')} />
 
-      <div className="flex flex-col gap-2 sm:flex-row">
+      <div className="flex gap-2">
         <div className="flex-1">
           <label htmlFor="newsletter-footer-email" className="sr-only">
             Email address

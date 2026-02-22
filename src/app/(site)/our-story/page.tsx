@@ -189,7 +189,7 @@ export default function OurStoryPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">The principles that guide every decision and action.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
               {values.map((value, i) => {
                 const Icon = value.icon
                 return (

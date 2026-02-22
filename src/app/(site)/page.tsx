@@ -317,7 +317,7 @@ export default async function HomePage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
               {services.map((service, index) => (
                 <div
                   key={service.title}
@@ -380,7 +380,7 @@ export default async function HomePage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
               {licenses.map((license, index) => (
                 <div
                   key={license.number ?? index}
@@ -451,7 +451,7 @@ export default async function HomePage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
               {posts.map((post, index) => (
                 <article
                   key={post.slug}

@@ -49,7 +49,7 @@ export default async function MyReviewsPage() {
 
           {reviews && reviews.length > 0 ? (
             <ScrollRevealSection>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
                 {reviews.map((review: any, index: number) => (
                   <div key={review.id} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <ReviewCard review={review} />

@@ -88,7 +88,7 @@ export default function AboutPage() {
             <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-gray-900 md:text-3xl"><i className="fa-solid fa-gears mr-2 text-brand-green" aria-hidden="true" />How We Work</h2>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="relative grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
               <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green lg:block" aria-hidden="true" />
               {steps.map((s, i) => (
                 <div key={s.num} className={`reveal reveal-up stagger-${i + 1} relative text-center`}>
@@ -108,7 +108,7 @@ export default function AboutPage() {
       <section className="bg-gradient-subtle py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3">
               {values.map((v, i) => (
                 <div key={v.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${i + 1} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-4 md:p-6 shadow-md`}>
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">

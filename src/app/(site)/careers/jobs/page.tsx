@@ -67,7 +67,7 @@ export default async function JobsPage({ searchParams }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedJobs.length > 0 ? (
             <ScrollRevealSection>
-              <div className="grid gap-4 md:gap-6 md:grid-cols-2">
+              <div className="grid grid-cols-2 gap-4 md:gap-6">
                 {transformedJobs.map((job: any, index: number) => (
                   <div key={job.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <JobCard job={job} />

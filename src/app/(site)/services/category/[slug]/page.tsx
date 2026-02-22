@@ -72,7 +72,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {transformedServices.length > 0 ? (
             <ScrollRevealSection>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
                 {transformedServices.map((service: any, index: number) => (
                   <div key={service.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <ServiceCard service={service} />

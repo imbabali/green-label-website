@@ -97,7 +97,7 @@ export default async function BlogSearchPage({ searchParams }: Props) {
 
           {transformedPosts.length > 0 ? (
             <ScrollRevealSection>
-              <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
                 {transformedPosts.map((post: any, index: number) => (
                   <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <PostCard post={post} />

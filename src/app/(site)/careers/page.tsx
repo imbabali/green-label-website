@@ -53,7 +53,7 @@ export default function CareersPage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
               {benefits.map((b, index) => (
                 <div key={b.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-6 shadow-md`}>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/10">

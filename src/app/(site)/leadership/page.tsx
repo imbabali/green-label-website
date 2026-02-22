@@ -104,7 +104,7 @@ export default function LeadershipPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <div className="reveal reveal-up glass mx-auto max-w-4xl rounded-2xl p-6 md:p-10">
-              <div className="flex flex-col items-center gap-6 md:flex-row">
+              <div className="flex items-center gap-4 md:gap-6">
                 <div className="relative h-28 w-28 md:h-36 md:w-36 shrink-0 overflow-hidden rounded-full ring-4 ring-brand-green/20 shadow-lg">
                   <Image
                     src="/images/hero/mugume.jpg"
@@ -146,7 +146,7 @@ export default function LeadershipPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Strategic oversight ensuring the highest standards of governance and environmental responsibility.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3">
               {boardMembers.map((member, i) => (
                 <div key={member.name} className={`reveal reveal-scale stagger-${i + 1} glass rounded-2xl p-6 text-center`}>
                   <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-brand-green shadow-md">
@@ -172,7 +172,7 @@ export default function LeadershipPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollRevealSection>
             <h2 className="reveal reveal-up mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl"><i className="fa-solid fa-compass mr-2 text-brand-orange-light" aria-hidden="true" />Leadership Values</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {leadershipValues.map((value, i) => {
                 const Icon = value.icon
                 return (
