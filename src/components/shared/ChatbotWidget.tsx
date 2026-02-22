@@ -43,39 +43,49 @@ function getBotResponse(input: string): Message {
     }
   }
 
-  if (lower.includes('quote') || lower.includes('pricing') || lower.includes('price') || lower === 'request quote') {
+  if (
+    lower.includes('quote') ||
+    lower.includes('pricing') ||
+    lower.includes('price') ||
+    lower === 'request quote'
+  ) {
     return {
       id: generateId(),
       text: `You can request a free quote by clicking the "Request A Quote" button at the top of any page, or visit our quote page. Our team typically responds within 24 hours with a customized quote.`,
       sender: 'bot',
       timestamp: new Date(),
-      links: [
-        { label: 'Request A Quote', href: '/quote' },
-      ],
+      links: [{ label: 'Request A Quote', href: '/quote' }],
     }
   }
 
-  if (lower.includes('contact') || lower.includes('reach') || lower.includes('email') || lower.includes('phone') || lower === 'contact us') {
+  if (
+    lower.includes('contact') ||
+    lower.includes('reach') ||
+    lower.includes('email') ||
+    lower.includes('phone') ||
+    lower === 'contact us'
+  ) {
     return {
       id: generateId(),
       text: `Here are our contact details:\n\nPhone: ${COMPANY_INFO.phones[0]}\nAlt: ${COMPANY_INFO.phones[1]}\nEmail: ${COMPANY_INFO.email}\nWhatsApp: ${COMPANY_INFO.whatsapp}\n\nAddress: ${COMPANY_INFO.address}\n\nWorking Hours:\n${COMPANY_INFO.workingHours.weekdays}\n${COMPANY_INFO.workingHours.saturday}\n${COMPANY_INFO.workingHours.sunday}`,
       sender: 'bot',
       timestamp: new Date(),
-      links: [
-        { label: 'Contact Page', href: '/contact' },
-      ],
+      links: [{ label: 'Contact Page', href: '/contact' }],
     }
   }
 
-  if (lower.includes('track') || lower.includes('pickup') || lower.includes('schedule') || lower === 'track pickup') {
+  if (
+    lower.includes('track') ||
+    lower.includes('pickup') ||
+    lower.includes('schedule') ||
+    lower === 'track pickup'
+  ) {
     return {
       id: generateId(),
       text: `To track your pickup or schedule a new one, please call our dispatch team directly at ${COMPANY_INFO.emergencyHotline}. For emergencies, this line is available 24/7.`,
       sender: 'bot',
       timestamp: new Date(),
-      links: [
-        { label: 'Call Dispatch', href: `tel:${COMPANY_INFO.phones[0].replace(/\s/g, '')}` },
-      ],
+      links: [{ label: 'Call Dispatch', href: `tel:${COMPANY_INFO.phones[0].replace(/\s/g, '')}` }],
     }
   }
 
@@ -107,6 +117,7 @@ export default function ChatbotWidget() {
     },
   ])
   const [inputValue, setInputValue] = useState('')
+  const [footerOffset, setFooterOffset] = useState(0)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -124,28 +135,38 @@ export default function ChatbotWidget() {
     }
   }, [isOpen])
 
-  const handleSend = useCallback(
-    (text: string) => {
-      if (!text.trim()) return
-
-      const userMessage: Message = {
-        id: generateId(),
-        text: text.trim(),
-        sender: 'user',
-        timestamp: new Date(),
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('footer')
+      if (footer) {
+        const overlap = window.innerHeight - footer.getBoundingClientRect().top
+        setFooterOffset(Math.max(0, overlap))
       }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-      setMessages((prev) => [...prev, userMessage])
-      setInputValue('')
+  const handleSend = useCallback((text: string) => {
+    if (!text.trim()) return
 
-      // Simulate typing delay
-      setTimeout(() => {
-        const botResponse = getBotResponse(text)
-        setMessages((prev) => [...prev, botResponse])
-      }, 600)
-    },
-    []
-  )
+    const userMessage: Message = {
+      id: generateId(),
+      text: text.trim(),
+      sender: 'user',
+      timestamp: new Date(),
+    }
+
+    setMessages((prev) => [...prev, userMessage])
+    setInputValue('')
+
+    // Simulate typing delay
+    setTimeout(() => {
+      const botResponse = getBotResponse(text)
+      setMessages((prev) => [...prev, botResponse])
+    }, 600)
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -162,22 +183,17 @@ export default function ChatbotWidget() {
       {isOpen && (
         <div
           className={`chatbot-widget open fixed right-4 z-40 flex h-[min(480px,calc(100dvh-6rem))] w-[calc(100vw-2rem)] max-w-[360px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-200 sm:right-6`}
-          style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}
+          style={{ bottom: `calc(5rem + ${footerOffset}px + env(safe-area-inset-bottom, 0px))` }}
           role="complementary"
           aria-label="Chat assistant"
         >
           {/* Header */}
           <div className="flex items-center gap-3 bg-gradient-green px-4 py-3">
             <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
-              <i
-                className="fa-solid fa-leaf text-lg text-white"
-                aria-hidden="true"
-              />
+              <i className="fa-solid fa-leaf text-lg text-white" aria-hidden="true" />
             </div>
             <div className="flex-1">
-              <p className="font-heading text-sm font-bold text-white">
-                Green Label Assistant
-              </p>
+              <p className="font-heading text-sm font-bold text-white">Green Label Assistant</p>
               <p className="flex items-center gap-1 text-xs text-green-200">
                 <span
                   className="inline-block h-2 w-2 rounded-full bg-green-400"
@@ -198,16 +214,15 @@ export default function ChatbotWidget() {
 
           {/* Messages */}
           <div
-            className="flex-1 overflow-y-auto px-4 py-3" style={{ overscrollBehavior: 'contain' }}
+            className="flex-1 overflow-y-auto px-4 py-3"
+            style={{ overscrollBehavior: 'contain' }}
             aria-live="polite"
             aria-label="Chat messages"
           >
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`mb-3 flex ${
-                  msg.sender === 'user' ? 'justify-end' : 'justify-start'
-                }`}
+                className={`mb-3 flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
                   className={`max-w-[85%] rounded-xl px-3 py-2 text-sm ${
@@ -292,13 +307,11 @@ export default function ChatbotWidget() {
         aria-label={isOpen ? 'Close chat assistant' : 'Open chat assistant'}
         aria-expanded={isOpen}
         className="fixed right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green text-white shadow-lg shadow-brand-green/30 transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-brand-green/40 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6 sm:h-14 sm:w-14"
-        style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+        style={{ bottom: `calc(${footerOffset}px + max(1rem, env(safe-area-inset-bottom)))` }}
       >
         <i
           className={`text-xl transition-transform duration-300 ${
-            isOpen
-              ? 'fa-solid fa-xmark rotate-90'
-              : 'fa-solid fa-comments'
+            isOpen ? 'fa-solid fa-xmark rotate-90' : 'fa-solid fa-comments'
           }`}
           aria-hidden="true"
         />
