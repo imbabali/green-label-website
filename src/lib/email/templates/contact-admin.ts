@@ -1,3 +1,5 @@
+import { escapeHtml } from '@/lib/utils/html-escape'
+
 interface ContactAdminProps {
   fullName: string
   email: string
@@ -30,22 +32,22 @@ export function contactAdminHtml(data: ContactAdminProps): string {
         <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;width:150px;"><strong>Name</strong></td>
-            <td style="color:#333;font-size:14px;">${data.fullName}</td>
+            <td style="color:#333;font-size:14px;">${escapeHtml(data.fullName)}</td>
           </tr>
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;"><strong>Email</strong></td>
-            <td style="color:#333;font-size:14px;"><a href="mailto:${data.email}">${data.email}</a></td>
+            <td style="color:#333;font-size:14px;"><a href="mailto:${data.email}">${escapeHtml(data.email)}</a></td>
           </tr>
-          ${data.phone ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Phone</strong></td><td style="color:#333;font-size:14px;">${data.phone}</td></tr>` : ''}
-          ${data.company ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Company</strong></td><td style="color:#333;font-size:14px;">${data.company}</td></tr>` : ''}
+          ${data.phone ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Phone</strong></td><td style="color:#333;font-size:14px;">${escapeHtml(data.phone)}</td></tr>` : ''}
+          ${data.company ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Company</strong></td><td style="color:#333;font-size:14px;">${escapeHtml(data.company)}</td></tr>` : ''}
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;"><strong>Subject</strong></td>
-            <td style="color:#333;font-size:14px;">${data.subject}</td>
+            <td style="color:#333;font-size:14px;">${escapeHtml(data.subject)}</td>
           </tr>
-          ${data.location ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Location</strong></td><td style="color:#333;font-size:14px;">${data.location}</td></tr>` : ''}
+          ${data.location ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Location</strong></td><td style="color:#333;font-size:14px;">${escapeHtml(data.location)}</td></tr>` : ''}
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;"><strong>Preferred Contact</strong></td>
-            <td style="color:#333;font-size:14px;">${data.preferredContact}</td>
+            <td style="color:#333;font-size:14px;">${escapeHtml(data.preferredContact)}</td>
           </tr>
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;"><strong>Marketing Consent</strong></td>
@@ -54,7 +56,7 @@ export function contactAdminHtml(data: ContactAdminProps): string {
         </table>
         <div style="background:#f9fafb;padding:15px 20px;margin:20px 0;border-radius:8px;">
           <p style="margin:0 0 5px;color:#666;font-size:14px;"><strong>Message:</strong></p>
-          <p style="margin:0;color:#333;font-size:14px;line-height:1.6;">${data.message}</p>
+          <p style="margin:0;color:#333;font-size:14px;line-height:1.6;">${escapeHtml(data.message)}</p>
         </div>
         <div style="background:#f3f4f6;padding:10px 15px;border-radius:4px;font-size:12px;color:#6b7280;">
           <p style="margin:2px 0;">IP: ${data.ipAddress || 'N/A'} | UA: ${data.userAgent?.substring(0, 80) || 'N/A'}</p>

@@ -7,6 +7,7 @@ import { applicationConfirmationHtml } from '@/lib/email/templates/application-c
 import { applicationAdminHtml } from '@/lib/email/templates/application-admin'
 import { SITE_URL } from '@/lib/data/constants'
 import { headers } from 'next/headers'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const applicationSchema = z.object({
   job_slug: z.string().min(1),
@@ -85,6 +86,15 @@ export async function submitApplication(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('application')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many submissions. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
+
   const headersList = await headers()
   const ipAddress = headersList.get('x-forwarded-for') || ''
   const userAgent = headersList.get('user-agent') || ''
@@ -121,7 +131,14 @@ export async function submitApplication(
       user_agent: userAgent,
     })
 
-    if (dbError) throw dbError
+    if (dbError) {
+      // Cleanup uploaded file
+      if (resumeUrl) {
+        await supabase.storage.from('resumes').remove([fileName])
+      }
+      console.error('Application DB error:', dbError)
+      return { success: false, message: 'Failed to submit application. Please try again.' }
+    }
 
     await Promise.allSettled([
       sendUserConfirmation(

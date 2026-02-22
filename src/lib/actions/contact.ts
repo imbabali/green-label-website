@@ -6,6 +6,7 @@ import { sendAdminNotification, sendUserConfirmation } from '@/lib/email/resend'
 import { contactConfirmationHtml } from '@/lib/email/templates/contact-confirmation'
 import { contactAdminHtml } from '@/lib/email/templates/contact-admin'
 import { headers } from 'next/headers'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const SPAM_PATTERNS = /viagra|cialis|casino|get rich|buy now|free money|lottery|guaranteed income/i
 
@@ -58,6 +59,15 @@ export async function submitContactForm(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('contact')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many submissions. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
+
   const headersList = await headers()
   const ipAddress = headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || ''
   const userAgent = headersList.get('user-agent') || ''
@@ -80,6 +90,10 @@ export async function submitContactForm(
 
     if (dbError) {
       console.error('Contact submission DB error:', dbError)
+      return {
+        success: false,
+        message: 'Something went wrong. Please try again or call us at +256 772 423 092.',
+      }
     }
 
     await Promise.allSettled([

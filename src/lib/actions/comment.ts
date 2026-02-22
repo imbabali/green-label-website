@@ -3,6 +3,7 @@
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { headers } from 'next/headers'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const SPAM_PATTERNS = /viagra|cialis|casino|get rich|buy now|free money|lottery|guaranteed income/i
 
@@ -42,6 +43,15 @@ export async function submitComment(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('comment')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
+
   const headersList = await headers()
   const ipAddress = headersList.get('x-forwarded-for') || ''
   const userAgent = headersList.get('user-agent') || ''

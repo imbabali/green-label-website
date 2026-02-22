@@ -1,3 +1,5 @@
+import { escapeHtml } from '@/lib/utils/html-escape'
+
 interface ContactConfirmationProps {
   fullName: string
   subject: string
@@ -19,11 +21,11 @@ export function contactConfirmationHtml({ fullName, subject, message }: ContactC
     <tr>
       <td style="padding:40px 30px;">
         <h2 style="color:#2c632c;margin:0 0 20px;">Thank You for Contacting Us</h2>
-        <p style="color:#333;line-height:1.6;">Dear ${fullName},</p>
+        <p style="color:#333;line-height:1.6;">Dear ${escapeHtml(fullName)},</p>
         <p style="color:#333;line-height:1.6;">Thank you for reaching out to Green Label Services. We have received your inquiry and our team will get back to you within <strong>24 hours</strong>.</p>
         <div style="background:#f9fafb;border-left:4px solid #2c632c;padding:15px 20px;margin:20px 0;">
-          <p style="margin:0 0 5px;color:#666;font-size:14px;"><strong>Subject:</strong> ${subject}</p>
-          <p style="margin:0;color:#666;font-size:14px;"><strong>Message:</strong> ${message.substring(0, 200)}${message.length > 200 ? '...' : ''}</p>
+          <p style="margin:0 0 5px;color:#666;font-size:14px;"><strong>Subject:</strong> ${escapeHtml(subject)}</p>
+          <p style="margin:0;color:#666;font-size:14px;"><strong>Message:</strong> ${escapeHtml(message.substring(0, 200))}${message.length > 200 ? '...' : ''}</p>
         </div>
         <p style="color:#333;line-height:1.6;">If your matter is urgent, please call us directly at <strong>+256 772 423 092</strong>.</p>
         <p style="color:#333;line-height:1.6;">Best regards,<br><strong>Green Label Services Team</strong></p>

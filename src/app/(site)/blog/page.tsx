@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { z } from 'zod'
 import Hero from '@/components/shared/Hero'
 import PostCard from '@/components/blog/PostCard'
 import Pagination from '@/components/shared/Pagination'
@@ -10,6 +11,13 @@ import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
 import EmptyState from '@/components/shared/EmptyState'
 import { fallbackPosts, fallbackCategories } from '@/lib/data/fallback-blog'
+
+const searchParamsSchema = z.object({
+  page: z.coerce.number().int().positive().optional().default(1),
+  category: z.string().max(100).optional(),
+  tag: z.string().max(100).optional(),
+  q: z.string().max(200).optional(),
+})
 
 export const revalidate = 60
 
@@ -32,8 +40,10 @@ interface Props {
 }
 
 export default async function BlogPage({ searchParams }: Props) {
-  const params = await searchParams
-  const page = Math.max(1, parseInt(params.page || '1', 10))
+  const rawParams = await searchParams
+  const parsed = searchParamsSchema.safeParse(rawParams)
+  const params = parsed.success ? parsed.data : { page: 1, category: undefined, tag: undefined, q: undefined }
+  const page = params.page
   const start = (page - 1) * POSTS_PER_PAGE
   const end = start + POSTS_PER_PAGE
 

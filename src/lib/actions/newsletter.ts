@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { sendAdminNotification, sendUserConfirmation } from '@/lib/email/resend'
 import { newsletterWelcomeHtml } from '@/lib/email/templates/newsletter-welcome'
 import { SITE_URL } from '@/lib/data/constants'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const DISPOSABLE_DOMAINS = [
   'mailinator.com', 'guerrillamail.com', 'temp-mail.org', 'throwaway.email',
@@ -52,6 +53,14 @@ export async function subscribeNewsletter(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('newsletter')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
 
   try {
     const supabase = await createClient()

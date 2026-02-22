@@ -66,7 +66,11 @@ export async function updateProfile(
         }
       }
 
-      const ext = photoFile.name.split('.').pop()
+      const allowedExts = ['jpg', 'jpeg', 'png', 'webp', 'avif']
+      const ext = photoFile.name.split('.').pop()?.toLowerCase()
+      if (!ext || !allowedExts.includes(ext)) {
+        return { success: false, message: 'Invalid image format. Accepted: JPG, PNG, WebP, AVIF.' }
+      }
       const fileName = `${user.id}/avatar.${ext}`
 
       const { error: uploadError } = await supabase.storage

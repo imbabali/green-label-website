@@ -1,3 +1,5 @@
+import { escapeHtml } from '@/lib/utils/html-escape'
+
 interface ApplicationConfirmationProps {
   firstName: string
   jobTitle: string
@@ -18,8 +20,8 @@ export function applicationConfirmationHtml({ firstName, jobTitle }: Application
     <tr>
       <td style="padding:40px 30px;">
         <h2 style="color:#2c632c;margin:0 0 20px;">Thank You for Applying!</h2>
-        <p style="color:#333;line-height:1.6;">Dear ${firstName},</p>
-        <p style="color:#333;line-height:1.6;">We have received your application for the position of <strong>${jobTitle}</strong> at Green Label Services.</p>
+        <p style="color:#333;line-height:1.6;">Dear ${escapeHtml(firstName)},</p>
+        <p style="color:#333;line-height:1.6;">We have received your application for the position of <strong>${escapeHtml(jobTitle)}</strong> at Green Label Services.</p>
         <div style="background:#f0fdf4;border-left:4px solid #2c632c;padding:15px 20px;margin:20px 0;">
           <p style="margin:0;color:#333;font-size:14px;"><strong>What happens next?</strong></p>
           <ul style="color:#333;line-height:2;margin:10px 0 0;">

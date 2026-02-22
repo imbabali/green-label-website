@@ -1,6 +1,10 @@
 import { Resend } from 'resend'
 
-export const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder')
+const apiKey = process.env.RESEND_API_KEY
+if (!apiKey) {
+  console.warn('RESEND_API_KEY not set — email sending will fail')
+}
+const resend = apiKey ? new Resend(apiKey) : null
 
 const FROM_EMAIL = 'Green Label Services <info@greenlabelservicesug.com>'
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'ainer2014@gmail.com'
@@ -13,6 +17,11 @@ interface SendEmailOptions {
 }
 
 export async function sendEmail({ to, subject, html, replyTo }: SendEmailOptions) {
+  if (!resend) {
+    console.warn('Email not sent — Resend client is not configured (RESEND_API_KEY missing)')
+    return { success: false, error: 'Email service not configured' }
+  }
+
   try {
     const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,

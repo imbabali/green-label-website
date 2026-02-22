@@ -3,6 +3,7 @@
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const reviewSchema = z.object({
   service_type: z.string().min(1, 'Service type is required'),
@@ -48,6 +49,14 @@ export async function createReview(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('review')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
 
   try {
     const supabase = await createClient()

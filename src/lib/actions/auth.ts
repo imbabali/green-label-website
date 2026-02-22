@@ -3,6 +3,7 @@
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const signUpSchema = z
   .object({
@@ -19,9 +20,11 @@ const signUpSchema = z
       .transform((v) => v.toLowerCase().trim()),
     password: z
       .string()
-      .min(8, 'Password must be at least 8 characters')
-      .regex(/[a-zA-Z]/, 'Password must contain at least one letter')
-      .regex(/[0-9]/, 'Password must contain at least one number'),
+      .min(10, 'Password must be at least 10 characters')
+      .regex(/[A-Z]/, 'Must contain at least one uppercase letter')
+      .regex(/[a-z]/, 'Must contain at least one lowercase letter')
+      .regex(/[0-9]/, 'Password must contain at least one number')
+      .regex(/[^a-zA-Z0-9]/, 'Must contain at least one special character'),
     password2: z.string().min(1, 'Please confirm your password'),
   })
   .refine((data) => data.password === data.password2, {
@@ -56,6 +59,14 @@ export async function signUp(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('auth')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
 
   try {
     const supabase = await createClient()
@@ -120,6 +131,14 @@ export async function signIn(
   }
 
   const data = parsed.data
+
+  const signInRateLimit = await checkRateLimit('auth')
+  if (!signInRateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((signInRateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
 
   try {
     const supabase = await createClient()

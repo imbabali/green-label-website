@@ -1,3 +1,5 @@
+import { escapeHtml } from '@/lib/utils/html-escape'
+
 interface NewsletterUnsubscribeProps {
   email: string
   siteUrl: string
@@ -18,7 +20,7 @@ export function newsletterUnsubscribeHtml({ email, siteUrl }: NewsletterUnsubscr
     <tr>
       <td style="padding:40px 30px;text-align:center;">
         <p style="color:#333;line-height:1.6;font-size:16px;">You have been successfully unsubscribed from the Green Label Services newsletter.</p>
-        <p style="color:#666;line-height:1.6;">Email: <strong>${email}</strong></p>
+        <p style="color:#666;line-height:1.6;">Email: <strong>${escapeHtml(email)}</strong></p>
         <p style="color:#333;line-height:1.6;margin-top:20px;">We're sorry to see you go. If you change your mind, you can always resubscribe on our website.</p>
         <a href="${siteUrl}" style="display:inline-block;background:#2c632c;color:#ffffff;padding:12px 30px;border-radius:6px;text-decoration:none;margin-top:15px;">Visit Our Website</a>
       </td>

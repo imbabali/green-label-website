@@ -1,3 +1,5 @@
+import { escapeHtml } from '@/lib/utils/html-escape'
+
 interface NewsletterWelcomeProps {
   name?: string
   email: string
@@ -22,11 +24,11 @@ export function newsletterWelcomeHtml({ name, email, frequency, unsubscribeToken
     </tr>
     <tr>
       <td style="padding:40px 30px;">
-        <p style="color:#333;line-height:1.6;font-size:16px;">Dear ${name || 'Subscriber'},</p>
+        <p style="color:#333;line-height:1.6;font-size:16px;">Dear ${name ? escapeHtml(name) : 'Subscriber'},</p>
         <p style="color:#333;line-height:1.6;">Thank you for subscribing to the Green Label Services newsletter! You'll receive the latest updates on waste management practices, sustainability tips, and industry news.</p>
         <div style="background:#f0fdf4;border:1px solid #bbf7d0;padding:20px;border-radius:8px;margin:20px 0;">
           <h3 style="color:#2c632c;margin:0 0 10px;">Your Subscription Details</h3>
-          <p style="margin:5px 0;color:#333;font-size:14px;"><strong>Email:</strong> ${email}</p>
+          <p style="margin:5px 0;color:#333;font-size:14px;"><strong>Email:</strong> ${escapeHtml(email)}</p>
           <p style="margin:5px 0;color:#333;font-size:14px;"><strong>Frequency:</strong> ${frequencyLabel}</p>
           <p style="margin:5px 0;color:#333;font-size:14px;"><strong>Subscribed:</strong> ${new Date().toLocaleDateString('en-UG', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
         </div>

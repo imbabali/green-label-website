@@ -1,3 +1,5 @@
+import { escapeHtml } from '@/lib/utils/html-escape'
+
 interface ApplicationAdminProps {
   firstName: string
   lastName: string
@@ -23,7 +25,7 @@ export function applicationAdminHtml(data: ApplicationAdminProps): string {
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#ffffff;">
     <tr>
       <td style="background:#F7941D;padding:20px 30px;">
-        <h1 style="color:#ffffff;margin:0;font-size:20px;">New Job Application: ${data.jobTitle}</h1>
+        <h1 style="color:#ffffff;margin:0;font-size:20px;">New Job Application: ${escapeHtml(data.jobTitle)}</h1>
       </td>
     </tr>
     <tr>
@@ -32,20 +34,20 @@ export function applicationAdminHtml(data: ApplicationAdminProps): string {
         <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;margin-bottom:20px;">
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;width:150px;"><strong>Name</strong></td>
-            <td style="color:#333;font-size:14px;">${data.firstName} ${data.lastName}</td>
+            <td style="color:#333;font-size:14px;">${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}</td>
           </tr>
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;"><strong>Email</strong></td>
-            <td style="color:#333;font-size:14px;"><a href="mailto:${data.email}">${data.email}</a></td>
+            <td style="color:#333;font-size:14px;"><a href="mailto:${data.email}">${escapeHtml(data.email)}</a></td>
           </tr>
           <tr style="border-bottom:1px solid #e5e7eb;">
             <td style="color:#666;font-size:14px;"><strong>Phone</strong></td>
-            <td style="color:#333;font-size:14px;">${data.phone}</td>
+            <td style="color:#333;font-size:14px;">${escapeHtml(data.phone)}</td>
           </tr>
-          ${data.currentCompany ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Current Company</strong></td><td style="color:#333;font-size:14px;">${data.currentCompany}</td></tr>` : ''}
-          ${data.currentPosition ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Current Position</strong></td><td style="color:#333;font-size:14px;">${data.currentPosition}</td></tr>` : ''}
-          ${data.linkedinProfile ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>LinkedIn</strong></td><td style="color:#333;font-size:14px;"><a href="${data.linkedinProfile}">${data.linkedinProfile}</a></td></tr>` : ''}
-          ${data.portfolioUrl ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Portfolio</strong></td><td style="color:#333;font-size:14px;"><a href="${data.portfolioUrl}">${data.portfolioUrl}</a></td></tr>` : ''}
+          ${data.currentCompany ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Current Company</strong></td><td style="color:#333;font-size:14px;">${escapeHtml(data.currentCompany)}</td></tr>` : ''}
+          ${data.currentPosition ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Current Position</strong></td><td style="color:#333;font-size:14px;">${escapeHtml(data.currentPosition)}</td></tr>` : ''}
+          ${data.linkedinProfile ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>LinkedIn</strong></td><td style="color:#333;font-size:14px;"><a href="${data.linkedinProfile}">${escapeHtml(data.linkedinProfile)}</a></td></tr>` : ''}
+          ${data.portfolioUrl ? `<tr style="border-bottom:1px solid #e5e7eb;"><td style="color:#666;font-size:14px;"><strong>Portfolio</strong></td><td style="color:#333;font-size:14px;"><a href="${data.portfolioUrl}">${escapeHtml(data.portfolioUrl)}</a></td></tr>` : ''}
         </table>
         <div style="margin:20px 0;">
           <a href="${data.resumeUrl}" style="display:inline-block;background:#2c632c;color:#ffffff;padding:10px 20px;border-radius:6px;text-decoration:none;">Download Resume</a>
@@ -54,7 +56,7 @@ export function applicationAdminHtml(data: ApplicationAdminProps): string {
         ${data.coverLetter ? `
         <div style="background:#f9fafb;padding:15px 20px;margin:20px 0;border-radius:8px;">
           <p style="margin:0 0 5px;color:#666;font-size:14px;"><strong>Cover Letter:</strong></p>
-          <p style="margin:0;color:#333;font-size:14px;line-height:1.6;">${data.coverLetter}</p>
+          <p style="margin:0;color:#333;font-size:14px;line-height:1.6;">${escapeHtml(data.coverLetter)}</p>
         </div>` : ''}
       </td>
     </tr>

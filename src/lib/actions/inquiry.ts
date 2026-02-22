@@ -2,6 +2,7 @@
 
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
+import { checkRateLimit } from '@/lib/utils/rate-limit'
 
 const inquirySchema = z.object({
   service_slug: z.string().min(1),
@@ -53,6 +54,14 @@ export async function submitInquiry(
 
   const data = parsed.data
 
+  const rateLimit = await checkRateLimit('inquiry')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
+
   try {
     const supabase = await createClient()
     const { error } = await supabase.from('service_inquiries').insert({
@@ -91,6 +100,14 @@ export async function submitQuickInquiry(
   }
 
   const data = parsed.data
+
+  const rateLimit = await checkRateLimit('inquiry')
+  if (!rateLimit.allowed) {
+    return {
+      success: false,
+      message: `Too many requests. Please try again in ${Math.ceil((rateLimit.retryAfter || 60) / 60)} minutes.`,
+    }
+  }
 
   try {
     const supabase = await createClient()

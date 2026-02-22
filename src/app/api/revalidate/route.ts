@@ -1,10 +1,22 @@
+import crypto from 'crypto'
 import { revalidateTag } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
+
+function constantTimeEqual(a: string, b: string): boolean {
+  try {
+    return crypto.timingSafeEqual(
+      Buffer.from(a, 'utf-8'),
+      Buffer.from(b, 'utf-8')
+    )
+  } catch {
+    return false
+  }
+}
 
 export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get('secret')
 
-  if (secret !== process.env.SANITY_REVALIDATE_SECRET) {
+  if (!secret || !constantTimeEqual(secret, process.env.SANITY_REVALIDATE_SECRET || '')) {
     return NextResponse.json({ message: 'Invalid secret' }, { status: 401 })
   }
 
