@@ -89,9 +89,9 @@ export default function AwardsPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Recognised for leadership in waste management and environmental stewardship.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3">
+            <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
               {awards.map((award, i) => (
-                <div key={award.title} className={`reveal reveal-scale stagger-${i + 1} card-premium rounded-2xl border-b-4 border-b-amber-400 bg-white p-4 md:p-6 text-center shadow-md`}>
+                <div key={award.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-scale stagger-${i + 1} card-premium rounded-2xl border-b-4 border-b-amber-400 bg-white p-4 md:p-6 text-center shadow-md`}>
                   <div className="relative mx-auto mb-4 w-fit">
                     <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 via-amber-50 to-white shadow-lg shadow-amber-200/40 ring-4 ring-amber-100/60">
                       <i className={`${award.icon} text-2xl text-amber-600`} aria-hidden="true" />

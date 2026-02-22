@@ -19,9 +19,10 @@ export default function Footer({ services = [] }: FooterProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+        {/* Mobile/Tablet: horizontal scrollable tiles | Desktop: 4-column grid */}
+        <div className="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-4 lg:gap-8 lg:overflow-visible lg:pb-0">
           {/* Column 1: Company Info & Contact */}
-          <div>
+          <div className="min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink">
             <Link href="/" className="mb-3 inline-flex items-center gap-1" aria-label="Green Label Services home">
               <span className="font-heading text-lg font-extrabold tracking-tight text-brand-green-light">
                 GREEN
@@ -55,7 +56,7 @@ export default function Footer({ services = [] }: FooterProps) {
           </div>
 
           {/* Column 2: Company Links */}
-          <div>
+          <div className="min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink">
             <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Company</span>
             </h2>
@@ -74,7 +75,7 @@ export default function Footer({ services = [] }: FooterProps) {
           </div>
 
           {/* Column 3: Industries + Dynamic Services */}
-          <div>
+          <div className="min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink">
             <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Industries</span>
             </h2>
@@ -113,7 +114,7 @@ export default function Footer({ services = [] }: FooterProps) {
           </div>
 
           {/* Column 4: Newsletter */}
-          <div>
+          <div className="min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink">
             <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Newsletter</span>
             </h2>

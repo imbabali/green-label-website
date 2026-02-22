@@ -189,11 +189,11 @@ export default function OurStoryPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">The principles that guide every decision and action.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+            <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 lg:grid-cols-3">
               {values.map((value, i) => {
                 const Icon = value.icon
                 return (
-                  <div key={value.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} glass flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-green p-5`}>
+                  <div key={value.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} glass flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-green p-5`}>
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-green/10">
                       <Icon className="h-5 w-5 text-brand-green" />
                     </div>
