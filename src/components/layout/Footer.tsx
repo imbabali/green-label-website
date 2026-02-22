@@ -19,7 +19,7 @@ export default function Footer({ services = [] }: FooterProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div className="grid grid-cols-4 gap-4 lg:gap-8">
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-8">
           {/* Column 1: Company Info & Contact */}
           <div>
             <Link href="/" className="mb-3 inline-flex items-center gap-1" aria-label="Green Label Services home">
