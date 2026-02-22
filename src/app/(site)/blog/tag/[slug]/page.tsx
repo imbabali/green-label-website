@@ -79,7 +79,9 @@ export default async function BlogTagPage({ params, searchParams }: Props) {
       <Hero
         heading={`#${tagName}`}
         subheading="Blog Tag"
-        variant="fullWidth"
+        description="Browse articles with this tag."
+        backgroundImage="/images/gallery/img3.jpg"
+        variant="split"
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

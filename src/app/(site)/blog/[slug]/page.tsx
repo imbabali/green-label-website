@@ -153,7 +153,11 @@ export default async function BlogPostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero
         heading="Blog"
-        variant="fullWidth"
+        subheading="News & Insights"
+        description="Stay informed with the latest articles on waste management and environmental sustainability."
+        backgroundImage="/images/gallery/img3.jpg"
+        variant="split"
+        badge="Latest Articles"
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

@@ -64,7 +64,12 @@ export default async function BlogSearchPage({ searchParams }: Props) {
     <>
       <Hero
         heading="Search Results"
-        variant="fullWidth"
+        subheading="Find Articles"
+        description="Browse our archive of articles on waste management, sustainability, and company news."
+        backgroundImage="/images/gallery/img3.jpg"
+        variant="split"
+        badge="Blog Search"
+        flipped
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

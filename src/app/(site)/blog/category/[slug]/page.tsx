@@ -80,7 +80,10 @@ export default async function BlogCategoryPage({ params, searchParams }: Props) 
       <Hero
         heading={categoryName}
         subheading="Blog Category"
-        variant="fullWidth"
+        description="Browse articles in this category."
+        backgroundImage="/images/gallery/img3.jpg"
+        variant="split"
+        flipped
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">
