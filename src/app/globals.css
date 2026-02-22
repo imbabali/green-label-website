@@ -1,12 +1,12 @@
-@import "tailwindcss";
-@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import 'tailwindcss';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 @theme inline {
   --color-brand-green: #2c632c;
   --color-brand-green-light: #3a7d3a;
   --color-brand-green-dark: #1e4a1e;
   --color-brand-green-50: #f0f7f0;
-  --color-brand-orange: #F7941D;
+  --color-brand-orange: #f7941d;
   --color-brand-orange-light: #f9a94d;
   --color-brand-orange-dark: #d67a0a;
   --color-brand-orange-50: #fef7ed;
@@ -33,9 +33,12 @@
   --z-modal: 50;
   --z-toast: 60;
   --z-skip-link: 100;
-  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Raleway', system-ui, -apple-system, sans-serif;
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Base Styles */
@@ -47,12 +50,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
 }
 
-a, button, input, select, textarea, [role="button"], [tabindex] {
+a,
+button,
+input,
+select,
+textarea,
+[role='button'],
+[tabindex] {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -61,7 +75,10 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
 }
 
 @media (hover: hover) {
@@ -111,7 +128,8 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
   line-height: 1.75;
 }
 
-.portable-text ul, .portable-text ol {
+.portable-text ul,
+.portable-text ol {
   margin: 1rem 0;
   padding-left: 1.5rem;
 }
@@ -175,63 +193,121 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
 
 /* --- Scroll Reveal System --- */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes blurIn {
-  from { opacity: 0; filter: blur(8px); }
-  to { opacity: 1; filter: blur(0); }
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes kenBurns {
-  0% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Reveal base — hidden until JS adds .visible */
 .reveal {
   opacity: 0;
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-.reveal-up    { transform: translateY(24px); }
-.reveal-left  { transform: translateX(-24px); }
-.reveal-right { transform: translateX(24px); }
+.reveal-up {
+  transform: translateY(24px);
+}
+.reveal-left {
+  transform: translateX(-24px);
+}
+.reveal-right {
+  transform: translateX(24px);
+}
 
 @media (min-width: 768px) {
-  .reveal-up    { transform: translateY(32px); }
-  .reveal-left  { transform: translateX(-40px); }
-  .reveal-right { transform: translateX(40px); }
+  .reveal-up {
+    transform: translateY(32px);
+  }
+  .reveal-left {
+    transform: translateX(-40px);
+  }
+  .reveal-right {
+    transform: translateX(40px);
+  }
 }
-.reveal-scale { transform: scale(0.92); }
+.reveal-scale {
+  transform: scale(0.92);
+}
 
 .reveal.visible {
   opacity: 1;
@@ -240,12 +316,24 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
 }
 
 /* Stagger delay utilities */
-.stagger-1 { transition-delay: 0.08s; }
-.stagger-2 { transition-delay: 0.16s; }
-.stagger-3 { transition-delay: 0.24s; }
-.stagger-4 { transition-delay: 0.32s; }
-.stagger-5 { transition-delay: 0.40s; }
-.stagger-6 { transition-delay: 0.48s; }
+.stagger-1 {
+  transition-delay: 0.08s;
+}
+.stagger-2 {
+  transition-delay: 0.16s;
+}
+.stagger-3 {
+  transition-delay: 0.24s;
+}
+.stagger-4 {
+  transition-delay: 0.32s;
+}
+.stagger-5 {
+  transition-delay: 0.4s;
+}
+.stagger-6 {
+  transition-delay: 0.48s;
+}
 
 /* --- Glass Morphism --- */
 .glass {
@@ -272,16 +360,21 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
   background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
 }
 .bg-gradient-radial-green {
-  background-image: radial-gradient(ellipse at 20% 80%, rgba(44,99,44,0.06) 0%, transparent 60%);
+  background-image: radial-gradient(ellipse at 20% 80%, rgba(44, 99, 44, 0.06) 0%, transparent 60%);
 }
 .bg-gradient-radial-orange {
-  background-image: radial-gradient(ellipse at 80% 20%, rgba(247,148,29,0.06) 0%, transparent 60%);
+  background-image: radial-gradient(
+    ellipse at 80% 20%,
+    rgba(247, 148, 29, 0.06) 0%,
+    transparent 60%
+  );
 }
 
 /* --- Premium Card --- */
 .card-premium {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @media (hover: hover) {
   .card-premium:hover {
@@ -295,20 +388,20 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
   .card-premium:active {
     transform: translateY(-3px);
     box-shadow:
-      0 8px 16px -4px rgba(44, 99, 44, 0.10),
+      0 8px 16px -4px rgba(44, 99, 44, 0.1),
       0 2px 4px -2px rgba(44, 99, 44, 0.04);
   }
 }
 
 /* --- Pattern Overlays --- */
 .pattern-dots {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 .pattern-grid {
   background-image:
-    linear-gradient(rgba(44,99,44,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(44,99,44,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(44, 99, 44, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 99, 44, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -339,8 +432,12 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
 
 /* --- Marquee (infinite logo scroll) --- */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -369,7 +466,9 @@ a, button, input, select, textarea, [role="button"], [tabindex] {
 
 /* --- Reduced Motion (WCAG 2.3.3) --- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
