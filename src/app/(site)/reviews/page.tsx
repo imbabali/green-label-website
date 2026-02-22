@@ -107,9 +107,9 @@ export default async function ReviewsPage({ searchParams }: Props) {
           {/* Reviews grid */}
           {reviews && reviews.length > 0 ? (
             <ScrollRevealSection>
-              <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 {reviews.map((review: any, index: number) => (
-                  <div key={review.id} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                  <div key={review.id} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <ReviewCard review={review} />
                   </div>
                 ))}

@@ -60,9 +60,9 @@ export default function TrainingPage() {
             <p className="reveal reveal-up stagger-1 mx-auto mb-8 max-w-xl text-center text-sm text-gray-600">Six certified courses covering every aspect of waste management.</p>
           </ScrollRevealSection>
           <ScrollRevealSection>
-            <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
+            <div className="grid grid-cols-3 gap-3 md:gap-6 lg:grid-cols-3">
               {programmes.map((p, i) => (
-                <div key={p.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium relative h-full overflow-hidden rounded-2xl bg-white p-5 shadow-md`}>
+                <div key={p.title} className={`reveal reveal-up stagger-${Math.min(i + 1, 6)} card-premium relative h-full overflow-hidden rounded-2xl bg-white p-5 shadow-md`}>
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/10">
                       <i className={`${p.icon} text-lg text-brand-green`} aria-hidden="true" />

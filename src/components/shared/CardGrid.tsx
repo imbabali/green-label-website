@@ -16,11 +16,15 @@ const desktopCols: Record<2 | 3 | 4, string> = {
 }
 
 export default function CardGrid({ children, columns = 3 }: CardGridProps) {
+  const count = Children.count(children)
+  // >4 items: 3 cols on mobile/tablet, ≤4 items: 2 cols
+  const mobileCols = count > 4 ? 'grid-cols-3' : 'grid-cols-2'
+
   return (
     <ScrollRevealSection>
-      <div className={`flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 ${desktopCols[columns]}`}>
+      <div className={`grid ${mobileCols} gap-3 md:gap-6 ${desktopCols[columns]}`}>
         {Children.map(children, (child, index) => (
-          <div className={`min-w-[44vw] shrink-0 snap-start snap-always sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+          <div className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
             {child as ReactElement}
           </div>
         ))}

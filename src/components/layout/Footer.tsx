@@ -19,9 +19,9 @@ export default function Footer({ services = [] }: FooterProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {/* Column 1: Company Info & Contact */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="mb-3 inline-flex items-center gap-1" aria-label="Green Label Services home">
               <span className="font-heading text-lg font-extrabold tracking-tight text-brand-green-light">
                 GREEN
@@ -113,7 +113,7 @@ export default function Footer({ services = [] }: FooterProps) {
           </div>
 
           {/* Column 4: Newsletter */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Newsletter</span>
             </h2>
@@ -127,7 +127,7 @@ export default function Footer({ services = [] }: FooterProps) {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-4 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
           <p className="text-center text-xs text-gray-500">
             &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>

@@ -53,9 +53,9 @@ export default function CareersPage() {
           </ScrollRevealSection>
 
           <ScrollRevealSection>
-            <div className="mt-12 flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
+            <div className="mt-12 grid grid-cols-3 gap-3 md:gap-6 lg:grid-cols-3">
               {benefits.map((b, index) => (
-                <div key={b.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-6 shadow-md`}>
+                <div key={b.title} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-6 shadow-md`}>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/10">
                     <i className={`${b.icon} text-xl text-brand-green`} />
                   </div>

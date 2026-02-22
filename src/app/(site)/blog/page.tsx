@@ -138,9 +138,9 @@ export default async function BlogPage({ searchParams }: Props) {
           {/* Posts Grid */}
           {displayPosts.length > 0 ? (
             <ScrollRevealSection>
-              <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 {displayPosts.map((post: any, index: number) => (
-                  <div key={post.slug} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                  <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <PostCard post={post} />
                   </div>
                 ))}
