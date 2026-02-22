@@ -18,7 +18,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   const serviceHref = service.href || `/services/${service.slug}`
 
   return (
-    <div className="card-premium group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
+    <article className="card-premium group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md">
       <div className="relative h-48 overflow-hidden bg-gray-100">
         {service.featuredImage ? (
           <Image
@@ -71,6 +71,6 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           Learn More <i className="fa-solid fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
-    </div>
+    </article>
   )
 }

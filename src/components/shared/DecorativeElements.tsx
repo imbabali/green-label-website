@@ -6,18 +6,15 @@ interface GradientOrbProps {
 
 export function GradientOrb({ color = 'green', size = 'md', className = '' }: GradientOrbProps) {
   const sizeClasses = { sm: 'h-32 w-32', md: 'h-64 w-64', lg: 'h-96 w-96' }
-  const colorClasses = {
-    green: 'from-brand-green/20 to-brand-green/0',
-    orange: 'from-brand-orange/20 to-brand-orange/0',
+  const bgClasses = {
+    green: 'bg-brand-green/15',
+    orange: 'bg-brand-orange/15',
   }
 
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none absolute rounded-full bg-gradient-radial blur-3xl ${sizeClasses[size]} ${colorClasses[color]} ${className}`}
-      style={{
-        background: `radial-gradient(circle, ${color === 'green' ? 'rgba(44,99,44,0.15)' : 'rgba(247,148,29,0.15)'} 0%, transparent 70%)`,
-      }}
+      className={`pointer-events-none absolute rounded-full blur-3xl ${sizeClasses[size]} ${bgClasses[color]} ${className}`}
     />
   )
 }

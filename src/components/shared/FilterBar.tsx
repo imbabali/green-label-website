@@ -128,7 +128,7 @@ export default function FilterBar({
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder={searchPlaceholder}
-              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm text-gray-900 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
+              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm text-gray-900 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green"
             />
           </div>
           <button
@@ -149,7 +149,7 @@ export default function FilterBar({
               id={`filter-${filter.key}`}
               value={searchParams.get(filter.key) || ''}
               onChange={(e) => handleFilterChange(filter.key, e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-700 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20 md:w-auto"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-700 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green md:w-auto"
             >
               <option value="">{filter.label}</option>
               {filter.options.map((option) => (
@@ -164,7 +164,7 @@ export default function FilterBar({
 
       {/* Active Filters */}
       {hasActiveFilters && (
-        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-4">
+        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-4" aria-live="polite">
           <span className="text-xs font-medium text-gray-500">
             Active filters:
           </span>

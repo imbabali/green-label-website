@@ -1,8 +1,27 @@
 import type { Metadata, Viewport } from 'next'
+import { DM_Sans, Raleway, Fraunces } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { SITE_NAME, SITE_URL, COMPANY_INFO } from '@/lib/data/constants'
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+})
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -72,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en-UG">
+    <html lang="en-UG" className={`${dmSans.variable} ${raleway.variable} ${fraunces.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

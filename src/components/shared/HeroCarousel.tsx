@@ -57,6 +57,8 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
       className="relative min-h-[400px] overflow-hidden md:min-h-[500px] lg:min-h-[600px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false) }}
       role="region"
       aria-roledescription="carousel"
       aria-label="Hero slideshow"

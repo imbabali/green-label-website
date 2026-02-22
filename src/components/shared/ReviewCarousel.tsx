@@ -93,6 +93,8 @@ export default function ReviewCarousel({ reviews }: ReviewCarouselProps) {
       className="relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false) }}
       role="region"
       aria-roledescription="carousel"
       aria-label="Customer reviews"

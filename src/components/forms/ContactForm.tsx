@@ -332,7 +332,7 @@ export default function ContactForm() {
                 type="radio"
                 value={method.value}
                 {...register('preferred_contact')}
-                className="h-4 w-4 text-brand-green accent-brand-green"
+                className="relative h-4 w-4 text-brand-green accent-brand-green after:absolute after:-inset-3 after:content-['']"
               />
               <span className="text-sm font-medium text-gray-700">{method.label}</span>
             </label>

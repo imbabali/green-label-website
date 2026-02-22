@@ -23,6 +23,13 @@ function useCountAnimation(target: number, isVisible: boolean, duration = 2000) 
     if (!isVisible || hasAnimated.current) return
     hasAnimated.current = true
 
+    // Respect prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      setCount(target)
+      return
+    }
+
     const startTime = performance.now()
 
     function animate(currentTime: number) {

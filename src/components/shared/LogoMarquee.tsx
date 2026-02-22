@@ -18,8 +18,8 @@ export default function LogoMarquee({ partners }: { partners: Partner[] }) {
       aria-label="Our partners and clients"
     >
       {/* Fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#f9fafb] to-transparent sm:w-20" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#f9fafb] to-transparent sm:w-20" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-gray-50 to-transparent sm:w-20" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-gray-50 to-transparent sm:w-20" aria-hidden="true" />
 
       <div className="flex w-max animate-marquee gap-4 group-hover:[animation-play-state:paused]">
         {items.map((partner, i) => (

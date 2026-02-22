@@ -29,7 +29,6 @@ export const COMPANY_INFO = {
   social: {
     facebook: 'https://www.facebook.com/greenlabelservices',
     linkedin: 'https://www.linkedin.com/company/greenlabelservices',
-    twitter: '#',
   },
   geo: {
     latitude: 0.3476,

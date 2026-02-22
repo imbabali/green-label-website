@@ -73,7 +73,7 @@ export default function StarRating({
           onMouseEnter={() => handleMouseEnter(starValue)}
           onMouseLeave={handleMouseLeave}
           aria-label={`${starValue} of 5 stars`}
-          className="star flex h-11 w-11 cursor-pointer items-center justify-center text-brand-orange transition-transform hover:scale-110 focus:outline-none focus:ring-1 focus:ring-brand-orange focus:ring-offset-1 rounded-sm"
+          className="star flex h-11 w-11 cursor-pointer items-center justify-center text-brand-orange transition-transform motion-safe:hover:scale-110 focus:outline-none focus:ring-1 focus:ring-brand-orange focus:ring-offset-1 rounded-sm"
         >
           <i className={iconClass} aria-hidden="true" />
         </button>
