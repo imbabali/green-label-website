@@ -42,6 +42,7 @@ export default function FinancialCapacityPage() {
         backgroundImage="/images/offices/office2.jpg"
         variant="split"
         badge="25+ Years of Growth"
+        flipped
         stats={[
           { value: '25+', label: 'Years in Business' },
           { value: '2,194+', label: 'Active Clients' },

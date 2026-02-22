@@ -47,6 +47,7 @@ export default function MiningPage() {
           { label: 'Get Assessment', href: '#quote', variant: 'secondary' },
           { label: 'View Credentials', href: '/about', variant: 'outline' },
         ]}
+        flipped
       />
 
       {/* Stats — Dark */}

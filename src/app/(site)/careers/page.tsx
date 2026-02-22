@@ -32,6 +32,7 @@ export default function CareersPage() {
         backgroundImage="/images/training/training2.jpg"
         variant="split"
         badge="We Are Hiring"
+        flipped
         ctaButtons={[
           { label: 'View Positions', href: '/careers/jobs', variant: 'secondary' },
           { label: 'Contact HR', href: '/contact', variant: 'outline' },

@@ -44,6 +44,7 @@ export default function SafetyStandardsPage() {
         backgroundImage="/images/hero/waste.jpg"
         variant="split"
         badge="Zero Harm Policy"
+        flipped
       />
 
       {/* Certification badges — glass on warm bg */}

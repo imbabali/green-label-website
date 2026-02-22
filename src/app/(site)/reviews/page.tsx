@@ -61,6 +61,7 @@ export default async function ReviewsPage({ searchParams }: Props) {
         backgroundImage="/images/hero/waste.jpg"
         variant="split"
         badge="Client Feedback"
+        flipped
       />
 
       <section className="bg-gradient-subtle py-16 md:py-20">

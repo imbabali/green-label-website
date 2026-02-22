@@ -47,6 +47,7 @@ export default function OilAndGasPage() {
           { label: 'Get Assessment', href: '#quote', variant: 'secondary' },
           { label: 'Our Credentials', href: '/awards', variant: 'outline' },
         ]}
+        flipped
       />
 
       {/* Credentials — glass frosted cards */}

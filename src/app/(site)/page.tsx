@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import HeroCarousel from '@/components/shared/HeroCarousel'
+import HeroSplitCarousel from '@/components/shared/HeroSplitCarousel'
 import StatsCounter from '@/components/shared/StatsCounter'
 import ReviewCarousel from '@/components/shared/ReviewCarousel'
 import LogoMarquee from '@/components/shared/LogoMarquee'
@@ -237,6 +237,7 @@ export default async function HomePage() {
       description:
         'For over 25 years, Green Label Services has been Uganda\'s most trusted partner for safe and compliant medical waste management. We serve hospitals, clinics, and laboratories with excellence.',
       backgroundImage: '/images/gallery/img1.jpg',
+      badge: 'Since 2000',
       ctaButtons: [
         { label: 'Our Services', href: '/services', variant: 'primary' as const },
         { label: 'Get A Quote', href: '#quote', variant: 'outline' as const },
@@ -247,6 +248,7 @@ export default async function HomePage() {
       description:
         'Specialized waste management services for the oil and gas industry. From drill cuttings to produced water, we handle it all with the highest environmental and safety standards.',
       backgroundImage: '/images/gallery/img2.jpeg',
+      badge: 'PAU & NEMA Licensed',
       ctaButtons: [
         { label: 'Learn More', href: '/oil-and-gas', variant: 'primary' as const },
         { label: 'Contact Us', href: '/contact', variant: 'outline' as const },
@@ -257,6 +259,7 @@ export default async function HomePage() {
       description:
         'Our commitment to environmental sustainability drives everything we do. From collection to disposal, we ensure your waste is managed responsibly and in full compliance with NEMA regulations.',
       backgroundImage: '/images/vehicles/harzard_vehicle3.jpg',
+      badge: '2,194+ Clients Served',
       ctaButtons: [
         { label: 'About Us', href: '/about', variant: 'secondary' as const },
         { label: 'Request Quote', href: '#quote', variant: 'outline' as const },
@@ -296,7 +299,7 @@ export default async function HomePage() {
       {/* ----------------------------------------------------------------- */}
       {/* a) Hero Carousel                                                   */}
       {/* ----------------------------------------------------------------- */}
-      <HeroCarousel slides={heroSlides} />
+      <HeroSplitCarousel slides={heroSlides} />
 
       {/* ----------------------------------------------------------------- */}
       {/* b) Services Grid Section                                           */}

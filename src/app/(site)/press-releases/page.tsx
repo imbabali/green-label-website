@@ -52,6 +52,7 @@ export default function PressReleasesPage() {
         backgroundImage="/images/offices/office2.jpg"
         variant="split"
         badge="Media Centre"
+        flipped
       />
 
       {/* Media highlights — warm bg with reveal-right */}

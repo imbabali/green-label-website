@@ -199,6 +199,7 @@ export default async function ServicesPage() {
           { value: '76,000', label: 'Tonnes Processed' },
           { value: '99%', label: 'Satisfaction' },
         ]}
+        flipped
       />
 
       {/* Category filters — glass pills */}

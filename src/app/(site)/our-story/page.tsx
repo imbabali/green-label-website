@@ -156,6 +156,7 @@ export default function OurStoryPage() {
           { label: 'Our Services', href: '/services', variant: 'secondary' },
           { label: 'Contact Us', href: '/contact', variant: 'outline' },
         ]}
+        flipped
       />
 
       {/* Timeline Section */}

@@ -89,6 +89,7 @@ export default function ProjectsPage() {
           { label: 'Get A Quote', href: '#quote', variant: 'secondary' },
           { label: 'Contact Us', href: '/contact', variant: 'outline' },
         ]}
+        flipped
       />
 
       {/* Stats — Light */}

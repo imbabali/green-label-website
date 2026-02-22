@@ -52,6 +52,7 @@ export default function OurFleetPage() {
         backgroundImage="/images/vehicles/harzard_vehicle8.jpg"
         variant="split"
         badge="50+ Vehicles"
+        flipped
       />
 
       <StatsCounter

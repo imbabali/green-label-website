@@ -91,6 +91,7 @@ export default async function FAQsPage() {
         backgroundImage="/images/offices/office1.jpg"
         variant="split"
         badge="Help Centre"
+        flipped
       />
 
       {/* Category-grouped accordions with glass category headers */}

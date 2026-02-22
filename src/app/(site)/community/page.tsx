@@ -49,6 +49,7 @@ export default function CommunityImpactPage() {
           { value: '150+', label: 'Youth Jobs' },
           { value: '30+', label: 'Water Sources' },
         ]}
+        flipped
       />
 
       {/* Initiatives — 2-col with left-orange borders + alternating reveals */}

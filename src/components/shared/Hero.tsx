@@ -20,6 +20,7 @@ interface HeroProps {
   description?: string
   backgroundImage?: string
   variant?: 'fullWidth' | 'split' | 'centered' | 'carousel'
+  flipped?: boolean
   ctaButtons?: CTAButton[]
   badge?: string
   stats?: StatItem[]
@@ -93,6 +94,7 @@ export default function Hero({
   description,
   backgroundImage,
   variant = 'fullWidth',
+  flipped = false,
   ctaButtons,
   badge,
   stats,
@@ -147,7 +149,7 @@ export default function Hero({
     return (
       <section className="bg-white">
         <div className="mx-auto grid min-h-[400px] max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 md:min-h-[500px] md:grid-cols-2 lg:px-8">
-          <div>
+          <div className={flipped ? 'md:order-2' : ''}>
             {badge && (
               <span className="mb-4 inline-block rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-green">
                 {badge}
@@ -173,7 +175,7 @@ export default function Hero({
             {children}
           </div>
           {backgroundImage && (
-            <div className="relative hidden min-h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white md:block">
+            <div className={`relative hidden min-h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white md:block ${flipped ? 'md:order-1' : ''}`}>
               <Image
                 src={backgroundImage}
                 alt={heading}
