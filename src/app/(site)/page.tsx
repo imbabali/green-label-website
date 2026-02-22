@@ -321,7 +321,7 @@ export default async function HomePage() {
               {services.map((service, index) => (
                 <div
                   key={service.title}
-                  className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium group rounded-2xl border border-gray-100 bg-white p-4 md:p-5 shadow-md`}
+                  className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium group rounded-2xl border border-gray-100 bg-white p-4 md:p-5 shadow-md`}
                 >
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green transition-colors group-hover:bg-brand-green group-hover:text-white">
                     <i className={`${service.icon} text-lg`} aria-hidden="true" />
@@ -384,7 +384,7 @@ export default async function HomePage() {
               {licenses.map((license, index) => (
                 <div
                   key={license.number ?? index}
-                  className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border border-gray-100 bg-white p-4 shadow-md`}
+                  className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium rounded-2xl border border-gray-100 bg-white p-4 shadow-md`}
                 >
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
                     <i className="fa-solid fa-certificate text-lg" aria-hidden="true" />
@@ -455,7 +455,7 @@ export default async function HomePage() {
               {posts.map((post, index) => (
                 <article
                   key={post.slug}
-                  className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 3)} card-premium group overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-gray-100`}
+                  className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 3)} card-premium group overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-gray-100`}
                 >
                   <div className="relative aspect-[16/9] overflow-hidden bg-gray-200">
                     {post.featuredImage ? (

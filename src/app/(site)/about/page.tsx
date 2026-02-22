@@ -91,7 +91,7 @@ export default function AboutPage() {
             <div className="relative flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-4">
               <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-gradient-to-r from-brand-green via-brand-orange to-brand-green lg:block" aria-hidden="true" />
               {steps.map((s, i) => (
-                <div key={s.num} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${i + 1} relative text-center`}>
+                <div key={s.num} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${i + 1} relative text-center`}>
                   <div className="relative z-10 mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-green text-sm font-bold text-white shadow-lg shadow-brand-green/25">{s.num}</div>
                   <div className="border-b-2 border-b-brand-orange pb-3">
                     <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">{s.title}</h3>
@@ -110,7 +110,7 @@ export default function AboutPage() {
           <ScrollRevealSection>
             <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
               {values.map((v, i) => (
-                <div key={v.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${i + 1} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-4 md:p-6 shadow-md`}>
+                <div key={v.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${i + 1} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-4 md:p-6 shadow-md`}>
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
                     <i className={`${v.icon} text-lg text-brand-green`} aria-hidden="true" />
                   </div>

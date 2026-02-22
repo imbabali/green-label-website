@@ -148,7 +148,7 @@ export default function LeadershipPage() {
           <ScrollRevealSection>
             <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
               {boardMembers.map((member, i) => (
-                <div key={member.name} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-scale stagger-${i + 1} glass rounded-2xl p-6 text-center`}>
+                <div key={member.name} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-scale stagger-${i + 1} glass rounded-2xl p-6 text-center`}>
                   <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-brand-green shadow-md">
                     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                       <circle cx="50" cy="36" r="16" fill="rgba(255,255,255,0.18)" />
@@ -176,7 +176,7 @@ export default function LeadershipPage() {
               {leadershipValues.map((value, i) => {
                 const Icon = value.icon
                 return (
-                  <div key={value.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${i + 1} glass-dark rounded-2xl p-5 text-center`}>
+                  <div key={value.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${i + 1} glass-dark rounded-2xl p-5 text-center`}>
                     <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10">
                       <Icon className="h-6 w-6 text-brand-orange-light" />
                     </div>

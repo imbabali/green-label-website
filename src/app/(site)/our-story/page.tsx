@@ -193,7 +193,7 @@ export default function OurStoryPage() {
               {values.map((value, i) => {
                 const Icon = value.icon
                 return (
-                  <div key={value.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} glass flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-green p-5`}>
+                  <div key={value.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} glass flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-green p-5`}>
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-green/10">
                       <Icon className="h-5 w-5 text-brand-green" />
                     </div>

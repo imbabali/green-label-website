@@ -7,7 +7,7 @@ export default function BlogLoading() {
         <div className="shimmer mx-auto mb-10 h-10 w-64 rounded-lg bg-gray-200" />
         <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink">
+            <div key={i} className="min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink">
               <SkeletonCard />
             </div>
           ))}

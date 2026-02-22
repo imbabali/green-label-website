@@ -113,7 +113,7 @@ export default function ProjectsPage() {
           <ScrollRevealSection>
             <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-2">
               {projects.map((project, i) => (
-                <article key={project.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium overflow-hidden rounded-2xl bg-white shadow-md`}>
+                <article key={project.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium overflow-hidden rounded-2xl bg-white shadow-md`}>
                   <div className="relative h-32 md:h-40">
                     <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                     <div className="absolute bottom-2 left-2 flex items-center gap-2">

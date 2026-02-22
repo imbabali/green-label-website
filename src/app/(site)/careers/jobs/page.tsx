@@ -69,7 +69,7 @@ export default async function JobsPage({ searchParams }: Props) {
             <ScrollRevealSection>
               <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-2">
                 {transformedJobs.map((job: any, index: number) => (
-                  <div key={job.slug} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                  <div key={job.slug} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
                     <JobCard job={job} />
                   </div>
                 ))}

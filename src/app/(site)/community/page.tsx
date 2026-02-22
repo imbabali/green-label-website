@@ -63,7 +63,7 @@ export default function CommunityImpactPage() {
           <ScrollRevealSection>
             <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-2">
               {initiatives.map((item, i) => (
-                <div key={item.title} className={`min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-orange bg-white p-5 shadow-md`}>
+                <div key={item.title} className={`min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium flex items-start gap-4 rounded-2xl border-l-4 border-l-brand-orange bg-white p-5 shadow-md`}>
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-orange/10">
                     <i className={`${item.icon} text-lg text-brand-orange`} aria-hidden="true" />
                   </div>

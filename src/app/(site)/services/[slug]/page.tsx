@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <h2 className="mb-8 font-heading text-2xl font-bold text-gray-900">Related Services</h2>
               <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory lg:grid lg:overflow-visible lg:pb-0 md:gap-6 lg:grid-cols-3">
                 {relatedServices.map((s: any) => (
-                  <div key={s.slug} className="min-w-[70vw] shrink-0 snap-start sm:min-w-[45vw] lg:min-w-0 lg:shrink">
+                  <div key={s.slug} className="min-w-[44vw] shrink-0 snap-start sm:min-w-[30vw] lg:min-w-0 lg:shrink">
                     <ServiceCard service={s} />
                   </div>
                 ))}
