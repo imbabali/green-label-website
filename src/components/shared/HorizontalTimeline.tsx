@@ -216,7 +216,7 @@ export default function HorizontalTimeline({ milestones }: HorizontalTimelinePro
             <article
               key={milestone.year}
               data-milestone-index={index}
-              className={`card-premium w-[85vw] max-w-[520px] shrink-0 snap-center overflow-hidden rounded-2xl border bg-white shadow-md transition-all duration-300 ${
+              className={`card-premium w-[85vw] max-w-[520px] shrink-0 snap-center snap-always overflow-hidden rounded-2xl border bg-white shadow-md transition-all duration-300 ${
                 index === activeIndex ? 'border-brand-green/30 shadow-lg' : 'border-gray-100'
               }`}
             >

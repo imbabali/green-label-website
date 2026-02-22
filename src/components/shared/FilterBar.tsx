@@ -124,6 +124,7 @@ export default function FilterBar({
             <input
               id="filter-search"
               type="search"
+              inputMode="search"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder={searchPlaceholder}
@@ -169,7 +170,7 @@ export default function FilterBar({
           </span>
 
           {searchParams.get('q') && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-medium text-brand-green">
+            <span className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-medium text-brand-green">
               Search: &quot;{searchParams.get('q')}&quot;
               <button
                 type="button"
@@ -188,7 +189,7 @@ export default function FilterBar({
           {activeFilters.map((filter) => (
             <span
               key={filter.key}
-              className="inline-flex items-center gap-1 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-medium text-brand-green"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-medium text-brand-green"
             >
               {filter.filterLabel}: {filter.label}
               <button

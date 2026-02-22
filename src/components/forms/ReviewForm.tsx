@@ -275,7 +275,7 @@ export default function ReviewForm({ initialData, reviewId }: ReviewFormProps) {
         <input
           type="checkbox"
           {...register('would_recommend')}
-          className="h-5 w-5 rounded border-gray-300 text-brand-green accent-brand-green"
+          className="relative h-5 w-5 rounded border-gray-300 text-brand-green accent-brand-green after:absolute after:-inset-3 after:content-['']"
         />
         <span className="text-sm font-medium text-gray-700">
           I would recommend Green Label Services to others

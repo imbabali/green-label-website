@@ -161,7 +161,8 @@ export default function ChatbotWidget() {
       {/* Chat Panel */}
       {isOpen && (
         <div
-          className={`chatbot-widget open fixed bottom-20 right-4 z-40 flex h-[480px] w-[calc(100vw-2rem)] max-w-[360px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-200 sm:right-6`}
+          className={`chatbot-widget open fixed right-4 z-40 flex h-[min(480px,calc(100dvh-6rem))] w-[calc(100vw-2rem)] max-w-[360px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-200 sm:right-6`}
+          style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}
           role="complementary"
           aria-label="Chat assistant"
         >
@@ -189,7 +190,7 @@ export default function ChatbotWidget() {
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close chat"
-              className="flex h-8 w-8 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
             >
               <i className="fa-solid fa-xmark" aria-hidden="true" />
             </button>
@@ -197,7 +198,7 @@ export default function ChatbotWidget() {
 
           {/* Messages */}
           <div
-            className="flex-1 overflow-y-auto px-4 py-3"
+            className="flex-1 overflow-y-auto px-4 py-3" style={{ overscrollBehavior: 'contain' }}
             aria-live="polite"
             aria-label="Chat messages"
           >
@@ -247,7 +248,7 @@ export default function ChatbotWidget() {
                 key={action.label}
                 type="button"
                 onClick={() => handleQuickAction(action.label)}
-                className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-brand-green/10 hover:text-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
+                className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-gray-100 px-2.5 py-2 text-xs font-medium text-gray-700 transition-colors hover:bg-brand-green/10 hover:text-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
               >
                 <i className={`${action.icon} text-[10px]`} aria-hidden="true" />
                 {action.label}
@@ -276,7 +277,7 @@ export default function ChatbotWidget() {
               type="submit"
               disabled={!inputValue.trim()}
               aria-label="Send message"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-green text-white transition-colors hover:bg-brand-green-dark focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-white transition-colors hover:bg-brand-green-dark focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <i className="fa-solid fa-paper-plane text-sm" aria-hidden="true" />
             </button>
@@ -290,7 +291,8 @@ export default function ChatbotWidget() {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? 'Close chat assistant' : 'Open chat assistant'}
         aria-expanded={isOpen}
-        className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green text-white shadow-lg shadow-brand-green/30 transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-brand-green/40 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6 sm:h-14 sm:w-14"
+        className="fixed right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green text-white shadow-lg shadow-brand-green/30 transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-brand-green/40 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6 sm:h-14 sm:w-14"
+        style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
       >
         <i
           className={`text-xl transition-transform duration-300 ${

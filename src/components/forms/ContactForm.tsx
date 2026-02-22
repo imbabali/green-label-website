@@ -136,6 +136,7 @@ export default function ContactForm() {
             <input
               type="text"
               id="full_name"
+              autoComplete="name"
               {...register('full_name')}
               aria-invalid={!!errors.full_name}
               aria-describedby={errors.full_name ? 'full_name-error' : undefined}
@@ -161,6 +162,8 @@ export default function ContactForm() {
             <input
               type="email"
               id="email"
+              inputMode="email"
+              autoComplete="email"
               {...register('email')}
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? 'email-error' : undefined}
@@ -186,6 +189,8 @@ export default function ContactForm() {
             <input
               type="tel"
               id="phone"
+              inputMode="tel"
+              autoComplete="tel"
               {...register('phone')}
               aria-invalid={!!errors.phone}
               aria-describedby={errors.phone ? 'phone-error' : undefined}
@@ -211,6 +216,7 @@ export default function ContactForm() {
             <input
               type="text"
               id="company"
+              autoComplete="organization"
               {...register('company')}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-800 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green"
               placeholder="Your company name"
@@ -350,7 +356,7 @@ export default function ContactForm() {
             <input
               type="checkbox"
               {...register('marketing_consent')}
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-green accent-brand-green"
+              className="relative mt-1 h-5 w-5 rounded border-gray-300 text-brand-green accent-brand-green after:absolute after:-inset-3 after:content-['']"
             />
             <span className="text-sm text-gray-700">
               I would like to receive marketing communications, newsletters, and updates from
@@ -365,7 +371,7 @@ export default function ContactForm() {
               {...register('privacy_agreement')}
               aria-invalid={!!errors.privacy_agreement}
               aria-describedby={errors.privacy_agreement ? 'privacy-error' : undefined}
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-green accent-brand-green"
+              className="relative mt-1 h-5 w-5 rounded border-gray-300 text-brand-green accent-brand-green after:absolute after:-inset-3 after:content-['']"
             />
             <span className="text-sm text-gray-700">
               I agree to the{' '}

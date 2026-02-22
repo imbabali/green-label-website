@@ -39,6 +39,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+a, button, input, select, textarea, [role="button"], [tabindex] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Counter Animation */
 @keyframes countUp {
   from { opacity: 0; transform: translateY(10px); }
@@ -104,11 +108,13 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
 
-.group:hover .mega-menu,
-.mega-menu:hover {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+@media (hover: hover) {
+  .group:hover .mega-menu,
+  .mega-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
 /* Back to Top */
@@ -198,8 +204,10 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
 }
 
-.portable-text a:hover {
-  color: var(--color-brand-green-dark);
+@media (hover: hover) {
+  .portable-text a:hover {
+    color: var(--color-brand-green-dark);
+  }
 }
 
 .portable-text blockquote {
@@ -459,6 +467,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }
 
 /* --- Global Focus Visible (WCAG 2.4.7) --- */

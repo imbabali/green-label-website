@@ -216,7 +216,7 @@ export default function QuoteModal() {
   return (
     <div
       ref={modalRef}
-      className="modal-overlay open fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-3 sm:p-4"
+      className="modal-overlay open fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-label="Request a quote"
@@ -224,7 +224,7 @@ export default function QuoteModal() {
         if (e.target === e.currentTarget) closeModal()
       }}
     >
-      <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
+      <div className="relative max-h-[90dvh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl" style={{ overscrollBehavior: 'contain' }}>
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between bg-gradient-green px-6 py-4 rounded-t-2xl">
           <div>
@@ -239,7 +239,7 @@ export default function QuoteModal() {
             type="button"
             onClick={closeModal}
             aria-label="Close quote form"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
           >
             <i className="fa-solid fa-xmark text-lg" aria-hidden="true" />
           </button>
@@ -328,6 +328,7 @@ export default function QuoteModal() {
                       <input
                         id="quote-name"
                         type="text"
+                        autoComplete="name"
                         className={inputClass}
                         placeholder="John Doe"
                         {...register('name')}
@@ -343,6 +344,8 @@ export default function QuoteModal() {
                       <input
                         id="quote-email"
                         type="email"
+                        inputMode="email"
+                        autoComplete="email"
                         className={inputClass}
                         placeholder="john@example.com"
                         {...register('email')}
@@ -358,6 +361,8 @@ export default function QuoteModal() {
                       <input
                         id="quote-phone"
                         type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
                         className={inputClass}
                         placeholder="+256 7XX XXX XXX"
                         {...register('phone')}
@@ -373,6 +378,7 @@ export default function QuoteModal() {
                       <input
                         id="quote-company"
                         type="text"
+                        autoComplete="organization"
                         className={inputClass}
                         placeholder="Company name"
                         {...register('company')}
@@ -531,7 +537,7 @@ export default function QuoteModal() {
                       <input
                         id="quote-consent"
                         type="checkbox"
-                        className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-green focus:ring-brand-green"
+                        className="relative mt-1 h-5 w-5 rounded border-gray-300 text-brand-green focus:ring-brand-green after:absolute after:-inset-3 after:content-['']"
                         {...register('marketing_consent')}
                       />
                       <label

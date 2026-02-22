@@ -137,7 +137,7 @@ export default function StatsCounter({
   return (
     <section
       ref={sectionRef}
-      className={`relative overflow-hidden py-12 md:py-16 ${
+      className={`cv-auto relative overflow-hidden py-12 md:py-16 ${
         darkBackground ? 'bg-gradient-green pattern-dots' : 'bg-gradient-subtle'
       }`}
       aria-label="Company statistics"

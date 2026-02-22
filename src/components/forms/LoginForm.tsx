@@ -81,6 +81,7 @@ export default function LoginForm() {
         <input
           type="email"
           id="login-email"
+          inputMode="email"
           {...register('email')}
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'login-email-error' : undefined}

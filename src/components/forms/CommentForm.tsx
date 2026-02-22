@@ -135,6 +135,7 @@ export default function CommentForm({
           <input
             type="text"
             id="comment-name"
+            autoComplete="name"
             {...register('name')}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'comment-name-error' : undefined}
@@ -160,6 +161,8 @@ export default function CommentForm({
           <input
             type="email"
             id="comment-email"
+            inputMode="email"
+            autoComplete="email"
             {...register('email')}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'comment-email-error' : undefined}
@@ -186,6 +189,8 @@ export default function CommentForm({
         <input
           type="url"
           id="comment-website"
+          inputMode="url"
+          autoComplete="url"
           {...register('website')}
           aria-invalid={!!errors.website}
           aria-describedby={errors.website ? 'comment-website-error' : undefined}

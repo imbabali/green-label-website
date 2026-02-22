@@ -93,7 +93,7 @@ export default function NewsletterForm({
 
     if (variant === 'section') {
       return (
-        <section className="relative overflow-hidden bg-gradient-green py-16">
+        <section className="cv-auto relative overflow-hidden bg-gradient-green py-16">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots" />
           <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
             <div className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
@@ -132,7 +132,7 @@ export default function NewsletterForm({
   // Section variant - full layout
   if (variant === 'section') {
     return (
-      <section className="relative overflow-hidden bg-gradient-green py-16">
+      <section className="cv-auto relative overflow-hidden bg-gradient-green py-16">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-dots" />
         <div className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
           <i
@@ -179,6 +179,7 @@ export default function NewsletterForm({
                 <input
                   id="newsletter-section-name"
                   type="text"
+                  autoComplete="name"
                   placeholder="Your name (optional)"
                   className="w-full rounded-lg border-0 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange"
                   {...register('name')}
@@ -191,6 +192,8 @@ export default function NewsletterForm({
                 <input
                   id="newsletter-section-email"
                   type="email"
+                  inputMode="email"
+                  autoComplete="email"
                   placeholder="Your email address *"
                   className="w-full rounded-lg border-0 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange"
                   {...register('email')}
@@ -249,6 +252,8 @@ export default function NewsletterForm({
             <input
               id="newsletter-inline-email"
               type="email"
+              inputMode="email"
+              autoComplete="email"
               placeholder="Enter your email"
               className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-900 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
               {...register('email')}
@@ -294,6 +299,8 @@ export default function NewsletterForm({
           <input
             id="newsletter-footer-email"
             type="email"
+            inputMode="email"
+            autoComplete="email"
             placeholder="Enter your email"
             className="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder:text-gray-400 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
             {...register('email')}

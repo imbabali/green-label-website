@@ -164,7 +164,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 transition-colors hover:bg-gray-100 hover:text-brand-green lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-gray-700 transition-colors hover:bg-gray-100 hover:text-brand-green lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -184,10 +184,11 @@ export default function Navbar({ services = [] }: NavbarProps) {
         className={`fixed inset-x-0 top-[57px] bottom-0 z-50 overflow-y-auto bg-white/95 backdrop-blur-lg transition-transform duration-300 lg:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        style={{ overscrollBehavior: 'contain' }}
         aria-label="Mobile navigation"
         role="navigation"
       >
-        <div className="divide-y divide-gray-100 px-4 pb-6 pt-2">
+        <div className="divide-y divide-gray-100 px-4 pt-2" style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}>
           {NAV_ITEMS.map((item) => {
             const hasChildren = 'children' in item && item.children
             const active = isNavItemActive(item)
@@ -321,7 +322,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our Facebook page"
-              className="text-gray-500 transition-colors hover:text-brand-green"
+              className="flex h-11 w-11 items-center justify-center text-gray-500 transition-colors hover:text-brand-green"
             >
               <i className="fa-brands fa-facebook-f text-lg" aria-hidden="true" />
             </a>
@@ -330,7 +331,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit our LinkedIn page"
-              className="text-gray-500 transition-colors hover:text-brand-green"
+              className="flex h-11 w-11 items-center justify-center text-gray-500 transition-colors hover:text-brand-green"
             >
               <i className="fa-brands fa-linkedin-in text-lg" aria-hidden="true" />
             </a>

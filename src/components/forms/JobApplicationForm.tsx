@@ -224,6 +224,7 @@ export default function JobApplicationForm({
             <input
               type="text"
               id="first_name"
+              autoComplete="given-name"
               {...register('first_name')}
               aria-invalid={!!errors.first_name}
               aria-describedby={errors.first_name ? 'first_name-error' : undefined}
@@ -249,6 +250,7 @@ export default function JobApplicationForm({
             <input
               type="text"
               id="last_name"
+              autoComplete="family-name"
               {...register('last_name')}
               aria-invalid={!!errors.last_name}
               aria-describedby={errors.last_name ? 'last_name-error' : undefined}
@@ -274,6 +276,8 @@ export default function JobApplicationForm({
             <input
               type="email"
               id="app-email"
+              inputMode="email"
+              autoComplete="email"
               {...register('email')}
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? 'app-email-error' : undefined}
@@ -299,6 +303,8 @@ export default function JobApplicationForm({
             <input
               type="tel"
               id="app-phone"
+              inputMode="tel"
+              autoComplete="tel"
               {...register('phone')}
               aria-invalid={!!errors.phone}
               aria-describedby={errors.phone ? 'app-phone-error' : undefined}
@@ -332,6 +338,7 @@ export default function JobApplicationForm({
             <input
               type="text"
               id="current_company"
+              autoComplete="organization"
               {...register('current_company')}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-800 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green"
               placeholder="Current or most recent employer"
@@ -346,6 +353,7 @@ export default function JobApplicationForm({
             <input
               type="text"
               id="current_position"
+              autoComplete="organization-title"
               {...register('current_position')}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-800 transition-colors focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green"
               placeholder="Your current job title"
@@ -360,6 +368,8 @@ export default function JobApplicationForm({
             <input
               type="url"
               id="linkedin_profile"
+              inputMode="url"
+              autoComplete="url"
               {...register('linkedin_profile')}
               aria-invalid={!!errors.linkedin_profile}
               aria-describedby={errors.linkedin_profile ? 'linkedin-error' : undefined}
@@ -385,6 +395,8 @@ export default function JobApplicationForm({
             <input
               type="url"
               id="portfolio_url"
+              inputMode="url"
+              autoComplete="url"
               {...register('portfolio_url')}
               aria-invalid={!!errors.portfolio_url}
               aria-describedby={errors.portfolio_url ? 'portfolio-error' : undefined}

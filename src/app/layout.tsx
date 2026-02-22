@@ -7,6 +7,7 @@ import { SITE_NAME, SITE_URL, COMPANY_INFO } from '@/lib/data/constants'
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  viewportFit: 'cover',
   themeColor: '#2c632c',
 }
 
@@ -74,6 +75,9 @@ export default function RootLayout({
     <html lang="en-UG">
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="format-detection" content="telephone=no" />
       </head>
       <body
         className="font-sans antialiased"
