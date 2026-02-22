@@ -22,9 +22,7 @@ interface NewsletterFormProps {
   variant?: 'footer' | 'inline' | 'section'
 }
 
-export default function NewsletterForm({
-  variant = 'footer',
-}: NewsletterFormProps) {
+export default function NewsletterForm({ variant = 'footer' }: NewsletterFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const {
@@ -77,15 +75,8 @@ export default function NewsletterForm({
   if (status === 'success') {
     const successMessage = (
       <div className="flex items-center gap-2 text-sm">
-        <i
-          className="fa-solid fa-circle-check text-green-400"
-          aria-hidden="true"
-        />
-        <span
-          className={
-            variant === 'footer' ? 'text-green-300' : 'text-green-700'
-          }
-        >
+        <i className="fa-solid fa-circle-check text-green-400" aria-hidden="true" />
+        <span className={variant === 'footer' ? 'text-green-300' : 'text-green-700'}>
           Thank you! You have been subscribed successfully.
         </span>
       </div>
@@ -139,12 +130,10 @@ export default function NewsletterForm({
             className="fa-solid fa-envelope-open-text mb-4 text-4xl text-brand-orange-light"
             aria-hidden="true"
           />
-          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">
-            Stay Updated
-          </h2>
+          <h2 className="font-heading text-2xl font-bold text-white md:text-3xl">Stay Updated</h2>
           <p className="mt-3 text-gray-200">
-            Get the latest news on waste management, sustainability tips,
-            and Green Label updates delivered to your inbox.
+            Get the latest news on waste management, sustainability tips, and Green Label updates
+            delivered to your inbox.
           </p>
 
           {/* Benefits */}
@@ -163,12 +152,10 @@ export default function NewsletterForm({
             </li>
           </ul>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-            className="relative mt-8"
-          >
-            <HoneypotField register={register as unknown as (name: string) => Record<string, unknown>} />
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="relative mt-8">
+            <HoneypotField
+              register={register as unknown as (name: string) => Record<string, unknown>}
+            />
             <input type="hidden" {...register('frequency')} />
 
             <div className="flex gap-3">
@@ -236,12 +223,10 @@ export default function NewsletterForm({
   // Inline variant - single row
   if (variant === 'inline') {
     return (
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate
-        className="relative"
-      >
-        <HoneypotField register={register as unknown as (name: string) => Record<string, unknown>} />
+      <form onSubmit={handleSubmit(onSubmit)} noValidate className="relative">
+        <HoneypotField
+          register={register as unknown as (name: string) => Record<string, unknown>}
+        />
         <input type="hidden" {...register('frequency')} />
 
         <div className="flex gap-2">
@@ -272,14 +257,10 @@ export default function NewsletterForm({
           </button>
         </div>
 
-        {errors.email && (
-          <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>}
 
         {status === 'error' && (
-          <p className="mt-1 text-xs text-red-600">
-            Something went wrong. Please try again.
-          </p>
+          <p className="mt-1 text-xs text-red-600">Something went wrong. Please try again.</p>
         )}
       </form>
     )
@@ -291,8 +272,8 @@ export default function NewsletterForm({
       <HoneypotField register={register as unknown as (name: string) => Record<string, unknown>} />
       <input type="hidden" {...register('frequency')} />
 
-      <div className="flex gap-2">
-        <div className="flex-1">
+      <div className="space-y-2">
+        <div>
           <label htmlFor="newsletter-footer-email" className="sr-only">
             Email address
           </label>
@@ -302,14 +283,14 @@ export default function NewsletterForm({
             inputMode="email"
             autoComplete="email"
             placeholder="Enter your email"
-            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder:text-gray-400 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2.5 text-sm text-white placeholder:text-gray-400 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
             {...register('email')}
           />
         </div>
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="flex-shrink-0 rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-dark focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-gray-900 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-dark focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-gray-900 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === 'loading' ? (
             <i className="fa-solid fa-spinner fa-spin" aria-hidden="true" />
@@ -320,7 +301,9 @@ export default function NewsletterForm({
       </div>
 
       {errors.email && (
-        <p className="mt-1 text-xs text-red-300" role="alert">{errors.email.message}</p>
+        <p className="mt-1 text-xs text-red-300" role="alert">
+          {errors.email.message}
+        </p>
       )}
 
       {status === 'error' && (
