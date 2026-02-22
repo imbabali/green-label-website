@@ -19,9 +19,9 @@ export default function Footer({ services = [] }: FooterProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-4 gap-4 lg:gap-8">
           {/* Column 1: Company Info & Contact */}
-          <div className="col-span-2 lg:col-span-1">
+          <div>
             <Link href="/" className="mb-3 inline-flex items-center gap-1" aria-label="Green Label Services home">
               <span className="font-heading text-lg font-extrabold tracking-tight text-brand-green-light">
                 GREEN
@@ -113,7 +113,7 @@ export default function Footer({ services = [] }: FooterProps) {
           </div>
 
           {/* Column 4: Newsletter */}
-          <div className="col-span-2 lg:col-span-1">
+          <div>
             <h2 className="mb-3 font-heading text-xs font-bold uppercase tracking-wider text-white">
               <span className="inline-block border-b-2 border-brand-green pb-1">Newsletter</span>
             </h2>
