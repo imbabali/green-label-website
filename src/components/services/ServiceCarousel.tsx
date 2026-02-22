@@ -30,7 +30,7 @@ export default function ServiceCarousel({ services }: { services: Service[] }) {
           return (
             <div
               key={`${service.slug}-${i}`}
-              className="card-premium group relative flex w-72 shrink-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:w-80"
+              className="card-premium group relative flex w-64 shrink-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:w-72 md:w-80"
             >
               {/* Icon area */}
               <div className="relative flex h-36 items-center justify-center overflow-hidden bg-brand-green/5">
@@ -54,7 +54,7 @@ export default function ServiceCarousel({ services }: { services: Service[] }) {
               </div>
 
               {/* Content area — flex-1 for uniform height */}
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col p-4 md:p-5">
                 {service.category && (
                   <span className="mb-1.5 text-[10px] font-medium uppercase tracking-wider text-brand-green">
                     {service.category.name}

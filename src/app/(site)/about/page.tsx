@@ -68,7 +68,7 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <CardGrid columns={3}>
             {features.map((f) => (
-              <div key={f.title} className="glass h-full rounded-2xl p-6 text-center">
+              <div key={f.title} className="glass h-full rounded-2xl p-4 md:p-6 text-center">
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green/10">
                   <i className={`${f.icon} text-xl text-brand-green`} aria-hidden="true" />
                 </div>
@@ -110,7 +110,7 @@ export default function AboutPage() {
           <ScrollRevealSection>
             <div className="grid gap-6 md:grid-cols-3">
               {values.map((v, i) => (
-                <div key={v.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${i + 1} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-6 shadow-md`}>
+                <div key={v.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${i + 1} card-premium rounded-2xl border-l-4 border-l-brand-green bg-white p-4 md:p-6 shadow-md`}>
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10">
                     <i className={`${v.icon} text-lg text-brand-green`} aria-hidden="true" />
                   </div>

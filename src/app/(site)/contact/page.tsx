@@ -45,7 +45,7 @@ export default function ContactPage() {
       {/* Contact Form + Info */}
       <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-3">
+          <div className="grid gap-6 md:gap-12 lg:grid-cols-3">
             {/* Form */}
             <ScrollRevealSection className="lg:col-span-2">
               <div className="reveal reveal-left">
@@ -61,7 +61,7 @@ export default function ContactPage() {
 
             {/* Contact Info Cards */}
             <ScrollRevealSection>
-              <div className="sticky top-24 space-y-6">
+              <div className="md:sticky md:top-24 space-y-6">
                 {/* Address */}
                 <div className="reveal reveal-right stagger-1 card-premium rounded-2xl border border-gray-100 bg-white p-6 shadow-md">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">

@@ -104,7 +104,7 @@ export default function ReviewCarousel({ reviews }: ReviewCarouselProps) {
             type="button"
             onClick={goToPrev}
             aria-label="Previous review"
-            className="absolute -left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
+            className="absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 md:-left-4 md:h-11 md:w-11"
           >
             <i className="fa-solid fa-chevron-left text-sm text-gray-700" aria-hidden="true" />
           </button>
@@ -112,7 +112,7 @@ export default function ReviewCarousel({ reviews }: ReviewCarouselProps) {
             type="button"
             onClick={goToNext}
             aria-label="Next review"
-            className="absolute -right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2"
+            className="absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 md:-right-4 md:h-11 md:w-11"
           >
             <i className="fa-solid fa-chevron-right text-sm text-gray-700" aria-hidden="true" />
           </button>
@@ -135,7 +135,7 @@ export default function ReviewCarousel({ reviews }: ReviewCarouselProps) {
               role="group"
               aria-roledescription="slide"
             >
-              <article className="flex h-full flex-col rounded-xl bg-white p-6 shadow-md ring-1 ring-gray-100">
+              <article className="flex h-full flex-col rounded-xl bg-white p-4 shadow-md ring-1 ring-gray-100 md:p-6">
                 {/* Star Rating */}
                 <StarRating rating={review.overall_rating} size="sm" />
 

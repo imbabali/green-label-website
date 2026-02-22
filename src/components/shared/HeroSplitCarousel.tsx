@@ -52,9 +52,9 @@ export default function HeroSplitCarousel({ slides }: { slides: Slide[] }) {
       aria-roledescription="carousel"
       aria-label="Hero slideshow"
     >
-      <div className="mx-auto grid min-h-[400px] max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 md:min-h-[500px] md:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 py-10 sm:px-6 md:min-h-[500px] md:grid-cols-2 md:gap-8 md:py-12 lg:px-8">
         {/* Text side */}
-        <div className="relative min-h-[280px] md:min-h-[320px]">
+        <div className="relative min-h-[220px] md:min-h-[320px]">
           {slides.map((slide, i) => (
             <div
               key={i}
@@ -97,7 +97,17 @@ export default function HeroSplitCarousel({ slides }: { slides: Slide[] }) {
           ))}
         </div>
 
-        {/* Image side — cycling images in a rounded card */}
+        {/* Image side — mobile: single rounded image, desktop: cycling images */}
+        <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-xl ring-2 ring-white md:hidden">
+          <Image
+            src={slides[current].backgroundImage}
+            alt={slides[current].heading}
+            fill
+            sizes="100vw"
+            className="object-cover transition-opacity duration-500"
+            priority
+          />
+        </div>
         <div className="relative hidden min-h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white md:block">
           {slides.map((slide, i) => (
             <div

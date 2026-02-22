@@ -71,7 +71,7 @@ export default function PostCard({ post }: PostCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="p-4 md:p-5">
         {/* Author */}
         {post.author && (
           <p className="mb-2 text-xs font-medium text-gray-500">
@@ -81,7 +81,7 @@ export default function PostCard({ post }: PostCardProps) {
         )}
 
         {/* Title */}
-        <h3 className="mb-2 text-lg font-bold leading-tight text-gray-900">
+        <h3 className="mb-2 line-clamp-2 text-lg font-bold leading-tight text-gray-900">
           <Link
             href={`/blog/${post.slug}`}
             className="transition-colors hover:text-brand-green"

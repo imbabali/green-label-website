@@ -105,7 +105,7 @@ export default function LeadershipPage() {
           <ScrollRevealSection>
             <div className="reveal reveal-up glass mx-auto max-w-4xl rounded-2xl p-6 md:p-10">
               <div className="flex flex-col items-center gap-6 md:flex-row">
-                <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full ring-4 ring-brand-green/20 shadow-lg">
+                <div className="relative h-28 w-28 md:h-36 md:w-36 shrink-0 overflow-hidden rounded-full ring-4 ring-brand-green/20 shadow-lg">
                   <Image
                     src="/images/hero/mugume.jpg"
                     alt="Dr. Grace Mugume - Chief Executive Officer"

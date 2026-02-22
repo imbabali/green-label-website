@@ -162,7 +162,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-3">
+          <div className="grid gap-6 md:gap-10 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <PostDetail post={transformedPost} />
 

@@ -161,7 +161,7 @@ export default function ChatbotWidget() {
       {/* Chat Panel */}
       {isOpen && (
         <div
-          className={`chatbot-widget open fixed bottom-20 right-4 z-40 flex h-[480px] w-[360px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-200 sm:right-6`}
+          className={`chatbot-widget open fixed bottom-20 right-4 z-40 flex h-[480px] w-[calc(100vw-2rem)] max-w-[360px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-200 sm:right-6`}
           role="complementary"
           aria-label="Chat assistant"
         >
@@ -290,7 +290,7 @@ export default function ChatbotWidget() {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? 'Close chat assistant' : 'Open chat assistant'}
         aria-expanded={isOpen}
-        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green text-white shadow-lg shadow-brand-green/30 transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-brand-green/40 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6"
+        className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green text-white shadow-lg shadow-brand-green/30 transition-all duration-300 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-brand-green/40 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 sm:right-6 sm:h-14 sm:w-14"
       >
         <i
           className={`text-xl transition-transform duration-300 ${

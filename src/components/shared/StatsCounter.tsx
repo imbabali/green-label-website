@@ -61,7 +61,7 @@ function StatCard({
 
   return (
     <div
-      className={`reveal reveal-up stagger-${index + 1} flex flex-col items-center rounded-2xl p-6 text-center transition-all duration-500 ${
+      className={`reveal reveal-up stagger-${index + 1} flex flex-col items-center rounded-2xl p-4 text-center transition-all duration-500 md:p-6 ${
         isVisible ? 'visible' : ''
       } ${
         darkBackground
@@ -82,7 +82,7 @@ function StatCard({
         />
       ) : null}
       <div
-        className={`font-heading text-3xl font-bold md:text-4xl lg:text-5xl ${
+        className={`font-heading text-2xl font-bold md:text-3xl lg:text-4xl ${
           darkBackground ? 'text-white' : 'text-brand-green'
         }`}
       >
@@ -143,7 +143,7 @@ export default function StatsCounter({
       aria-label="Company statistics"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <StatCard
               key={index}

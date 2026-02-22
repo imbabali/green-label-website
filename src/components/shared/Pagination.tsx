@@ -56,7 +56,7 @@ export default function Pagination({
   const isLast = currentPage === totalPages
 
   const baseButtonClass =
-    'inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2'
+    'inline-flex items-center justify-center rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2'
   const activeClass = 'bg-brand-green text-white shadow-md shadow-brand-green/25'
   const defaultClass =
     'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
@@ -115,7 +115,7 @@ export default function Pagination({
             <Link
               key={page}
               href={buildUrl(basePath, page, searchParams)}
-              className={`${baseButtonClass} min-w-[40px] ${
+              className={`${baseButtonClass} min-w-[44px] ${
                 isCurrent ? activeClass : defaultClass
               }`}
               aria-label={`Page ${page}`}

@@ -429,7 +429,7 @@ export default function JobApplicationForm({
               role="button"
               tabIndex={0}
               aria-label="Upload resume. Drag and drop or click to browse. Accepted formats: PDF, DOC, DOCX. Maximum 5MB."
-              className={`cursor-pointer rounded-lg border-2 border-dashed p-8 text-center transition-colors ${
+              className={`cursor-pointer rounded-lg border-2 border-dashed p-4 text-center transition-colors sm:p-8 ${
                 isDragOver
                   ? 'border-brand-green bg-green-50'
                   : fileError

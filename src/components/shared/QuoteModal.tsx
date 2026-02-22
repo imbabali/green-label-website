@@ -216,7 +216,7 @@ export default function QuoteModal() {
   return (
     <div
       ref={modalRef}
-      className="modal-overlay open fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      className="modal-overlay open fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-3 sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-label="Request a quote"

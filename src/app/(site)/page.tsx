@@ -321,7 +321,7 @@ export default async function HomePage() {
               {services.map((service, index) => (
                 <div
                   key={service.title}
-                  className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium group rounded-2xl border border-gray-100 bg-white p-5 shadow-md`}
+                  className={`reveal reveal-up stagger-${Math.min(index + 1, 6)} card-premium group rounded-2xl border border-gray-100 bg-white p-4 md:p-5 shadow-md`}
                 >
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green transition-colors group-hover:bg-brand-green group-hover:text-white">
                     <i className={`${service.icon} text-lg`} aria-hidden="true" />
@@ -329,7 +329,7 @@ export default async function HomePage() {
                   <h3 className="mb-1 font-heading text-sm font-bold text-gray-900">
                     {service.title}
                   </h3>
-                  <p className="mb-3 text-xs leading-relaxed text-gray-600">
+                  <p className="mb-3 text-xs md:text-sm leading-relaxed text-gray-600">
                     {service.description}
                   </p>
                   <Link
@@ -395,7 +395,7 @@ export default async function HomePage() {
                   <p className="mb-1 text-xs font-medium text-brand-green">
                     {license.number}
                   </p>
-                  <p className="text-xs leading-relaxed text-gray-600">
+                  <p className="text-xs md:text-sm leading-relaxed text-gray-600">
                     {license.scope}
                   </p>
                 </div>
@@ -493,7 +493,7 @@ export default async function HomePage() {
                         {post.title}
                       </Link>
                     </h3>
-                    <p className="mb-3 text-xs leading-relaxed text-gray-600">
+                    <p className="mb-3 text-xs md:text-sm leading-relaxed text-gray-600">
                       {post.excerpt.length > 120
                         ? post.excerpt.substring(0, 120).trimEnd() + '...'
                         : post.excerpt}

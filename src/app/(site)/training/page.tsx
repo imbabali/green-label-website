@@ -86,7 +86,7 @@ export default function TrainingPage() {
           </ScrollRevealSection>
           <CardCarousel>
             {delivery.map((m) => (
-              <div key={m.title} className="w-[60vw] max-w-[240px] shrink-0 snap-start">
+              <div key={m.title} className="w-[75vw] max-w-[240px] sm:w-[60vw] shrink-0 snap-start">
                 <div className="glass flex h-full flex-col items-center rounded-xl p-4 text-center">
                   <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange/10">
                     <i className={`${m.icon} text-lg text-brand-orange`} aria-hidden="true" />

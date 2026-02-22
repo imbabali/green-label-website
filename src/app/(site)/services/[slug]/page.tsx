@@ -74,7 +74,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </div>
 
             <aside>
-              <div className="sticky top-24 space-y-6">
+              <div className="md:sticky md:top-24 space-y-6">
                 <div className="card-premium rounded-2xl bg-white p-6 shadow-md ring-1 ring-gray-100">
                   <h3 className="mb-4 font-heading text-lg font-bold text-gray-900">
                     Enquire About This Service

@@ -114,7 +114,7 @@ export default function ProjectsPage() {
             <div className="grid gap-6 md:grid-cols-2">
               {projects.map((project, i) => (
                 <article key={project.title} className={`reveal ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'} stagger-${Math.min(i + 1, 6)} card-premium overflow-hidden rounded-2xl bg-white shadow-md`}>
-                  <div className="relative h-40">
+                  <div className="relative h-32 md:h-40">
                     <Image src={project.image} alt={project.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                     <div className="absolute bottom-2 left-2 flex items-center gap-2">
                       <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold shadow backdrop-blur-sm ${project.status === 'Ongoing' ? 'bg-brand-green/90 text-white' : 'bg-white/90 text-gray-800'}`}>
@@ -122,7 +122,7 @@ export default function ProjectsPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="p-5">
+                  <div className="p-4 md:p-5">
                     <div className="mb-2 flex items-center gap-2">
                       <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-green/10">
                         <i className={`${project.icon} text-xs text-brand-green`} aria-hidden="true" />

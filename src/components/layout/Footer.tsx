@@ -19,7 +19,7 @@ export default function Footer({ services = [] }: FooterProps) {
       />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {/* Column 1: Company Info & Contact */}
           <div>
             <Link href="/" className="mb-3 inline-flex items-center gap-1" aria-label="Green Label Services home">
@@ -149,18 +149,18 @@ export default function Footer({ services = [] }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit our Facebook page"
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
               >
-                <i className="fa-brands fa-facebook-f text-[10px]" aria-hidden="true" />
+                <i className="fa-brands fa-facebook-f text-xs" aria-hidden="true" />
               </a>
               <a
                 href={COMPANY_INFO.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit our LinkedIn page"
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:bg-brand-green hover:text-white"
               >
-                <i className="fa-brands fa-linkedin-in text-[10px]" aria-hidden="true" />
+                <i className="fa-brands fa-linkedin-in text-xs" aria-hidden="true" />
               </a>
             </div>
           </div>

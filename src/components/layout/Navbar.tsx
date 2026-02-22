@@ -164,7 +164,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 transition-colors hover:bg-gray-100 hover:text-brand-green lg:hidden"
+            className="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 transition-colors hover:bg-gray-100 hover:text-brand-green lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -181,7 +181,7 @@ export default function Navbar({ services = [] }: NavbarProps) {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 top-[57px] z-50 overflow-y-auto bg-white/95 backdrop-blur-lg transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-x-0 top-[57px] bottom-0 z-50 overflow-y-auto bg-white/95 backdrop-blur-lg transition-transform duration-300 lg:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Mobile navigation"

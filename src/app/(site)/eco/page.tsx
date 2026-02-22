@@ -58,7 +58,7 @@ export default function SustainabilityPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <CardGrid columns={3}>
             {pillars.map((p) => (
-              <div key={p.title} className="glass h-full rounded-2xl p-6 text-center">
+              <div key={p.title} className="glass h-full rounded-2xl p-4 md:p-6 text-center">
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-green/20 via-brand-green/10 to-transparent shadow-md shadow-brand-green/10 ring-2 ring-brand-green/20">
                   <i className={`${p.icon} text-2xl text-brand-green`} aria-hidden="true" />
                 </div>

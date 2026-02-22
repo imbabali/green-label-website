@@ -148,7 +148,7 @@ export default function Hero({
   if (variant === 'split') {
     return (
       <section className="bg-white">
-        <div className="mx-auto grid min-h-[400px] max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 md:min-h-[500px] md:grid-cols-2 lg:px-8">
+        <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 py-10 sm:px-6 md:min-h-[500px] md:grid-cols-2 md:gap-8 md:py-12 lg:px-8">
           <div className={flipped ? 'md:order-2' : ''}>
             {badge && (
               <span className="mb-4 inline-block rounded-full bg-brand-green/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-green">
@@ -175,16 +175,30 @@ export default function Hero({
             {children}
           </div>
           {backgroundImage && (
-            <div className={`relative hidden min-h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white md:block ${flipped ? 'md:order-1' : ''}`}>
-              <Image
-                src={backgroundImage}
-                alt={heading}
-                fill
-                sizes="50vw"
-                className="object-cover"
-                priority
-              />
-            </div>
+            <>
+              {/* Mobile image */}
+              <div className={`relative aspect-[16/10] overflow-hidden rounded-2xl shadow-xl ring-2 ring-white md:hidden ${flipped ? 'md:order-1' : ''}`}>
+                <Image
+                  src={backgroundImage}
+                  alt={heading}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              {/* Desktop image */}
+              <div className={`relative hidden min-h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white md:block ${flipped ? 'md:order-1' : ''}`}>
+                <Image
+                  src={backgroundImage}
+                  alt={heading}
+                  fill
+                  sizes="50vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </>
           )}
         </div>
       </section>
