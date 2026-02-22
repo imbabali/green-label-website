@@ -8,6 +8,7 @@ import { emailSchema } from '@/lib/validators/email'
 import { phoneRequiredSchema } from '@/lib/validators/phone'
 import { CONTACT_METHODS } from '@/lib/data/service-types'
 import { submitInquiry } from '@/lib/actions/inquiry'
+import { track } from '@vercel/analytics'
 
 const serviceInquirySchema = z.object({
   service_slug: z.string(),
@@ -32,10 +33,7 @@ interface ServiceInquiryFormProps {
   serviceTitle: string
 }
 
-export default function ServiceInquiryForm({
-  serviceSlug,
-  serviceTitle,
-}: ServiceInquiryFormProps) {
+export default function ServiceInquiryForm({ serviceSlug, serviceTitle }: ServiceInquiryFormProps) {
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error'
     message: string
@@ -69,6 +67,7 @@ export default function ServiceInquiryForm({
       formData.append('service_slug', serviceSlug)
       const result = await submitInquiry({ success: false, message: '' }, formData)
       if (result.success) {
+        track('service_inquiry_submitted')
         setSubmitStatus({ type: 'success', message: result.message })
         reset()
       } else {
@@ -87,9 +86,7 @@ export default function ServiceInquiryForm({
       {/* Hidden service slug */}
       <input type="hidden" {...register('service_slug')} />
 
-      <h3 className="text-xl font-semibold text-gray-900">
-        Inquire about {serviceTitle}
-      </h3>
+      <h3 className="text-xl font-semibold text-gray-900">Inquire about {serviceTitle}</h3>
 
       {/* Status Message */}
       {submitStatus && (
@@ -201,7 +198,10 @@ export default function ServiceInquiryForm({
 
         {/* Location */}
         <div>
-          <label htmlFor="inquiry-location" className="mb-1 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="inquiry-location"
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
             Location <span className="text-red-500">*</span>
           </label>
           <input
@@ -255,7 +255,11 @@ export default function ServiceInquiryForm({
         <label className="mb-2 block text-sm font-medium text-gray-700">
           Preferred Contact Method
         </label>
-        <div className="flex flex-wrap gap-3" role="radiogroup" aria-label="Preferred contact method">
+        <div
+          className="flex flex-wrap gap-3"
+          role="radiogroup"
+          aria-label="Preferred contact method"
+        >
           {CONTACT_METHODS.map((method) => (
             <label
               key={method.value}

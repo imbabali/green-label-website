@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next'
 import Hero from '@/components/shared/Hero'
 import PostCard from '@/components/blog/PostCard'
@@ -6,7 +7,6 @@ import { generatePageMetadata } from '@/lib/utils/seo'
 import { sanityFetch } from '@/lib/sanity/client'
 import { blogListQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
-import Link from 'next/link'
 import ScrollRevealSection from '@/components/shared/ScrollRevealSection'
 import EmptyState from '@/components/shared/EmptyState'
 
@@ -54,7 +54,9 @@ export default async function BlogSearchPage({ searchParams }: Props) {
     slug: p.slug?.current || p.slug,
     excerpt: p.excerpt || '',
     featuredImage: p.featuredImage ? urlFor(p.featuredImage).width(600).url() : undefined,
-    category: p.category ? { name: p.category.name, slug: p.category.slug?.current || p.category.slug } : undefined,
+    category: p.category
+      ? { name: p.category.name, slug: p.category.slug?.current || p.category.slug }
+      : undefined,
     author: p.author ? { name: p.author.name } : undefined,
     publishedAt: p.publishedAt,
     tags: p.tags?.map((t: any) => ({ name: t.name, slug: t.slug?.current || t.slug })),
@@ -75,10 +77,17 @@ export default async function BlogSearchPage({ searchParams }: Props) {
       <section className="bg-gradient-subtle py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Search form — glass style */}
-          <form action="/blog/search" method="get" className="mb-10">
+          <form action="/blog/search" method="get" className="mb-10" role="search">
             <div className="relative mx-auto max-w-xl">
-              <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <label htmlFor="blog-search" className="sr-only">
+                Search articles
+              </label>
+              <i
+                className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                aria-hidden="true"
+              />
               <input
+                id="blog-search"
                 type="search"
                 name="q"
                 defaultValue={query}
@@ -99,7 +108,10 @@ export default async function BlogSearchPage({ searchParams }: Props) {
             <ScrollRevealSection>
               <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 {transformedPosts.map((post: any, index: number) => (
-                  <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                  <div
+                    key={post.slug}
+                    className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}
+                  >
                     <PostCard post={post} />
                   </div>
                 ))}

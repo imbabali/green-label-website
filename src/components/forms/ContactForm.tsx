@@ -9,23 +9,20 @@ import { phoneSchema } from '@/lib/validators/phone'
 import { honeypotSchema } from '@/lib/validators/honeypot'
 import { SUBJECT_OPTIONS, CONTACT_METHODS } from '@/lib/data/service-types'
 import { submitContactForm } from '@/lib/actions/contact'
+import { track } from '@vercel/analytics'
 
 const contactFormSchema = z.object({
   full_name: z
     .string()
     .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name must be less than 100 characters')
-    .regex(
-      /^[a-zA-Z\s\-']+$/,
-      'Name can only contain letters, spaces, hyphens, and apostrophes'
-    ),
+    .regex(/^[a-zA-Z\s\-']+$/, 'Name can only contain letters, spaces, hyphens, and apostrophes'),
   email: emailSchema,
   phone: phoneSchema.optional().or(z.literal('')),
   company: z.string().optional().default(''),
-  subject: z.enum(
-    SUBJECT_OPTIONS.map((o) => o.value) as [string, ...string[]],
-    { error: 'Please select a subject' }
-  ),
+  subject: z.enum(SUBJECT_OPTIONS.map((o) => o.value) as [string, ...string[]], {
+    error: 'Please select a subject',
+  }),
   message: z
     .string()
     .min(20, 'Message must be at least 20 characters')
@@ -73,6 +70,7 @@ export default function ContactForm() {
     },
   })
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const messageValue = watch('message', '')
 
   const onSubmit = async (data: ContactFormData) => {
@@ -93,6 +91,7 @@ export default function ContactForm() {
 
       const result = await submitContactForm({ success: false, message: '' }, formData)
       if (result.success) {
+        track('contact_form_submitted')
         setSubmitStatus({ type: 'success', message: result.message })
         reset()
       } else {
@@ -124,9 +123,7 @@ export default function ContactForm() {
 
       {/* Section 1: Contact Information */}
       <fieldset>
-        <legend className="mb-4 text-lg font-semibold text-gray-900">
-          Contact Information
-        </legend>
+        <legend className="mb-4 text-lg font-semibold text-gray-900">Contact Information</legend>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Full Name */}
           <div>
@@ -227,9 +224,7 @@ export default function ContactForm() {
 
       {/* Section 2: Inquiry Details */}
       <fieldset>
-        <legend className="mb-4 text-lg font-semibold text-gray-900">
-          Inquiry Details
-        </legend>
+        <legend className="mb-4 text-lg font-semibold text-gray-900">Inquiry Details</legend>
         <div className="space-y-4">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* Subject */}
@@ -319,10 +314,12 @@ export default function ContactForm() {
 
       {/* Section 3: Contact Preferences */}
       <fieldset>
-        <legend className="mb-4 text-lg font-semibold text-gray-900">
-          Contact Preferences
-        </legend>
-        <div className="flex flex-wrap gap-4" role="radiogroup" aria-label="Preferred contact method">
+        <legend className="mb-4 text-lg font-semibold text-gray-900">Contact Preferences</legend>
+        <div
+          className="flex flex-wrap gap-4"
+          role="radiogroup"
+          aria-label="Preferred contact method"
+        >
           {CONTACT_METHODS.map((method) => (
             <label
               key={method.value}
@@ -347,9 +344,7 @@ export default function ContactForm() {
 
       {/* Section 4: Agreements */}
       <fieldset>
-        <legend className="mb-4 text-lg font-semibold text-gray-900">
-          Agreements
-        </legend>
+        <legend className="mb-4 text-lg font-semibold text-gray-900">Agreements</legend>
         <div className="space-y-3">
           {/* Marketing Consent */}
           <label className="flex cursor-pointer items-start gap-3">
@@ -359,8 +354,8 @@ export default function ContactForm() {
               className="relative mt-1 h-5 w-5 rounded border-gray-300 text-brand-green accent-brand-green after:absolute after:-inset-3 after:content-['']"
             />
             <span className="text-sm text-gray-700">
-              I would like to receive marketing communications, newsletters, and updates from
-              Green Label Services. You can unsubscribe at any time.
+              I would like to receive marketing communications, newsletters, and updates from Green
+              Label Services. You can unsubscribe at any time.
             </span>
           </label>
 
@@ -375,10 +370,7 @@ export default function ContactForm() {
             />
             <span className="text-sm text-gray-700">
               I agree to the{' '}
-              <a
-                href="/privacy"
-                className="text-brand-green underline hover:text-brand-green-dark"
-              >
+              <a href="/privacy" className="text-brand-green underline hover:text-brand-green-dark">
                 Privacy Policy
               </a>{' '}
               and consent to the processing of my personal data.{' '}

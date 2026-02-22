@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { SERVICE_TYPES } from '@/lib/data/service-types'
 import StarRating from '@/components/shared/StarRating'
 import { createReview, updateReview } from '@/lib/actions/review'
+import { track } from '@vercel/analytics'
 
 const ratingSchema = z
   .number({ message: 'Rating is required' })
@@ -14,10 +15,9 @@ const ratingSchema = z
   .max(5, 'Rating must be between 1 and 5')
 
 const reviewSchema = z.object({
-  service_type: z.enum(
-    SERVICE_TYPES.map((s) => s.value) as [string, ...string[]],
-    { message: 'Please select a service type' }
-  ),
+  service_type: z.enum(SERVICE_TYPES.map((s) => s.value) as [string, ...string[]], {
+    message: 'Please select a service type',
+  }),
   service_name: z
     .string()
     .min(1, 'Service name is required')
@@ -91,6 +91,7 @@ export default function ReviewForm({ initialData, reviewId }: ReviewFormProps) {
         ? await updateReview({ success: false, message: '' }, formData)
         : await createReview({ success: false, message: '' }, formData)
       if (result.success) {
+        track('review_submitted')
         setSubmitStatus({ type: 'success', message: result.message })
         if (!isEditMode) {
           reset()
@@ -133,7 +134,10 @@ export default function ReviewForm({ initialData, reviewId }: ReviewFormProps) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {/* Service Type */}
         <div>
-          <label htmlFor="review-service_type" className="mb-1 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="review-service_type"
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
             Service Type <span className="text-red-500">*</span>
           </label>
           <select
@@ -163,7 +167,10 @@ export default function ReviewForm({ initialData, reviewId }: ReviewFormProps) {
 
         {/* Service Name */}
         <div>
-          <label htmlFor="review-service_name" className="mb-1 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="review-service_name"
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
             Service Name <span className="text-red-500">*</span>
           </label>
           <input

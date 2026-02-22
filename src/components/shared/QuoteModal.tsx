@@ -10,6 +10,7 @@ import { honeypotSchema } from '@/lib/validators/honeypot'
 import { SERVICE_TYPES, FREQUENCY_OPTIONS, TIMELINE_OPTIONS } from '@/lib/data/service-types'
 import { UGANDA_DISTRICTS } from '@/lib/data/uganda-districts'
 import { submitQuoteRequest } from '@/lib/actions/quote'
+import { track } from '@vercel/analytics'
 
 const BUDGET_RANGES = [
   { value: 'under_500k', label: 'Under UGX 500,000' },
@@ -197,6 +198,7 @@ export default function QuoteModal() {
       const result = await submitQuoteRequest({ success: false, message: '' }, formData)
 
       if (result.success) {
+        track('quote_requested')
         setSubmitStatus('success')
       } else {
         setSubmitStatus('error')
@@ -224,16 +226,15 @@ export default function QuoteModal() {
         if (e.target === e.currentTarget) closeModal()
       }}
     >
-      <div className="relative max-h-[90dvh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl" style={{ overscrollBehavior: 'contain' }}>
+      <div
+        className="relative max-h-[90dvh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
+        style={{ overscrollBehavior: 'contain' }}
+      >
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between bg-gradient-green px-6 py-4 rounded-t-2xl">
           <div>
-            <h2 className="font-heading text-xl font-bold text-white">
-              Request A Quote
-            </h2>
-            <p className="text-sm text-green-200">
-              Step {currentStep} of 3
-            </p>
+            <h2 className="font-heading text-xl font-bold text-white">Request A Quote</h2>
+            <p className="text-sm text-green-200">Step {currentStep} of 3</p>
           </div>
           <button
             type="button"
@@ -262,17 +263,12 @@ export default function QuoteModal() {
         {submitStatus === 'success' && (
           <div className="flex flex-col items-center px-6 py-12 text-center">
             <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-green shadow-lg shadow-brand-green/25">
-              <i
-                className="fa-solid fa-check text-3xl text-white"
-                aria-hidden="true"
-              />
+              <i className="fa-solid fa-check text-3xl text-white" aria-hidden="true" />
             </div>
-            <h3 className="font-heading text-xl font-bold text-gray-900">
-              Quote Request Sent!
-            </h3>
+            <h3 className="font-heading text-xl font-bold text-gray-900">Quote Request Sent!</h3>
             <p className="mt-2 max-w-sm text-gray-600">
-              Thank you for your interest. Our team will review your request
-              and get back to you within 24 hours.
+              Thank you for your interest. Our team will review your request and get back to you
+              within 24 hours.
             </p>
             <button
               type="button"
@@ -299,10 +295,7 @@ export default function QuoteModal() {
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className="px-6 py-4">
               {/* Honeypot */}
-              <div
-                className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
-                aria-hidden="true"
-              >
+              <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
                 <label htmlFor="quote-website">Website</label>
                 <input
                   id="quote-website"
@@ -333,9 +326,7 @@ export default function QuoteModal() {
                         placeholder="John Doe"
                         {...register('name')}
                       />
-                      {errors.name && (
-                        <p className={errorClass}>{errors.name.message}</p>
-                      )}
+                      {errors.name && <p className={errorClass}>{errors.name.message}</p>}
                     </div>
                     <div>
                       <label htmlFor="quote-email" className={labelClass}>
@@ -350,9 +341,7 @@ export default function QuoteModal() {
                         placeholder="john@example.com"
                         {...register('email')}
                       />
-                      {errors.email && (
-                        <p className={errorClass}>{errors.email.message}</p>
-                      )}
+                      {errors.email && <p className={errorClass}>{errors.email.message}</p>}
                     </div>
                     <div>
                       <label htmlFor="quote-phone" className={labelClass}>
@@ -367,9 +356,7 @@ export default function QuoteModal() {
                         placeholder="+256 7XX XXX XXX"
                         {...register('phone')}
                       />
-                      {errors.phone && (
-                        <p className={errorClass}>{errors.phone.message}</p>
-                      )}
+                      {errors.phone && <p className={errorClass}>{errors.phone.message}</p>}
                     </div>
                     <div>
                       <label htmlFor="quote-company" className={labelClass}>
@@ -392,7 +379,10 @@ export default function QuoteModal() {
               {currentStep === 2 && (
                 <fieldset>
                   <legend className="mb-4 font-heading text-lg font-semibold text-gray-900">
-                    <i className="fa-solid fa-clipboard-list mr-2 text-brand-green" aria-hidden="true" />
+                    <i
+                      className="fa-solid fa-clipboard-list mr-2 text-brand-green"
+                      aria-hidden="true"
+                    />
                     Service Details
                   </legend>
                   <div className="grid gap-4 md:grid-cols-2">
@@ -420,11 +410,7 @@ export default function QuoteModal() {
                       <label htmlFor="quote-location" className={labelClass}>
                         Location / District <span className="text-red-500">*</span>
                       </label>
-                      <select
-                        id="quote-location"
-                        className={inputClass}
-                        {...register('location')}
-                      >
+                      <select id="quote-location" className={inputClass} {...register('location')}>
                         <option value="">Select a district</option>
                         {UGANDA_DISTRICTS.map((group) => (
                           <optgroup key={group.region} label={group.region}>
@@ -437,9 +423,7 @@ export default function QuoteModal() {
                         ))}
                         <option value="other">Other (specify in message)</option>
                       </select>
-                      {errors.location && (
-                        <p className={errorClass}>{errors.location.message}</p>
-                      )}
+                      {errors.location && <p className={errorClass}>{errors.location.message}</p>}
                     </div>
                     <div>
                       <label htmlFor="quote-frequency" className={labelClass}>
@@ -493,9 +477,7 @@ export default function QuoteModal() {
                         placeholder="Please describe your waste management needs, any special requirements, or questions you may have..."
                         {...register('message')}
                       />
-                      {errors.message && (
-                        <p className={errorClass}>{errors.message.message}</p>
-                      )}
+                      {errors.message && <p className={errorClass}>{errors.message.message}</p>}
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
                       <div>
@@ -540,13 +522,9 @@ export default function QuoteModal() {
                         className="relative mt-1 h-5 w-5 rounded border-gray-300 text-brand-green focus:ring-brand-green after:absolute after:-inset-3 after:content-['']"
                         {...register('marketing_consent')}
                       />
-                      <label
-                        htmlFor="quote-consent"
-                        className="text-sm text-gray-600"
-                      >
-                        I consent to receiving promotional emails and updates
-                        about Green Label Services. You can unsubscribe at any
-                        time.
+                      <label htmlFor="quote-consent" className="text-sm text-gray-600">
+                        I consent to receiving promotional emails and updates about Green Label
+                        Services. You can unsubscribe at any time.
                       </label>
                     </div>
                   </div>

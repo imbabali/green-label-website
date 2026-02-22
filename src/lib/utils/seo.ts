@@ -81,6 +81,22 @@ export function organizationJsonLd() {
     },
     telephone: COMPANY_INFO.phones[0],
     email: COMPANY_INFO.email,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: COMPANY_INFO.phones[0],
+        contactType: 'customer service',
+        availableLanguage: ['English'],
+        areaServed: 'UG',
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: COMPANY_INFO.emergencyHotline,
+        contactType: 'emergency',
+        availableLanguage: ['English'],
+        areaServed: 'UG',
+      },
+    ],
     foundingDate: `${COMPANY_INFO.founded}`,
     sameAs: [COMPANY_INFO.social.facebook, COMPANY_INFO.social.linkedin],
     openingHoursSpecification: [
@@ -226,7 +242,11 @@ export function faqJsonLd(faqs: { question: string; answer: string }[]) {
   }
 }
 
-export function reviewJsonLd(reviews: { rating: number; author: string; text: string; date: string }[], averageRating: number, totalCount: number) {
+export function reviewJsonLd(
+  reviews: { rating: number; author: string; text: string; date: string }[],
+  averageRating: number,
+  totalCount: number
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',

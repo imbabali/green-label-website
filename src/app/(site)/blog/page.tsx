@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next'
 import { z } from 'zod'
 import Hero from '@/components/shared/Hero'
@@ -24,7 +25,8 @@ export const revalidate = 60
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: 'Blog',
-    description: 'Latest news, articles, and insights on waste management, environmental sustainability, and Green Label Services updates.',
+    description:
+      'Latest news, articles, and insights on waste management, environmental sustainability, and Green Label Services updates.',
     path: '/blog',
   })
 }
@@ -42,7 +44,9 @@ interface Props {
 export default async function BlogPage({ searchParams }: Props) {
   const rawParams = await searchParams
   const parsed = searchParamsSchema.safeParse(rawParams)
-  const params = parsed.success ? parsed.data : { page: 1, category: undefined, tag: undefined, q: undefined }
+  const params = parsed.success
+    ? parsed.data
+    : { page: 1, category: undefined, tag: undefined, q: undefined }
   const page = params.page
   const start = (page - 1) * POSTS_PER_PAGE
   const end = start + POSTS_PER_PAGE
@@ -50,7 +54,7 @@ export default async function BlogPage({ searchParams }: Props) {
   let posts: any[] = []
   let total = 0
   let categories: any[] = []
-  let tags: any[] = []
+  // tags fetched for future sidebar/filter use
 
   try {
     const [blogData, catsData, tagsData] = await Promise.all([
@@ -70,22 +74,27 @@ export default async function BlogPage({ searchParams }: Props) {
     posts = blogData.posts || []
     total = blogData.total || 0
     categories = catsData || []
-    tags = tagsData || []
+    void tagsData
   } catch {
     // Sanity not configured — use fallbacks
   }
 
   // Use fallbacks when CMS has no data
-  const displayPosts = posts.length > 0 ? posts.map((p: any) => ({
-    title: p.title,
-    slug: p.slug?.current || p.slug,
-    excerpt: p.excerpt || '',
-    featuredImage: p.featuredImage ? urlFor(p.featuredImage).width(600).url() : undefined,
-    category: p.category ? { name: p.category.name, slug: p.category.slug?.current || p.category.slug } : undefined,
-    author: p.author ? { name: p.author.name } : undefined,
-    publishedAt: p.publishedAt,
-    tags: p.tags?.map((t: any) => ({ name: t.name, slug: t.slug?.current || t.slug })),
-  })) : fallbackPosts
+  const displayPosts =
+    posts.length > 0
+      ? posts.map((p: any) => ({
+          title: p.title,
+          slug: p.slug?.current || p.slug,
+          excerpt: p.excerpt || '',
+          featuredImage: p.featuredImage ? urlFor(p.featuredImage).width(600).url() : undefined,
+          category: p.category
+            ? { name: p.category.name, slug: p.category.slug?.current || p.category.slug }
+            : undefined,
+          author: p.author ? { name: p.author.name } : undefined,
+          publishedAt: p.publishedAt,
+          tags: p.tags?.map((t: any) => ({ name: t.name, slug: t.slug?.current || t.slug })),
+        }))
+      : fallbackPosts
 
   const displayCategories = categories.length > 0 ? categories : fallbackCategories
   const displayTotal = posts.length > 0 ? total : fallbackPosts.length
@@ -110,7 +119,9 @@ export default async function BlogPage({ searchParams }: Props) {
               <Link
                 href="/blog"
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
-                  !params.category ? 'bg-brand-green text-white shadow-md shadow-brand-green/20' : 'bg-white text-gray-700 shadow-sm hover:bg-gray-50'
+                  !params.category
+                    ? 'bg-brand-green text-white shadow-md shadow-brand-green/20'
+                    : 'bg-white text-gray-700 shadow-sm hover:bg-gray-50'
                 }`}
               >
                 All
@@ -132,10 +143,17 @@ export default async function BlogPage({ searchParams }: Props) {
           )}
 
           {/* Search bar — glass style */}
-          <form action="/blog/search" method="get" className="mb-10">
+          <form action="/blog/search" method="get" className="mb-10" role="search">
             <div className="relative mx-auto max-w-xl">
-              <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <label htmlFor="blog-search" className="sr-only">
+                Search articles
+              </label>
+              <i
+                className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                aria-hidden="true"
+              />
               <input
+                id="blog-search"
                 type="search"
                 name="q"
                 defaultValue={params.q || ''}
@@ -150,7 +168,10 @@ export default async function BlogPage({ searchParams }: Props) {
             <ScrollRevealSection>
               <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 {displayPosts.map((post: any, index: number) => (
-                  <div key={post.slug} className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}>
+                  <div
+                    key={post.slug}
+                    className={`reveal reveal-up stagger-${Math.min(index + 1, 6)}`}
+                  >
                     <PostCard post={post} />
                   </div>
                 ))}

@@ -8,6 +8,7 @@ import { emailSchema } from '@/lib/validators/email'
 import { honeypotSchema } from '@/lib/validators/honeypot'
 import HoneypotField from '@/components/shared/HoneypotField'
 import { subscribeNewsletter } from '@/lib/actions/newsletter'
+import { track } from '@vercel/analytics'
 
 const newsletterSchema = z.object({
   email: emailSchema,
@@ -59,6 +60,7 @@ export default function NewsletterForm({ variant = 'footer' }: NewsletterFormPro
         const result = await subscribeNewsletter({ success: false, message: '' }, formData)
 
         if (result.success) {
+          track('newsletter_subscribed')
           setStatus('success')
           reset()
         } else {

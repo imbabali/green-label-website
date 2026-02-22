@@ -17,7 +17,7 @@ export const COMPANY_INFO = {
   tagline: 'Safe And Trusted Waste Collection Service',
   address: 'Plot 89, Block 29 Church Road, Off Mawanda Rd, Kampala, Uganda',
   email: 'info@greenlabelservicesug.com',
-  emailAlt: 'greenlabel@greenlabel-services.com',
+  emailAlt: 'greenlabel@greenlabelservicesug.com',
   phones: ['+256 772 423 092', '+256 705 348 888', '+256 393 103 427'],
   whatsapp: '+256 705 348 888',
   emergencyHotline: '+256 772 423 092',

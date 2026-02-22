@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { emailSchema } from '@/lib/validators/email'
 import { phoneRequiredSchema } from '@/lib/validators/phone'
 import { submitApplication } from '@/lib/actions/application'
+import { track } from '@vercel/analytics'
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -18,8 +19,14 @@ const ACCEPTED_EXTENSIONS = '.pdf, .doc, .docx'
 
 const jobApplicationSchema = z.object({
   job_slug: z.string(),
-  first_name: z.string().min(1, 'First name is required').max(50, 'First name must be less than 50 characters'),
-  last_name: z.string().min(1, 'Last name is required').max(50, 'Last name must be less than 50 characters'),
+  first_name: z
+    .string()
+    .min(1, 'First name is required')
+    .max(50, 'First name must be less than 50 characters'),
+  last_name: z
+    .string()
+    .min(1, 'Last name is required')
+    .max(50, 'Last name must be less than 50 characters'),
   email: emailSchema,
   phone: phoneRequiredSchema,
   current_company: z.string().optional().default(''),
@@ -28,20 +35,16 @@ const jobApplicationSchema = z.object({
     .string()
     .optional()
     .default('')
-    .refine(
-      (val) =>
-        !val ||
-        /^https?:\/\/(www\.)?linkedin\.com/.test(val),
-      { message: 'Must be a valid LinkedIn URL (e.g., https://linkedin.com/in/yourname)' }
-    ),
+    .refine((val) => !val || /^https?:\/\/(www\.)?linkedin\.com/.test(val), {
+      message: 'Must be a valid LinkedIn URL (e.g., https://linkedin.com/in/yourname)',
+    }),
   portfolio_url: z
     .string()
     .optional()
     .default('')
-    .refine(
-      (val) => !val || /^https?:\/\//.test(val),
-      { message: 'Must be a valid URL starting with http:// or https://' }
-    ),
+    .refine((val) => !val || /^https?:\/\//.test(val), {
+      message: 'Must be a valid URL starting with http:// or https://',
+    }),
   cover_letter: z.string().optional().default(''),
 })
 
@@ -52,10 +55,7 @@ interface JobApplicationFormProps {
   jobTitle: string
 }
 
-export default function JobApplicationForm({
-  jobSlug,
-  jobTitle,
-}: JobApplicationFormProps) {
+export default function JobApplicationForm({ jobSlug, jobTitle }: JobApplicationFormProps) {
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error'
     message: string
@@ -173,6 +173,7 @@ export default function JobApplicationForm({
 
       const result = await submitApplication({ success: false, message: '' }, formData)
       if (result.success) {
+        track('job_application_submitted')
         setSubmitStatus({ type: 'success', message: result.message })
         reset()
         removeFile()
@@ -188,13 +189,12 @@ export default function JobApplicationForm({
   }
 
   return (
+    // eslint-disable-next-line react-hooks/refs
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-8">
       {/* Hidden job slug */}
       <input type="hidden" {...register('job_slug')} />
 
-      <h3 className="text-xl font-semibold text-gray-900">
-        Apply for {jobTitle}
-      </h3>
+      <h3 className="text-xl font-semibold text-gray-900">Apply for {jobTitle}</h3>
 
       {/* Status Message */}
       {submitStatus && (
@@ -212,9 +212,7 @@ export default function JobApplicationForm({
 
       {/* Section 1: Personal Information */}
       <fieldset>
-        <legend className="mb-4 text-lg font-semibold text-gray-900">
-          Personal Information
-        </legend>
+        <legend className="mb-4 text-lg font-semibold text-gray-900">Personal Information</legend>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* First Name */}
           <div>
@@ -332,7 +330,10 @@ export default function JobApplicationForm({
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Current Company */}
           <div>
-            <label htmlFor="current_company" className="mb-1 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="current_company"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Current Company
             </label>
             <input
@@ -347,7 +348,10 @@ export default function JobApplicationForm({
 
           {/* Current Position */}
           <div>
-            <label htmlFor="current_position" className="mb-1 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="current_position"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Current Position
             </label>
             <input
@@ -362,7 +366,10 @@ export default function JobApplicationForm({
 
           {/* LinkedIn Profile */}
           <div>
-            <label htmlFor="linkedin_profile" className="mb-1 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="linkedin_profile"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               LinkedIn Profile
             </label>
             <input
@@ -418,9 +425,7 @@ export default function JobApplicationForm({
 
       {/* Section 3: Application Materials */}
       <fieldset>
-        <legend className="mb-4 text-lg font-semibold text-gray-900">
-          Application Materials
-        </legend>
+        <legend className="mb-4 text-lg font-semibold text-gray-900">Application Materials</legend>
         <div className="space-y-4">
           {/* Resume Upload */}
           <div>
@@ -513,9 +518,7 @@ export default function JobApplicationForm({
                     <span className="font-semibold text-brand-green">Click to upload</span> or drag
                     and drop
                   </p>
-                  <p className="text-sm text-gray-500">
-                    PDF, DOC, or DOCX (max 5MB)
-                  </p>
+                  <p className="text-sm text-gray-500">PDF, DOC, or DOCX (max 5MB)</p>
                 </div>
               )}
             </div>

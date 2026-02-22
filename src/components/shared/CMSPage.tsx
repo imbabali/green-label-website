@@ -12,7 +12,13 @@ interface CMSPageProps {
   children?: React.ReactNode
 }
 
-export default function CMSPage({ title, content, fallbackContent, heroImage, children }: CMSPageProps) {
+export default function CMSPage({
+  title,
+  content,
+  fallbackContent,
+  heroImage,
+  children,
+}: CMSPageProps) {
   return (
     <>
       <Hero heading={title} variant="fullWidth" backgroundImage={heroImage} />
@@ -25,7 +31,13 @@ export default function CMSPage({ title, content, fallbackContent, heroImage, ch
                 <PortableText value={content} />
               </div>
             ) : fallbackContent ? (
-              <div className="prose prose-lg max-w-none text-gray-700" dangerouslySetInnerHTML={{ __html: fallbackContent }} />
+              // Safety: fallbackContent is developer-authored static HTML from page
+              // definitions (e.g., policy pages), not user-generated input. It is safe
+              // to render via dangerouslySetInnerHTML without escaping.
+              <div
+                className="prose prose-lg max-w-none text-gray-700"
+                dangerouslySetInnerHTML={{ __html: fallbackContent }}
+              />
             ) : null}
           </div>
           {children}
